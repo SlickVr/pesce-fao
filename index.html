@@ -13,113 +13,159 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ocean-deep:#0a2540;
-  --ocean-mid:#0e3a6e;
-  --ocean-light:#1565a8;
-  --ocean-bright:#2196f3;
-  --ocean-glow:#4fc3f7;
-  --ocean-foam:#e3f2fd;
-  --sand:#fffde7;
-  --text-primary:#e8f4fd;
-  --text-secondary:#90caf9;
-  --text-dark:#0a2540;
-  --green:#43a047;--green-bg:#e8f5e9;--green-text:#1b5e20;
-  --yellow:#f9a825;--yellow-bg:#fff8e1;--yellow-text:#e65100;
-  --orange:#ef6c00;--orange-bg:#fff3e0;--orange-text:#bf360c;
-  --red:#e53935;--red-bg:#ffebee;--red-text:#b71c1c;
+  --od:#0a2540;--om:#0e3a6e;--ol:#1565a8;--ob:#2196f3;--og:#4fc3f7;--of:#e3f2fd;
+  --tp:#e8f4fd;--ts:#90caf9;
+  --g:#43a047;--gb:#e8f5e9;--gt:#1b5e20;
+  --y:#f9a825;--yb:#fff8e1;--yt:#e65100;
+  --o:#ef6c00;--orb:#fff3e0;--ot:#bf360c;
+  --r:#e53935;--rb:#ffebee;--rt:#b71c1c;
 }
-body{font-family:system-ui,-apple-system,sans-serif;background:var(--ocean-deep);min-height:100vh;color:var(--text-primary);overflow-x:hidden}
-
-/* WAVE HEADER */
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--od);min-height:100vh;color:var(--tp);overflow-x:hidden}
 .header{position:relative;background:linear-gradient(160deg,#0a2540 0%,#0d3b6e 50%,#1565a8 100%);padding:2rem 1.25rem 4rem;text-align:center;overflow:hidden}
 .header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(79,195,247,0.15) 0%,transparent 70%)}
 .header-fish{font-size:48px;display:block;margin-bottom:8px;filter:drop-shadow(0 0 16px rgba(79,195,247,0.6));animation:float 3s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
 .header h1{font-size:22px;font-weight:700;letter-spacing:0.5px;color:#fff;text-shadow:0 0 20px rgba(79,195,247,0.5)}
-.header p{font-size:13px;color:var(--text-secondary);margin-top:4px}
+.header p{font-size:13px;color:var(--ts);margin-top:4px}
 .bubbles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .bubble{position:absolute;border-radius:50%;background:rgba(79,195,247,0.12);animation:rise linear infinite}
 @keyframes rise{0%{transform:translateY(100%) scale(0);opacity:0}20%{opacity:1}100%{transform:translateY(-200%) scale(1);opacity:0}}
 .wave{position:absolute;bottom:-1px;left:0;right:0;height:48px}
 
-/* CARD */
-.card{background:rgba(13,59,110,0.7);backdrop-filter:blur(12px);border:0.5px solid rgba(79,195,247,0.2);border-radius:16px;padding:1.1rem 1.2rem;margin:0 1rem 1rem}
+/* NAV TABS */
+.nav{display:flex;overflow-x:auto;gap:6px;padding:0 1rem 0;margin-bottom:0;scrollbar-width:none;-ms-overflow-style:none}
+.nav::-webkit-scrollbar{display:none}
+.nav-tab{flex-shrink:0;padding:8px 14px;font-size:13px;font-weight:500;border-radius:20px;border:0.5px solid rgba(79,195,247,0.2);background:rgba(13,59,110,0.5);color:var(--ts);cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.nav-tab.active{background:linear-gradient(135deg,var(--ob),var(--og));color:#fff;border-color:transparent;box-shadow:0 2px 12px rgba(33,150,243,0.4)}
 
-/* TABS */
-.tabs{display:flex;gap:6px;margin-bottom:14px;background:rgba(10,37,64,0.6);border-radius:12px;padding:4px}
-.tab{flex:1;padding:9px;font-size:14px;font-weight:500;text-align:center;border-radius:9px;border:none;background:transparent;color:var(--text-secondary);cursor:pointer;transition:all 0.25s}
-.tab.active{background:linear-gradient(135deg,var(--ocean-bright),var(--ocean-glow));color:#fff;box-shadow:0 2px 12px rgba(33,150,243,0.4)}
+.content{padding:0.75rem 1rem 2rem}
+.page{display:none}.page.active{display:block}
 
-/* INPUTS */
-select,input[type=text]{width:100%;padding:11px 14px;font-size:16px;border:0.5px solid rgba(79,195,247,0.3);border-radius:10px;background:rgba(10,37,64,0.7);color:var(--text-primary);margin-bottom:10px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;-webkit-appearance:none}
+.card{background:rgba(13,59,110,0.7);backdrop-filter:blur(12px);border:0.5px solid rgba(79,195,247,0.2);border-radius:16px;padding:1.1rem 1.2rem;margin-bottom:1rem}
+
+/* SUBTABS */
+.subtabs{display:flex;gap:6px;margin-bottom:14px;background:rgba(10,37,64,0.6);border-radius:12px;padding:4px}
+.subtab{flex:1;padding:9px;font-size:14px;font-weight:500;text-align:center;border-radius:9px;border:none;background:transparent;color:var(--ts);cursor:pointer;transition:all 0.25s}
+.subtab.active{background:linear-gradient(135deg,var(--ob),var(--og));color:#fff;box-shadow:0 2px 12px rgba(33,150,243,0.4)}
+
+select,input[type=text]{width:100%;padding:11px 14px;font-size:16px;border:0.5px solid rgba(79,195,247,0.3);border-radius:10px;background:rgba(10,37,64,0.7);color:var(--tp);margin-bottom:10px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;-webkit-appearance:none}
 select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234fc3f7' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
 select option{background:#0e3a6e;color:#e8f4fd}
-select:focus,input:focus{border-color:var(--ocean-glow);box-shadow:0 0 0 3px rgba(79,195,247,0.15)}
+select:focus,input:focus{border-color:var(--og);box-shadow:0 0 0 3px rgba(79,195,247,0.15)}
 input::placeholder{color:rgba(144,202,249,0.5)}
-.divider{text-align:center;font-size:12px;color:var(--text-secondary);margin:2px 0 10px;position:relative;opacity:0.6}
+.divider{text-align:center;font-size:12px;color:var(--ts);margin:2px 0 10px;position:relative;opacity:0.6}
 .divider::before,.divider::after{content:'';position:absolute;top:50%;width:42%;height:0.5px;background:rgba(79,195,247,0.2)}
 .divider::before{left:0}.divider::after{right:0}
 .pane{display:none}.pane.active{display:block}
 .warn{display:none;font-size:13px;color:#ef9a9a;background:rgba(183,28,28,0.2);border:0.5px solid rgba(239,57,57,0.3);border-radius:8px;padding:8px 12px;margin-bottom:10px}
-.hint{font-size:12px;color:var(--text-secondary);margin-bottom:10px;opacity:0.8}
+.hint{font-size:12px;color:var(--ts);margin-bottom:10px;opacity:0.8}
 
 /* RESULT */
 .result-card{display:none;animation:slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1)}
 @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
-/* RISK HERO */
 .risk-hero{border-radius:14px;padding:1.25rem;margin-bottom:1rem;position:relative;overflow:hidden;transition:all 0.4s}
 .risk-hero.green{background:linear-gradient(135deg,#1b5e20,#2e7d32)}
 .risk-hero.yellow{background:linear-gradient(135deg,#e65100,#f57f17)}
 .risk-hero.orange{background:linear-gradient(135deg,#bf360c,#e64a19)}
 .risk-hero.red{background:linear-gradient(135deg,#b71c1c,#c62828)}
 .risk-hero::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.08)}
-.risk-emoji{font-size:40px;display:block;margin-bottom:8px;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3))}
+.risk-emoji{font-size:40px;display:block;margin-bottom:8px}
 .risk-zone-name{font-size:18px;font-weight:700;color:#fff;line-height:1.3}
 .risk-zone-sub{font-size:13px;color:rgba(255,255,255,0.75);margin-top:3px}
 .risk-label{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:5px 12px;border-radius:20px;background:rgba(255,255,255,0.2);font-size:13px;font-weight:600;color:#fff}
 .risk-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.5s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
-
-/* SECTION TITLE */
-.section-title{font-size:11px;font-weight:700;color:var(--ocean-glow);text-transform:uppercase;letter-spacing:0.08em;margin:16px 0 10px;display:flex;align-items:center;gap:6px}
+.section-title{font-size:11px;font-weight:700;color:var(--og);text-transform:uppercase;letter-spacing:0.08em;margin:16px 0 10px;display:flex;align-items:center;gap:6px}
 .section-title::after{content:'';flex:1;height:0.5px;background:rgba(79,195,247,0.2)}
-
-/* INDICATORS */
 .indicators-grid{display:flex;flex-direction:column;gap:8px}
-.ind-row{background:rgba(10,37,64,0.5);border:0.5px solid rgba(79,195,247,0.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px;transition:transform 0.15s}
-.ind-row:active{transform:scale(0.98)}
+.ind-row{background:rgba(10,37,64,0.5);border:0.5px solid rgba(79,195,247,0.12);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px}
 .ind-bar-wrap{flex:1;min-width:0}
-.ind-name{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:4px}
-.ind-note{font-size:11px;color:var(--text-secondary);opacity:0.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ind-name{font-size:13px;font-weight:500;color:var(--tp);margin-bottom:4px}
+.ind-note{font-size:11px;color:var(--ts);opacity:0.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ind-badge{flex-shrink:0;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap}
 .ind-low{background:rgba(27,94,32,0.4);color:#a5d6a7;border:0.5px solid rgba(67,160,71,0.3)}
 .ind-med{background:rgba(230,81,0,0.3);color:#ffcc80;border:0.5px solid rgba(249,168,37,0.3)}
 .ind-high{background:rgba(191,54,12,0.3);color:#ffab91;border:0.5px solid rgba(239,108,0,0.3)}
 .ind-vhigh{background:rgba(183,28,28,0.3);color:#ef9a9a;border:0.5px solid rgba(229,57,53,0.3)}
 .ind-icon{font-size:18px;flex-shrink:0;width:28px;text-align:center}
-
-/* SPECIES */
 .species-chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:12px;padding:5px 11px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.25);background:rgba(21,101,168,0.3);color:var(--text-secondary)}
-
-/* REC */
-.rec-box{background:rgba(10,37,64,0.6);border:0.5px solid rgba(79,195,247,0.2);border-left:3px solid var(--ocean-glow);border-radius:0 10px 10px 0;padding:12px 14px;font-size:14px;color:var(--text-primary);line-height:1.7}
-
-/* SOURCE */
-.source-note{font-size:11px;color:var(--text-secondary);text-align:center;margin-top:10px;opacity:0.6;line-height:1.5}
-
-/* SPECIES RANKING */
+.chip{font-size:12px;padding:5px 11px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.25);background:rgba(21,101,168,0.3);color:var(--ts);cursor:pointer;transition:all 0.2s}
+.chip:active{background:rgba(33,150,243,0.4)}
+.rec-box{background:rgba(10,37,64,0.6);border:0.5px solid rgba(79,195,247,0.2);border-left:3px solid var(--og);border-radius:0 10px 10px 0;padding:12px 14px;font-size:14px;color:var(--tp);line-height:1.7}
+.source-note{font-size:11px;color:var(--ts);text-align:center;margin-top:10px;opacity:0.6;line-height:1.5}
 .zone-rank{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:10px;background:rgba(10,37,64,0.4);border:0.5px solid rgba(79,195,247,0.1);margin-bottom:7px;cursor:pointer;transition:all 0.2s}
-.zone-rank:active{transform:scale(0.98);background:rgba(21,101,168,0.3)}
+.zone-rank:active{transform:scale(0.98)}
 .rank-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
 .rank-dot.green{background:#43a047;box-shadow:0 0 6px rgba(67,160,71,0.5)}
 .rank-dot.yellow{background:#f9a825;box-shadow:0 0 6px rgba(249,168,37,0.5)}
 .rank-dot.orange{background:#ef6c00;box-shadow:0 0 6px rgba(239,108,0,0.5)}
 .rank-dot.red{background:#e53935;box-shadow:0 0 6px rgba(229,57,53,0.5)}
-.rank-name{font-size:14px;font-weight:500;color:var(--text-primary);flex:1}
-.rank-sub{font-size:11px;color:var(--text-secondary);opacity:0.7;margin-top:2px}
+.rank-name{font-size:14px;font-weight:500;color:var(--tp);flex:1}
+.rank-sub{font-size:11px;color:var(--ts);opacity:0.7;margin-top:2px}
 .rank-arrow{color:rgba(79,195,247,0.4);font-size:18px}
+
+/* SPECIE SCHEDA */
+.species-hero{border-radius:14px;padding:1.25rem;margin-bottom:1rem;background:linear-gradient(135deg,#0d3b6e,#1565a8);border:0.5px solid rgba(79,195,247,0.3)}
+.species-name{font-size:20px;font-weight:700;color:#fff}
+.species-latin{font-size:13px;color:var(--ts);margin-top:2px;font-style:italic}
+.portion-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.portion-card{background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.15)}
+.portion-label{font-size:11px;color:var(--ts);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.portion-val{font-size:15px;font-weight:700;color:#fff}
+.portion-sub{font-size:11px;color:var(--ts);margin-top:2px;line-height:1.4}
+.hg-bar-wrap{margin-top:4px}
+.hg-track{height:8px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;margin-top:6px}
+.hg-fill{height:100%;border-radius:4px;transition:width 0.6s ease}
+.hg-low{background:linear-gradient(90deg,#43a047,#66bb6a)}
+.hg-med{background:linear-gradient(90deg,#f9a825,#ffca28)}
+.hg-high{background:linear-gradient(90deg,#ef6c00,#ffa726)}
+.hg-vhigh{background:linear-gradient(90deg,#e53935,#ef5350)}
+.method-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.method-tag{font-size:12px;padding:4px 10px;border-radius:6px;font-weight:500}
+.method-wild{background:rgba(67,160,71,0.2);color:#a5d6a7;border:0.5px solid rgba(67,160,71,0.3)}
+.method-farm{background:rgba(33,150,243,0.2);color:#90caf9;border:0.5px solid rgba(33,150,243,0.3)}
+.method-warn{background:rgba(239,108,0,0.2);color:#ffab91;border:0.5px solid rgba(239,108,0,0.3)}
+
+/* MAPPA */
+.map-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.map-filter-btn{padding:6px 12px;font-size:12px;font-weight:500;border-radius:20px;border:0.5px solid rgba(79,195,247,0.2);background:rgba(13,59,110,0.5);color:var(--ts);cursor:pointer;transition:all 0.2s}
+.map-filter-btn.active{color:#fff;border-color:transparent}
+.map-filter-btn.all.active{background:linear-gradient(135deg,var(--ob),var(--og))}
+.map-filter-btn.green.active{background:linear-gradient(135deg,#1b5e20,#2e7d32)}
+.map-filter-btn.yellow.active{background:linear-gradient(135deg,#e65100,#f57f17)}
+.map-filter-btn.orange.active{background:linear-gradient(135deg,#bf360c,#e64a19)}
+.map-filter-btn.red.active{background:linear-gradient(135deg,#b71c1c,#c62828)}
+.map-zone-row{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:rgba(10,37,64,0.4);border:0.5px solid rgba(79,195,247,0.1);margin-bottom:8px;cursor:pointer;transition:all 0.2s;animation:fadeIn 0.3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
+.map-zone-row:active{transform:scale(0.98)}
+.map-flag{font-size:24px;flex-shrink:0;width:36px;text-align:center}
+.map-zone-info{flex:1}
+.map-zone-code{font-size:11px;font-weight:700;color:var(--og);letter-spacing:0.05em}
+.map-zone-name{font-size:14px;font-weight:500;color:var(--tp);margin-top:1px}
+.map-zone-geo{font-size:11px;color:var(--ts);opacity:0.7;margin-top:2px}
+.map-risk-pill{flex-shrink:0;width:10px;height:10px;border-radius:50%}
+.map-risk-pill.green{background:#43a047;box-shadow:0 0 8px rgba(67,160,71,0.6)}
+.map-risk-pill.yellow{background:#f9a825;box-shadow:0 0 8px rgba(249,168,37,0.6)}
+.map-risk-pill.orange{background:#ef6c00;box-shadow:0 0 8px rgba(239,108,0,0.6)}
+.map-risk-pill.red{background:#e53935;box-shadow:0 0 8px rgba(229,57,53,0.6)}
+.map-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;padding:10px 12px;background:rgba(10,37,64,0.4);border-radius:10px;border:0.5px solid rgba(79,195,247,0.1)}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ts)}
+.legend-dot{width:8px;height:8px;border-radius:50%}
+
+/* GLOSSARIO */
+.gloss-item{margin-bottom:10px;border-radius:12px;overflow:hidden;border:0.5px solid rgba(79,195,247,0.15)}
+.gloss-header{display:flex;align-items:center;gap:10px;padding:12px 14px;background:rgba(13,59,110,0.6);cursor:pointer;transition:background 0.2s}
+.gloss-header:active{background:rgba(21,101,168,0.4)}
+.gloss-icon{font-size:20px;flex-shrink:0}
+.gloss-term{font-size:15px;font-weight:600;color:var(--tp);flex:1}
+.gloss-arrow{color:var(--ts);font-size:16px;transition:transform 0.25s}
+.gloss-arrow.open{transform:rotate(90deg)}
+.gloss-body{display:none;padding:12px 14px;background:rgba(10,37,64,0.5);font-size:14px;color:var(--tp);line-height:1.7;border-top:0.5px solid rgba(79,195,247,0.1)}
+.gloss-body.open{display:block;animation:slideUp 0.2s ease}
+.gloss-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;margin-top:8px;font-weight:500}
+.gloss-tag.danger{background:rgba(183,28,28,0.3);color:#ef9a9a}
+.gloss-tag.caution{background:rgba(239,108,0,0.3);color:#ffab91}
+.gloss-tag.info{background:rgba(33,150,243,0.2);color:#90caf9}
 </style>
 </head>
 <body>
@@ -128,221 +174,299 @@ input::placeholder{color:rgba(144,202,249,0.5)}
   <div class="bubbles" id="bubbles"></div>
   <span class="header-fish">🐟</span>
   <h1>Zone Pesca FAO</h1>
-  <p>Qualità delle acque · dati offline</p>
+  <p>Sicurezza alimentare · dati offline</p>
   <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#0a2540"/>
   </svg>
 </div>
 
-<div style="padding:0 0 2rem">
+<div class="nav" id="mainNav">
+  <div class="nav-tab active" onclick="showPage('zona')">🗺 Per zona</div>
+  <div class="nav-tab" onclick="showPage('specie')">🐠 Specie</div>
+  <div class="nav-tab" onclick="showPage('mappa')">🌍 Mappa</div>
+  <div class="nav-tab" onclick="showPage('glossario')">📖 Glossario</div>
+</div>
 
-<div class="card">
-  <div class="tabs">
-    <button class="tab active" id="tabZone" onclick="switchTab('zone')">🗺 Per zona</button>
-    <button class="tab" id="tabSpecies" onclick="switchTab('species')">🐠 Per specie</button>
+<div class="content">
+
+<!-- PAGE: ZONA -->
+<div class="page active" id="pageZona">
+  <div class="card">
+    <div class="subtabs">
+      <button class="subtab active" id="tabZone" onclick="switchSubtab('zone')">Per zona</button>
+      <button class="subtab" id="tabSp" onclick="switchSubtab('species')">Per specie</button>
+    </div>
+    <div class="pane active" id="paneZone">
+      <select id="faoSelect" onchange="onSelectChange()"><option value="">— Scegli zona FAO —</option></select>
+      <div class="divider">oppure digita il codice</div>
+      <input type="text" id="faoManual" placeholder="Es. 37.2.1 o 27" oninput="onManualInput()">
+      <div class="warn" id="zoneWarn">⚠ Codice FAO non presente nel database.</div>
+    </div>
+    <div class="pane" id="paneSp">
+      <select id="speciesSelect" onchange="renderSpeciesRanking()"><option value="">— Scegli una specie —</option></select>
+      <p class="hint">🌊 Zone ordinate dalla più pulita alla più critica.</p>
+      <div id="speciesRanking"></div>
+    </div>
   </div>
 
-  <div class="pane active" id="paneZone">
-    <select id="faoSelect" onchange="onSelectChange()">
-      <option value="">— Scegli zona FAO —</option>
-    </select>
-    <div class="divider">oppure digita il codice</div>
-    <input type="text" id="faoManual" placeholder="Es. 37.2.1 o 27" oninput="onManualInput()">
-    <div class="warn" id="zoneWarn">⚠ Codice FAO non presente nel database.</div>
-  </div>
-
-  <div class="pane" id="paneSpecies">
-    <select id="speciesSelect" onchange="renderSpecies()">
-      <option value="">— Scegli una specie —</option>
-    </select>
-    <p class="hint">🌊 Zone ordinate dalla più pulita alla più critica. Tocca per i dettagli.</p>
-    <div id="speciesRanking"></div>
+  <div class="card result-card" id="resultCard">
+    <div class="risk-hero" id="riskHero">
+      <span class="risk-emoji" id="riskEmoji">🐟</span>
+      <div class="risk-zone-name" id="zoneName">—</div>
+      <div class="risk-zone-sub" id="zoneSub">—</div>
+      <div class="risk-label"><span class="risk-dot"></span><span id="riskText">—</span></div>
+    </div>
+    <div class="section-title">Indicatori di inquinamento</div>
+    <div class="indicators-grid" id="indicators"></div>
+    <div class="section-title">Specie più sensibili</div>
+    <div class="species-chips" id="speciesChips"></div>
+    <div class="section-title">Raccomandazioni</div>
+    <div class="rec-box" id="recBox">—</div>
+    <p class="source-note" id="sourceNote"></p>
   </div>
 </div>
 
-<div class="card result-card" id="resultCard">
-  <div class="risk-hero" id="riskHero">
-    <span class="risk-emoji" id="riskEmoji">🐟</span>
-    <div class="risk-zone-name" id="zoneName">—</div>
-    <div class="risk-zone-sub" id="zoneSub">—</div>
-    <div class="risk-label"><span class="risk-dot" id="riskDot"></span><span id="riskText">—</span></div>
+<!-- PAGE: SPECIE -->
+<div class="page" id="pageSpecie">
+  <div class="card">
+    <select id="speciesDetailSelect" onchange="renderSpeciesDetail()"><option value="">— Scegli una specie —</option></select>
+    <div class="subtabs" id="fishFilterTabs" style="display:none;margin-top:8px">
+      <button class="subtab active" id="filterAll" onclick="filterMethod('all')">Tutti</button>
+      <button class="subtab" id="filterWild" onclick="filterMethod('wild')">🎣 Selvaggio</button>
+      <button class="subtab" id="filterFarm" onclick="filterMethod('farm')">🏭 Allevato</button>
+    </div>
   </div>
-
-  <div class="section-title">Indicatori di inquinamento</div>
-  <div class="indicators-grid" id="indicators"></div>
-
-  <div class="section-title">Specie più sensibili</div>
-  <div class="species-chips" id="speciesChips"></div>
-
-  <div class="section-title">Raccomandazioni</div>
-  <div class="rec-box" id="recBox">—</div>
-  <p class="source-note" id="sourceNote"></p>
+  <div id="speciesDetailCard"></div>
 </div>
 
+<!-- PAGE: MAPPA -->
+<div class="page" id="pageMappa">
+  <div class="card">
+    <div class="map-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#43a047"></div>Basso</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f9a825"></div>Medio</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ef6c00"></div>Alto</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#e53935"></div>Molto alto</div>
+    </div>
+    <div class="map-filter">
+      <div class="map-filter-btn all active" onclick="filterMap('all',this)">Tutte</div>
+      <div class="map-filter-btn green" onclick="filterMap('green',this)">🟢 Basso</div>
+      <div class="map-filter-btn yellow" onclick="filterMap('yellow',this)">🟡 Medio</div>
+      <div class="map-filter-btn orange" onclick="filterMap('orange',this)">🟠 Alto</div>
+      <div class="map-filter-btn red" onclick="filterMap('red',this)">🔴 Molto alto</div>
+    </div>
+    <div id="mapList"></div>
+  </div>
 </div>
+
+<!-- PAGE: GLOSSARIO -->
+<div class="page" id="pageGlossario">
+  <div class="card" id="glossList"></div>
+</div>
+
+</div><!-- /content -->
 
 <script>
 var DATA = {
-  "27":{zoneName:"27 - Atlantico Nord-Est",zoneSub:"Norvegia, UK, Mare del Nord, Baltico",riskLevel:"medio",riskColor:"yellow",emoji:"🌊",indicators:[{name:"Microplastiche",level:"medio",note:"Mare del Nord e Baltico più colpiti",icon:"🔵"},{name:"Metalli pesanti (Hg, Cd, Pb)",level:"basso",note:"Basso in mare aperto, medio nel Baltico",icon:"⚗️"},{name:"PCB / Diossine",level:"medio",note:"Baltico tra i più contaminati in UE",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Eutrofizzazione cronica nel Baltico",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Atlantico aperto buono; Baltico critico",icon:"📊"}],sensibleSpecies:["Salmone Baltico","Aringa","Sgombro","Merluzzo"],recommendation:"Pesce dell'Atlantico aperto: consumo libero 2-3 volte/sett. Salmone e aringa del Baltico: limitare per diossine/PCB, max 1-2 volte/mese in gravidanza e per bambini.",sourceNote:"Fonti: OSPAR 2023, HELCOM, EFSA. Livelli indicativi."},
-  "31":{zoneName:"31 - Atlantico Centro-Ovest",zoneSub:"Golfo del Messico, Caraibi",riskLevel:"medio",riskColor:"yellow",emoji:"🏝️",indicators:[{name:"Microplastiche",level:"medio",note:"Accumulo nelle correnti caraibiche",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"alto",note:"Mercurio elevato nei grandi predatori",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Generalmente contenuto",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"alto",note:"Zona morta del Golfo del Messico",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Variabile per area",icon:"📊"}],sensibleSpecies:["Tonno","Pesce spada","Marlin"],recommendation:"Attenzione ai grandi predatori (tonno, spada): mercurio elevato. Evitare in gravidanza, max 1 volta/mese per bambini. Pesce piccolo e crostacei più sicuri.",sourceNote:"Fonti: FDA/EPA USA, NOAA. Livelli indicativi."},
-  "34":{zoneName:"34 - Atlantico Centro-Est",zoneSub:"Africa Occidentale (Marocco, Senegal)",riskLevel:"basso",riskColor:"green",emoji:"🌊",indicators:[{name:"Microplastiche",level:"medio",note:"Crescente vicino alle coste urbane",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Acque generalmente pulite",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso impatto industriale",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Upwelling ricco e ben ossigenato",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Tra le aree più pescose e pulite",icon:"📊"}],sensibleSpecies:["Sardina","Sgombro","Tonno","Polpo"],recommendation:"Zona di pesca molto produttiva e pulita. Sardine e sgombri ottimi, consumo libero 2-3 volte/sett. Moderare solo i grandi tonni per il mercurio.",sourceNote:"Fonti: FAO, CECAF. Livelli indicativi."},
-  "37":{zoneName:"37 - Mediterraneo e Mar Nero",zoneSub:"Bacino mediterraneo nel suo insieme",riskLevel:"alto",riskColor:"orange",emoji:"🌊",indicators:[{name:"Microplastiche",level:"molto alto",note:"Tra i mari più inquinati al mondo",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"alto",note:"Mercurio elevato, bacino chiuso",icon:"⚗️"},{name:"PCB / Diossine",level:"medio",note:"Hotspot industriali localizzati",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Variabile, peggiore in aree chiuse",icon:"🌿"},{name:"Qualità generale",level:"alto",note:"Ricambio idrico molto lento",icon:"📊"}],sensibleSpecies:["Tonno rosso","Pesce spada","Triglia","Cozze"],recommendation:"Bacino chiuso con mercurio e microplastiche elevati. Limitare tonno e spada (max 1-2/mese, evitare in gravidanza). Pesce azzurro piccolo (alici, sardine) resta la scelta migliore.",sourceNote:"Fonti: UNEP/MAP MEDPOL, EFSA, ISPRA. Livelli indicativi."},
-  "37.1":{zoneName:"37.1 - Mediterraneo Occidentale",zoneSub:"Mar Ligure, Tirreno, Sardegna",riskLevel:"alto",riskColor:"orange",emoji:"🌊",indicators:[{name:"Microplastiche",level:"alto",note:"Alta densità nel Tirreno e Ligure",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"alto",note:"Mercurio elevato nei predatori",icon:"⚗️"},{name:"PCB / Diossine",level:"medio",note:"Poli industriali costieri",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Localizzata vicino foci/porti",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Migliore al largo della Sardegna",icon:"📊"}],sensibleSpecies:["Tonno rosso","Pesce spada","Triglia","Nasello"],recommendation:"Preferire pesce azzurro piccolo e nasello. Tonno e spada con moderazione per il mercurio. Le acque sarde al largo sono tra le più pulite del bacino.",sourceNote:"Fonti: MEDPOL, ISPRA, ARPA. Livelli indicativi."},
-  "37.2":{zoneName:"37.2 - Mediterraneo Centrale",zoneSub:"Mar Adriatico e Mar Ionio",riskLevel:"alto",riskColor:"orange",emoji:"🌊",indicators:[{name:"Microplastiche",level:"alto",note:"Adriatico molto carico (apporto fluviale)",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Medio in Adriatico, alto nei predatori",icon:"⚗️"},{name:"PCB / Diossine",level:"alto",note:"Hotspot storici (es. area di Taranto)",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"alto",note:"Adriatico Nord molto eutrofico (Po)",icon:"🌿"},{name:"Qualità generale",level:"alto",note:"Basso fondale e ricambio lento",icon:"📊"}],sensibleSpecies:["Cozze","Vongole","Triglia","Tonno"],recommendation:"Adriatico Nord eutrofico e ricco di nutrienti dal Po. Attenzione ai molluschi filtratori in aree industriali (PCB). Pesce azzurro piccolo resta la scelta migliore.",sourceNote:"Fonti: MEDPOL, ISPRA, ARPA Veneto/Puglia. Livelli indicativi."},
-  "37.2.1":{zoneName:"37.2.1 - Mar Adriatico",zoneSub:"Costa italiana e croata, foce del Po",riskLevel:"alto",riskColor:"orange",emoji:"🌊",indicators:[{name:"Microplastiche",level:"molto alto",note:"Tra i più carichi, apporto dal Po",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Medio in generale, alto nei grandi pesci",icon:"⚗️"},{name:"PCB / Diossine",level:"alto",note:"Hotspot industriali storici sulla costa",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"molto alto",note:"Eutrofizzazione marcata, mucillagini",icon:"🌿"},{name:"Qualità generale",level:"alto",note:"Bacino poco profondo, ricambio lento",icon:"📊"}],sensibleSpecies:["Cozze","Vongole","Triglia di fango","Sgombro"],recommendation:"Eutrofizzazione marcata e microplastiche elevate, soprattutto nel Nord vicino al Po. Molluschi filtratori da zone certificate. Alici e sardine restano l'opzione più sicura, 2 volte/sett.",sourceNote:"Fonti: ISPRA, ARPA Veneto/Emilia-Romagna, MEDPOL. Livelli indicativi."},
-  "37.3":{zoneName:"37.3 - Mediterraneo Orientale",zoneSub:"Mar Egeo, Levante",riskLevel:"medio",riskColor:"yellow",emoji:"🌊",indicators:[{name:"Microplastiche",level:"alto",note:"Accumulo nel bacino orientale",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Variabile",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Minore industrializzazione",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque oligotrofiche, povere di nutrienti",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Acque limpide ma povere",icon:"📊"}],sensibleSpecies:["Triglia","Orata","Sgombro","Tonno"],recommendation:"Acque limpide e oligotrofiche. Buona qualità generale, attenzione solo ai grandi predatori per il mercurio tipico del bacino chiuso mediterraneo.",sourceNote:"Fonti: MEDPOL, EFSA. Livelli indicativi."},
-  "37.4":{zoneName:"37.4 - Mar Nero",zoneSub:"Turchia, Romania, Ucraina",riskLevel:"molto alto",riskColor:"red",emoji:"⚓",indicators:[{name:"Microplastiche",level:"alto",note:"Forte apporto da grandi fiumi (Danubio)",icon:"🔵"},{name:"Metalli pesanti",level:"alto",note:"Scarichi industriali e fluviali",icon:"⚗️"},{name:"PCB / Diossine",level:"alto",note:"Contaminazione storica diffusa",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"molto alto",note:"Eutrofizzazione estrema, ipossia profonda",icon:"🌿"},{name:"Qualità generale",level:"molto alto",note:"Strato profondo anossico",icon:"📊"}],sensibleSpecies:["Acciuga del Mar Nero","Sgombro","Storione"],recommendation:"Tra i bacini più compromessi: eutrofizzazione estrema e contaminazione industriale. Consumo con cautela, preferire pesce piccolo da pesca controllata.",sourceNote:"Fonti: Black Sea Commission, UNEP. Livelli indicativi."},
-  "41":{zoneName:"41 - Atlantico Sud-Ovest",zoneSub:"Argentina, Brasile, Uruguay",riskLevel:"basso",riskColor:"green",emoji:"🌊",indicators:[{name:"Microplastiche",level:"basso",note:"Basse densità in mare aperto",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Acque pulite",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso impatto industriale",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Localizzata vicino foci urbane",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Piattaforma patagonica molto pulita",icon:"📊"}],sensibleSpecies:["Nasello argentino","Calamaro","Gambero rosso"],recommendation:"Acque pulite e produttive. Nasello, calamari e gamberi argentini sono ottime scelte, consumo libero. Qualità tra le migliori a livello globale.",sourceNote:"Fonti: FAO, INIDEP. Livelli indicativi."},
-  "47":{zoneName:"47 - Atlantico Sud-Est",zoneSub:"Namibia, Sudafrica",riskLevel:"basso",riskColor:"green",emoji:"🌊",indicators:[{name:"Microplastiche",level:"basso",note:"Basse concentrazioni",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Acque pulite",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso impatto",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Upwelling del Benguela molto produttivo",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Sistema di upwelling pulito e ricco",icon:"📊"}],sensibleSpecies:["Nasello del Capo","Sardina","Acciuga"],recommendation:"Sistema di upwelling del Benguela, molto produttivo e pulito. Nasello del Capo (hake) e pesce azzurro sono scelte eccellenti e sostenibili.",sourceNote:"Fonti: FAO, BCLME. Livelli indicativi."},
-  "51":{zoneName:"51 - Oceano Indiano Occidentale",zoneSub:"Africa orientale, Golfo Persico, India W",riskLevel:"medio",riskColor:"yellow",emoji:"🌊",indicators:[{name:"Microplastiche",level:"alto",note:"Alta densità vicino a India e Golfo",icon:"🔵"},{name:"Metalli pesanti",level:"medio",note:"Variabile, alto in aree industriali",icon:"⚗️"},{name:"PCB / Diossine",level:"medio",note:"Localizzato",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Zone a minimo di ossigeno naturali",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Molto variabile per sotto-area",icon:"📊"}],sensibleSpecies:["Tonno pinna gialla","Sgombro","Gambero"],recommendation:"Qualità molto variabile: mare aperto buono, aree costiere di India e Golfo più inquinate. Moderare i grandi tonni; preferire pesce di pesca al largo.",sourceNote:"Fonti: FAO, IOTC. Livelli indicativi."},
-  "57":{zoneName:"57 - Oceano Indiano Orientale",zoneSub:"India E, Sud-est asiatico, Australia W",riskLevel:"medio",riskColor:"yellow",emoji:"🌊",indicators:[{name:"Microplastiche",level:"alto",note:"Sud-est asiatico tra i maggiori emettitori",icon:"🔵"},{name:"Metalli pesanti",level:"medio",note:"Variabile per area",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Generalmente contenuto",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Localizzata vicino a coste dense",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Buono al largo, peggiore costa SE asiatica",icon:"📊"}],sensibleSpecies:["Tonno","Gambero","Pesce gatto"],recommendation:"Attenzione a prodotti costieri del Sud-est asiatico. Pesce di mare aperto e tonno con moderazione sono opzioni accettabili.",sourceNote:"Fonti: FAO, IOTC. Livelli indicativi."},
-  "61":{zoneName:"61 - Pacifico Nord-Ovest",zoneSub:"Giappone, Cina, Corea",riskLevel:"medio",riskColor:"yellow",emoji:"🗾",indicators:[{name:"Microplastiche",level:"alto",note:"Tra le aree più cariche al mondo",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Medio in mare aperto",icon:"⚗️"},{name:"PCB / Diossine",level:"medio",note:"Baie industriali contaminate",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"alto",note:"Mar Giallo e Mar Cinese molto eutrofici",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Variabile, molto industrializzato",icon:"📊"}],sensibleSpecies:["Tonno","Sgombro","Vongole"],recommendation:"Area molto industrializzata con microplastiche elevate. Preferire pesce di mare aperto. Moderare i grandi predatori per il mercurio.",sourceNote:"Fonti: FAO, NOWPAP. Livelli indicativi."},
-  "67":{zoneName:"67 - Pacifico Nord-Est",zoneSub:"Alaska, Canada W, USA NW",riskLevel:"basso",riskColor:"green",emoji:"🏔️",indicators:[{name:"Microplastiche",level:"basso",note:"Acque tra le più pulite",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Basso impatto",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque fredde ben ossigenate",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Tra le acque più pulite del pianeta",icon:"📊"}],sensibleSpecies:["Salmone selvatico","Merluzzo","Halibut"],recommendation:"Tra le zone più pulite al mondo. Salmone selvatico dell'Alaska, merluzzo e halibut sono scelte eccellenti, consumo libero 2-3 volte/sett.",sourceNote:"Fonti: NOAA, FDA. Livelli indicativi."},
-  "71":{zoneName:"71 - Pacifico Centro-Ovest",zoneSub:"Indonesia, Filippine, Pacifico tropicale",riskLevel:"medio",riskColor:"yellow",emoji:"🏝️",indicators:[{name:"Microplastiche",level:"molto alto",note:"Indonesia/Filippine tra i maggiori emettitori",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Medio nei tonni",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Contenuto",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Localizzata vicino a coste dense",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Mare aperto buono, coste critiche",icon:"📊"}],sensibleSpecies:["Tonno skipjack","Tonno pinna gialla","Gambero"],recommendation:"Principale zona mondiale per il tonno in scatola (skipjack), generalmente sicuro. Attenzione alle microplastiche dei prodotti costieri.",sourceNote:"Fonti: FAO, WCPFC. Livelli indicativi."},
-  "77":{zoneName:"77 - Pacifico Centro-Est",zoneSub:"Messico, America Centrale, USA SW",riskLevel:"basso",riskColor:"green",emoji:"🌊",indicators:[{name:"Microplastiche",level:"medio",note:"Medio",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Medio nei predatori",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Upwelling produttivo e ossigenato",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Buona qualità generale",icon:"📊"}],sensibleSpecies:["Tonno","Sardina","Calamaro gigante"],recommendation:"Buona qualità generale. Sardine e calamari ottimi; moderare tonno e altri grandi predatori per il mercurio.",sourceNote:"Fonti: NOAA, FAO. Livelli indicativi."},
-  "81":{zoneName:"81 - Pacifico Sud-Ovest",zoneSub:"Nuova Zelanda, Australia E",riskLevel:"basso",riskColor:"green",emoji:"🌊",indicators:[{name:"Microplastiche",level:"basso",note:"Basse concentrazioni",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Acque pulite",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso impatto",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque pulite e ben gestite",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Tra le meglio gestite al mondo",icon:"📊"}],sensibleSpecies:["Hoki","Snapper","Salmone NZ"],recommendation:"Acque pulite e pesca molto ben gestita. Hoki e snapper neozelandesi sono scelte eccellenti e sostenibili, consumo libero.",sourceNote:"Fonti: FAO, MPI New Zealand. Livelli indicativi."},
-  "87":{zoneName:"87 - Pacifico Sud-Est",zoneSub:"Perù, Cile",riskLevel:"basso",riskColor:"green",emoji:"🌊",indicators:[{name:"Microplastiche",level:"basso",note:"Basse densità al largo",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Acque pulite",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Upwelling di Humboldt molto produttivo",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Sistema di Humboldt pulito e ricchissimo",icon:"📊"}],sensibleSpecies:["Acciuga","Sardina","Nasello"],recommendation:"Sistema di Humboldt: la zona di pesca più produttiva del mondo, acque pulite. Acciughe e sardine sono scelte eccellenti e sostenibili.",sourceNote:"Fonti: FAO, IMARPE. Livelli indicativi."},
-  "18":{zoneName:"18 - Mar Artico",zoneSub:"Acque polari artiche",riskLevel:"basso",riskColor:"green",emoji:"❄️",indicators:[{name:"Microplastiche",level:"medio",note:"Accumulo crescente dalle correnti",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Bioaccumulo nei predatori artici",icon:"⚗️"},{name:"PCB / Diossine",level:"medio",note:"Inquinanti persistenti trasportati",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque fredde pulite",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Incontaminate ma con accumulo POP",icon:"📊"}],sensibleSpecies:["Merluzzo artico","Halibut","Salmerino"],recommendation:"Acque incontaminate, ma i predatori artici accumulano mercurio e inquinanti persistenti. Pesce di taglia piccola/media preferibile.",sourceNote:"Fonti: AMAP, FAO. Livelli indicativi."},
-  "48":{zoneName:"48 - Atlantico Antartico",zoneSub:"Acque antartiche",riskLevel:"basso",riskColor:"green",emoji:"🐧",indicators:[{name:"Microplastiche",level:"basso",note:"Tra le più basse al mondo",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Acque incontaminate",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque pulite e fredde",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Tra le acque più pulite del pianeta",icon:"📊"}],sensibleSpecies:["Krill","Austromerluzzo"],recommendation:"Acque tra le più pulite del pianeta. La pesca è regolamentata (CCAMLR); attenzione più alla sostenibilità che alla contaminazione.",sourceNote:"Fonti: CCAMLR, FAO. Livelli indicativi."},
-  "58":{zoneName:"58 - Indiano Antartico",zoneSub:"Acque antartiche",riskLevel:"basso",riskColor:"green",emoji:"🐧",indicators:[{name:"Microplastiche",level:"basso",note:"Molto basse",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Incontaminate",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque pulite",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Acque incontaminate",icon:"📊"}],sensibleSpecies:["Austromerluzzo","Krill"],recommendation:"Acque incontaminate, pesca regolamentata CCAMLR. Priorità alla sostenibilità più che alla sicurezza alimentare.",sourceNote:"Fonti: CCAMLR, FAO. Livelli indicativi."},
-  "88":{zoneName:"88 - Pacifico Antartico",zoneSub:"Mare di Ross e acque antartiche",riskLevel:"basso",riskColor:"green",emoji:"🐧",indicators:[{name:"Microplastiche",level:"basso",note:"Molto basse",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Incontaminate",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque pulite",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Area marina protetta del Mare di Ross",icon:"📊"}],sensibleSpecies:["Austromerluzzo","Krill"],recommendation:"Acque incontaminate, comprende l'area marina protetta del Mare di Ross. Sicurezza alimentare ottima; pesca strettamente regolamentata.",sourceNote:"Fonti: CCAMLR, FAO. Livelli indicativi."}
+  "27":{zoneName:"27 - Atlantico Nord-Est",zoneSub:"Norvegia, UK, Mare del Nord, Baltico",riskLevel:"medio",riskColor:"yellow",emoji:"🌊",flag:"🇳🇴",indicators:[{name:"Microplastiche",level:"medio",note:"Mare del Nord e Baltico più colpiti",icon:"🔵"},{name:"Metalli pesanti (Hg, Cd, Pb)",level:"basso",note:"Basso in mare aperto, medio nel Baltico",icon:"⚗️"},{name:"PCB / Diossine",level:"medio",note:"Baltico tra i più contaminati in UE",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Eutrofizzazione cronica nel Baltico",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Atlantico aperto buono; Baltico critico",icon:"📊"}],sensibleSpecies:["Salmone Baltico","Aringa","Sgombro","Merluzzo"],recommendation:"Pesce dell'Atlantico aperto: consumo libero 2-3 volte/sett. Salmone e aringa del Baltico: limitare per diossine/PCB, max 1-2 volte/mese in gravidanza e per bambini.",sourceNote:"Fonti: OSPAR 2023, HELCOM, EFSA. Livelli indicativi."},
+  "31":{zoneName:"31 - Atlantico Centro-Ovest",zoneSub:"Golfo del Messico, Caraibi",riskLevel:"medio",riskColor:"yellow",emoji:"🏝️",flag:"🌎",indicators:[{name:"Microplastiche",level:"medio",note:"Accumulo nelle correnti caraibiche",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"alto",note:"Mercurio elevato nei grandi predatori",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Generalmente contenuto",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"alto",note:"Zona morta del Golfo del Messico",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Variabile per area",icon:"📊"}],sensibleSpecies:["Tonno","Pesce spada","Marlin"],recommendation:"Attenzione ai grandi predatori (tonno, spada): mercurio elevato. Evitare in gravidanza, max 1 volta/mese per bambini.",sourceNote:"Fonti: FDA/EPA USA, NOAA. Livelli indicativi."},
+  "34":{zoneName:"34 - Atlantico Centro-Est",zoneSub:"Africa Occidentale (Marocco, Senegal)",riskLevel:"basso",riskColor:"green",emoji:"🌊",flag:"🌍",indicators:[{name:"Microplastiche",level:"medio",note:"Crescente vicino alle coste urbane",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Acque generalmente pulite",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso impatto industriale",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Upwelling ricco e ben ossigenato",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Tra le aree più pescose e pulite",icon:"📊"}],sensibleSpecies:["Sardina","Sgombro","Tonno","Polpo"],recommendation:"Zona di pesca molto produttiva e pulita. Sardine e sgombri ottimi, consumo libero 2-3 volte/sett.",sourceNote:"Fonti: FAO, CECAF. Livelli indicativi."},
+  "37":{zoneName:"37 - Mediterraneo e Mar Nero",zoneSub:"Bacino mediterraneo nel suo insieme",riskLevel:"alto",riskColor:"orange",emoji:"🌊",flag:"🌍",indicators:[{name:"Microplastiche",level:"molto alto",note:"Tra i mari più inquinati al mondo",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"alto",note:"Mercurio elevato, bacino chiuso",icon:"⚗️"},{name:"PCB / Diossine",level:"medio",note:"Hotspot industriali localizzati",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Variabile, peggiore in aree chiuse",icon:"🌿"},{name:"Qualità generale",level:"alto",note:"Ricambio idrico molto lento",icon:"📊"}],sensibleSpecies:["Tonno rosso","Pesce spada","Triglia","Cozze"],recommendation:"Bacino chiuso con mercurio e microplastiche elevati. Limitare tonno e spada (max 1-2/mese). Evitare in gravidanza. Alici e sardine sono la scelta migliore.",sourceNote:"Fonti: UNEP/MAP MEDPOL, EFSA, ISPRA. Livelli indicativi."},
+  "37.1":{zoneName:"37.1 - Mediterraneo Occidentale",zoneSub:"Mar Ligure, Tirreno, Sardegna",riskLevel:"alto",riskColor:"orange",emoji:"🌊",flag:"🇮🇹",indicators:[{name:"Microplastiche",level:"alto",note:"Alta densità nel Tirreno e Ligure",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"alto",note:"Mercurio elevato nei predatori",icon:"⚗️"},{name:"PCB / Diossine",level:"medio",note:"Poli industriali costieri",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Localizzata vicino foci/porti",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Migliore al largo della Sardegna",icon:"📊"}],sensibleSpecies:["Tonno rosso","Pesce spada","Triglia","Nasello"],recommendation:"Preferire pesce azzurro piccolo e nasello. Tonno e spada con moderazione. Acque sarde al largo tra le più pulite del bacino.",sourceNote:"Fonti: MEDPOL, ISPRA, ARPA. Livelli indicativi."},
+  "37.2":{zoneName:"37.2 - Mediterraneo Centrale",zoneSub:"Mar Adriatico e Mar Ionio",riskLevel:"alto",riskColor:"orange",emoji:"🌊",flag:"🇮🇹",indicators:[{name:"Microplastiche",level:"alto",note:"Adriatico molto carico (apporto fluviale)",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Medio in Adriatico, alto nei predatori",icon:"⚗️"},{name:"PCB / Diossine",level:"alto",note:"Hotspot storici (es. area di Taranto)",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"alto",note:"Adriatico Nord molto eutrofico (Po)",icon:"🌿"},{name:"Qualità generale",level:"alto",note:"Basso fondale e ricambio lento",icon:"📊"}],sensibleSpecies:["Cozze","Vongole","Triglia","Tonno"],recommendation:"Adriatico Nord eutrofico. Attenzione ai molluschi filtratori in aree industriali. Pesce azzurro piccolo resta la scelta migliore.",sourceNote:"Fonti: MEDPOL, ISPRA, ARPA Veneto/Puglia. Livelli indicativi."},
+  "37.2.1":{zoneName:"37.2.1 - Mar Adriatico",zoneSub:"Costa italiana e croata, foce del Po",riskLevel:"alto",riskColor:"orange",emoji:"🌊",flag:"🇮🇹",indicators:[{name:"Microplastiche",level:"molto alto",note:"Tra i più carichi, apporto dal Po",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Medio in generale, alto nei grandi pesci",icon:"⚗️"},{name:"PCB / Diossine",level:"alto",note:"Hotspot industriali storici sulla costa",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"molto alto",note:"Eutrofizzazione marcata, mucillagini",icon:"🌿"},{name:"Qualità generale",level:"alto",note:"Bacino poco profondo, ricambio lento",icon:"📊"}],sensibleSpecies:["Cozze","Vongole","Triglia di fango","Sgombro"],recommendation:"Eutrofizzazione marcata e microplastiche elevate soprattutto nel Nord. Molluschi filtratori da zone certificate. Alici e sardine restano l'opzione più sicura.",sourceNote:"Fonti: ISPRA, ARPA Veneto/Emilia-Romagna, MEDPOL. Livelli indicativi."},
+  "37.3":{zoneName:"37.3 - Mediterraneo Orientale",zoneSub:"Mar Egeo, Levante",riskLevel:"medio",riskColor:"yellow",emoji:"🌊",flag:"🇬🇷",indicators:[{name:"Microplastiche",level:"alto",note:"Accumulo nel bacino orientale",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Variabile",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Minore industrializzazione",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque oligotrofiche",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Acque limpide ma povere",icon:"📊"}],sensibleSpecies:["Triglia","Orata","Sgombro","Tonno"],recommendation:"Acque limpide e oligotrofiche. Buona qualità generale, attenzione solo ai grandi predatori per il mercurio.",sourceNote:"Fonti: MEDPOL, EFSA. Livelli indicativi."},
+  "37.4":{zoneName:"37.4 - Mar Nero",zoneSub:"Turchia, Romania, Ucraina",riskLevel:"molto alto",riskColor:"red",emoji:"⚓",flag:"🌍",indicators:[{name:"Microplastiche",level:"alto",note:"Forte apporto da grandi fiumi (Danubio)",icon:"🔵"},{name:"Metalli pesanti",level:"alto",note:"Scarichi industriali e fluviali",icon:"⚗️"},{name:"PCB / Diossine",level:"alto",note:"Contaminazione storica diffusa",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"molto alto",note:"Eutrofizzazione estrema, ipossia profonda",icon:"🌿"},{name:"Qualità generale",level:"molto alto",note:"Strato profondo anossico",icon:"📊"}],sensibleSpecies:["Acciuga del Mar Nero","Sgombro","Storione"],recommendation:"Tra i bacini più compromessi. Consumo con cautela, preferire pesce piccolo da pesca controllata.",sourceNote:"Fonti: Black Sea Commission, UNEP. Livelli indicativi."},
+  "41":{zoneName:"41 - Atlantico Sud-Ovest",zoneSub:"Argentina, Brasile, Uruguay",riskLevel:"basso",riskColor:"green",emoji:"🌊",flag:"🌎",indicators:[{name:"Microplastiche",level:"basso",note:"Basse densità in mare aperto",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Acque pulite",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso impatto industriale",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Localizzata vicino foci urbane",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Piattaforma patagonica molto pulita",icon:"📊"}],sensibleSpecies:["Nasello argentino","Calamaro","Gambero rosso"],recommendation:"Acque pulite e produttive. Nasello, calamari e gamberi argentini sono ottime scelte, consumo libero.",sourceNote:"Fonti: FAO, INIDEP. Livelli indicativi."},
+  "47":{zoneName:"47 - Atlantico Sud-Est",zoneSub:"Namibia, Sudafrica",riskLevel:"basso",riskColor:"green",emoji:"🌊",flag:"🌍",indicators:[{name:"Microplastiche",level:"basso",note:"Basse concentrazioni",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Acque pulite",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso impatto",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Upwelling del Benguela molto produttivo",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Sistema di upwelling pulito e ricco",icon:"📊"}],sensibleSpecies:["Nasello del Capo","Sardina","Acciuga"],recommendation:"Sistema di upwelling del Benguela molto pulito. Nasello del Capo e pesce azzurro sono scelte eccellenti.",sourceNote:"Fonti: FAO, BCLME. Livelli indicativi."},
+  "51":{zoneName:"51 - Oceano Indiano Occidentale",zoneSub:"Africa orientale, Golfo Persico, India W",riskLevel:"medio",riskColor:"yellow",emoji:"🌊",flag:"🌏",indicators:[{name:"Microplastiche",level:"alto",note:"Alta densità vicino a India e Golfo",icon:"🔵"},{name:"Metalli pesanti",level:"medio",note:"Variabile, alto in aree industriali",icon:"⚗️"},{name:"PCB / Diossine",level:"medio",note:"Localizzato",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Zone a minimo di ossigeno naturali",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Molto variabile per sotto-area",icon:"📊"}],sensibleSpecies:["Tonno pinna gialla","Sgombro","Gambero"],recommendation:"Mare aperto buono, aree costiere di India e Golfo più inquinate. Moderare i grandi tonni.",sourceNote:"Fonti: FAO, IOTC. Livelli indicativi."},
+  "57":{zoneName:"57 - Oceano Indiano Orientale",zoneSub:"India E, Sud-est asiatico, Australia W",riskLevel:"medio",riskColor:"yellow",emoji:"🌊",flag:"🌏",indicators:[{name:"Microplastiche",level:"alto",note:"Sud-est asiatico tra i maggiori emettitori",icon:"🔵"},{name:"Metalli pesanti",level:"medio",note:"Variabile per area",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Generalmente contenuto",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Localizzata vicino a coste dense",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Buono al largo, peggiore costa SE asiatica",icon:"📊"}],sensibleSpecies:["Tonno","Gambero","Pesce gatto"],recommendation:"Attenzione a prodotti costieri del Sud-est asiatico. Pesce di mare aperto accettabile.",sourceNote:"Fonti: FAO, IOTC. Livelli indicativi."},
+  "61":{zoneName:"61 - Pacifico Nord-Ovest",zoneSub:"Giappone, Cina, Corea",riskLevel:"medio",riskColor:"yellow",emoji:"🗾",flag:"🌏",indicators:[{name:"Microplastiche",level:"alto",note:"Tra le aree più cariche al mondo",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Medio in mare aperto",icon:"⚗️"},{name:"PCB / Diossine",level:"medio",note:"Baie industriali contaminate",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"alto",note:"Mar Giallo e Mar Cinese molto eutrofici",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Variabile, molto industrializzato",icon:"📊"}],sensibleSpecies:["Tonno","Sgombro","Vongole"],recommendation:"Area molto industrializzata. Preferire pesce di mare aperto. Moderare i grandi predatori per il mercurio.",sourceNote:"Fonti: FAO, NOWPAP. Livelli indicativi."},
+  "67":{zoneName:"67 - Pacifico Nord-Est",zoneSub:"Alaska, Canada W, USA NW",riskLevel:"basso",riskColor:"green",emoji:"🏔️",flag:"🇺🇸",indicators:[{name:"Microplastiche",level:"basso",note:"Acque tra le più pulite",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Basso impatto",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque fredde ben ossigenate",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Tra le acque più pulite del pianeta",icon:"📊"}],sensibleSpecies:["Salmone selvatico","Merluzzo","Halibut"],recommendation:"Tra le zone più pulite al mondo. Salmone selvatico dell'Alaska, merluzzo e halibut sono scelte eccellenti.",sourceNote:"Fonti: NOAA, FDA. Livelli indicativi."},
+  "71":{zoneName:"71 - Pacifico Centro-Ovest",zoneSub:"Indonesia, Filippine, Pacifico tropicale",riskLevel:"medio",riskColor:"yellow",emoji:"🏝️",flag:"🌏",indicators:[{name:"Microplastiche",level:"molto alto",note:"Indonesia/Filippine tra i maggiori emettitori",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Medio nei tonni",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Contenuto",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Localizzata vicino a coste dense",icon:"🌿"},{name:"Qualità generale",level:"medio",note:"Mare aperto buono, coste critiche",icon:"📊"}],sensibleSpecies:["Tonno skipjack","Tonno pinna gialla","Gambero"],recommendation:"Tonno in scatola (skipjack) generalmente sicuro. Attenzione alle microplastiche dei prodotti costieri.",sourceNote:"Fonti: FAO, WCPFC. Livelli indicativi."},
+  "77":{zoneName:"77 - Pacifico Centro-Est",zoneSub:"Messico, America Centrale, USA SW",riskLevel:"basso",riskColor:"green",emoji:"🌊",flag:"🌎",indicators:[{name:"Microplastiche",level:"medio",note:"Medio",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Medio nei predatori",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Upwelling produttivo e ossigenato",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Buona qualità generale",icon:"📊"}],sensibleSpecies:["Tonno","Sardina","Calamaro gigante"],recommendation:"Buona qualità generale. Sardine e calamari ottimi; moderare i grandi predatori per il mercurio.",sourceNote:"Fonti: NOAA, FAO. Livelli indicativi."},
+  "81":{zoneName:"81 - Pacifico Sud-Ovest",zoneSub:"Nuova Zelanda, Australia E",riskLevel:"basso",riskColor:"green",emoji:"🌊",flag:"🇳🇿",indicators:[{name:"Microplastiche",level:"basso",note:"Basse concentrazioni",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Acque pulite",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso impatto",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque pulite e ben gestite",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Tra le meglio gestite al mondo",icon:"📊"}],sensibleSpecies:["Hoki","Snapper","Salmone NZ"],recommendation:"Acque pulite e pesca molto ben gestita. Hoki e snapper neozelandesi sono scelte eccellenti.",sourceNote:"Fonti: FAO, MPI New Zealand. Livelli indicativi."},
+  "87":{zoneName:"87 - Pacifico Sud-Est",zoneSub:"Perù, Cile",riskLevel:"basso",riskColor:"green",emoji:"🌊",flag:"🌎",indicators:[{name:"Microplastiche",level:"basso",note:"Basse densità al largo",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Acque pulite",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"medio",note:"Upwelling di Humboldt molto produttivo",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Sistema di Humboldt pulito e ricchissimo",icon:"📊"}],sensibleSpecies:["Acciuga","Sardina","Nasello"],recommendation:"Sistema di Humboldt: zona di pesca più produttiva del mondo, acque pulite. Acciughe e sardine eccellenti.",sourceNote:"Fonti: FAO, IMARPE. Livelli indicativi."},
+  "18":{zoneName:"18 - Mar Artico",zoneSub:"Acque polari artiche",riskLevel:"basso",riskColor:"green",emoji:"❄️",flag:"🧊",indicators:[{name:"Microplastiche",level:"medio",note:"Accumulo crescente dalle correnti",icon:"🔵"},{name:"Metalli pesanti (Hg)",level:"medio",note:"Bioaccumulo nei predatori artici",icon:"⚗️"},{name:"PCB / Diossine",level:"medio",note:"Inquinanti persistenti trasportati",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque fredde pulite",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Incontaminate ma con accumulo POP",icon:"📊"}],sensibleSpecies:["Merluzzo artico","Halibut","Salmerino"],recommendation:"Acque incontaminate, ma i predatori artici accumulano mercurio e inquinanti persistenti. Preferire taglia piccola/media.",sourceNote:"Fonti: AMAP, FAO. Livelli indicativi."},
+  "48":{zoneName:"48 - Atlantico Antartico",zoneSub:"Acque antartiche",riskLevel:"basso",riskColor:"green",emoji:"🐧",flag:"🧊",indicators:[{name:"Microplastiche",level:"basso",note:"Tra le più basse al mondo",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Acque incontaminate",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque pulite e fredde",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Tra le più pulite del pianeta",icon:"📊"}],sensibleSpecies:["Krill","Austromerluzzo"],recommendation:"Acque tra le più pulite del pianeta. Pesca regolamentata CCAMLR.",sourceNote:"Fonti: CCAMLR, FAO. Livelli indicativi."},
+  "58":{zoneName:"58 - Indiano Antartico",zoneSub:"Acque antartiche",riskLevel:"basso",riskColor:"green",emoji:"🐧",flag:"🧊",indicators:[{name:"Microplastiche",level:"basso",note:"Molto basse",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Incontaminate",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque pulite",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Acque incontaminate",icon:"📊"}],sensibleSpecies:["Austromerluzzo","Krill"],recommendation:"Acque incontaminate, pesca regolamentata CCAMLR.",sourceNote:"Fonti: CCAMLR, FAO. Livelli indicativi."},
+  "88":{zoneName:"88 - Pacifico Antartico",zoneSub:"Mare di Ross",riskLevel:"basso",riskColor:"green",emoji:"🐧",flag:"🧊",indicators:[{name:"Microplastiche",level:"basso",note:"Molto basse",icon:"🔵"},{name:"Metalli pesanti",level:"basso",note:"Incontaminate",icon:"⚗️"},{name:"PCB / Diossine",level:"basso",note:"Basso",icon:"☣️"},{name:"Nitrati / Eutrofizzazione",level:"basso",note:"Acque pulite",icon:"🌿"},{name:"Qualità generale",level:"basso",note:"Area marina protetta del Mare di Ross",icon:"📊"}],sensibleSpecies:["Austromerluzzo","Krill"],recommendation:"Acque incontaminate. Sicurezza alimentare ottima; pesca strettamente regolamentata.",sourceNote:"Fonti: CCAMLR, FAO. Livelli indicativi."}
 };
 
+// Dati specie completi
+var SPECIES_DATA = {
+  "tonno":{name:"Tonno",emoji:"🐟",latin:"Thunnus spp.",hgLevel:"alto",hgVal:75,hgNote:"0.35–1.0 mg/kg (variabile per specie)",portions:{adulti:"Max 2-3 porzioni/mese",bambini:"Max 1 porzione/mese",gravidanza:"Evitare tonno rosso; max 1 latta/sett. di tonno in scatola",anziani:"Come adulti, moderare"},wildNote:"Selvaggio: maggior contenuto di omega-3, più mercurio nei grandi esemplari.",farmNote:"Non si alleva industrialmente.",bestZones:["67","34","87"],worstZones:["37","37.4"],methods:["wild"]},
+  "salmone":{name:"Salmone",emoji:"🐠",latin:"Salmo salar / Oncorhynchus spp.",hgLevel:"basso",hgVal:20,hgNote:"0.01–0.08 mg/kg",portions:{adulti:"2-3 porzioni/settimana",bambini:"1-2 porzioni/settimana",gravidanza:"Ottimo, ricco di DHA. Max 2 porz/sett.",anziani:"Consigliato per omega-3"},wildNote:"Selvaggio (Alaska/Pacifico): più omega-3, meno grassi totali, sapore più intenso.",farmNote:"Allevato (Atlantico/Norvegia): grasso più uniforme, PCB leggermente più alti. Scegliere certificazione ASC.",bestZones:["67","27"],worstZones:["27"],methods:["wild","farm"]},
+  "merluzzo":{name:"Merluzzo",emoji:"🐟",latin:"Gadus morhua",hgLevel:"basso",hgVal:15,hgNote:"0.05–0.15 mg/kg",portions:{adulti:"Libero, 2-3 volte/sett.",bambini:"Ottimo, libero",gravidanza:"Ottimo, libero",anziani:"Ottimo, magro e digeribile"},wildNote:"Selvaggio: migliore sapore, stock nordici (FAO 27/67) ben gestiti e controllati.",farmNote:"Allevamento in espansione, qualità comparabile al selvaggio se certificato.",bestZones:["67","27","18"],worstZones:[],methods:["wild","farm"]},
+  "sardina":{name:"Sardina",emoji:"🐟",latin:"Sardina pilchardus",hgLevel:"basso",hgVal:10,hgNote:"<0.05 mg/kg",portions:{adulti:"Libero, 2-3 volte/sett.",bambini:"Ottimo, libero",gravidanza:"Ottimo, ricca di DHA e calcio",anziani:"Ottimo, ricca di calcio"},wildNote:"Solo selvaggia. Pesce piccolo, breve catena trofica: mercurio e contaminanti bassissimi.",farmNote:"Non si alleva.",bestZones:["34","47","87"],worstZones:["37.2.1"],methods:["wild"]},
+  "acciuga":{name:"Acciuga / Alice",emoji:"🐟",latin:"Engraulis encrasicolus",hgLevel:"basso",hgVal:8,hgNote:"<0.05 mg/kg",portions:{adulti:"Libero",bambini:"Attenzione al sale (conserva), fresca ottima",gravidanza:"Ottima fresca; limitare conserva per il sale",anziani:"Ottima fresca"},wildNote:"Solo selvaggia. Tra i pesci più sicuri in assoluto per contaminanti.",farmNote:"Non si alleva.",bestZones:["34","87","47"],worstZones:["37.2.1"],methods:["wild"]},
+  "pesce spada":{name:"Pesce spada",emoji:"🗡️",latin:"Xiphias gladius",hgLevel:"molto alto",hgVal:95,hgNote:"0.9–2.0+ mg/kg",portions:{adulti:"Max 1 volta/mese",bambini:"Evitare sotto i 14 anni",gravidanza:"EVITARE",anziani:"Max 1 volta/mese"},wildNote:"Solo selvaggio. Grande predatore apicale: bioaccumulo massimo di mercurio.",farmNote:"Non si alleva.",bestZones:["34","87"],worstZones:["37","31"],methods:["wild"]},
+  "orata":{name:"Orata",emoji:"🐟",latin:"Sparus aurata",hgLevel:"basso",hgVal:18,hgNote:"0.02–0.10 mg/kg",portions:{adulti:"2-3 volte/settimana",bambini:"Ottima",gravidanza:"Ottima",anziani:"Ottima"},wildNote:"Selvaggia: sapore superiore, stagionalità importante (primavera-estate).",farmNote:"Allevata: la più comune in commercio. Scegliere certificazione ASC. Omega-3 leggermente inferiori.",bestZones:["37.3","37.1"],worstZones:["37.2.1"],methods:["wild","farm"]},
+  "cozze":{name:"Cozze",emoji:"🦪",latin:"Mytilus galloprovincialis",hgLevel:"medio",hgVal:30,hgNote:"Filtratori: assorbono contaminanti dall'acqua",portions:{adulti:"1-2 volte/sett., da zone certificate",bambini:"Solo da zone controllate",gravidanza:"Solo ben cotte da zone certificate",anziani:"Come adulti"},wildNote:"Selvatiche: sapore più intenso ma maggior rischio microbiologico.",farmNote:"Allevate in zone certificate: sicurezza microbiologica superiore. Scegliere sempre prodotto con etichetta di origine e classe A/B.",bestZones:["27","34"],worstZones:["37.2.1","37.4"],methods:["wild","farm"]},
+  "gambero":{name:"Gambero",emoji:"🦐",latin:"varie specie",hgLevel:"basso",hgVal:12,hgNote:"0.01–0.05 mg/kg",portions:{adulti:"Libero",bambini:"Ottimo",gravidanza:"Ottimo se ben cotto",anziani:"Ottimo"},wildNote:"Selvaggio (es. gambero rosso di Mazara, gambero artico): sapore superiore, qualità eccellente.",farmNote:"Allevato (spesso da Asia): verificare certificazione ASC/BAP. Qualità molto variabile.",bestZones:["41","87","67"],worstZones:["57","71"],methods:["wild","farm"]},
+  "nasello":{name:"Nasello",emoji:"🐟",latin:"Merluccius merluccius",hgLevel:"basso",hgVal:22,hgNote:"0.05–0.20 mg/kg",portions:{adulti:"Libero",bambini:"Ottimo",gravidanza:"Ottimo",anziani:"Ottimo, molto digeribile"},wildNote:"Selvaggio: ottima scelta, pesce magro e digeribile. Stock mediterranei sotto pressione.",farmNote:"Raramente allevato.",bestZones:["41","47","67"],worstZones:["37"],methods:["wild"]}
+};
+
+var GLOSSARY = [
+  {term:"Mercurio (Hg)",icon:"⚗️",tag:{text:"Tossico",cls:"danger"},body:"Metallo pesante che si accumula nei tessuti dei pesci (bioaccumulo), specialmente nei grandi predatori come tonno, pesce spada e squalo. Nelle donne in gravidanza e nei bambini può causare danni al sistema nervoso. L'EFSA fissa limiti di tolleranza settimanale (TWI). Il metilmercurio è la forma più tossica e biodisponibile."},
+  {term:"PCB (Policlorobifenili)",icon:"☣️",tag:{text:"Persistente",cls:"danger"},body:"Composti organici clorurati usati in passato come isolanti elettrici, oggi vietati ma ancora presenti nell'ambiente. Si accumulano nei tessuti grassi dei pesci e risalgono la catena alimentare. Il Baltico e alcune aree industriali sono particolarmente contaminati. L'esposizione cronica è associata a effetti sul sistema endocrino e sul fegato."},
+  {term:"Diossine",icon:"☣️",tag:{text:"Persistente",cls:"danger"},body:"Sottoprodotti di processi industriali e combustione. Estremamente persistenti nell'ambiente, si accumulano nel grasso animale. Il pesce è la principale fonte di esposizione umana. L'EFSA ha abbassato significativamente i limiti tollerabili nel 2018. Baltico, Adriatico industriale e Mar Nero sono le aree più critiche in Europa."},
+  {term:"Microplastiche",icon:"🔵",tag:{text:"Emergente",cls:"caution"},body:"Frammenti plastici < 5mm presenti in tutti gli oceani. I pesci le ingeriscono con cibo e acqua. Le conseguenze sulla salute umana sono ancora oggetto di studio: al momento l'EFSA le considera a basso rischio acuto, ma l'esposizione cronica è sotto osservazione. Il Mediterraneo è tra i mari più carichi al mondo (densità fino a 1 frammento ogni m³)."},
+  {term:"Eutrofizzazione",icon:"🌿",tag:{text:"Ecosistema",cls:"caution"},body:"Eccessivo arricchimento di nutrienti (azoto, fosforo) nelle acque, principalmente da scarichi agricoli e civili. Causa proliferazione algale, riduzione di ossigeno (ipossia), moria di pesci e mucillagini. L'Adriatico Nord è tra i bacini più colpiti in Europa per l'apporto del fiume Po. Influenza la qualità del pesce indirettamente alterando l'ecosistema."},
+  {term:"Bioaccumulo",icon:"🔗",tag:{text:"Concetto chiave",cls:"info"},body:"Processo per cui alcune sostanze tossiche si concentrano progressivamente salendo la catena alimentare. Un tonno che mangia migliaia di piccoli pesci accumula tutto il mercurio di quella catena. Per questo i pesci grandi e longevi (tonno, spada, squalo, anguilla) hanno concentrazioni molto più alte rispetto ai pesci piccoli (alici, sardine, sgombro)."},
+  {term:"Omega-3 (DHA/EPA)",icon:"💊",tag:{text:"Beneficio",cls:"info"},body:"Acidi grassi polinsaturi essenziali, particolarmente abbondanti nel pesce azzurro grasso. Il DHA è fondamentale per lo sviluppo cerebrale fetale e infantile, l'EPA ha effetti antinfiammatori. L'OMS raccomanda 2 porzioni di pesce/settimana. I pesci grassi selvatici (salmone, sardine, sgombro) hanno il profilo omega-3 migliore."},
+  {term:"Zone FAO",icon:"🗺️",tag:{text:"Classificazione",cls:"info"},body:"La FAO (Agenzia ONU per l'alimentazione) divide gli oceani in 19 aree di pesca numerate. Sui prodotti ittici venduti in UE è obbligatorio indicare la zona FAO di cattura in etichetta. Le zone si dividono in oceani principali (es. 37 = Mediterraneo) e sotto-aree (es. 37.2.1 = Adriatico). Conoscere la zona permette di valutare la qualità ambientale dell'acqua di provenienza."},
+  {term:"Metodo di pesca (selvaggio vs allevato)",icon:"🎣",tag:{text:"Etichetta",cls:"info"},body:"Per legge UE il prodotto deve indicare se è 'pescato' (selvaggio) o 'allevato in acquacoltura'. Il selvaggio non è sempre superiore: dipende dalla zona e dallo stock. L'allevato certificato ASC/Bio ha standard di qualità controllati. In etichetta deve comparire anche il tipo di attrezzo usato (es. 'amo e lenza' è più sostenibile della rete a strascico)."},
+  {term:"EFSA e limiti di sicurezza",icon:"🏛️",tag:{text:"Normativa",cls:"info"},body:"L'EFSA (Autorità Europea per la Sicurezza Alimentare) fissa le dosi settimanali tollerabili (TWI) per i contaminanti. Per il mercurio: TWI 1.3 µg/kg peso corporeo. Per diossine+PCB: TWI 2 pg TEQ/kg/settimana. Per le categorie vulnerabili (gravidanza, bambini) i margini sono molto più ridotti. I limiti vengono aggiornati periodicamente sulla base di nuove evidenze scientifiche."}
+];
+
 var ORDER=["27","31","34","41","47","67","77","81","87","51","57","61","71","37","37.1","37.2","37.2.1","37.3","37.4","18","48","58","88"];
-var LABELS={"27":"27 — Atlantico NE (Norvegia/UK)","31":"31 — Atlantico C-Ovest (Caraibi)","34":"34 — Atlantico C-Est (Africa W)","41":"41 — Atlantico SO (Argentina)","47":"47 — Atlantico SE (Namibia/SA)","61":"61 — Pacifico NO (Giappone/Cina)","67":"67 — Pacifico NE (Alaska)","71":"71 — Pacifico C-Ovest","77":"77 — Pacifico C-Est","81":"81 — Pacifico SO (Nuova Zelanda)","87":"87 — Pacifico SE (Perù/Cile)","51":"51 — Oceano Indiano O","57":"57 — Oceano Indiano E","37":"37 — Mediterraneo e Mar Nero","37.1":"37.1 — Mediterraneo Occidentale","37.2":"37.2 — Mediterraneo Centrale","37.2.1":"37.2.1 — Mar Adriatico","37.3":"37.3 — Mediterraneo Orientale","37.4":"37.4 — Mar Nero","18":"18 — Artico","48":"48 — Atlantico Antartico","58":"58 — Indiano Antartico","88":"88 — Pacifico Antartico"};
+var LABELS={"27":"27 — Atlantico NE","31":"31 — Atlantico C-Ovest","34":"34 — Atlantico C-Est","41":"41 — Atlantico SO","47":"47 — Atlantico SE","61":"61 — Pacifico NO","67":"67 — Pacifico NE (Alaska)","71":"71 — Pacifico C-Ovest","77":"77 — Pacifico C-Est","81":"81 — Pacifico SO","87":"87 — Pacifico SE","51":"51 — Oceano Indiano O","57":"57 — Oceano Indiano E","37":"37 — Mediterraneo","37.1":"37.1 — Med. Occidentale","37.2":"37.2 — Med. Centrale","37.2.1":"37.2.1 — Mar Adriatico","37.3":"37.3 — Med. Orientale","37.4":"37.4 — Mar Nero","18":"18 — Artico","48":"48 — Atlantico Antartico","58":"58 — Indiano Antartico","88":"88 — Pacifico Antartico"};
 var levelMap={basso:["ind-low","Basso"],medio:["ind-med","Medio"],alto:["ind-high","Alto"],"molto alto":["ind-vhigh","Molto alto"]};
 var riskLabel={basso:"Rischio basso",medio:"Rischio medio",alto:"Rischio alto","molto alto":"Rischio molto alto"};
 var rankOrder={green:0,yellow:1,orange:2,red:3};
 
-// Bolle animate
-(function(){
-  var b=document.getElementById('bubbles');
-  for(var i=0;i<12;i++){
-    var el=document.createElement('div');
-    var sz=Math.random()*20+8;
-    el.className='bubble';
-    el.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+Math.random()*100+'%;bottom:0;animation-duration:'+(Math.random()*6+4)+'s;animation-delay:'+(Math.random()*5)+'s';
-    b.appendChild(el);
-  }
-})();
+// Bolle
+(function(){var b=document.getElementById('bubbles');for(var i=0;i<12;i++){var el=document.createElement('div'),sz=Math.random()*20+8;el.className='bubble';el.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+Math.random()*100+'%;bottom:0;animation-duration:'+(Math.random()*6+4)+'s;animation-delay:'+(Math.random()*5)+'s';b.appendChild(el);}})();
 
-// Popola zone
+// Popola select zona
 var sel=document.getElementById('faoSelect');
 var seen={};
-for(var i=0;i<ORDER.length;i++){
-  var k=ORDER[i];
-  if(seen[k]||!DATA[k])continue;
-  seen[k]=true;
-  var o=document.createElement('option');
-  o.value=k; o.textContent=LABELS[k]||k;
-  sel.appendChild(o);
-}
+for(var i=0;i<ORDER.length;i++){var k=ORDER[i];if(seen[k]||!DATA[k])continue;seen[k]=true;var o=document.createElement('option');o.value=k;o.textContent=LABELS[k]||k;sel.appendChild(o);}
 
-// Indice specie
+// Indice specie per zona
 var speciesIndex={};
 var dkeys=Object.keys(DATA);
-for(var i=0;i<dkeys.length;i++){
-  var code=dkeys[i];
-  var sp=DATA[code].sensibleSpecies;
-  for(var j=0;j<sp.length;j++){
-    var raw=sp[j];
-    var norm=raw.replace(/\s*\(.*?\)/g,'').trim().toLowerCase();
-    if(!speciesIndex[norm])speciesIndex[norm]={display:raw.replace(/\s*\(.*?\)/g,'').trim(),zones:[]};
-    speciesIndex[norm].zones.push(code);
-  }
-}
+for(var i=0;i<dkeys.length;i++){var code=dkeys[i];var sp=DATA[code].sensibleSpecies;for(var j=0;j<sp.length;j++){var raw=sp[j];var norm=raw.replace(/\s*\(.*?\)/g,'').trim().toLowerCase();if(!speciesIndex[norm])speciesIndex[norm]={display:raw.replace(/\s*\(.*?\)/g,'').trim(),zones:[]};speciesIndex[norm].zones.push(code);}}
 var spSel=document.getElementById('speciesSelect');
 var spKeys=Object.keys(speciesIndex).sort(function(a,b){return speciesIndex[a].display.localeCompare(speciesIndex[b].display,'it');});
-for(var i=0;i<spKeys.length;i++){
-  var o=document.createElement('option');
-  o.value=spKeys[i]; o.textContent=speciesIndex[spKeys[i]].display;
-  spSel.appendChild(o);
+for(var i=0;i<spKeys.length;i++){var o=document.createElement('option');o.value=spKeys[i];o.textContent=speciesIndex[spKeys[i]].display;spSel.appendChild(o);}
+
+// Popola select specie dettaglio
+var spDetSel=document.getElementById('speciesDetailSelect');
+var spDetKeys=Object.keys(SPECIES_DATA).sort(function(a,b){return SPECIES_DATA[a].name.localeCompare(SPECIES_DATA[b].name,'it');});
+for(var i=0;i<spDetKeys.length;i++){var o=document.createElement('option');o.value=spDetKeys[i];o.textContent=SPECIES_DATA[spDetKeys[i]].emoji+' '+SPECIES_DATA[spDetKeys[i]].name;spDetSel.appendChild(o);}
+
+// Nav principale
+function showPage(p){
+  var pages=['zona','specie','mappa','glossario'];
+  for(var i=0;i<pages.length;i++){
+    document.getElementById('page'+pages[i].charAt(0).toUpperCase()+pages[i].slice(1)).className='page'+(pages[i]===p?' active':'');
+    document.getElementById('mainNav').children[i].className='nav-tab'+(pages[i]===p?' active':'');
+  }
+  if(p==='mappa')buildMap('all');
+  if(p==='glossario')buildGlossary();
 }
 
-function switchTab(which){
-  var isZ=which==='zone';
-  document.getElementById('tabZone').className='tab'+(isZ?' active':'');
-  document.getElementById('tabSpecies').className='tab'+(!isZ?' active':'');
+function switchSubtab(w){
+  var isZ=w==='zone';
+  document.getElementById('tabZone').className='subtab'+(isZ?' active':'');
+  document.getElementById('tabSp').className='subtab'+(!isZ?' active':'');
   document.getElementById('paneZone').className='pane'+(isZ?' active':'');
-  document.getElementById('paneSpecies').className='pane'+(!isZ?' active':'');
+  document.getElementById('paneSp').className='pane'+(!isZ?' active':'');
   document.getElementById('resultCard').style.display='none';
 }
 function normalizeCode(r){return r.trim().replace(/[,\s]+/g,'.').replace(/\.+/g,'.').replace(/^\.|\.$/g,'');}
-function onSelectChange(){
-  if(sel.value){document.getElementById('faoManual').value='';document.getElementById('zoneWarn').style.display='none';render(sel.value);}
-}
-function onManualInput(){
-  sel.value='';
-  var v=document.getElementById('faoManual').value;
-  if(!v.trim()){document.getElementById('zoneWarn').style.display='none';document.getElementById('resultCard').style.display='none';return;}
-  var c=normalizeCode(v);
-  if(DATA[c]){document.getElementById('zoneWarn').style.display='none';render(c);}
-  else{document.getElementById('zoneWarn').style.display='block';document.getElementById('resultCard').style.display='none';}
-}
-function renderSpecies(){
-  var key=spSel.value;
-  var out=document.getElementById('speciesRanking');
-  document.getElementById('resultCard').style.display='none';
-  if(!key){out.innerHTML='';return;}
-  var zones=speciesIndex[key].zones.slice().sort(function(a,b){return rankOrder[DATA[a].riskColor]-rankOrder[DATA[b].riskColor];});
-  var html='';
-  for(var i=0;i<zones.length;i++){
-    var c=zones[i]; var d=DATA[c];
-    html+='<div class="zone-rank" onclick="render(\''+c+'\')"><span class="rank-dot '+d.riskColor+'"></span><div style="flex:1"><div class="rank-name">'+d.zoneName+'</div><div class="rank-sub">'+d.zoneSub+'</div></div><span class="rank-arrow">›</span></div>';
-  }
-  out.innerHTML=html;
-}
-function render(code){
-  var d=DATA[code];
-  var card=document.getElementById('resultCard');
+function onSelectChange(){if(sel.value){document.getElementById('faoManual').value='';document.getElementById('zoneWarn').style.display='none';renderZone(sel.value);}}
+function onManualInput(){sel.value='';var v=document.getElementById('faoManual').value;if(!v.trim()){document.getElementById('zoneWarn').style.display='none';document.getElementById('resultCard').style.display='none';return;}var c=normalizeCode(v);if(DATA[c]){document.getElementById('zoneWarn').style.display='none';renderZone(c);}else{document.getElementById('zoneWarn').style.display='block';document.getElementById('resultCard').style.display='none';}}
+function renderSpeciesRanking(){var key=spSel.value;var out=document.getElementById('speciesRanking');document.getElementById('resultCard').style.display='none';if(!key){out.innerHTML='';return;}var zones=speciesIndex[key].zones.slice().sort(function(a,b){return rankOrder[DATA[a].riskColor]-rankOrder[DATA[b].riskColor];});var html='';for(var i=0;i<zones.length;i++){var c=zones[i];var d=DATA[c];html+='<div class="zone-rank" onclick="renderZone(\''+c+'\')"><span class="rank-dot '+d.riskColor+'"></span><div style="flex:1"><div class="rank-name">'+d.zoneName+'</div><div class="rank-sub">'+d.zoneSub+'</div></div><span class="rank-arrow">›</span></div>';}out.innerHTML=html;}
+
+function renderZone(code){
+  var d=DATA[code];var card=document.getElementById('resultCard');
   if(!d){card.style.display='none';return;}
-  var hero=document.getElementById('riskHero');
-  hero.className='risk-hero '+d.riskColor;
+  var hero=document.getElementById('riskHero');hero.className='risk-hero '+d.riskColor;
   document.getElementById('riskEmoji').textContent=d.emoji||'🐟';
   document.getElementById('zoneName').textContent=d.zoneName;
   document.getElementById('zoneSub').textContent=d.zoneSub;
   document.getElementById('riskText').textContent=riskLabel[d.riskLevel]||d.riskLevel;
-  var indHTML='';
-  for(var i=0;i<d.indicators.length;i++){
-    var ind=d.indicators[i];
-    var lm=levelMap[ind.level]||['ind-med','N/D'];
-    indHTML+='<div class="ind-row"><span class="ind-icon">'+ind.icon+'</span><div class="ind-bar-wrap"><div class="ind-name">'+ind.name+'</div><div class="ind-note">'+ind.note+'</div></div><span class="ind-badge '+lm[0]+'">'+lm[1]+'</span></div>';
-  }
+  var indHTML='';for(var i=0;i<d.indicators.length;i++){var ind=d.indicators[i];var lm=levelMap[ind.level]||['ind-med','N/D'];indHTML+='<div class="ind-row"><span class="ind-icon">'+ind.icon+'</span><div class="ind-bar-wrap"><div class="ind-name">'+ind.name+'</div><div class="ind-note">'+ind.note+'</div></div><span class="ind-badge '+lm[0]+'">'+lm[1]+'</span></div>';}
   document.getElementById('indicators').innerHTML=indHTML;
-  var chipHTML='';
-  for(var i=0;i<d.sensibleSpecies.length;i++)chipHTML+='<span class="chip">'+d.sensibleSpecies[i]+'</span>';
+  var chipHTML='';for(var i=0;i<d.sensibleSpecies.length;i++)chipHTML+='<span class="chip" onclick="openSpecies(\''+d.sensibleSpecies[i].toLowerCase().split(' ')[0]+'\')">'+d.sensibleSpecies[i]+'</span>';
   document.getElementById('speciesChips').innerHTML=chipHTML;
   document.getElementById('recBox').textContent=d.recommendation;
   document.getElementById('sourceNote').textContent=d.sourceNote;
-  card.style.display='block';
-  card.scrollIntoView({behavior:'smooth',block:'nearest'});
+  card.style.display='block';card.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// Scheda specie
+var currentMethod='all';
+function openSpecies(key){var k=key.replace(/[^a-z\s]/g,'').trim();if(SPECIES_DATA[k]){showPage('specie');document.getElementById('speciesDetailSelect').value=k;renderSpeciesDetail();}}
+function filterMethod(m){currentMethod=m;['All','Wild','Farm'].forEach(function(x){document.getElementById('filter'+x).className='subtab'+(m===x.toLowerCase()?' active':'');});renderSpeciesDetail();}
+function renderSpeciesDetail(){
+  var key=document.getElementById('speciesDetailSelect').value;
+  var out=document.getElementById('speciesDetailCard');
+  var tabs=document.getElementById('fishFilterTabs');
+  if(!key){out.innerHTML='';tabs.style.display='none';return;}
+  var s=SPECIES_DATA[key];
+  if(!s){out.innerHTML='<div class="card"><p style="color:var(--ts);font-size:14px">Scheda dettagliata non ancora disponibile per questa specie.</p></div>';tabs.style.display='none';return;}
+  tabs.style.display='flex';
+  var hgCls=s.hgLevel==='basso'?'hg-low':s.hgLevel==='medio'?'hg-med':s.hgLevel==='alto'?'hg-high':'hg-vhigh';
+  var hgLabel={basso:'Basso',medio:'Medio',alto:'Alto','molto alto':'Molto alto'}[s.hgLevel]||s.hgLevel;
+  var methodHTML='';
+  if(currentMethod==='all'||currentMethod==='wild'){if(s.wildNote)methodHTML+='<div style="margin-bottom:10px"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span class="method-tag method-wild">🎣 Selvaggio</span></div><div style="font-size:13px;color:var(--tp);line-height:1.6">'+s.wildNote+'</div></div>';}
+  if(currentMethod==='all'||currentMethod==='farm'){if(s.farmNote)methodHTML+='<div><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span class="method-tag method-farm">🏭 Allevato</span></div><div style="font-size:13px;color:var(--tp);line-height:1.6">'+s.farmNote+'</div></div>';}
+  if(!methodHTML)methodHTML='<p style="font-size:13px;color:var(--ts)">Nessuna informazione disponibile per il filtro selezionato.</p>';
+  var bestHTML='';
+  for(var i=0;i<(s.bestZones||[]).length;i++){var d=DATA[s.bestZones[i]];if(d)bestHTML+='<span class="chip" onclick="renderZone(\''+s.bestZones[i]+'\');showPage(\'zona\')">✅ '+s.bestZones[i]+'</span>';}
+  var html='<div class="card"><div class="species-hero"><span style="font-size:36px">'+s.emoji+'</span><div class="species-name" style="margin-top:8px">'+s.name+'</div><div class="species-latin">'+s.latin+'</div></div>';
+  html+='<div class="section-title">Mercurio</div><div class="ind-row"><span class="ind-icon">⚗️</span><div class="ind-bar-wrap"><div class="ind-name">Livello mercurio: <strong>'+hgLabel+'</strong></div><div class="ind-note">'+s.hgNote+'</div><div class="hg-track"><div class="hg-fill '+hgCls+'" style="width:'+s.hgVal+'%"></div></div></div></div>';
+  html+='<div class="section-title">Porzioni consigliate (EFSA)</div><div class="portion-grid"><div class="portion-card"><div class="portion-label">👨‍👩‍👧 Adulti</div><div class="portion-val" style="font-size:13px">'+s.portions.adulti+'</div></div><div class="portion-card"><div class="portion-label">👶 Bambini</div><div class="portion-val" style="font-size:13px">'+s.portions.bambini+'</div></div><div class="portion-card"><div class="portion-label">🤰 Gravidanza</div><div class="portion-val" style="font-size:13px">'+s.portions.gravidanza+'</div></div><div class="portion-card"><div class="portion-label">👴 Anziani</div><div class="portion-val" style="font-size:13px">'+s.portions.anziani+'</div></div></div>';
+  html+='<div class="section-title">Selvaggio vs Allevato</div>'+methodHTML;
+  if(bestHTML)html+='<div class="section-title">Zone migliori</div><div class="species-chips">'+bestHTML+'</div>';
+  html+='</div>';
+  out.innerHTML=html;
+}
+
+// Mappa
+var currentMapFilter='all';
+function buildMap(filter){
+  currentMapFilter=filter;
+  var out=document.getElementById('mapList');
+  var html='';
+  for(var i=0;i<ORDER.length;i++){
+    var k=ORDER[i];if(!DATA[k])continue;
+    var d=DATA[k];
+    if(filter!=='all'&&d.riskColor!==filter)continue;
+    html+='<div class="map-zone-row" onclick="renderZone(\''+k+'\');showPage(\'zona\')"><div class="map-flag">'+d.flag+'</div><div class="map-zone-info"><div class="map-zone-code">FAO '+k+'</div><div class="map-zone-name">'+d.zoneName.replace(/^\d+[\d.]*\s*-\s*/,'')+'</div><div class="map-zone-geo">'+d.zoneSub+'</div></div><div class="map-risk-pill '+d.riskColor+'"></div></div>';
+  }
+  out.innerHTML=html||'<p style="color:var(--ts);font-size:14px;text-align:center;padding:1rem">Nessuna zona per questo filtro.</p>';
+}
+function filterMap(f,el){
+  currentMapFilter=f;
+  var btns=document.getElementById('pageMappa').querySelectorAll('.map-filter-btn');
+  for(var i=0;i<btns.length;i++)btns[i].className='map-filter-btn '+btns[i].textContent.replace(/[^a-z]/gi,'').toLowerCase().replace('tutte','all').replace('basso','green').replace('medio','yellow').replace('alto','orange').replace('moltoalto','red');
+  el.className+=' active';
+  buildMap(f);
+}
+
+// Glossario
+function buildGlossary(){
+  var out=document.getElementById('glossList');
+  if(out.innerHTML)return;
+  var html='';
+  for(var i=0;i<GLOSSARY.length;i++){
+    var g=GLOSSARY[i];
+    html+='<div class="gloss-item"><div class="gloss-header" onclick="toggleGloss('+i+')"><span class="gloss-icon">'+g.icon+'</span><span class="gloss-term">'+g.term+'</span><span class="gloss-arrow" id="ga'+i+'">›</span></div><div class="gloss-body" id="gb'+i+'">'+g.body+'<br><span class="gloss-tag '+g.tag.cls+'">'+g.tag.text+'</span></div></div>';
+  }
+  out.innerHTML=html;
+}
+function toggleGloss(i){
+  var b=document.getElementById('gb'+i);var a=document.getElementById('ga'+i);
+  var open=b.classList.contains('open');
+  b.className='gloss-body'+(open?'':' open');
+  a.className='gloss-arrow'+(open?'':' open');
 }
 
 // PWA
 (function(){
-  function makeIcon(size){
-    var c=document.createElement('canvas');c.width=size;c.height=size;
-    var ctx=c.getContext('2d'),r=size*0.22,s=size/512;
-    ctx.fillStyle='#0a2540';
-    ctx.beginPath();ctx.moveTo(r,0);ctx.lineTo(size-r,0);ctx.quadraticCurveTo(size,0,size,r);ctx.lineTo(size,size-r);ctx.quadraticCurveTo(size,size,size-r,size);ctx.lineTo(r,size);ctx.quadraticCurveTo(0,size,0,size-r);ctx.lineTo(0,r);ctx.quadraticCurveTo(0,0,r,0);ctx.closePath();ctx.fill();
-    ctx.save();ctx.translate(60*s*1.6,130*s*1.6);ctx.scale(1.6*s,1.6*s);
-    ctx.fillStyle='#0288D1';ctx.beginPath();ctx.moveTo(265,60);ctx.lineTo(320,20);ctx.lineTo(310,120);ctx.lineTo(320,220);ctx.lineTo(265,180);ctx.closePath();ctx.fill();
-    ctx.fillStyle='#4FC3F7';ctx.beginPath();ctx.ellipse(155,120,110,72,0,0,Math.PI*2);ctx.fill();
-    ctx.strokeStyle='#0288D1';ctx.lineWidth=5;ctx.lineCap='round';
-    ctx.beginPath();ctx.moveTo(155,90);ctx.quadraticCurveTo(180,75,200,85);ctx.stroke();
-    ctx.beginPath();ctx.moveTo(155,135);ctx.quadraticCurveTo(175,148,200,140);ctx.stroke();
-    ctx.fillStyle='white';ctx.beginPath();ctx.ellipse(145,108,16,16,0,0,Math.PI*2);ctx.fill();
-    ctx.fillStyle='#333';ctx.beginPath();ctx.ellipse(145,108,8,8,0,0,Math.PI*2);ctx.fill();
-    ctx.restore();
-    return c.toDataURL('image/png');
-  }
+  function makeIcon(size){var c=document.createElement('canvas');c.width=size;c.height=size;var ctx=c.getContext('2d'),r=size*0.22,s=size/512;ctx.fillStyle='#0a2540';ctx.beginPath();ctx.moveTo(r,0);ctx.lineTo(size-r,0);ctx.quadraticCurveTo(size,0,size,r);ctx.lineTo(size,size-r);ctx.quadraticCurveTo(size,size,size-r,size);ctx.lineTo(r,size);ctx.quadraticCurveTo(0,size,0,size-r);ctx.lineTo(0,r);ctx.quadraticCurveTo(0,0,r,0);ctx.closePath();ctx.fill();ctx.save();ctx.translate(60*s*1.6,130*s*1.6);ctx.scale(1.6*s,1.6*s);ctx.fillStyle='#0288D1';ctx.beginPath();ctx.moveTo(265,60);ctx.lineTo(320,20);ctx.lineTo(310,120);ctx.lineTo(320,220);ctx.lineTo(265,180);ctx.closePath();ctx.fill();ctx.fillStyle='#4FC3F7';ctx.beginPath();ctx.ellipse(155,120,110,72,0,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#0288D1';ctx.lineWidth=5;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(155,90);ctx.quadraticCurveTo(180,75,200,85);ctx.stroke();ctx.beginPath();ctx.moveTo(155,135);ctx.quadraticCurveTo(175,148,200,140);ctx.stroke();ctx.fillStyle='white';ctx.beginPath();ctx.ellipse(145,108,16,16,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#333';ctx.beginPath();ctx.ellipse(145,108,8,8,0,0,Math.PI*2);ctx.fill();ctx.restore();return c.toDataURL('image/png');}
   var i192=makeIcon(192),i512=makeIcon(512);
-  var startUrl=location.href.split('?')[0].split('#')[0];
-  var manifest={name:"Zone Pesca FAO",short_name:"PesceSicuro",description:"Qualita delle acque per zona FAO",start_url:startUrl,scope:startUrl,display:"standalone",background_color:"#0a2540",theme_color:"#0a2540",orientation:"portrait",icons:[{src:i192,sizes:"192x192",type:"image/png",purpose:"any"},{src:i512,sizes:"512x512",type:"image/png",purpose:"maskable"}]};
-  var mb=new Blob([JSON.stringify(manifest)],{type:'application/json'});
+  var su=location.href.split('?')[0].split('#')[0];
+  var mf={name:"Zone Pesca FAO",short_name:"PesceSicuro",description:"Sicurezza alimentare per zona FAO",start_url:su,scope:su,display:"standalone",background_color:"#0a2540",theme_color:"#0a2540",orientation:"portrait",icons:[{src:i192,sizes:"192x192",type:"image/png",purpose:"any"},{src:i512,sizes:"512x512",type:"image/png",purpose:"maskable"}]};
+  var mb=new Blob([JSON.stringify(mf)],{type:'application/json'});
   document.getElementById('manifestLink').href=URL.createObjectURL(mb);
   document.getElementById('appleIcon').href=i192;
-  if('serviceWorker' in navigator){navigator.serviceWorker.register('./service-worker.js').catch(function(){});}
+  if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(function(){});
 })();
 </script>
 </body>
