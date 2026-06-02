@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Sicurezza Pesce FAO</title>
+<title>Zone Pesca FAO</title>
 <meta name="theme-color" content="#0a2540">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Pesce FAO">
+<meta name="apple-mobile-web-app-title" content="PesceSicuro">
 <link rel="manifest" id="manifestLink">
 <link rel="apple-touch-icon" id="appleIcon">
 <style>
@@ -127,7 +127,7 @@ input::placeholder{color:rgba(144,202,249,0.5)}
 <div class="header">
   <div class="bubbles" id="bubbles"></div>
   <span class="header-fish">🐟</span>
-  <h1>Sicurezza Pesce FAO</h1>
+  <h1>Zone Pesca FAO</h1>
   <p>Qualità delle acque · dati offline</p>
   <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#0a2540"/>
@@ -338,7 +338,7 @@ function render(code){
   }
   var i192=makeIcon(192),i512=makeIcon(512);
   var startUrl=location.href.split('?')[0].split('#')[0];
-  var manifest={name:"Sicurezza Pesce FAO",short_name:"Pesce FAO",description:"Qualita delle acque per zona FAO",start_url:startUrl,scope:startUrl,display:"standalone",background_color:"#0a2540",theme_color:"#0a2540",orientation:"portrait",icons:[{src:i192,sizes:"192x192",type:"image/png",purpose:"any"},{src:i512,sizes:"512x512",type:"image/png",purpose:"maskable"}]};
+  var manifest={name:"Zone Pesca FAO",short_name:"PesceSicuro",description:"Qualita delle acque per zona FAO",start_url:startUrl,scope:startUrl,display:"standalone",background_color:"#0a2540",theme_color:"#0a2540",orientation:"portrait",icons:[{src:i192,sizes:"192x192",type:"image/png",purpose:"any"},{src:i512,sizes:"512x512",type:"image/png",purpose:"maskable"}]};
   var mb=new Blob([JSON.stringify(manifest)],{type:'application/json'});
   document.getElementById('manifestLink').href=URL.createObjectURL(mb);
   document.getElementById('appleIcon').href=i192;
