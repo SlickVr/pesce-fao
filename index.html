@@ -185,21 +185,10 @@ input::placeholder{color:var(--td)}
 <div class="content">
   <div class="page active" id="pageRicerca">
     <div class="card">
-      <div class="stabs">
-        <button class="stab active" id="stZona" onclick="switchStab('zona')">Per zona</button>
-        <button class="stab" id="stSpecie" onclick="switchStab('specie')">Per specie</button>
-      </div>
-      <div class="pane active" id="pZona">
-        <select id="faoSel" onchange="onSelChange()"><option value="">— Scegli zona FAO —</option></select>
-        <div class="divider">oppure digita</div>
-        <input type="text" id="faoMan" placeholder="Es. 37.2.1 oppure 27" oninput="onManIn()">
-        <div class="warn" id="zWarn">⚠ Codice FAO non trovato.</div>
-      </div>
-      <div class="pane" id="pSpecie">
-        <select id="spZonaSel" onchange="renderSpZona()"><option value="">— Scegli una specie —</option></select>
-        <p class="hint">Zone ordinate dalla più pulita alla più critica.</p>
-        <div id="spZonaRank"></div>
-      </div>
+      <select id="faoSel" onchange="onSelChange()"><option value="">— Scegli zona FAO —</option></select>
+      <div class="divider">oppure digita</div>
+      <input type="text" id="faoMan" placeholder="Es. 37.2.1 oppure 27" oninput="onManIn()">
+      <div class="warn" id="zWarn">⚠ Codice FAO non trovato.</div>
     </div>
     <div class="card result-card" id="resultCard">
       <div class="risk-hero" id="rHero"><span class="risk-emoji" id="rEmoji">🐟</span><div class="risk-zone-name" id="rName">—</div><div class="risk-zone-sub" id="rSub">—</div><div class="risk-label"><span class="risk-dot"></span><span id="rText">—</span></div></div>
@@ -332,26 +321,7 @@ function initApp() {
     faoSel.appendChild(o);
   }
 
-  // Indice specie → zone
-  var spIdx = {};
-  for (var i = 0; i < ORDER.length; i++) {
-    var code = ORDER[i];
-    if (!DATA[code]) continue;
-    var sp = DATA[code].sensibleSpecies;
-    for (var j = 0; j < sp.length; j++) {
-      var norm = sp[j].replace(/\s*\(.*?\)/g, '').trim().toLowerCase();
-      if (!spIdx[norm]) spIdx[norm] = { display: sp[j].replace(/\s*\(.*?\)/g, '').trim(), zones: [] };
-      spIdx[norm].zones.push(code);
-    }
-  }
-  var spZonaSel = document.getElementById('spZonaSel');
-  var spKeys = Object.keys(spIdx).sort(function(a, b) { return spIdx[a].display.localeCompare(spIdx[b].display, 'it'); });
-  for (var i = 0; i < spKeys.length; i++) {
-    var o = document.createElement('option');
-    o.value = spKeys[i]; o.textContent = spIdx[spKeys[i]].display;
-    spZonaSel.appendChild(o);
-  }
-  window._spIdx = spIdx;
+  // indice specie x zona non più necessario nella tab Ricerca
 
   // Popola select specie dettaglio
   var spDetSel = document.getElementById('spDetSel');
@@ -377,14 +347,7 @@ function showPage(p) {
   if (p === 'mappa') { buildWorldMap(); buildMapList('all'); }
 }
 
-function switchStab(w) {
-  var isZ = w === 'zona';
-  document.getElementById('stZona').className = 'stab' + (isZ ? ' active' : '');
-  document.getElementById('stSpecie').className = 'stab' + (!isZ ? ' active' : '');
-  document.getElementById('pZona').className = 'pane' + (isZ ? ' active' : '');
-  document.getElementById('pSpecie').className = 'pane' + (!isZ ? ' active' : '');
-  document.getElementById('resultCard').style.display = 'none';
-}
+function switchStab(w){}
 
 // ─── RICERCA ZONA ─────────────────────────────────────────────────────────────
 function normCode(r) { return r.trim().replace(/[,\s]+/g, '.').replace(/\.+/g, '.').replace(/^\.|\.$/g, ''); }
@@ -407,20 +370,7 @@ function onManIn() {
   else { document.getElementById('zWarn').style.display = 'block'; document.getElementById('resultCard').style.display = 'none'; }
 }
 
-function renderSpZona() {
-  var spIdx = window._spIdx || {};
-  var key = document.getElementById('spZonaSel').value;
-  var out = document.getElementById('spZonaRank');
-  document.getElementById('resultCard').style.display = 'none';
-  if (!key || !spIdx[key]) { out.innerHTML = ''; return; }
-  var zones = spIdx[key].zones.slice().sort(function(a, b) { return rankOrder[DATA[a].riskColor] - rankOrder[DATA[b].riskColor]; });
-  var html = '';
-  for (var i = 0; i < zones.length; i++) {
-    var c = zones[i]; var d = DATA[c];
-    html += '<div class="zone-rank" onclick="renderZone(\'' + c + '\')"><span class="rdot ' + d.riskColor + '"></span><div style="flex:1"><div class="rname">' + d.zoneName + '</div><div class="rsub">' + d.zoneSub + '</div></div><span style="color:rgba(79,195,247,0.4);font-size:16px">›</span></div>';
-  }
-  out.innerHTML = html;
-}
+function renderSpZona() {}
 
 function renderZone(code) {
   var d = DATA[code];
