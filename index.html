@@ -637,5 +637,33 @@ function toggleGl(i) {
 </script>
 <!-- MODAL CREDITI -->
 <div id="creditsModal" style="display:none"></div>
-
+<footer style="text-align:center;padding:0.5rem 1rem 0;font-size:11px;color:rgba(144,202,249,0.75)">
+  © 2026 Cristiano Cinotti · Sviluppo Claude (Anthropic) · <span onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="cursor:pointer;text-decoration:underline;color:rgba(144,202,249,0.9)">Info &amp; crediti</span>
+</footer>
+<div id="creditsPanel" style="display:none;margin:0.5rem 1rem 1.5rem;border-radius:16px;background:linear-gradient(160deg,#0d3b6e,#0a2540);border:0.5px solid rgba(79,195,247,0.3);padding:1.25rem">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <div style="font-size:16px;font-weight:700;color:#fff">ℹ️ Info &amp; Crediti</div>
+    <button onclick="document.getElementById('creditsPanel').style.display='none'" style="background:rgba(79,195,247,0.1);border:0.5px solid rgba(79,195,247,0.3);border-radius:50%;width:28px;height:28px;color:#90caf9;font-size:16px;cursor:pointer;line-height:28px;text-align:center">×</button>
+  </div>
+  <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Sviluppato da</div>
+  <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;margin-bottom:12px;border:0.5px solid rgba(79,195,247,0.12)">
+    <div style="font-size:13px;color:#e8f4fd;margin-bottom:4px">👤 <strong>Cristiano Cinotti</strong> — concept &amp; design</div>
+    <div style="font-size:13px;color:#e8f4fd">🤖 <strong>Claude</strong> (Anthropic) — sviluppo</div>
+    <div style="font-size:11px;color:#90caf9;margin-top:6px;line-height:1.5">App generata con intelligenza artificiale. I dati sono indicativi e basati su fonti pubbliche.</div>
+  </div>
+  <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Fonti dei dati</div>
+  <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+    <div style="font-size:12px;color:#e8f4fd">🇪🇺 <strong>EFSA</strong> — limiti mercurio, PCB, diossine</div>
+    <div style="font-size:12px;color:#e8f4fd">🌍 <strong>FAO</strong> — zone di pesca e dati globali</div>
+    <div style="font-size:12px;color:#e8f4fd">🌊 <strong>MEDPOL / UNEP-MAP</strong> — acque mediterranee</div>
+    <div style="font-size:12px;color:#e8f4fd">🏛️ <strong>ISPRA / ARPA</strong> — monitoraggio acque italiane</div>
+    <div style="font-size:12px;color:#e8f4fd">❄️ <strong>HELCOM / OSPAR / AMAP</strong> — acque nordiche e artiche</div>
+    <div style="font-size:12px;color:#e8f4fd">🇺🇸 <strong>NOAA / FDA / EPA</strong> — sicurezza alimentare USA</div>
+  </div>
+  <div style="padding:8px 10px;background:rgba(229,57,53,0.1);border:0.5px solid rgba(229,57,53,0.2);border-radius:8px;font-size:11px;color:#ef9a9a;line-height:1.6">
+    ⚠️ Dati indicativi aggiornati al 2026. Per decisioni sanitarie fare riferimento a EFSA e Ministero della Salute.
+  </div>
+</div>
+</body>
+</html>
 
