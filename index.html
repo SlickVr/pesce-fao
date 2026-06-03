@@ -167,7 +167,6 @@ input::placeholder{color:var(--td)}
   <div class="bubbles" id="bubbles"></div>
   <span class="hdr-fish">🐟</span>
   <h1>Zone Pesca FAO</h1>
-  <button onclick="showCredits()" style="background:none;border:none;cursor:pointer;margin-top:6px;padding:4px 10px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.3);color:var(--ts);font-size:12px;display:inline-flex;align-items:center;gap:5px">ℹ️ Info &amp; crediti</button>
   <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#0a2540"/>
   </svg>
@@ -637,33 +636,26 @@ function toggleGl(i) {
 })();
 </script>
 <!-- MODAL CREDITI -->
-<div id="creditsModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);padding:1rem;overflow-y:auto" onclick="hideCredits()">
-  <div style="max-width:480px;margin:2rem auto;background:linear-gradient(160deg,#0d3b6e,#0a2540);border:0.5px solid rgba(79,195,247,0.3);border-radius:20px;padding:1.5rem;position:relative" onclick="event.stopPropagation()">
-    <button onclick="hideCredits()" style="position:absolute;top:12px;right:12px;background:rgba(79,195,247,0.1);border:0.5px solid rgba(79,195,247,0.3);border-radius:50%;width:32px;height:32px;color:#90caf9;font-size:20px;cursor:pointer;line-height:32px;text-align:center">×</button>
-    <div style="text-align:center;margin-bottom:1.25rem">
-      <span style="font-size:36px">🐟</span>
-      <div style="font-size:18px;font-weight:700;color:#fff;margin-top:6px">Zone Pesca FAO</div>
-      <div style="font-size:12px;color:#90caf9;margin-top:3px">Sicurezza alimentare del pesce</div>
-    </div>
-    <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Sviluppato da</div>
-    <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:12px;margin-bottom:14px;border:0.5px solid rgba(79,195,247,0.12)">
-      <div style="font-size:14px;color:#e8f4fd;margin-bottom:4px">👤 Cristiano Cinotti — concept &amp; design</div>
-      <div style="font-size:14px;color:#e8f4fd">🤖 Claude (Anthropic) — sviluppo</div>
-      <div style="font-size:11px;color:#90caf9;margin-top:8px;line-height:1.5">App generata con intelligenza artificiale.<br>I dati sono indicativi e basati su fonti pubbliche.</div>
-    </div>
-    <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Fonti dei dati</div>
-    <div style="display:flex;flex-direction:column;gap:6px">
-      <div style="background:rgba(10,37,64,0.6);border-radius:8px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12);font-size:13px;color:#e8f4fd">🇪🇺 <strong>EFSA</strong> — European Food Safety Authority<br><span style="font-size:11px;color:#90caf9">Limiti tollerabili mercurio, PCB, diossine</span></div>
-      <div style="background:rgba(10,37,64,0.6);border-radius:8px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12);font-size:13px;color:#e8f4fd">🌍 <strong>FAO</strong> — Food and Agriculture Organization<br><span style="font-size:11px;color:#90caf9">Zone di pesca e dati globali</span></div>
-      <div style="background:rgba(10,37,64,0.6);border-radius:8px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12);font-size:13px;color:#e8f4fd">🌊 <strong>MEDPOL / UNEP-MAP</strong><br><span style="font-size:11px;color:#90caf9">Qualità acque mediterranee</span></div>
-      <div style="background:rgba(10,37,64,0.6);border-radius:8px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12);font-size:13px;color:#e8f4fd">🏛️ <strong>ISPRA / ARPA</strong><br><span style="font-size:11px;color:#90caf9">Monitoraggio acque italiane</span></div>
-      <div style="background:rgba(10,37,64,0.6);border-radius:8px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12);font-size:13px;color:#e8f4fd">❄️ <strong>HELCOM / OSPAR / AMAP</strong><br><span style="font-size:11px;color:#90caf9">Acque nordiche, baltiche e artiche</span></div>
-      <div style="background:rgba(10,37,64,0.6);border-radius:8px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12);font-size:13px;color:#e8f4fd">🇺🇸 <strong>NOAA / FDA / EPA</strong><br><span style="font-size:11px;color:#90caf9">Dati acque e sicurezza alimentare USA</span></div>
-    </div>
-    <div style="margin-top:14px;padding:10px 12px;background:rgba(229,57,53,0.1);border:0.5px solid rgba(229,57,53,0.2);border-radius:8px;font-size:11px;color:#ef9a9a;line-height:1.6">
-      ⚠️ I dati sono indicativi e aggiornati al 2025. Per decisioni sanitarie fare riferimento alle autorità competenti (EFSA, Ministero della Salute).
-    </div>
+<div id="creditsModal" style="display:none"></div>
+
+<!-- FOOTER -->
+<footer style="margin:0 1rem 2rem;border-radius:16px;background:rgba(13,59,110,0.5);border:0.5px solid rgba(79,195,247,0.15);padding:1.25rem">
+  <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px">ℹ️ Info &amp; Crediti</div>
+  <div style="background:rgba(10,37,64,0.5);border-radius:10px;padding:10px 12px;margin-bottom:10px;border:0.5px solid rgba(79,195,247,0.1)">
+    <div style="font-size:13px;color:#e8f4fd;margin-bottom:3px">👤 <strong>Cristiano Cinotti</strong> — concept &amp; design</div>
+    <div style="font-size:13px;color:#e8f4fd">🤖 <strong>Claude</strong> (Anthropic) — sviluppo</div>
+    <div style="font-size:11px;color:#90caf9;margin-top:6px;line-height:1.5">App generata con intelligenza artificiale. I dati sono indicativi e basati su fonti pubbliche.</div>
   </div>
-</div>
-</body>
-</html>
+  <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Fonti</div>
+  <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+    <div style="font-size:12px;color:#e8f4fd">🇪🇺 <strong>EFSA</strong> — limiti mercurio, PCB, diossine</div>
+    <div style="font-size:12px;color:#e8f4fd">🌍 <strong>FAO</strong> — zone di pesca e dati globali</div>
+    <div style="font-size:12px;color:#e8f4fd">🌊 <strong>MEDPOL / UNEP-MAP</strong> — acque mediterranee</div>
+    <div style="font-size:12px;color:#e8f4fd">🏛️ <strong>ISPRA / ARPA</strong> — monitoraggio acque italiane</div>
+    <div style="font-size:12px;color:#e8f4fd">❄️ <strong>HELCOM / OSPAR / AMAP</strong> — acque nordiche e artiche</div>
+    <div style="font-size:12px;color:#e8f4fd">🇺🇸 <strong>NOAA / FDA / EPA</strong> — sicurezza alimentare USA</div>
+  </div>
+  <div style="padding:8px 10px;background:rgba(229,57,53,0.1);border:0.5px solid rgba(229,57,53,0.2);border-radius:8px;font-size:11px;color:#ef9a9a;line-height:1.6">
+    ⚠️ Dati indicativi aggiornati al 2025. Per decisioni sanitarie fare riferimento a EFSA e Ministero della Salute.
+  </div>
+</footer>
