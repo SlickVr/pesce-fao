@@ -491,55 +491,80 @@ function renderSpDet() {
   out.innerHTML = html;
 }
 
-// ─── MAPPA SVG ────────────────────────────────────────────────────────────────
-// Conversione coordinate: lon [-180,180] → x [0,1000], lat [90,-90] → y [0,500]
+// ─── MAPPA ────────────────────────────────────────────────────────────────────
+// Proiezione equirettangolare: lon[-180,180]→x[0,1000], lat[85,-85]→y[0,500]
 function lon2x(l){return(l+180)/360*1000;}
-function lat2y(l){return(90-l)/180*500;}
+function lat2y(l){return(85-l)/170*500;}
 
-// Zone FAO come poligoni [lon,lat] approssimati
-var FAO_ZONES = {
-  "18": {pts:[[-180,90],[-180,60],[0,60],[0,90]],label:"Artico"},
-  "27": {pts:[[-42,80],[0,80],[0,36],[-20,36],[-42,52]],label:"Atl. NE"},
-  "31": {pts:[[-100,35],[-60,35],[-60,0],[-100,0]],label:"Atl. C-O"},
-  "34": {pts:[[-20,36],[20,36],[20,-5],[-20,-5]],label:"Atl. C-E"},
-  "41": {pts:[[-60,5],[-20,5],[-20,-40],[-60,-40]],label:"Atl. S-O"},
-  "47": {pts:[[20,5],[20,-40],[0,-40],[0,5]],label:"Atl. S-E"},
-  "48": {pts:[[-60,-40],[-60,-90],[0,-90],[0,-40]],label:"Atl. Ant."},
-  "51": {pts:[[20,30],[70,30],[70,-35],[20,-35]],label:"Ind. O"},
-  "57": {pts:[[70,30],[130,30],[130,-35],[70,-35]],label:"Ind. E"},
-  "58": {pts:[[20,-40],[90,-40],[90,-90],[20,-90]],label:"Ind. Ant."},
-  "61": {pts:[[100,65],[180,65],[180,20],[100,20]],label:"Pac. N-O"},
-  "67": {pts:[[-170,65],[-100,65],[-100,30],[-170,30]],label:"Pac. N-E"},
-  "71": {pts:[[100,20],[180,20],[180,-10],[100,-10]],label:"Pac. C-O"},
-  "77": {pts:[[-170,30],[-70,30],[-70,-5],[-170,-5]],label:"Pac. C-E"},
-  "81": {pts:[[160,-10],[180,-10],[180,-55],[150,-55],[130,-30],[160,-10]],label:"Pac. S-O"},
-  "87": {pts:[[-120,-5],[-70,-5],[-70,-60],[-120,-60]],label:"Pac. S-E"},
-  "88": {pts:[[130,-55],[130,-90],[180,-90],[180,-55]],label:"Pac. Ant."},
-  "37": {pts:[[-6,48],[40,48],[40,25],[-6,25]],label:"Mediterr."},
-  "37.2.1":{pts:[[12,46],[20,46],[20,40],[12,40]],label:"Adriatico"}
+// Zone FAO — rettangoli [lonMin,latMax,lonMax,latMin] basati sui confini ufficiali FAO
+var FAO_RECTS = {
+  "18": [-180,90,180,62],
+  "27": [-42,80, 68,36],
+  "31": [-100,35,-20, 0],
+  "34": [-20,36, 20,-5],
+  "41": [-65, 5,-20,-60],
+  "47": [ 20, 5, 45,-40],
+  "48": [-65,-40, 30,-90],
+  "51": [ 20,30, 80,-35],
+  "57": [ 80,30,150,-35],
+  "58": [ 30,-40,150,-90],
+  "61": [100,65,180, 20],
+  "67": [-180,65,-100,30],
+  "71": [100,20,180,-10],
+  "77": [-180,30,-70, -5],
+  "81": [150,-10,180,-60],
+  "87": [-120,-5,-65,-60],
+  "88": [-180,-55,180,-90],
+  "37": [ -6,48, 42, 25]
 };
 
-// Continenti semplificati come poligoni SVG
-var CONTINENTS = [
-  // Europa
-  "M480,100 L510,95 L530,90 L545,85 L550,95 L545,105 L535,110 L530,120 L520,125 L510,130 L505,125 L495,120 L485,115 L480,110 Z",
-  // Africa
-  "M490,145 L530,140 L555,145 L560,165 L555,200 L545,230 L530,250 L510,260 L495,255 L480,240 L472,215 L470,185 L475,165 Z",
-  // Asia
-  "M545,80 L600,75 L650,70 L700,72 L740,78 L760,90 L760,110 L750,130 L730,145 L710,150 L690,148 L670,145 L650,140 L630,135 L610,130 L590,120 L570,115 L555,110 L545,100 Z",
-  // America del Nord
-  "M100,80 L200,75 L250,85 L270,100 L265,120 L250,140 L230,155 L210,165 L190,170 L170,165 L150,155 L130,140 L110,120 L95,100 Z",
-  // America del Sud
-  "M200,175 L240,170 L255,185 L255,220 L245,255 L225,280 L205,290 L190,280 L178,255 L175,220 L180,190 Z",
-  // Australia
-  "M720,200 L775,195 L800,205 L810,225 L800,250 L780,265 L755,268 L730,260 L715,240 L710,220 Z",
-  // Antartide
-  "M50,450 L950,450 L950,500 L50,500 Z",
-  // Groenlandia
-  "M280,65 L320,60 L340,70 L335,88 L315,95 L295,92 L278,80 Z",
-  // Islanda
-  "M440,85 L458,82 L462,90 L448,96 L436,93 Z"
-];
+var colorFill  = {green:'rgba(67,160,71,0.38)',  yellow:'rgba(249,168,37,0.38)', orange:'rgba(239,108,0,0.45)', red:'rgba(229,57,53,0.50)'};
+var colorStroke= {green:'rgba(100,200,100,0.7)', yellow:'rgba(255,200,50,0.7)',  orange:'rgba(255,140,0,0.8)',  red:'rgba(240,80,80,0.85)'};
+
+// Continenti — path SVG in coordinate proiettate (lon/lat → x/y via lon2x/lat2y)
+// Generati da coordinate geografiche reali semplificate
+function buildContinentPaths() {
+  var shapes = [
+    // Nord America
+    [[  -168,72],[-140,72],[-120,60],[-100,50],[ -83,46],[ -83,30],[ -90,18],[-105,18],[-118,26],[-125,32],[-130,50],[-138,58],[-150,60],[-162,62],[-168,72]],
+    // Groenlandia
+    [[ -45,85],[ -15,83],[  -8,76],[ -18,70],[ -42,64],[ -55,65],[ -60,72],[ -52,80],[ -45,85]],
+    // Sud America
+    [[ -82,12],[ -62, 12],[ -50, 5],[ -35,-8],[ -35,-25],[ -52,-32],[ -68,-54],[ -76,-50],[ -80,-30],[ -82,12]],
+    // Europa (semplificata)
+    [[ -10,60],[  5,60],[ 10,55],[ 20,55],[ 30,62],[ 30,70],[ 25,72],[  0,70],[-10,70],[-10,60]],
+    [[ -5,44],[ 25,44],[ 30,48],[ 25,52],[ 15,52],[  5,52],[ -5,48],[ -5,44]],
+    // Africa
+    [[ -17,15],[  5,36],[ 35,36],[ 43,12],[ 51, 12],[  42,-12],[  34,-35],[  18,-35],[  12,-18],[  -2,-5],[  -17,15]],
+    // Asia (molto semplificata)
+    [[ 26,72],[60,72],[100,72],[140,72],[180,70],[180,50],[160,40],[140,36],[135,34],[130,30],[120,22],[100,20],[80,24],[60,22],[50,28],[40,36],[30,40],[26,48],[26,72]],
+    // Medio Oriente / Penisola arabica
+    [[36,36],[60,22],[58,14],[44,10],[36,14],[36,36]],
+    // India
+    [[68,24],[80,30],[92,24],[80,10],[68,24]],
+    // Penisola indocinese / SE Asia
+    [[100,20],[108,20],[108,10],[100,4],[96,16],[100,20]],
+    // Australia
+    [[114,-22],[130,-14],[138,-12],[148,-18],[152,-25],[148,-38],[138,-38],[130,-32],[116,-34],[114,-22]],
+    // Nuova Zelanda (semplificata)
+    [[166,-45],[174,-41],[178,-38],[174,-36],[168,-44],[166,-45]],
+    // Antartide
+    [[-180,-70],[-120,-68],[-60,-68],[0,-68],[60,-68],[120,-68],[180,-68],[180,-90],[-180,-90],[-180,-70]]
+  ];
+  var out = '';
+  for (var i = 0; i < shapes.length; i++) {
+    var pts = shapes[i];
+    var d = '';
+    for (var j = 0; j < pts.length; j++) {
+      var px = lon2x(pts[j][0]).toFixed(1);
+      var py = lat2y(pts[j][1]).toFixed(1);
+      d += (j===0?'M':'L') + px + ',' + py + ' ';
+    }
+    d += 'Z';
+    out += '<path d="' + d + '" fill="#1e3d5c" stroke="#0d2d4a" stroke-width="0.7"/>';
+  }
+  return out;
+}
 
 var mapBuilt = false;
 
@@ -549,77 +574,52 @@ function buildWorldMap() {
   var svg = document.getElementById('worldMap');
   var html = '';
 
-  // Griglia oceano
+  // Sfondo oceano
   html += '<rect width="1000" height="500" fill="#0d2d4a"/>';
-  // Linee latitudine
-  for (var lat = -60; lat <= 60; lat += 30) {
-    var y = lat2y(lat);
-    html += '<line x1="0" y1="' + y + '" x2="1000" y2="' + y + '" stroke="rgba(79,195,247,0.06)" stroke-width="0.5"/>';
-  }
-  // Linee longitudine
-  for (var lon = -150; lon <= 150; lon += 30) {
-    var x = lon2x(lon);
-    html += '<line x1="' + x + '" y1="0" x2="' + x + '" y2="500" stroke="rgba(79,195,247,0.06)" stroke-width="0.5"/>';
-  }
 
-  // Colori rischio
-  var colorMap = {green:'rgba(67,160,71,0.45)',yellow:'rgba(249,168,37,0.4)',orange:'rgba(239,108,0,0.45)',red:'rgba(229,57,53,0.5)'};
-  var strokeMap = {green:'rgba(67,160,71,0.8)',yellow:'rgba(249,168,37,0.8)',orange:'rgba(239,108,0,0.8)',red:'rgba(229,57,53,0.8)'};
+  // Griglia geografica
+  for (var lat=-60;lat<=60;lat+=30){var y=lat2y(lat);html+='<line x1="0" y1="'+y+'" x2="1000" y2="'+y+'" stroke="rgba(79,195,247,0.07)" stroke-width="0.5"/>';}
+  for (var lon=-150;lon<=150;lon+=30){var x=lon2x(lon);html+='<line x1="'+x+'" y1="0" x2="'+x+'" y2="500" stroke="rgba(79,195,247,0.07)" stroke-width="0.5"/>';}
 
-  // Disegna zone FAO
-  var zoneKeys = Object.keys(FAO_ZONES);
-  for (var i = 0; i < zoneKeys.length; i++) {
-    var code = zoneKeys[i];
-    var z = FAO_ZONES[code];
+  // Zone FAO sotto i continenti
+  var zkeys = Object.keys(FAO_RECTS);
+  for (var i=0;i<zkeys.length;i++) {
+    var code = zkeys[i];
     var d = DATA[code];
     if (!d) continue;
-    var pts = z.pts;
-    var pathPts = '';
-    for (var j = 0; j < pts.length; j++) {
-      var px = lon2x(pts[j][0]);
-      var py = lat2y(pts[j][1]);
-      pathPts += (j === 0 ? 'M' : 'L') + px.toFixed(1) + ',' + py.toFixed(1) + ' ';
-    }
-    pathPts += 'Z';
-    var cx = 0, cy = 0;
-    for (var j = 0; j < pts.length; j++) { cx += lon2x(pts[j][0]); cy += lat2y(pts[j][1]); }
-    cx /= pts.length; cy /= pts.length;
-
-    html += '<path d="' + pathPts + '" fill="' + colorMap[d.riskColor] + '" stroke="' + strokeMap[d.riskColor] + '" stroke-width="1" opacity="0.9" style="cursor:pointer" onclick="mapZoneClick(\'' + code + '\')" onmouseenter="mapZoneHover(\'' + code + '\',this)" onmouseleave="mapZoneOut(this)" data-code="' + code + '"/>';
-    // Label zona
-    var shortCode = code.length <= 2 ? code : code.replace('37.','');
-    html += '<text x="' + cx.toFixed(1) + '" y="' + (cy + 4).toFixed(1) + '" text-anchor="middle" font-size="9" font-weight="700" fill="rgba(255,255,255,0.85)" style="pointer-events:none">' + shortCode + '</text>';
+    var r = FAO_RECTS[code];
+    var x1=lon2x(r[0]), y1=lat2y(r[1]), x2=lon2x(r[2]), y2=lat2y(r[3]);
+    var rx=Math.min(x1,x2), ry=Math.min(y1,y2), rw=Math.abs(x2-x1), rh=Math.abs(y2-y1);
+    var cx=(rx+rw/2).toFixed(1), cy=(ry+rh/2+4).toFixed(1);
+    html += '<rect x="'+rx.toFixed(1)+'" y="'+ry.toFixed(1)+'" width="'+rw.toFixed(1)+'" height="'+rh.toFixed(1)+'" rx="3" fill="'+colorFill[d.riskColor]+'" stroke="'+colorStroke[d.riskColor]+'" stroke-width="1.2" style="cursor:pointer" onclick="mapZoneClick(\''+code+'\')" onmouseenter="mapZoneHover(\''+code+'\',this)" onmouseleave="mapZoneOut(this)"/>';
+    var label = code.length<=2 ? code : code.replace('37.','37.');
+    html += '<text x="'+cx+'" y="'+cy+'" text-anchor="middle" font-size="10" font-weight="700" fill="rgba(255,255,255,0.9)" style="pointer-events:none;text-shadow:0 1px 3px #000">'+label+'</text>';
   }
 
-  // Disegna continenti sopra le zone
-  for (var i = 0; i < CONTINENTS.length; i++) {
-    html += '<path d="' + CONTINENTS[i] + '" fill="#1a3a5c" stroke="#0d2d4a" stroke-width="0.5"/>';
-  }
+  // Continenti sopra le zone
+  html += buildContinentPaths();
 
-  // Equatore
-  html += '<line x1="0" y1="' + lat2y(0) + '" x2="1000" y2="' + lat2y(0) + '" stroke="rgba(79,195,247,0.2)" stroke-width="0.8" stroke-dasharray="4,4"/>';
+  // Equatore tratteggiato
+  html += '<line x1="0" y1="'+lat2y(0)+'" x2="1000" y2="'+lat2y(0)+'" stroke="rgba(79,195,247,0.25)" stroke-width="0.8" stroke-dasharray="5,5"/>';
+  // Tropici
+  html += '<line x1="0" y1="'+lat2y(23.5)+'" x2="1000" y2="'+lat2y(23.5)+'" stroke="rgba(79,195,247,0.08)" stroke-width="0.5" stroke-dasharray="3,6"/>';
+  html += '<line x1="0" y1="'+lat2y(-23.5)+'" x2="1000" y2="'+lat2y(-23.5)+'" stroke="rgba(79,195,247,0.08)" stroke-width="0.5" stroke-dasharray="3,6"/>';
 
   svg.innerHTML = html;
 }
 
-function mapZoneClick(code) {
-  renderZone(code);
-  showPage('ricerca');
+function mapZoneClick(code){renderZone(code);showPage('ricerca');}
+
+function mapZoneHover(code,el){
+  var d=DATA[code]; if(!d)return;
+  el.setAttribute('opacity','0.6');
+  var tt=document.getElementById('mapTooltip');
+  var rl={basso:'🟢 Rischio basso',medio:'🟡 Rischio medio',alto:'🟠 Rischio alto','molto alto':'🔴 Rischio molto alto'};
+  tt.innerHTML='<strong>'+d.zoneName+'</strong><br><span style="opacity:0.8">'+d.zoneSub+'</span><br><span style="font-size:12px;opacity:0.7">'+(rl[d.riskLevel]||d.riskLevel)+' · Tocca per i dettagli</span>';
+  tt.style.display='block';
 }
 
-function mapZoneHover(code, el) {
-  var d = DATA[code];
-  if (!d) return;
-  el.style.opacity = '0.7';
-  var tt = document.getElementById('mapTooltip');
-  var rl = {basso:'🟢 Rischio basso',medio:'🟡 Rischio medio',alto:'🟠 Rischio alto','molto alto':'🔴 Rischio molto alto'};
-  tt.innerHTML = '<strong>' + d.zoneName + '</strong><br>' + d.zoneSub + '<br><span style="font-size:12px;opacity:0.8">' + (rl[d.riskLevel]||d.riskLevel) + ' · Tocca per dettagli</span>';
-  tt.style.display = 'block';
-}
-
-function mapZoneOut(el) {
-  el.style.opacity = '1';
-}
+function mapZoneOut(el){el.setAttribute('opacity','1');}
 
 function buildMapList(filter) {
   var out = document.getElementById('mapList'); var html = '';
