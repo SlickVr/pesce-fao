@@ -1,0 +1,534 @@
+{
+  "acciuga": {
+    "name": "Acciuga / Alice",
+    "emoji": "🐟",
+    "latin": "Engraulis encrasicolus",
+    "hgLevel": "basso",
+    "hgVal": 8,
+    "hgNote": "<0.05 mg/kg — tra i più bassi",
+    "portions": {
+      "adulti": "Libero",
+      "bambini": "Ottima fresca",
+      "gravidanza": "Ottima fresca; limitare conserva (sale)",
+      "anziani": "Ottima fresca"
+    },
+    "wildNote": "Solo selvaggia. Breve catena trofica: contaminanti bassissimi. Tra le scelte più sicure in assoluto.",
+    "farmNote": null,
+    "bestZones": ["34", "87", "47"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "aguglia": {
+    "name": "Aguglia",
+    "emoji": "🐟",
+    "latin": "Belone belone",
+    "hgLevel": "basso",
+    "hgVal": 12,
+    "hgNote": "0.05–0.15 mg/kg",
+    "portions": {
+      "adulti": "2-3 volte/sett.",
+      "bambini": "Buona",
+      "gravidanza": "Buona",
+      "anziani": "Buona"
+    },
+    "wildNote": "Solo selvaggia. Pesce costiero mediterraneo, buona qualità nutrizionale.",
+    "farmNote": null,
+    "bestZones": ["37.3", "37.1"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "anguilla": {
+    "name": "Anguilla",
+    "emoji": "🐟",
+    "latin": "Anguilla anguilla",
+    "hgLevel": "alto",
+    "hgVal": 78,
+    "hgNote": "0.3–1.5 mg/kg — bioaccumulo elevato",
+    "portions": {
+      "adulti": "Max 1 volta/mese",
+      "bambini": "Evitare",
+      "gravidanza": "EVITARE",
+      "anziani": "Max 1 volta/mese"
+    },
+    "wildNote": "Pesce grasso con altissimo bioaccumulo di PCB, diossine e mercurio. Specie in pericolo critico. Consumo fortemente limitato dalle autorità UE.",
+    "farmNote": "Allevata: stessa problematica contaminanti. Spesso importata dall'Asia.",
+    "bestZones": ["67"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  },
+  "aringa": {
+    "name": "Aringa",
+    "emoji": "🐟",
+    "latin": "Clupea harengus",
+    "hgLevel": "basso",
+    "hgVal": 15,
+    "hgNote": "0.02–0.08 mg/kg",
+    "portions": {
+      "adulti": "2-3 volte/sett.",
+      "bambini": "Buona (evitare affumicata)",
+      "gravidanza": "Buona fresca; moderare affumicata",
+      "anziani": "Ottima fresca"
+    },
+    "wildNote": "Solo selvaggia. Zona 27 Atlantico: eccellente. Zona 27 Baltico: limitare per PCB/diossine.",
+    "farmNote": null,
+    "bestZones": ["27", "34"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "branzino": {
+    "name": "Branzino / Spigola",
+    "emoji": "🐟",
+    "latin": "Dicentrarchus labrax",
+    "hgLevel": "basso",
+    "hgVal": 20,
+    "hgNote": "0.05–0.20 mg/kg",
+    "portions": {
+      "adulti": "2-3 volte/sett.",
+      "bambini": "Ottimo",
+      "gravidanza": "Ottimo",
+      "anziani": "Ottimo, magro e digeribile"
+    },
+    "wildNote": "Selvaggio: sapore superiore, stagionalità autunno-inverno. Mediterraneo: attenzione alla zona.",
+    "farmNote": "Allevato: più comune in commercio. Qualità buona se certificato ASC. Omega-3 leggermente inferiori.",
+    "bestZones": ["37.3", "37.1", "34"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  },
+  "calamaro": {
+    "name": "Calamaro",
+    "emoji": "🦑",
+    "latin": "Loligo vulgaris",
+    "hgLevel": "basso",
+    "hgVal": 18,
+    "hgNote": "0.05–0.20 mg/kg",
+    "portions": {
+      "adulti": "Libero",
+      "bambini": "Buono",
+      "gravidanza": "Buono se ben cotto",
+      "anziani": "Ottimo, magro"
+    },
+    "wildNote": "Solo selvaggio. Buona scelta per basso contenuto di grassi e contaminanti.",
+    "farmNote": null,
+    "bestZones": ["41", "87", "34"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "cefalo": {
+    "name": "Cefalo / Muggine",
+    "emoji": "🐟",
+    "latin": "Mugil cephalus",
+    "hgLevel": "medio",
+    "hgVal": 30,
+    "hgNote": "0.10–0.30 mg/kg — dipende dalla zona",
+    "portions": {
+      "adulti": "1-2 volte/sett.",
+      "bambini": "Moderare",
+      "gravidanza": "Moderare",
+      "anziani": "1-2 volte/sett."
+    },
+    "wildNote": "Pesce costiero e lagunare: riflette la qualità dell'acqua locale. Da zone non industriali è buona scelta.",
+    "farmNote": "Allevato in valli da pesca: qualità molto variabile per zona.",
+    "bestZones": ["34", "41"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  },
+  "cernia": {
+    "name": "Cernia",
+    "emoji": "🐟",
+    "latin": "Epinephelus marginatus",
+    "hgLevel": "medio",
+    "hgVal": 45,
+    "hgNote": "0.15–0.40 mg/kg — predatore longevo",
+    "portions": {
+      "adulti": "1-2 volte/mese",
+      "bambini": "Limitare",
+      "gravidanza": "Limitare",
+      "anziani": "1-2 volte/mese"
+    },
+    "wildNote": "Pesce longevo e predatore: accumula mercurio. Mediterraneo molto sfruttato. Specie protetta in alcune aree.",
+    "farmNote": "Allevamento in sviluppo. Qualità comparabile.",
+    "bestZones": ["34", "41"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  },
+  "cozza": {
+    "name": "Cozza / Mitilo",
+    "emoji": "🦪",
+    "latin": "Mytilus galloprovincialis",
+    "hgLevel": "medio",
+    "hgVal": 30,
+    "hgNote": "Filtratore: riflette contaminanti dell'acqua",
+    "portions": {
+      "adulti": "1-2 volte/sett. da zone certificate",
+      "bambini": "Solo zone controllate",
+      "gravidanza": "Solo ben cotte da zone certificate",
+      "anziani": "Come adulti"
+    },
+    "wildNote": "Selvatiche: sapore intenso ma rischio microbiologico maggiore.",
+    "farmNote": "Allevate in zone certificate (classe A): sicurezza microbiologica superiore. Verificare sempre etichetta di origine.",
+    "bestZones": ["27", "34"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  },
+  "gambero": {
+    "name": "Gambero",
+    "emoji": "🦐",
+    "latin": "varie specie",
+    "hgLevel": "basso",
+    "hgVal": 12,
+    "hgNote": "0.01–0.05 mg/kg",
+    "portions": {
+      "adulti": "Libero",
+      "bambini": "Ottimo",
+      "gravidanza": "Ottimo se ben cotto",
+      "anziani": "Ottimo"
+    },
+    "wildNote": "Selvaggio (gambero rosso Mazara, gambero artico): sapore superiore, qualità eccellente.",
+    "farmNote": "Allevato dall'Asia: qualità molto variabile. Scegliere certificazione ASC/BAP.",
+    "bestZones": ["41", "87", "67"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  },
+  "halibut": {
+    "name": "Halibut / Ippoglosso",
+    "emoji": "🐟",
+    "latin": "Hippoglossus hippoglossus",
+    "hgLevel": "medio",
+    "hgVal": 35,
+    "hgNote": "0.10–0.30 mg/kg",
+    "portions": {
+      "adulti": "1-2 volte/sett.",
+      "bambini": "1 volta/sett.",
+      "gravidanza": "1 volta/sett.",
+      "anziani": "Ottimo, magro"
+    },
+    "wildNote": "Selvaggio (Alaska, Norvegia): eccellente qualità. Pesca controllata.",
+    "farmNote": "Allevamento in espansione in Norvegia. Qualità alta.",
+    "bestZones": ["67", "27", "18"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  },
+  "merluzzo": {
+    "name": "Merluzzo",
+    "emoji": "🐟",
+    "latin": "Gadus morhua",
+    "hgLevel": "basso",
+    "hgVal": 15,
+    "hgNote": "0.05–0.15 mg/kg",
+    "portions": {
+      "adulti": "Libero",
+      "bambini": "Ottimo",
+      "gravidanza": "Ottimo",
+      "anziani": "Ottimo, magro"
+    },
+    "wildNote": "Selvaggio nordico (FAO 27/67): migliore sapore, stock ben gestiti.",
+    "farmNote": "Allevamento in espansione. Qualità comparabile se certificato.",
+    "bestZones": ["67", "27", "18"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  },
+  "nasello": {
+    "name": "Nasello",
+    "emoji": "🐟",
+    "latin": "Merluccius merluccius",
+    "hgLevel": "basso",
+    "hgVal": 22,
+    "hgNote": "0.05–0.20 mg/kg",
+    "portions": {
+      "adulti": "Libero",
+      "bambini": "Ottimo",
+      "gravidanza": "Ottimo",
+      "anziani": "Ottimo, digeribile"
+    },
+    "wildNote": "Selvaggio: ottima scelta, magro e digeribile. Stock mediterranei sotto pressione.",
+    "farmNote": "Raramente allevato.",
+    "bestZones": ["41", "47", "67"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "orata": {
+    "name": "Orata",
+    "emoji": "🐟",
+    "latin": "Sparus aurata",
+    "hgLevel": "basso",
+    "hgVal": 18,
+    "hgNote": "0.02–0.10 mg/kg",
+    "portions": {
+      "adulti": "2-3 volte/sett.",
+      "bambini": "Ottima",
+      "gravidanza": "Ottima",
+      "anziani": "Ottima"
+    },
+    "wildNote": "Selvaggia: sapore superiore. Primavera-estate.",
+    "farmNote": "Allevata: più comune in commercio. Certificazione ASC. Omega-3 leggermente inferiori.",
+    "bestZones": ["37.3", "37.1"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  },
+  "pesce spada": {
+    "name": "Pesce spada",
+    "emoji": "🗡️",
+    "latin": "Xiphias gladius",
+    "hgLevel": "molto alto",
+    "hgVal": 95,
+    "hgNote": "0.9–2.0+ mg/kg — tra i più alti",
+    "portions": {
+      "adulti": "Max 1 volta/mese",
+      "bambini": "EVITARE sotto i 14 anni",
+      "gravidanza": "EVITARE",
+      "anziani": "Max 1 volta/mese"
+    },
+    "wildNote": "Solo selvaggio. Grande predatore apicale: bioaccumulo massimo di mercurio.",
+    "farmNote": null,
+    "bestZones": ["34", "87"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "polpo": {
+    "name": "Polpo",
+    "emoji": "🐙",
+    "latin": "Octopus vulgaris",
+    "hgLevel": "basso",
+    "hgVal": 15,
+    "hgNote": "0.02–0.10 mg/kg",
+    "portions": {
+      "adulti": "Libero",
+      "bambini": "Buono",
+      "gravidanza": "Buono se ben cotto",
+      "anziani": "Buono"
+    },
+    "wildNote": "Solo selvaggio. Buona scelta, breve vita e basso bioaccumulo.",
+    "farmNote": null,
+    "bestZones": ["34", "37.3", "41"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "rombo": {
+    "name": "Rombo",
+    "emoji": "🐟",
+    "latin": "Psetta maxima / Scophthalmus rhombus",
+    "hgLevel": "basso",
+    "hgVal": 20,
+    "hgNote": "0.05–0.15 mg/kg",
+    "portions": {
+      "adulti": "2-3 volte/sett.",
+      "bambini": "Buono",
+      "gravidanza": "Buono",
+      "anziani": "Ottimo, magro"
+    },
+    "wildNote": "Selvaggio: ottima qualità. Mediterraneo e Atlantico.",
+    "farmNote": "Allevamento in espansione (turbot). Buona qualità.",
+    "bestZones": ["27", "67"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  },
+  "salmone": {
+    "name": "Salmone",
+    "emoji": "🐠",
+    "latin": "Salmo salar / Oncorhynchus spp.",
+    "hgLevel": "basso",
+    "hgVal": 20,
+    "hgNote": "0.01–0.08 mg/kg",
+    "portions": {
+      "adulti": "2-3 volte/sett.",
+      "bambini": "1-2 volte/sett.",
+      "gravidanza": "Ottimo, ricco di DHA. 2 volte/sett.",
+      "anziani": "Consigliato per omega-3"
+    },
+    "wildNote": "Selvaggio (Alaska/Pacifico): più omega-3, meno grassi, sapore intenso.",
+    "farmNote": "Allevato (Atlantico/Norvegia): PCB leggermente più alti. Scegliere certificazione ASC/Bio.",
+    "bestZones": ["67", "27"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  },
+  "sardina": {
+    "name": "Sardina",
+    "emoji": "🐟",
+    "latin": "Sardina pilchardus",
+    "hgLevel": "basso",
+    "hgVal": 10,
+    "hgNote": "<0.05 mg/kg — bassissimo",
+    "portions": {
+      "adulti": "Libero",
+      "bambini": "Ottima",
+      "gravidanza": "Ottima, DHA e calcio",
+      "anziani": "Ottima, ricca di calcio"
+    },
+    "wildNote": "Solo selvaggia. Piccola, breve catena trofica: tra le scelte più sicure.",
+    "farmNote": null,
+    "bestZones": ["34", "47", "87"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "scampo": {
+    "name": "Scampo",
+    "emoji": "🦐",
+    "latin": "Nephrops norvegicus",
+    "hgLevel": "basso",
+    "hgVal": 10,
+    "hgNote": "0.01–0.05 mg/kg",
+    "portions": {
+      "adulti": "Libero",
+      "bambini": "Ottimo",
+      "gravidanza": "Ottimo se ben cotto",
+      "anziani": "Ottimo"
+    },
+    "wildNote": "Solo selvaggio. Atlantico Nord e Mediterraneo. Qualità eccellente.",
+    "farmNote": null,
+    "bestZones": ["27", "34"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "seppia": {
+    "name": "Seppia",
+    "emoji": "🦑",
+    "latin": "Sepia officinalis",
+    "hgLevel": "basso",
+    "hgVal": 20,
+    "hgNote": "0.05–0.20 mg/kg",
+    "portions": {
+      "adulti": "Libero",
+      "bambini": "Buona",
+      "gravidanza": "Buona se ben cotta",
+      "anziani": "Ottima, magra"
+    },
+    "wildNote": "Solo selvaggia. Buona scelta, breve vita e basso accumulo.",
+    "farmNote": null,
+    "bestZones": ["34", "37.3"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "sgombro": {
+    "name": "Sgombro",
+    "emoji": "🐟",
+    "latin": "Scomber scombrus",
+    "hgLevel": "basso",
+    "hgVal": 12,
+    "hgNote": "0.05–0.15 mg/kg",
+    "portions": {
+      "adulti": "2-3 volte/sett.",
+      "bambini": "Ottimo",
+      "gravidanza": "Ottimo, ricco di omega-3",
+      "anziani": "Ottimo"
+    },
+    "wildNote": "Solo selvaggio. Eccellente per omega-3. Atlantico NE e Mediterraneo.",
+    "farmNote": null,
+    "bestZones": ["27", "34", "47"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "sogliola": {
+    "name": "Sogliola",
+    "emoji": "🐟",
+    "latin": "Solea solea",
+    "hgLevel": "basso",
+    "hgVal": 12,
+    "hgNote": "0.02–0.08 mg/kg",
+    "portions": {
+      "adulti": "Libero",
+      "bambini": "Ottima",
+      "gravidanza": "Ottima",
+      "anziani": "Ottima, leggerissima"
+    },
+    "wildNote": "Selvaggia: sapore delicato, molto digeribile. Preferire Atlantico a Adriatico.",
+    "farmNote": "Allevamento in sviluppo. Qualità buona.",
+    "bestZones": ["27", "34"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  },
+  "storione": {
+    "name": "Storione / Caviale",
+    "emoji": "🐟",
+    "latin": "Acipenser spp.",
+    "hgLevel": "alto",
+    "hgVal": 70,
+    "hgNote": "0.30–0.80 mg/kg — predatore longevo",
+    "portions": {
+      "adulti": "Max 1-2 volte/mese",
+      "bambini": "Limitare",
+      "gravidanza": "Limitare",
+      "anziani": "1-2 volte/mese"
+    },
+    "wildNote": "Quasi estinto in natura. Pesca commerciale vietata in UE.",
+    "farmNote": "Allevato: fonte legale di caviale. Qualità controllata. Attenzione all'origine.",
+    "bestZones": ["41"],
+    "methods": ["farm"],
+    "lastUpdated": "2025-01"
+  },
+  "tonno": {
+    "name": "Tonno",
+    "emoji": "🐟",
+    "latin": "Thunnus spp.",
+    "hgLevel": "alto",
+    "hgVal": 75,
+    "hgNote": "0.35–1.0 mg/kg (variabile per specie)",
+    "portions": {
+      "adulti": "Max 2-3 porzioni/mese",
+      "bambini": "Max 1 porzione/mese",
+      "gravidanza": "Evitare rosso; max 1 latta/sett. in scatola",
+      "anziani": "Come adulti"
+    },
+    "wildNote": "Selvaggio: omega-3 elevati, più mercurio negli esemplari grandi.",
+    "farmNote": "Non si alleva industrialmente.",
+    "bestZones": ["67", "34", "87"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "tonno in scatola": {
+    "name": "Tonno in scatola",
+    "emoji": "🥫",
+    "latin": "Katsuwonus pelamis (skipjack)",
+    "hgLevel": "basso",
+    "hgVal": 25,
+    "hgNote": "0.05–0.15 mg/kg (skipjack)",
+    "portions": {
+      "adulti": "2-3 volte/sett.",
+      "bambini": "1-2 volte/sett.",
+      "gravidanza": "Max 2 volte/sett. (preferire skipjack)",
+      "anziani": "2-3 volte/sett."
+    },
+    "wildNote": "Skipjack (pinna gialla piccolo): mercurio molto più basso del tonno rosso. Preferire da FAO 71 o 34.",
+    "farmNote": null,
+    "bestZones": ["71", "34", "77"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "triglia": {
+    "name": "Triglia",
+    "emoji": "🐟",
+    "latin": "Mullus surmuletus / Mullus barbatus",
+    "hgLevel": "medio",
+    "hgVal": 35,
+    "hgNote": "0.10–0.35 mg/kg",
+    "portions": {
+      "adulti": "1-2 volte/sett.",
+      "bambini": "1 volta/sett.",
+      "gravidanza": "Moderare",
+      "anziani": "1-2 volte/sett."
+    },
+    "wildNote": "Solo selvaggia. Pesce di fondo che accumula contaminanti dalla sedimentazione. La zona influenza molto la qualità.",
+    "farmNote": null,
+    "bestZones": ["34", "37.3"],
+    "methods": ["wild"],
+    "lastUpdated": "2025-01"
+  },
+  "vongola": {
+    "name": "Vongola",
+    "emoji": "🦪",
+    "latin": "Ruditapes decussatus / philippinarum",
+    "hgLevel": "medio",
+    "hgVal": 28,
+    "hgNote": "Filtratrice: assorbe contaminanti",
+    "portions": {
+      "adulti": "1-2 volte/sett. da zone certificate",
+      "bambini": "Solo zone controllate",
+      "gravidanza": "Solo ben cotte da zone certificate",
+      "anziani": "Come adulti"
+    },
+    "wildNote": "Selvatiche: sapore superiore ma rischio microbiologico.",
+    "farmNote": "Allevate in zone certificate: sicurezza superiore. Verificare etichetta e classe A/B.",
+    "bestZones": ["27", "34"],
+    "methods": ["wild", "farm"],
+    "lastUpdated": "2025-01"
+  }
+}
