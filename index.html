@@ -185,10 +185,21 @@ input::placeholder{color:var(--td)}
 <div class="content">
   <div class="page active" id="pageRicerca">
     <div class="card">
-      <select id="faoSel" onchange="onSelChange()"><option value="">— Scegli zona FAO —</option></select>
-      <div class="divider">oppure digita</div>
-      <input type="text" id="faoMan" placeholder="Es. 37.2.1 oppure 27" oninput="onManIn()">
-      <div class="warn" id="zWarn">⚠ Codice FAO non trovato.</div>
+      <div class="stabs">
+        <button class="stab active" id="stZona" onclick="switchStab('zona')">Per zona</button>
+        <button class="stab" id="stSpecie" onclick="switchStab('specie')">Per specie</button>
+      </div>
+      <div class="pane active" id="pZona">
+        <select id="faoSel" onchange="onSelChange()"><option value="">— Scegli zona FAO —</option></select>
+        <div class="divider">oppure digita</div>
+        <input type="text" id="faoMan" placeholder="Es. 37.2.1 oppure 27" oninput="onManIn()">
+        <div class="warn" id="zWarn">⚠ Codice FAO non trovato.</div>
+      </div>
+      <div class="pane" id="pSpecie">
+        <select id="spZonaSel" onchange="renderSpZona()"><option value="">— Scegli una specie —</option></select>
+        <p class="hint">Zone ordinate dalla più pulita alla più critica.</p>
+        <div id="spZonaRank"></div>
+      </div>
     </div>
     <div class="card result-card" id="resultCard">
       <div class="risk-hero" id="rHero"><span class="risk-emoji" id="rEmoji">🐟</span><div class="risk-zone-name" id="rName">—</div><div class="risk-zone-sub" id="rSub">—</div><div class="risk-label"><span class="risk-dot"></span><span id="rText">—</span></div></div>
