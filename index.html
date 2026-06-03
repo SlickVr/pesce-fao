@@ -429,21 +429,20 @@ function renderSpDet() {
   if (!mHTML) mHTML = '<p style="font-size:13px;color:var(--ts)">Nessuna info per il filtro selezionato.</p>';
   var bHTML = '';
   for (var i = 0; i < (s.bestZones || []).length; i++) { var dz = DATA[s.bestZones[i]]; if (dz) bHTML += '<span class="chip" onclick="renderZone(\'' + s.bestZones[i] + '\');showPage(\'ricerca\')">✅ ' + s.bestZones[i] + '</span>'; }
-  // Zone medie da DATA
+  // Zone medie — cerca tutte le zone yellow dove la specie appare tra le sensibili
   var mHTML = '';
   var dkeys2 = Object.keys(DATA);
   for (var i = 0; i < dkeys2.length; i++) {
     var zc = dkeys2[i];
-    if (DATA[zc].riskColor === 'yellow' && (s.bestZones || []).indexOf(zc) === -1) {
-      // controlla se la specie è sensibile in questa zona
-      var sp2 = DATA[zc].sensibleSpecies;
-      for (var j = 0; j < sp2.length; j++) {
-        if (sp2[j].toLowerCase().indexOf(key.split(' ')[0]) !== -1) {
-          mHTML += '<span class="chip" onclick="renderZone(\'' + zc + '\');showPage(\'ricerca\')" style="border-color:rgba(249,168,37,0.4);background:rgba(249,168,37,0.1)">🟡 ' + zc + '</span>';
-          break;
-        }
-      }
+    if (DATA[zc].riskColor !== 'yellow') continue;
+    if ((s.bestZones || []).indexOf(zc) !== -1) continue;
+    var sp2 = DATA[zc].sensibleSpecies;
+    var found = false;
+    for (var j = 0; j < sp2.length; j++) {
+      if (sp2[j].toLowerCase().replace(/\s*\(.*?\)/g,'').trim() === s.name.toLowerCase().replace(/\s*\(.*?\)/g,'').trim() ||
+          sp2[j].toLowerCase().indexOf(key) !== -1) { found = true; break; }
     }
+    if (found) mHTML += '<span class="chip" onclick="renderZone(\'' + zc + '\');showPage(\'ricerca\')" style="border-color:rgba(249,168,37,0.4);background:rgba(249,168,37,0.1)">🟡 ' + zc + '</span>';
   }
   var html = '<div class="card">';
   html += '<div class="sp-hero"><span style="font-size:clamp(28px,7vw,36px)">' + s.emoji + '</span><div class="sp-name">' + s.name + '</div><div class="sp-latin">' + s.latin + '</div></div>';
