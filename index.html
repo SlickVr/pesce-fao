@@ -292,6 +292,8 @@ function showPage(p){
 
 function normCode(r){return r.trim().replace(/[,\s]+/g,'.').replace(/\.+/g,'.').replace(/^\.|\.$/g,'');}
 function onSelChange(){var s=document.getElementById('faoSel');if(s.value){document.getElementById('faoMan').value='';document.getElementById('zWarn').style.display='none';renderZone(s.value);}}
+function clearWarn(){document.getElementById('zWarn').style.display='none';}
+function doSearch(){
   var v=document.getElementById('faoMan').value;
   document.getElementById('faoSel').value='';
   if(!v.trim()){document.getElementById('zWarn').style.display='none';document.getElementById('resultCard').style.display='none';return;}
