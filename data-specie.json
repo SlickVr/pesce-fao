@@ -45,7 +45,10 @@
     "latin": "Anguilla anguilla",
     "hgLevel": "alto",
     "hgVal": 78,
-    "hgNote": "0.3–1.5 mg/kg — bioaccumulo elevato",
+    "hgNote": "0.3–1.5 mg/kg — selvaggia, bioaccumulo elevato",
+    "hgLevelFarm": "alto",
+    "hgValFarm": 72,
+    "hgNoteFarm": "0.2–1.2 mg/kg — allevata, stessa problematica",
     "portions": {
       "adulti": "Max 1 volta/mese",
       "bambini": "Evitare",
@@ -53,7 +56,7 @@
       "anziani": "Max 1 volta/mese"
     },
     "wildNote": "Pesce grasso con altissimo bioaccumulo di PCB, diossine e mercurio. Specie in pericolo critico. Consumo fortemente limitato dalle autorità UE.",
-    "farmNote": "Allevata: stessa problematica contaminanti. Spesso importata dall'Asia.",
+    "farmNote": "Allevata: stessa problematica contaminanti, livelli leggermente inferiori ma non sicuri. Spesso importata dall'Asia.",
     "bestZones": ["67"],
     "mediumZones": ["27"],
     "methods": ["wild", "farm"],
@@ -125,7 +128,10 @@
     "latin": "Mugil cephalus",
     "hgLevel": "medio",
     "hgVal": 30,
-    "hgNote": "0.10–0.30 mg/kg — dipende dalla zona",
+    "hgNote": "0.10–0.30 mg/kg — selvaggio, dipende dalla zona",
+    "hgLevelFarm": "medio",
+    "hgValFarm": 25,
+    "hgNoteFarm": "0.08–0.20 mg/kg — allevato in valli da pesca controllate",
     "portions": {
       "adulti": "1-2 volte/sett.",
       "bambini": "Moderare",
@@ -133,7 +139,7 @@
       "anziani": "1-2 volte/sett."
     },
     "wildNote": "Pesce costiero e lagunare: riflette la qualità dell'acqua locale. Da zone non industriali è buona scelta.",
-    "farmNote": "Allevato in valli da pesca: qualità molto variabile per zona.",
+    "farmNote": "Allevato in valli da pesca: qualità molto variabile per zona. Preferire produzione certificata.",
     "bestZones": ["34", "41"],
     "mediumZones": ["31", "77"],
     "methods": ["wild", "farm"],
@@ -146,14 +152,23 @@
     "hgLevel": "medio",
     "hgVal": 45,
     "hgNote": "0.15–0.40 mg/kg — predatore longevo",
+    "hgLevelFarm": "basso",
+    "hgValFarm": 20,
+    "hgNoteFarm": "0.05–0.15 mg/kg — allevata, catena trofica controllata",
     "portions": {
       "adulti": "1-2 volte/mese",
       "bambini": "Limitare",
       "gravidanza": "Limitare",
       "anziani": "1-2 volte/mese"
     },
+    "portionsFarm": {
+      "adulti": "1-2 volte/sett.",
+      "bambini": "1 volta/sett.",
+      "gravidanza": "Moderare",
+      "anziani": "1-2 volte/sett."
+    },
     "wildNote": "Pesce longevo e predatore: accumula mercurio. Mediterraneo molto sfruttato. Specie protetta in alcune aree.",
-    "farmNote": "Allevamento in sviluppo. Qualità comparabile.",
+    "farmNote": "Allevamento in sviluppo: mercurio significativamente inferiore al selvaggio. Qualità comparabile.",
     "bestZones": ["34", "41"],
     "mediumZones": ["31", "77", "51"],
     "methods": ["wild", "farm"],
@@ -165,15 +180,21 @@
     "latin": "Mytilus galloprovincialis",
     "hgLevel": "medio",
     "hgVal": 30,
-    "hgNote": "Filtratore: riflette contaminanti dell'acqua",
+    "hgNote": "Filtratrice: riflette contaminanti dell'acqua",
     "portions": {
       "adulti": "1-2 volte/sett. da zone certificate",
       "bambini": "Solo zone controllate",
       "gravidanza": "Solo ben cotte da zone certificate",
       "anziani": "Come adulti"
     },
-    "wildNote": "Selvatiche: sapore intenso ma rischio microbiologico maggiore.",
-    "farmNote": "Allevate in zone certificate (classe A): sicurezza microbiologica superiore. Verificare sempre etichetta di origine.",
+    "portionsFarm": {
+      "adulti": "2-3 volte/sett. da zone certificate",
+      "bambini": "1-2 volte/sett. da zone controllate",
+      "gravidanza": "Ben cotte da zone certificate classe A",
+      "anziani": "2-3 volte/sett."
+    },
+    "wildNote": "Selvatiche: sapore intenso ma rischio microbiologico maggiore. Consumo più prudente.",
+    "farmNote": "Allevate in zone certificate (classe A): sicurezza microbiologica superiore. Preferibile al selvaggio per frequenza di consumo.",
     "bestZones": ["27", "34"],
     "mediumZones": ["37.3", "81"],
     "methods": ["wild", "farm"],
@@ -344,18 +365,29 @@
     "emoji": "🐠",
     "latin": "Salmo salar / Oncorhynchus spp.",
     "hgLevel": "basso",
-    "hgVal": 20,
-    "hgNote": "0.01–0.08 mg/kg",
+    "hgVal": 15,
+    "hgNote": "0.01–0.05 mg/kg — selvaggio Alaska/Pacifico",
+    "hgLevelFarm": "basso",
+    "hgValFarm": 22,
+    "hgNoteFarm": "0.03–0.08 mg/kg — allevato, PCB leggermente più alti",
     "portions": {
-      "adulti": "2-3 volte/sett.",
-      "bambini": "1-2 volte/sett.",
-      "gravidanza": "Ottimo, ricco di DHA. 2 volte/sett.",
-      "anziani": "Consigliato per omega-3"
+      "adulti": "3 volte/sett.",
+      "bambini": "2 volte/sett.",
+      "gravidanza": "Ottimo, ricco di DHA. 2-3 volte/sett.",
+      "anziani": "Consigliato per omega-3, 3 volte/sett."
     },
-    "wildNote": "Selvaggio (Alaska/Pacifico): più omega-3, meno grassi, sapore intenso.",
-    "farmNote": "Allevato (Atlantico/Norvegia): PCB leggermente più alti. Scegliere certificazione ASC/Bio.",
+    "portionsFarm": {
+      "adulti": "2 volte/sett.",
+      "bambini": "1-2 volte/sett.",
+      "gravidanza": "2 volte/sett. — preferire certificato ASC/Bio",
+      "anziani": "2 volte/sett."
+    },
+    "wildNote": "Selvaggio (Alaska/Pacifico): più omega-3, meno grassi saturi, mercurio molto basso, sapore intenso. Scelta eccellente.",
+    "farmNote": "Allevato (Atlantico/Norvegia): PCB e grassi leggermente più alti. Preferire certificazione ASC/Bio. Ancora una buona scelta se certificato.",
     "bestZones": ["67", "27"],
+    "bestZonesFarm": ["27", "81"],
     "mediumZones": ["81", "61"],
+    "mediumZonesFarm": ["61"],
     "methods": ["wild", "farm"],
     "lastUpdated": "2026-06"
   },
@@ -466,14 +498,23 @@
     "hgLevel": "alto",
     "hgVal": 70,
     "hgNote": "0.30–0.80 mg/kg — predatore longevo",
+    "hgLevelFarm": "medio",
+    "hgValFarm": 35,
+    "hgNoteFarm": "0.10–0.30 mg/kg — allevato, alimentazione controllata",
     "portions": {
       "adulti": "Max 1-2 volte/mese",
       "bambini": "Limitare",
       "gravidanza": "Limitare",
       "anziani": "1-2 volte/mese"
     },
+    "portionsFarm": {
+      "adulti": "1-2 volte/sett.",
+      "bambini": "Moderare",
+      "gravidanza": "Moderare",
+      "anziani": "1-2 volte/sett."
+    },
     "wildNote": "Quasi estinto in natura. Pesca commerciale vietata in UE.",
-    "farmNote": "Allevato: fonte legale di caviale. Qualità controllata. Attenzione all'origine.",
+    "farmNote": "Allevato: unica fonte legale. Mercurio significativamente inferiore al selvaggio grazie all'alimentazione controllata.",
     "bestZones": ["41"],
     "mediumZones": ["27", "67"],
     "methods": ["farm"],
@@ -552,7 +593,13 @@
       "gravidanza": "Solo ben cotte da zone certificate",
       "anziani": "Come adulti"
     },
-    "wildNote": "Selvatiche: sapore superiore ma rischio microbiologico.",
+    "portionsFarm": {
+      "adulti": "2-3 volte/sett. da zone certificate",
+      "bambini": "1-2 volte/sett. da zone controllate",
+      "gravidanza": "Ben cotte da zone certificate classe A",
+      "anziani": "2-3 volte/sett."
+    },
+    "wildNote": "Selvatiche: sapore superiore ma rischio microbiologico maggiore.",
     "farmNote": "Allevate in zone certificate: sicurezza superiore. Verificare etichetta e classe A/B.",
     "bestZones": ["27", "34"],
     "mediumZones": ["37.3", "81"],

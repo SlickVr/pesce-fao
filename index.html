@@ -153,10 +153,15 @@ input::placeholder{color:var(--td)}
 
   <div class="page active" id="pageRicerca">
     <div class="card">
-      <select id="faoSel" onchange="onSelChange()"><option value="">— Scegli zona FAO —</option></select>
-      <div class="divider">oppure digita</div>
-      <input type="text" id="faoMan" placeholder="Es. 37.2.1 oppure 27" oninput="onManIn()">
-      <div class="warn" id="zWarn">⚠ Codice FAO non trovato.</div>
+      <div style="display:flex;gap:8px;margin-bottom:10px">
+        <input type="text" id="faoMan" placeholder="Codice FAO es. 37.2.1" oninput="clearWarn()" onkeydown="if(event.key==='Enter')doSearch()" style="margin-bottom:0;flex:1">
+        <button onclick="doSearch()" style="flex-shrink:0;padding:0 18px;background:linear-gradient(135deg,var(--ob),var(--og));border:none;border-radius:8px;color:#fff;font-size:16px;font-weight:600;cursor:pointer">🔍</button>
+      </div>
+      <div class="divider">oppure scegli dall'elenco</div>
+      <select id="faoSel" onchange="onSelChange()" style="margin-bottom:0">
+        <option value="">— Scegli zona FAO —</option>
+      </select>
+      <div class="warn" id="zWarn" style="margin-top:8px">⚠ Codice FAO non trovato.</div>
     </div>
     <div class="card result-card" id="resultCard">
       <div class="risk-hero" id="rHero"><span class="risk-emoji" id="rEmoji">🐟</span><div class="risk-zone-name" id="rName">—</div><div class="risk-zone-sub" id="rSub">—</div><div class="risk-label"><span class="risk-dot"></span><span id="rText">—</span></div></div>
@@ -170,6 +175,11 @@ input::placeholder{color:var(--td)}
   <div class="page" id="pageSpecie">
     <div class="card">
       <select id="spDetSel" onchange="renderSpDet()"><option value="">— Scegli una specie —</option></select>
+      <div class="stabs" id="spMethodTabs" style="display:none;margin-top:4px">
+        <button class="stab active" id="smAll" onclick="setSpMethod('all')">Tutti</button>
+        <button class="stab" id="smWild" onclick="setSpMethod('wild')">🎣 Selvaggio</button>
+        <button class="stab" id="smFarm" onclick="setSpMethod('farm')">🏭 Allevato</button>
+      </div>
     </div>
     <div id="spDetCard"></div>
   </div>
@@ -200,7 +210,7 @@ input::placeholder{color:var(--td)}
 </div><!-- /content -->
 
 <footer style="text-align:center;padding:0.5rem 1rem 0;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · Sviluppo Claude (Anthropic) · v 0.72<br>
+  © 2026 Cristiano Cinotti · Sviluppo Claude (Anthropic) · v 0.73<br>
   <span onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="cursor:pointer;text-decoration:underline;color:rgba(144,202,249,0.9)">Info &amp; crediti</span>
 </footer>
 
@@ -281,9 +291,23 @@ function showPage(p){
 
 function normCode(r){return r.trim().replace(/[,\s]+/g,'.').replace(/\.+/g,'.').replace(/^\.|\.$/g,'');}
 function onSelChange(){var s=document.getElementById('faoSel');if(s.value){document.getElementById('faoMan').value='';document.getElementById('zWarn').style.display='none';renderZone(s.value);}}
-function onManIn(){document.getElementById('faoSel').value='';var v=document.getElementById('faoMan').value;if(!v.trim()){document.getElementById('zWarn').style.display='none';document.getElementById('resultCard').style.display='none';return;}var c=normCode(v);if(DATA[c]){document.getElementById('zWarn').style.display='none';renderZone(c);}else{document.getElementById('zWarn').style.display='block';document.getElementById('resultCard').style.display='none';}}
+  var v=document.getElementById('faoMan').value;
+  document.getElementById('faoSel').value='';
+  if(!v.trim()){document.getElementById('zWarn').style.display='none';document.getElementById('resultCard').style.display='none';return;}
+  var c=normCode(v);
+  if(DATA[c]){document.getElementById('zWarn').style.display='none';renderZone(c);}
+  else{document.getElementById('zWarn').style.display='block';document.getElementById('resultCard').style.display='none';}
+}
 
-function renderZone(code){
+function clearWarn(){document.getElementById('zWarn').style.display='none';}
+function doSearch(){
+  var v=document.getElementById('faoMan').value;
+  document.getElementById('faoSel').value='';
+  if(!v.trim()){document.getElementById('zWarn').style.display='none';document.getElementById('resultCard').style.display='none';return;}
+  var c=normCode(v);
+  if(DATA[c]){document.getElementById('zWarn').style.display='none';renderZone(c);}
+  else{document.getElementById('zWarn').style.display='block';document.getElementById('resultCard').style.display='none';}
+}
   var d=DATA[code];var card=document.getElementById('resultCard');
   if(!d){card.style.display='none';return;}
   document.getElementById('rHero').className='risk-hero '+d.riskColor;
@@ -303,28 +327,78 @@ function renderZone(code){
   if(document.getElementById('pageRicerca').classList.contains('active'))card.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-function openSp(key){if(SPECIES[key]){showPage('specie');document.getElementById('spDetSel').value=key;renderSpDet();}}
+function openSp(key){if(SPECIES[key]){showPage('specie');document.getElementById('spDetSel').value=key;curSpMethod='all';var tabs=document.getElementById('spMethodTabs');if(tabs){document.getElementById('smAll').className='stab active';document.getElementById('smWild').className='stab';document.getElementById('smFarm').className='stab';}renderSpDet();}}
+function setSpMethod(m){
+  curSpMethod=m;
+  document.getElementById('smAll').className='stab'+(m==='all'?' active':'');
+  document.getElementById('smWild').className='stab'+(m==='wild'?' active':'');
+  document.getElementById('smFarm').className='stab'+(m==='farm'?' active':'');
+  renderSpDet();
+}
 
 function renderSpDet(){
   var key=document.getElementById('spDetSel').value;
   var out=document.getElementById('spDetCard');
-  if(!key){out.innerHTML='';return;}
+  var tabs=document.getElementById('spMethodTabs');
+  if(!key){out.innerHTML='';tabs.style.display='none';return;}
   var s=SPECIES[key];
-  if(!s){out.innerHTML='<div class="card"><p style="color:var(--ts);font-size:14px">Scheda non disponibile.</p></div>';return;}
+  if(!s){out.innerHTML='<div class="card"><p style="color:var(--ts);font-size:14px">Scheda non disponibile.</p></div>';tabs.style.display='none';return;}
+
+  // Mostra tab solo se ha sia wildNote che farmNote
+  var hasBoth = s.wildNote && s.farmNote;
+  tabs.style.display = hasBoth ? 'flex' : 'none';
+  if(!hasBoth) curSpMethod='all';
+
+  // Dati da mostrare in base al filtro
+  var showWild = (curSpMethod==='all'||curSpMethod==='wild') && s.wildNote;
+  var showFarm = (curSpMethod==='all'||curSpMethod==='farm') && s.farmNote;
+
+  // Mercurio: se wild e farm hanno hgLevel diversi mostrali separati
+  var hgHTML='';
   var hgCls=s.hgLevel==='basso'?'hg-low':s.hgLevel==='medio'?'hg-med':s.hgLevel==='alto'?'hg-high':'hg-vhigh';
   var hgLbl={basso:'Basso',medio:'Medio',alto:'Alto','molto alto':'Molto alto'}[s.hgLevel]||s.hgLevel;
-  var bHTML='';
-  for(var i=0;i<(s.bestZones||[]).length;i++){var dz=DATA[s.bestZones[i]];if(dz)bHTML+='<span class="chip" onclick="renderZone(\''+s.bestZones[i]+'\');showPage(\'ricerca\')">✅ '+s.bestZones[i]+'</span>';}
-  var mHTML='';
-  for(var i=0;i<(s.mediumZones||[]).length;i++){var dz=DATA[s.mediumZones[i]];if(dz)mHTML+='<span class="chip" onclick="renderZone(\''+s.mediumZones[i]+'\');showPage(\'ricerca\')" style="border-color:rgba(249,168,37,0.4);background:rgba(249,168,37,0.1)">🟡 '+s.mediumZones[i]+'</span>';}
-  var noteHTML=(s.wildNote||'')+(s.farmNote?'<br><br>'+s.farmNote:'');
+  if(s.hgLevelFarm && s.hgLevelFarm!==s.hgLevel && hasBoth){
+    if(curSpMethod==='wild'||curSpMethod==='all'){
+      hgHTML+='<div class="ind-row" style="margin-bottom:6px"><span class="ind-icon">🎣</span><div class="ind-wrap"><div class="ind-name">Selvaggio: <strong>'+hgLbl+'</strong></div><div class="ind-note">'+s.hgNote+'</div><div class="hg-track"><div class="hg-fill '+hgCls+'" style="width:'+s.hgVal+'%"></div></div></div></div>';
+    }
+    if(curSpMethod==='farm'||curSpMethod==='all'){
+      var hgClsF=s.hgLevelFarm==='basso'?'hg-low':s.hgLevelFarm==='medio'?'hg-med':s.hgLevelFarm==='alto'?'hg-high':'hg-vhigh';
+      var hgLblF={basso:'Basso',medio:'Medio',alto:'Alto','molto alto':'Molto alto'}[s.hgLevelFarm]||s.hgLevelFarm;
+      hgHTML+='<div class="ind-row"><span class="ind-icon">🏭</span><div class="ind-wrap"><div class="ind-name">Allevato: <strong>'+hgLblF+'</strong></div><div class="ind-note">'+(s.hgNoteFarm||s.hgNote)+'</div><div class="hg-track"><div class="hg-fill '+hgClsF+'" style="width:'+(s.hgValFarm||s.hgVal)+'%"></div></div></div></div>';
+    }
+  } else {
+    hgHTML='<div class="ind-row"><span class="ind-icon">⚗️</span><div class="ind-wrap"><div class="ind-name">Livello: <strong>'+hgLbl+'</strong></div><div class="ind-note">'+s.hgNote+'</div><div class="hg-track"><div class="hg-fill '+hgCls+'" style="width:'+s.hgVal+'%"></div></div></div></div>';
+  }
+
+  // Porzioni: se differiscono per metodo
+  var portHTML='';
+  var p = (curSpMethod==='farm' && s.portionsFarm) ? s.portionsFarm : s.portions;
+  if(hasBoth && s.portionsFarm && curSpMethod==='all'){
+    portHTML='<p style="font-size:12px;color:var(--ts);margin-bottom:8px">Usa i tab per vedere le porzioni specifiche per selvaggio o allevato.</p>';
+    portHTML+='<div class="port-grid"><div class="port-card"><div class="port-lbl">👨‍👩‍👧 Adulti</div><div class="port-val">'+s.portions.adulti+'</div></div><div class="port-card"><div class="port-lbl">👶 Bambini</div><div class="port-val">'+s.portions.bambini+'</div></div><div class="port-card"><div class="port-lbl">🤰 Gravidanza</div><div class="port-val">'+s.portions.gravidanza+'</div></div><div class="port-card"><div class="port-lbl">👴 Anziani</div><div class="port-val">'+s.portions.anziani+'</div></div></div>';
+  } else {
+    portHTML='<div class="port-grid"><div class="port-card"><div class="port-lbl">👨‍👩‍👧 Adulti</div><div class="port-val">'+p.adulti+'</div></div><div class="port-card"><div class="port-lbl">👶 Bambini</div><div class="port-val">'+p.bambini+'</div></div><div class="port-card"><div class="port-lbl">🤰 Gravidanza</div><div class="port-val">'+p.gravidanza+'</div></div><div class="port-card"><div class="port-lbl">👴 Anziani</div><div class="port-val">'+p.anziani+'</div></div></div>';
+  }
+
+  // Note
+  var noteHTML='';
+  if(showWild&&showFarm) noteHTML='<span class="mtag mtag-w" style="margin-right:6px">🎣 Selvaggio</span><br>'+s.wildNote+'<br><br><span class="mtag mtag-f" style="margin-right:6px">🏭 Allevato</span><br>'+s.farmNote;
+  else if(showWild) noteHTML='<span class="mtag mtag-w" style="margin-right:6px">🎣 Selvaggio</span><br>'+s.wildNote;
+  else if(showFarm) noteHTML='<span class="mtag mtag-f" style="margin-right:6px">🏭 Allevato</span><br>'+s.farmNote;
+  else if(s.wildNote) noteHTML=s.wildNote;
+
+  // Zone migliori/accettabili filtrate per metodo
+  var bestZones = (curSpMethod==='farm' && s.bestZonesFarm) ? s.bestZonesFarm : (s.bestZones||[]);
+  var medZones  = (curSpMethod==='farm' && s.mediumZonesFarm) ? s.mediumZonesFarm : (s.mediumZones||[]);
+  var bHTML='',mHTML='';
+  for(var i=0;i<bestZones.length;i++){var dz=DATA[bestZones[i]];if(dz)bHTML+='<span class="chip" onclick="renderZone(\''+bestZones[i]+'\');showPage(\'ricerca\')">✅ '+bestZones[i]+'</span>';}
+  for(var i=0;i<medZones.length;i++){var dz=DATA[medZones[i]];if(dz)mHTML+='<span class="chip" onclick="renderZone(\''+medZones[i]+'\');showPage(\'ricerca\')" style="border-color:rgba(249,168,37,0.4);background:rgba(249,168,37,0.1)">🟡 '+medZones[i]+'</span>';}
+
   var html='<div class="card">';
   html+='<div class="sp-hero"><span style="font-size:clamp(28px,7vw,36px)">'+s.emoji+'</span><div class="sp-name">'+s.name+'</div><div class="sp-latin">'+s.latin+'</div></div>';
-  html+='<div class="sec-title">Mercurio</div>';
-  html+='<div class="ind-row"><span class="ind-icon">⚗️</span><div class="ind-wrap"><div class="ind-name">Livello: <strong>'+hgLbl+'</strong></div><div class="ind-note">'+s.hgNote+'</div><div class="hg-track"><div class="hg-fill '+hgCls+'" style="width:'+s.hgVal+'%"></div></div></div></div>';
-  html+='<div class="sec-title">Porzioni consigliate (EFSA)</div>';
-  html+='<div class="port-grid"><div class="port-card"><div class="port-lbl">👨‍👩‍👧 Adulti</div><div class="port-val">'+s.portions.adulti+'</div></div><div class="port-card"><div class="port-lbl">👶 Bambini</div><div class="port-val">'+s.portions.bambini+'</div></div><div class="port-card"><div class="port-lbl">🤰 Gravidanza</div><div class="port-val">'+s.portions.gravidanza+'</div></div><div class="port-card"><div class="port-lbl">👴 Anziani</div><div class="port-val">'+s.portions.anziani+'</div></div></div>';
-  if(noteHTML)html+='<div class="sec-title">Note</div><div class="rec-box">'+noteHTML+'</div>';
+  html+='<div class="sec-title">Mercurio</div>'+hgHTML;
+  html+='<div class="sec-title">Porzioni consigliate (EFSA)</div>'+portHTML;
+  if(noteHTML)html+='<div class="sec-title">Note</div><div class="rec-box" style="font-size:14px;line-height:1.7">'+noteHTML+'</div>';
   if(bHTML)html+='<div class="sec-title">Zone migliori</div><div class="chips">'+bHTML+'</div>';
   if(mHTML)html+='<div class="sec-title">Zone accettabili</div><div class="chips">'+mHTML+'</div>';
   html+='</div>';
@@ -489,7 +563,7 @@ function buildGlossary(){
   var html='';
   for(var i=0;i<GLOSSARY.length;i++){var g=GLOSSARY[i];html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl('+i+')"><span class="gl-icon">'+g.icon+'</span><span class="gl-term">'+g.term+'</span><span class="gl-arr" id="ga'+i+'">›</span></div><div class="gl-body" id="gb'+i+'">'+g.body+'<br><span class="gl-tag '+g.tag.cls+'">'+g.tag.text+'</span></div></div>';}
   // Crediti in fondo al glossario
-  html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(99)"><span class="gl-icon">ℹ️</span><span class="gl-term">Info &amp; Crediti</span><span class="gl-arr" id="ga99">›</span></div><div class="gl-body" id="gb99"><strong>Sviluppato da</strong><br>👤 Cristiano Cinotti — concept &amp; design<br>🤖 Claude (Anthropic) — sviluppo<br><br><strong>Fonti</strong><br>🇪🇺 EFSA · 🌍 FAO · 🌊 MEDPOL/UNEP-MAP · 🏛️ ISPRA/ARPA · ❄️ HELCOM/OSPAR · 🇺🇸 NOAA/FDA<br><br><span style="font-size:11px;color:#ef9a9a">⚠️ Dati indicativi al 2026. Per decisioni sanitarie fare riferimento a EFSA e Ministero della Salute.</span><br><span class="gl-tag info">v 0.72 · 2026</span></div></div>';
+  html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(99)"><span class="gl-icon">ℹ️</span><span class="gl-term">Info &amp; Crediti</span><span class="gl-arr" id="ga99">›</span></div><div class="gl-body" id="gb99"><strong>Sviluppato da</strong><br>👤 Cristiano Cinotti — concept &amp; design<br>🤖 Claude (Anthropic) — sviluppo<br><br><strong>Fonti</strong><br>🇪🇺 EFSA · 🌍 FAO · 🌊 MEDPOL/UNEP-MAP · 🏛️ ISPRA/ARPA · ❄️ HELCOM/OSPAR · 🇺🇸 NOAA/FDA<br><br><span style="font-size:11px;color:#ef9a9a">⚠️ Dati indicativi al 2026. Per decisioni sanitarie fare riferimento a EFSA e Ministero della Salute.</span><br><span class="gl-tag info">v 0.73 · 2026</span></div></div>';
   out.innerHTML=html;
 }
 function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElementById('ga'+i);var op=b.classList.contains('open');b.className='gl-body'+(op?'':' open');a.className='gl-arr'+(op?'':' open');}
