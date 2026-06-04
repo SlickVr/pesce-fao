@@ -1,7 +1,7 @@
 {
-  "name": "Zone Pesca FAO",
-  "short_name": "PesceSicuro",
-  "description": "Sicurezza alimentare per zona FAO: indicatori di contaminazione, specie ittiche e sostenibilità.",
+  "name": "Pesce Sicuro",
+  "short_name": "Pesce Sicuro",
+  "description": "Zone Pesca FAO — Sicurezza alimentare per zona FAO: indicatori di contaminazione, specie ittiche e sostenibilità.",
   "id": "/pesce-fao/",
   "start_url": "/pesce-fao/",
   "scope": "/pesce-fao/",
