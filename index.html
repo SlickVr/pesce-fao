@@ -212,7 +212,7 @@ input::placeholder{color:var(--td)}
 </div>
 
 <footer style="text-align:center;padding:0.5rem 1rem 0;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · Sviluppo Claude (Anthropic) · v 0.75<br>
+  © 2026 Cristiano Cinotti · v 0.75<br>
   <span onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="cursor:pointer;text-decoration:underline;color:rgba(144,202,249,0.9)">Info &amp; crediti</span>
 </footer>
 <div id="creditsPanel" style="display:none;margin:0.5rem 1rem 1.5rem;border-radius:16px;background:linear-gradient(160deg,#0d3b6e,#0a2540);border:0.5px solid rgba(79,195,247,0.3);padding:1.25rem">
@@ -222,9 +222,8 @@ input::placeholder{color:var(--td)}
   </div>
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Sviluppato da</div>
   <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;margin-bottom:12px;border:0.5px solid rgba(79,195,247,0.12)">
-    <div style="font-size:13px;color:#e8f4fd;margin-bottom:4px">👤 <strong>Cristiano Cinotti</strong> — concept &amp; design</div>
-    <div style="font-size:13px;color:#e8f4fd">🤖 <strong>Claude</strong> (Anthropic) — sviluppo</div>
-    <div style="font-size:11px;color:#90caf9;margin-top:6px;line-height:1.5">App generata con intelligenza artificiale. I dati sono indicativi e basati su fonti pubbliche.</div>
+    <div style="font-size:13px;color:#e8f4fd">👤 <strong>Cristiano Cinotti</strong></div>
+    <div style="font-size:11px;color:#90caf9;margin-top:4px;line-height:1.5">📧 slickvr@gmail.com</div>
   </div>
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Fonti dei dati</div>
   <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
@@ -235,8 +234,13 @@ input::placeholder{color:var(--td)}
     <div style="font-size:12px;color:#e8f4fd">❄️ <strong>HELCOM / OSPAR / AMAP</strong> — acque nordiche e artiche</div>
     <div style="font-size:12px;color:#e8f4fd">🇺🇸 <strong>NOAA / FDA / EPA</strong> — sicurezza alimentare USA</div>
   </div>
-  <div style="padding:8px 10px;background:rgba(229,57,53,0.1);border:0.5px solid rgba(229,57,53,0.2);border-radius:8px;font-size:11px;color:#ef9a9a;line-height:1.6">
-    ⚠️ Dati indicativi aggiornati al 2026. Per decisioni sanitarie fare riferimento a EFSA e Ministero della Salute.
+  <div style="padding:10px 12px;background:rgba(229,57,53,0.1);border:0.5px solid rgba(229,57,53,0.2);border-radius:8px;font-size:11px;color:#ef9a9a;line-height:1.7">
+    ⚠️ <strong>Disclaimer</strong><br>
+    I dati presentati sono indicativi, aggiornati al 2026 e basati su fonti pubbliche istituzionali. Non costituiscono parere medico o nutrizionale professionale e non sostituiscono le indicazioni del proprio medico o di un dietologo. Per decisioni sanitarie fare riferimento a EFSA, Ministero della Salute e ISS.
+  </div>
+  <div style="margin-top:8px;padding:8px 10px;background:rgba(33,150,243,0.08);border:0.5px solid rgba(79,195,247,0.15);border-radius:8px;font-size:11px;color:#90caf9;line-height:1.6">
+    🔒 <strong>Privacy</strong> — L'app non raccoglie né trasmette dati personali.
+    <a href="./privacy-policy.html" style="color:#4fc3f7;text-decoration:underline;display:inline-block;margin-top:3px">Leggi la Privacy Policy</a>
   </div>
 </div>
 
@@ -450,7 +454,7 @@ function buildGlossary(){
   var out=document.getElementById('glossCard');if(out.innerHTML)return;
   var html='';
   for(var i=0;i<GLOSSARY.length;i++){var g=GLOSSARY[i];html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl('+i+')"><span class="gl-icon">'+g.icon+'</span><span class="gl-term">'+g.term+'</span><span class="gl-arr" id="ga'+i+'">›</span></div><div class="gl-body" id="gb'+i+'">'+g.body+'<br><span class="gl-tag '+g.tag.cls+'">'+g.tag.text+'</span></div></div>';}
-  html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(99)"><span class="gl-icon">ℹ️</span><span class="gl-term">Info &amp; Crediti</span><span class="gl-arr" id="ga99">›</span></div><div class="gl-body" id="gb99"><strong>Sviluppato da</strong><br>👤 Cristiano Cinotti — concept &amp; design<br>🤖 Claude (Anthropic) — sviluppo<br><br><strong>Fonti</strong><br>🇪🇺 EFSA · 🌍 FAO · 🌊 MEDPOL/UNEP-MAP · 🏛️ ISPRA/ARPA · ❄️ HELCOM/OSPAR · 🇺🇸 NOAA/FDA<br><br><span style="font-size:11px;color:#ef9a9a">⚠️ Dati indicativi al 2026.</span><br><span class="gl-tag info">v 0.75 · 2026</span></div></div>';
+  html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(99)"><span class="gl-icon">ℹ️</span><span class="gl-term">Info &amp; Crediti</span><span class="gl-arr" id="ga99">›</span></div><div class="gl-body" id="gb99"><strong>Sviluppato da</strong><br>👤 Cristiano Cinotti<br><br><strong>Fonti</strong><br>🇪🇺 EFSA · 🌍 FAO · 🌊 MEDPOL/UNEP-MAP · 🏛️ ISPRA/ARPA · ❄️ HELCOM/OSPAR · 🇺🇸 NOAA/FDA<br><br><span style="font-size:11px;color:#ef9a9a">⚠️ Dati indicativi al 2026.</span><br><span class="gl-tag info">v 0.75 · 2026</span></div></div>';
   out.innerHTML=html;
 }
 function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElementById('ga'+i);var op=b.classList.contains('open');b.className='gl-body'+(op?'':' open');a.className='gl-arr'+(op?'':' open');}
