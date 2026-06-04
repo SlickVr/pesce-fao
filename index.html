@@ -211,9 +211,12 @@ input::placeholder{color:var(--td)}
 
 </div>
 
-<footer style="text-align:center;padding:0.5rem 1rem 0;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · v 0.75<br>
-  <span onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="cursor:pointer;text-decoration:underline;color:rgba(144,202,249,0.9)">Info &amp; crediti</span>
+<footer style="text-align:center;padding:0.75rem 1rem 0.25rem;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
+  © 2026 Cristiano Cinotti · v 0.75
+  <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;margin-bottom:2px">
+    <button onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.35);background:rgba(13,59,110,0.6);color:#90caf9;font-size:12px;font-weight:500;cursor:pointer;letter-spacing:0.02em">ℹ️ Info &amp; crediti</button>
+    <a href="https://www.paypal.com/donate?business=cristiano.cino%40gmail.com&currency_code=EUR&item_name=Pesce+Sicuro+%E2%80%94+supporta+il+progetto" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:0.5px solid rgba(33,150,243,0.5);background:rgba(0,66,153,0.55);color:#90caf9;font-size:12px;font-weight:500;text-decoration:none;letter-spacing:0.02em">💙 Supporta il progetto</a>
+  </div>
 </footer>
 <div id="creditsPanel" style="display:none;margin:0.5rem 1rem 1.5rem;border-radius:16px;background:linear-gradient(160deg,#0d3b6e,#0a2540);border:0.5px solid rgba(79,195,247,0.3);padding:1.25rem">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
@@ -223,7 +226,7 @@ input::placeholder{color:var(--td)}
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Sviluppato da</div>
   <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;margin-bottom:12px;border:0.5px solid rgba(79,195,247,0.12)">
     <div style="font-size:13px;color:#e8f4fd">👤 <strong>Cristiano Cinotti</strong></div>
-    <div style="font-size:11px;color:#90caf9;margin-top:4px;line-height:1.5">📧 slickvr@gmail.com</div>
+    <div style="font-size:11px;color:#90caf9;margin-top:4px;line-height:1.5">📧 slickvr@proton.me</div>
   </div>
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Fonti dei dati</div>
   <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
