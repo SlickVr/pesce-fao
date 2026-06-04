@@ -175,19 +175,13 @@ input::placeholder{color:var(--td)}
   </div>
 
   <div class="page" id="pageMappa">
-    <div class="card" style="padding:10px">
+    <div class="card">
       <div class="map-legend">
         <div class="leg-item"><div class="leg-dot" style="background:var(--g)"></div>Basso</div>
         <div class="leg-item"><div class="leg-dot" style="background:var(--y)"></div>Medio</div>
         <div class="leg-item"><div class="leg-dot" style="background:var(--or)"></div>Alto</div>
         <div class="leg-item"><div class="leg-dot" style="background:var(--r)"></div>Molto alto</div>
       </div>
-      <div style="width:100%;overflow:hidden;border-radius:10px;border:0.5px solid var(--border)">
-        <svg id="worldMap" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#0a2540"></svg>
-      </div>
-      <div id="mapTooltip" style="display:none;margin-top:10px;padding:10px 12px;background:rgba(13,59,110,0.9);border:0.5px solid var(--border);border-radius:10px;font-size:13px;color:var(--tp)"></div>
-    </div>
-    <div class="card">
       <div class="map-filter">
         <div class="mf-btn fall factive" onclick="filterMap('all',this)">Tutte</div>
         <div class="mf-btn fgreen" onclick="filterMap('green',this)">🟢 Basso</div>
@@ -195,8 +189,8 @@ input::placeholder{color:var(--td)}
         <div class="mf-btn forange" onclick="filterMap('orange',this)">🟠 Alto</div>
         <div class="mf-btn fred" onclick="filterMap('red',this)">🔴 Molto alto</div>
       </div>
-      <div id="mapList"></div>
     </div>
+    <div id="mapGroups"></div>
   </div>
 
   <div class="page" id="pageGlossario">
@@ -206,7 +200,7 @@ input::placeholder{color:var(--td)}
 </div><!-- /content -->
 
 <footer style="text-align:center;padding:0.5rem 1rem 0;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · Sviluppo Claude (Anthropic) · v 0.71<br>
+  © 2026 Cristiano Cinotti · Sviluppo Claude (Anthropic) · v 0.72<br>
   <span onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="cursor:pointer;text-decoration:underline;color:rgba(144,202,249,0.9)">Info &amp; crediti</span>
 </footer>
 
@@ -337,36 +331,157 @@ function renderSpDet(){
   out.innerHTML=html;
 }
 
-// MAPPA
-function lon2x(l){return(l+180)/360*1000;}
-function lat2y(l){return(85-l)/170*500;}
-var FAO_RECTS={"18":[-180,90,180,62],"27":[-42,80,68,36],"31":[-100,35,-20,0],"34":[-20,36,20,-5],"41":[-65,5,-20,-60],"47":[20,5,45,-40],"48":[-65,-40,30,-90],"51":[20,30,80,-35],"57":[80,30,150,-35],"58":[30,-40,150,-90],"61":[100,65,180,20],"67":[-180,65,-100,30],"71":[100,20,180,-10],"77":[-180,30,-70,-5],"81":[150,-10,180,-60],"87":[-120,-5,-65,-60],"88":[-180,-55,180,-90],"37":[-6,48,42,25]};
-var colorFill={green:'rgba(67,160,71,0.38)',yellow:'rgba(249,168,37,0.38)',orange:'rgba(239,108,0,0.45)',red:'rgba(229,57,53,0.50)'};
-var colorStroke={green:'rgba(100,200,100,0.7)',yellow:'rgba(255,200,50,0.7)',orange:'rgba(255,140,0,0.8)',red:'rgba(240,80,80,0.85)'};
-function buildContinentPaths(){
-  var shapes=[[[-168,72],[-140,72],[-120,60],[-100,50],[-83,46],[-83,30],[-90,18],[-105,18],[-118,26],[-125,32],[-130,50],[-138,58],[-150,60],[-162,62],[-168,72]],[[-45,85],[-15,83],[-8,76],[-18,70],[-42,64],[-55,65],[-60,72],[-52,80],[-45,85]],[[-82,12],[-62,12],[-50,5],[-35,-8],[-35,-25],[-52,-32],[-68,-54],[-76,-50],[-80,-30],[-82,12]],[[-10,60],[5,60],[10,55],[20,55],[30,62],[30,70],[25,72],[0,70],[-10,70],[-10,60]],[[-5,44],[25,44],[30,48],[25,52],[15,52],[5,52],[-5,48],[-5,44]],[[-17,15],[5,36],[35,36],[43,12],[51,12],[42,-12],[34,-35],[18,-35],[12,-18],[-2,-5],[-17,15]],[[26,72],[60,72],[100,72],[140,72],[180,70],[180,50],[160,40],[140,36],[135,34],[130,30],[120,22],[100,20],[80,24],[60,22],[50,28],[40,36],[30,40],[26,48],[26,72]],[[36,36],[60,22],[58,14],[44,10],[36,14],[36,36]],[[68,24],[80,30],[92,24],[80,10],[68,24]],[[100,20],[108,20],[108,10],[100,4],[96,16],[100,20]],[[114,-22],[130,-14],[138,-12],[148,-18],[152,-25],[148,-38],[138,-38],[130,-32],[116,-34],[114,-22]],[[166,-45],[174,-41],[178,-38],[174,-36],[168,-44],[166,-45]],[[-180,-70],[-120,-68],[-60,-68],[0,-68],[60,-68],[120,-68],[180,-68],[180,-90],[-180,-90],[-180,-70]]];
-  var out='';
-  for(var i=0;i<shapes.length;i++){var pts=shapes[i];var d='';for(var j=0;j<pts.length;j++){var px=lon2x(pts[j][0]).toFixed(1);var py=lat2y(pts[j][1]).toFixed(1);d+=(j===0?'M':'L')+px+','+py+' ';}d+='Z';out+='<path d="'+d+'" fill="#1e3d5c" stroke="#0d2d4a" stroke-width="0.7"/>';}
-  return out;
+// MAPPA — lista raggruppata per oceano con mini-mappa SVG
+var OCEAN_GROUPS = [
+  {
+    id:"atl_n", name:"Atlantico Nord", emoji:"🌊",
+    // mini viewBox 400x200, rettangolo evidenziato in coordinate lon/lat→x/y semplificata
+    highlight:[-100,80,70,0], // lonMin,latMax,lonMax,latMin
+    zones:["27","31","34"]
+  },
+  {
+    id:"atl_s", name:"Atlantico Sud", emoji:"🌊",
+    highlight:[-65,5,45,-90],
+    zones:["41","47","48"]
+  },
+  {
+    id:"medit", name:"Mediterraneo e Mar Nero", emoji:"🏖️",
+    highlight:[-10,50,45,20],
+    zones:["37","37.1","37.2","37.2.1","37.3","37.4"]
+  },
+  {
+    id:"ind", name:"Oceano Indiano", emoji:"🌊",
+    highlight:[20,35,150,-90],
+    zones:["51","57","58"]
+  },
+  {
+    id:"pac_n", name:"Pacifico Nord", emoji:"🌊",
+    highlight:[-180,70,180,20],
+    zones:["61","67","71","77"]
+  },
+  {
+    id:"pac_s", name:"Pacifico Sud", emoji:"🌊",
+    highlight:[-180,5,180,-90],
+    zones:["81","87","88"]
+  },
+  {
+    id:"artico", name:"Artico", emoji:"❄️",
+    highlight:[-180,90,180,60],
+    zones:["18"]
+  }
+];
+
+// Mini-mappa SVG: proiezione equirettangolare semplificata 300x150
+function miniLon2x(l){return(l+180)/360*300;}
+function miniLat2y(l){return(85-l)/170*150;}
+
+// Continenti semplificati per mini-mappa
+var MINI_CONTINENTS=[
+  [[-168,72],[-140,72],[-120,60],[-100,50],[-83,30],[-90,18],[-105,18],[-125,32],[-130,50],[-150,60],[-168,72]],
+  [[-82,12],[-62,12],[-50,5],[-35,-25],[-52,-32],[-68,-54],[-80,-30],[-82,12]],
+  [[-10,60],[5,60],[25,52],[30,62],[25,72],[-10,70],[-10,60]],
+  [[-5,44],[25,44],[30,48],[15,52],[-5,48],[-5,44]],
+  [[-17,15],[5,36],[35,36],[43,12],[51,12],[42,-12],[34,-35],[18,-35],[-2,-5],[-17,15]],
+  [[26,72],[60,72],[100,72],[140,72],[180,70],[180,50],[160,40],[140,36],[130,30],[120,22],[100,20],[80,24],[60,22],[50,28],[40,36],[26,48],[26,72]],
+  [[36,36],[60,22],[58,14],[44,10],[36,14],[36,36]],
+  [[68,24],[80,30],[92,24],[80,10],[68,24]],
+  [[100,20],[108,20],[108,10],[100,4],[96,16],[100,20]],
+  [[114,-22],[130,-14],[148,-18],[152,-25],[148,-38],[130,-32],[116,-34],[114,-22]],
+  [[-45,85],[-15,83],[-8,76],[-18,70],[-42,64],[-55,65],[-60,72],[-52,80],[-45,85]],
+  [[-180,-70],[-120,-68],[-60,-68],[0,-68],[60,-68],[120,-68],[180,-68],[180,-90],[-180,-90],[-180,-70]]
+];
+
+function buildMiniMap(highlight, zoneColor) {
+  var svg = '<svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:8px">';
+  // sfondo oceano
+  svg += '<rect width="300" height="150" fill="#0d2d4a"/>';
+  // zona evidenziata
+  var hx1=miniLon2x(highlight[0]),hy1=miniLat2y(highlight[1]),hx2=miniLon2x(highlight[2]),hy2=miniLat2y(highlight[3]);
+  var hrx=Math.min(hx1,hx2),hry=Math.min(hy1,hy2),hrw=Math.abs(hx2-hx1),hrh=Math.abs(hy2-hy1);
+  svg += '<rect x="'+hrx.toFixed(1)+'" y="'+hry.toFixed(1)+'" width="'+hrw.toFixed(1)+'" height="'+hrh.toFixed(1)+'" fill="'+zoneColor+'" rx="2"/>';
+  // continenti
+  for(var i=0;i<MINI_CONTINENTS.length;i++){
+    var pts=MINI_CONTINENTS[i],d='';
+    for(var j=0;j<pts.length;j++){d+=(j===0?'M':'L')+miniLon2x(pts[j][0]).toFixed(1)+','+miniLat2y(pts[j][1]).toFixed(1)+' ';}
+    svg+='<path d="'+d+'Z" fill="#1e3d5c" stroke="#0d2d4a" stroke-width="0.5"/>';
+  }
+  // equatore
+  svg+='<line x1="0" y1="'+miniLat2y(0)+'" x2="300" y2="'+miniLat2y(0)+'" stroke="rgba(79,195,247,0.2)" stroke-width="0.5" stroke-dasharray="3,3"/>';
+  svg+='</svg>';
+  return svg;
 }
-var mapBuilt=false;
-function buildWorldMap(){
-  if(mapBuilt)return;mapBuilt=true;
-  var svg=document.getElementById('worldMap');var html='';
-  html+='<rect width="1000" height="500" fill="#0d2d4a"/>';
-  for(var lat=-60;lat<=60;lat+=30){var y=lat2y(lat);html+='<line x1="0" y1="'+y+'" x2="1000" y2="'+y+'" stroke="rgba(79,195,247,0.07)" stroke-width="0.5"/>';}
-  for(var lon=-150;lon<=150;lon+=30){var x=lon2x(lon);html+='<line x1="'+x+'" y1="0" x2="'+x+'" y2="500" stroke="rgba(79,195,247,0.07)" stroke-width="0.5"/>';}
-  var zkeys=Object.keys(FAO_RECTS);
-  for(var i=0;i<zkeys.length;i++){var code=zkeys[i];var d=DATA[code];if(!d)continue;var r=FAO_RECTS[code];var x1=lon2x(r[0]),y1=lat2y(r[1]),x2=lon2x(r[2]),y2=lat2y(r[3]);var rx=Math.min(x1,x2),ry=Math.min(y1,y2),rw=Math.abs(x2-x1),rh=Math.abs(y2-y1);var cx=(rx+rw/2).toFixed(1),cy=(ry+rh/2+4).toFixed(1);html+='<rect x="'+rx.toFixed(1)+'" y="'+ry.toFixed(1)+'" width="'+rw.toFixed(1)+'" height="'+rh.toFixed(1)+'" rx="3" fill="'+colorFill[d.riskColor]+'" stroke="'+colorStroke[d.riskColor]+'" stroke-width="1.2" style="cursor:pointer" onclick="mapZoneClick(\''+code+'\')" onmouseenter="mapZoneHover(\''+code+'\',this)" onmouseleave="mapZoneOut(this)"/>';html+='<text x="'+cx+'" y="'+cy+'" text-anchor="middle" font-size="10" font-weight="700" fill="rgba(255,255,255,0.9)" style="pointer-events:none">'+code+'</text>';}
-  html+=buildContinentPaths();
-  html+='<line x1="0" y1="'+lat2y(0)+'" x2="1000" y2="'+lat2y(0)+'" stroke="rgba(79,195,247,0.25)" stroke-width="0.8" stroke-dasharray="5,5"/>';
-  svg.innerHTML=html;
+
+var riskColors = {
+  green:'rgba(67,160,71,0.5)',
+  yellow:'rgba(249,168,37,0.45)',
+  orange:'rgba(239,108,0,0.55)',
+  red:'rgba(229,57,53,0.6)'
+};
+
+var curMapFilter = 'all';
+
+function buildMapGroups(filter) {
+  curMapFilter = filter;
+  var out = document.getElementById('mapGroups');
+  var html = '';
+
+  for (var g = 0; g < OCEAN_GROUPS.length; g++) {
+    var grp = OCEAN_GROUPS[g];
+    // filtra zone del gruppo
+    var visibleZones = [];
+    for (var z = 0; z < grp.zones.length; z++) {
+      var code = grp.zones[z];
+      if (!DATA[code]) continue;
+      if (filter !== 'all' && DATA[code].riskColor !== filter) continue;
+      visibleZones.push(code);
+    }
+    if (visibleZones.length === 0) continue;
+
+    // colore dominante del gruppo (zona con rischio peggiore)
+    var worstRank = 0;
+    var worstColor = 'green';
+    var rankMap = {green:0,yellow:1,orange:2,red:3};
+    for (var z = 0; z < visibleZones.length; z++) {
+      var rc = DATA[visibleZones[z]].riskColor;
+      if ((rankMap[rc]||0) > worstRank) { worstRank=rankMap[rc]; worstColor=rc; }
+    }
+
+    html += '<div class="card" style="padding:0;overflow:hidden;margin-bottom:12px">';
+    // mini-mappa
+    html += '<div style="position:relative">';
+    html += buildMiniMap(grp.highlight, riskColors[worstColor]);
+    html += '<div style="position:absolute;bottom:8px;left:10px;font-size:15px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.8)">'+grp.emoji+' '+grp.name+'</div>';
+    html += '</div>';
+    // lista zone
+    html += '<div style="padding:8px 12px 10px">';
+    for (var z = 0; z < visibleZones.length; z++) {
+      var code = visibleZones[z];
+      var d = DATA[code];
+      var pillColors = {green:'var(--g)',yellow:'var(--y)',orange:'var(--or)',red:'var(--r)'};
+      html += '<div class="map-row" style="margin-bottom:6px" onclick="renderZone(\''+code+'\');showPage(\'ricerca\')">';
+      html += '<div class="map-flag">'+d.flag+'</div>';
+      html += '<div class="map-info"><div class="map-code">FAO '+code+'</div><div class="map-name">'+d.zoneName.replace(/^\d[\d.]*\s*-\s*/,'')+'</div><div class="map-geo">'+d.zoneSub+'</div></div>';
+      html += '<div style="width:10px;height:10px;border-radius:50%;background:'+pillColors[d.riskColor]+';box-shadow:0 0 6px '+pillColors[d.riskColor]+';flex-shrink:0"></div>';
+      html += '</div>';
+    }
+    html += '</div></div>';
+  }
+
+  if (!html) html = '<div class="card"><p style="color:var(--ts);font-size:14px;text-align:center;padding:1rem">Nessuna zona per questo filtro.</p></div>';
+  out.innerHTML = html;
 }
+
+function filterMap(f, el) {
+  var btns = document.querySelectorAll('.mf-btn');
+  for (var i = 0; i < btns.length; i++) btns[i].classList.remove('factive');
+  el.classList.add('factive');
+  buildMapGroups(f);
+}
+
+function buildWorldMap() { buildMapGroups('all'); }
 function mapZoneClick(code){renderZone(code);showPage('ricerca');}
-function mapZoneHover(code,el){var d=DATA[code];if(!d)return;el.setAttribute('opacity','0.6');var tt=document.getElementById('mapTooltip');var rl={basso:'🟢 Rischio basso',medio:'🟡 Rischio medio',alto:'🟠 Rischio alto','molto alto':'🔴 Rischio molto alto'};tt.innerHTML='<strong>'+d.zoneName+'</strong><br><span style="opacity:0.8">'+d.zoneSub+'</span><br><span style="font-size:12px;opacity:0.7">'+(rl[d.riskLevel]||d.riskLevel)+' · Tocca per i dettagli</span>';tt.style.display='block';}
-function mapZoneOut(el){el.setAttribute('opacity','1');}
-function buildMapList(filter){var out=document.getElementById('mapList');var html='';for(var i=0;i<ORDER.length;i++){var k=ORDER[i];if(!DATA[k])continue;var d=DATA[k];if(filter!=='all'&&d.riskColor!==filter)continue;html+='<div class="map-row" onclick="renderZone(\''+k+'\');showPage(\'ricerca\')"><div class="map-flag">'+d.flag+'</div><div class="map-info"><div class="map-code">FAO '+k+'</div><div class="map-name">'+d.zoneName.replace(/^\d[\d.]*\s*-\s*/,'')+'</div><div class="map-geo">'+d.zoneSub+'</div></div><div class="map-pill '+d.riskColor+'"></div></div>';}out.innerHTML=html||'<p style="color:var(--ts);font-size:14px;text-align:center;padding:1rem">Nessuna zona.</p>';}
-function filterMap(f,el){var btns=document.querySelectorAll('.mf-btn');for(var i=0;i<btns.length;i++)btns[i].classList.remove('factive');el.classList.add('factive');buildMapList(f);}
+function mapZoneHover(){}
+function mapZoneOut(){}
 
 // GLOSSARIO
 function buildGlossary(){
@@ -374,7 +489,7 @@ function buildGlossary(){
   var html='';
   for(var i=0;i<GLOSSARY.length;i++){var g=GLOSSARY[i];html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl('+i+')"><span class="gl-icon">'+g.icon+'</span><span class="gl-term">'+g.term+'</span><span class="gl-arr" id="ga'+i+'">›</span></div><div class="gl-body" id="gb'+i+'">'+g.body+'<br><span class="gl-tag '+g.tag.cls+'">'+g.tag.text+'</span></div></div>';}
   // Crediti in fondo al glossario
-  html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(99)"><span class="gl-icon">ℹ️</span><span class="gl-term">Info &amp; Crediti</span><span class="gl-arr" id="ga99">›</span></div><div class="gl-body" id="gb99"><strong>Sviluppato da</strong><br>👤 Cristiano Cinotti — concept &amp; design<br>🤖 Claude (Anthropic) — sviluppo<br><br><strong>Fonti</strong><br>🇪🇺 EFSA · 🌍 FAO · 🌊 MEDPOL/UNEP-MAP · 🏛️ ISPRA/ARPA · ❄️ HELCOM/OSPAR · 🇺🇸 NOAA/FDA<br><br><span style="font-size:11px;color:#ef9a9a">⚠️ Dati indicativi al 2026. Per decisioni sanitarie fare riferimento a EFSA e Ministero della Salute.</span><br><span class="gl-tag info">v 0.71 · 2026</span></div></div>';
+  html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(99)"><span class="gl-icon">ℹ️</span><span class="gl-term">Info &amp; Crediti</span><span class="gl-arr" id="ga99">›</span></div><div class="gl-body" id="gb99"><strong>Sviluppato da</strong><br>👤 Cristiano Cinotti — concept &amp; design<br>🤖 Claude (Anthropic) — sviluppo<br><br><strong>Fonti</strong><br>🇪🇺 EFSA · 🌍 FAO · 🌊 MEDPOL/UNEP-MAP · 🏛️ ISPRA/ARPA · ❄️ HELCOM/OSPAR · 🇺🇸 NOAA/FDA<br><br><span style="font-size:11px;color:#ef9a9a">⚠️ Dati indicativi al 2026. Per decisioni sanitarie fare riferimento a EFSA e Ministero della Salute.</span><br><span class="gl-tag info">v 0.72 · 2026</span></div></div>';
   out.innerHTML=html;
 }
 function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElementById('ga'+i);var op=b.classList.contains('open');b.className='gl-body'+(op?'':' open');a.className='gl-arr'+(op?'':' open');}
