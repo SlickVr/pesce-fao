@@ -31,9 +31,10 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--od);min-hei
 @keyframes rise{0%{transform:translateY(100%) scale(0);opacity:0}20%{opacity:1}100%{transform:translateY(-200%) scale(1);opacity:0}}
 .wave{position:absolute;bottom:-1px;left:0;right:0;height:clamp(30px,5vw,48px)}
 .nav-wrap{background:var(--od);padding:10px 12px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.3)}
-.nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:10px}
-.nav::-webkit-scrollbar{display:none}
-.nav-tab{flex-shrink:0;padding:clamp(9px,2vw,12px) clamp(14px,3vw,20px);font-size:clamp(14px,3.5vw,16px);font-weight:500;border-radius:24px;border:0.5px solid var(--border);background:rgba(13,59,110,0.5);color:var(--ts);cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.nav{display:flex;gap:6px;padding-bottom:10px}
+.nav-tab{flex:1;padding:8px 4px;font-size:clamp(10px,2.5vw,12px);font-weight:500;border-radius:14px;border:0.5px solid var(--border);background:rgba(13,59,110,0.5);color:var(--ts);cursor:pointer;transition:all 0.2s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1.2}
+.nav-tab .tab-icon{font-size:clamp(18px,5vw,22px)}
+.nav-tab .tab-label{font-size:clamp(10px,2.5vw,11px);white-space:nowrap}
 .nav-tab.active{background:linear-gradient(135deg,var(--ob),var(--og));color:#fff;border-color:transparent;box-shadow:0 2px 12px rgba(33,150,243,0.4)}
 .content{padding:clamp(8px,2vw,12px) clamp(8px,3vw,16px) clamp(16px,4vw,32px)}
 .page{display:none}.page.active{display:block}
@@ -141,10 +142,10 @@ input::placeholder{color:var(--td)}
 
 <div class="nav-wrap">
   <div class="nav" id="mainNav">
-    <div class="nav-tab active" onclick="showPage('ricerca')">🔍 Ricerca</div>
-    <div class="nav-tab" onclick="showPage('specie')">🐠 Specie</div>
-    <div class="nav-tab" onclick="showPage('mappa')">🌍 Mappa</div>
-    <div class="nav-tab" onclick="showPage('glossario')">📖 Glossario</div>
+    <div class="nav-tab active" onclick="showPage('ricerca')"><span class="tab-icon">🔍</span><span class="tab-label">Ricerca</span></div>
+    <div class="nav-tab" onclick="showPage('specie')"><span class="tab-icon">🐠</span><span class="tab-label">Specie</span></div>
+    <div class="nav-tab" onclick="showPage('mappa')"><span class="tab-icon">🌍</span><span class="tab-label">Mappa</span></div>
+    <div class="nav-tab" onclick="showPage('glossario')"><span class="tab-icon">📖</span><span class="tab-label">Glossario</span></div>
   </div>
 </div>
 
@@ -205,7 +206,7 @@ input::placeholder{color:var(--td)}
 </div><!-- /content -->
 
 <footer style="text-align:center;padding:0.5rem 1rem 0;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · Sviluppo Claude (Anthropic)<br>
+  © 2026 Cristiano Cinotti · Sviluppo Claude (Anthropic) · v 0.71<br>
   <span onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="cursor:pointer;text-decoration:underline;color:rgba(144,202,249,0.9)">Info &amp; crediti</span>
 </footer>
 
@@ -373,7 +374,7 @@ function buildGlossary(){
   var html='';
   for(var i=0;i<GLOSSARY.length;i++){var g=GLOSSARY[i];html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl('+i+')"><span class="gl-icon">'+g.icon+'</span><span class="gl-term">'+g.term+'</span><span class="gl-arr" id="ga'+i+'">›</span></div><div class="gl-body" id="gb'+i+'">'+g.body+'<br><span class="gl-tag '+g.tag.cls+'">'+g.tag.text+'</span></div></div>';}
   // Crediti in fondo al glossario
-  html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(99)"><span class="gl-icon">ℹ️</span><span class="gl-term">Info &amp; Crediti</span><span class="gl-arr" id="ga99">›</span></div><div class="gl-body" id="gb99"><strong>Sviluppato da</strong><br>👤 Cristiano Cinotti — concept &amp; design<br>🤖 Claude (Anthropic) — sviluppo<br><br><strong>Fonti</strong><br>🇪🇺 EFSA · 🌍 FAO · 🌊 MEDPOL/UNEP-MAP · 🏛️ ISPRA/ARPA · ❄️ HELCOM/OSPAR · 🇺🇸 NOAA/FDA<br><br><span style="font-size:11px;color:#ef9a9a">⚠️ Dati indicativi al 2026. Per decisioni sanitarie fare riferimento a EFSA e Ministero della Salute.</span><br><span class="gl-tag info">v3.0 · 2026</span></div></div>';
+  html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(99)"><span class="gl-icon">ℹ️</span><span class="gl-term">Info &amp; Crediti</span><span class="gl-arr" id="ga99">›</span></div><div class="gl-body" id="gb99"><strong>Sviluppato da</strong><br>👤 Cristiano Cinotti — concept &amp; design<br>🤖 Claude (Anthropic) — sviluppo<br><br><strong>Fonti</strong><br>🇪🇺 EFSA · 🌍 FAO · 🌊 MEDPOL/UNEP-MAP · 🏛️ ISPRA/ARPA · ❄️ HELCOM/OSPAR · 🇺🇸 NOAA/FDA<br><br><span style="font-size:11px;color:#ef9a9a">⚠️ Dati indicativi al 2026. Per decisioni sanitarie fare riferimento a EFSA e Ministero della Salute.</span><br><span class="gl-tag info">v 0.71 · 2026</span></div></div>';
   out.innerHTML=html;
 }
 function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElementById('ga'+i);var op=b.classList.contains('open');b.className='gl-body'+(op?'':' open');a.className='gl-arr'+(op?'':' open');}
