@@ -19,14 +19,13 @@
   --border:rgba(79,195,247,0.2);--border2:rgba(79,195,247,0.12);
   --g:#43a047;--y:#f9a825;--or:#ef6c00;--r:#e53935;
 }
-html{font-size:16px}
+html{font-size:18px}
 body{font-family:system-ui,-apple-system,sans-serif;background:var(--od);min-height:100vh;color:var(--tp);overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
 .hdr{position:relative;background:linear-gradient(160deg,#0a2540 0%,#0d3b6e 50%,#1565a8 100%);padding:clamp(1rem,4vw,2rem) 1rem clamp(2rem,6vw,4rem);text-align:center;overflow:hidden}
 .hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(79,195,247,0.15) 0%,transparent 70%)}
 .hdr-fish{font-size:clamp(32px,8vw,48px);display:block;margin-bottom:6px;filter:drop-shadow(0 0 16px rgba(79,195,247,0.6));animation:float 3s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
 .hdr h1{font-size:clamp(16px,5vw,22px);font-weight:700;color:#fff;text-shadow:0 0 20px rgba(79,195,247,0.5)}
-.hdr p{font-size:clamp(11px,3vw,13px);color:var(--ts);margin-top:4px}
 .bubbles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .bubble{position:absolute;border-radius:50%;background:rgba(79,195,247,0.12);animation:rise linear infinite}
 @keyframes rise{0%{transform:translateY(100%) scale(0);opacity:0}20%{opacity:1}100%{transform:translateY(-200%) scale(1);opacity:0}}
@@ -34,15 +33,12 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--od);min-hei
 .nav-wrap{background:var(--od);padding:10px 12px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.3)}
 .nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:10px}
 .nav::-webkit-scrollbar{display:none}
-.nav-tab{flex-shrink:0;padding:clamp(6px,1.5vw,9px) clamp(10px,2.5vw,16px);font-size:clamp(12px,3vw,14px);font-weight:500;border-radius:20px;border:0.5px solid var(--border);background:rgba(13,59,110,0.5);color:var(--ts);cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.nav-tab{flex-shrink:0;padding:clamp(9px,2vw,12px) clamp(14px,3vw,20px);font-size:clamp(14px,3.5vw,16px);font-weight:500;border-radius:24px;border:0.5px solid var(--border);background:rgba(13,59,110,0.5);color:var(--ts);cursor:pointer;transition:all 0.2s;white-space:nowrap}
 .nav-tab.active{background:linear-gradient(135deg,var(--ob),var(--og));color:#fff;border-color:transparent;box-shadow:0 2px 12px rgba(33,150,243,0.4)}
 .content{padding:clamp(8px,2vw,12px) clamp(8px,3vw,16px) clamp(16px,4vw,32px)}
 .page{display:none}.page.active{display:block}
 .card{background:var(--card);backdrop-filter:blur(12px);border:0.5px solid var(--border);border-radius:16px;padding:clamp(12px,3vw,18px);margin-bottom:clamp(8px,2vw,14px)}
-.stabs{display:flex;gap:5px;margin-bottom:clamp(10px,2.5vw,14px);background:rgba(10,37,64,0.6);border-radius:12px;padding:3px}
-.stab{flex:1;padding:clamp(7px,1.5vw,10px) 4px;font-size:clamp(11px,2.8vw,14px);font-weight:500;text-align:center;border-radius:8px;border:none;background:transparent;color:var(--ts);cursor:pointer;transition:all 0.25s;white-space:nowrap}
-.stab.active{background:linear-gradient(135deg,var(--ob),var(--og));color:#fff;box-shadow:0 2px 10px rgba(33,150,243,0.35)}
-select,input[type=text]{width:100%;padding:clamp(9px,2vw,12px) clamp(10px,2.5vw,14px);font-size:16px;border:0.5px solid rgba(79,195,247,0.3);border-radius:8px;background:rgba(10,37,64,0.7);color:var(--tp);margin-bottom:10px;outline:none;transition:border-color 0.2s;-webkit-appearance:none;max-width:100%}
+select,input[type=text]{width:100%;padding:clamp(12px,2.5vw,15px) clamp(12px,3vw,16px);font-size:17px;border:0.5px solid rgba(79,195,247,0.3);border-radius:10px;background:rgba(10,37,64,0.7);color:var(--tp);margin-bottom:12px;outline:none;transition:border-color 0.2s;-webkit-appearance:none;max-width:100%}
 select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234fc3f7' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
 select option{background:#0e3a6e;color:#e8f4fd}
 select:focus,input:focus{border-color:var(--og);box-shadow:0 0 0 3px rgba(79,195,247,0.15)}
@@ -50,9 +46,7 @@ input::placeholder{color:var(--td)}
 .divider{text-align:center;font-size:11px;color:var(--ts);margin:2px 0 10px;position:relative;opacity:0.6}
 .divider::before,.divider::after{content:'';position:absolute;top:50%;width:42%;height:0.5px;background:var(--border)}
 .divider::before{left:0}.divider::after{right:0}
-.pane{display:none}.pane.active{display:block}
 .warn{display:none;font-size:13px;color:#ef9a9a;background:rgba(183,28,28,0.2);border:0.5px solid rgba(239,57,57,0.3);border-radius:8px;padding:8px 12px;margin-bottom:10px}
-.hint{font-size:11px;color:var(--ts);margin-bottom:8px;opacity:0.8;line-height:1.5}
 .result-card{display:none;animation:slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1)}
 @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .risk-hero{border-radius:12px;padding:clamp(12px,3vw,18px);margin-bottom:12px;position:relative;overflow:hidden}
@@ -72,27 +66,18 @@ input::placeholder{color:var(--td)}
 .ind-grid{display:flex;flex-direction:column;gap:6px}
 .ind-row{background:var(--card2);border:0.5px solid var(--border2);border-radius:8px;padding:clamp(8px,2vw,11px) clamp(10px,2.5vw,13px);display:flex;align-items:center;gap:8px}
 .ind-wrap{flex:1;min-width:0}
-.ind-name{font-size:clamp(12px,3vw,13px);font-weight:500;color:var(--tp);margin-bottom:3px}
-.ind-note{font-size:clamp(10px,2.5vw,11px);color:var(--ts);opacity:0.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ind-badge{flex-shrink:0;font-size:clamp(10px,2.5vw,11px);font-weight:700;padding:2px 8px;border-radius:5px;white-space:nowrap;margin-left:4px}
+.ind-name{font-size:clamp(14px,3.5vw,15px);font-weight:500;color:var(--tp);margin-bottom:3px}
+.ind-note{font-size:clamp(12px,3vw,13px);color:var(--ts);opacity:0.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ind-badge{flex-shrink:0;font-size:clamp(12px,3vw,13px);font-weight:700;padding:3px 10px;border-radius:5px;white-space:nowrap;margin-left:4px}
 .ind-low{background:rgba(27,94,32,0.4);color:#a5d6a7;border:0.5px solid rgba(67,160,71,0.3)}
 .ind-med{background:rgba(230,81,0,0.3);color:#ffcc80;border:0.5px solid rgba(249,168,37,0.3)}
 .ind-high{background:rgba(191,54,12,0.3);color:#ffab91;border:0.5px solid rgba(239,108,0,0.3)}
 .ind-vhigh{background:rgba(183,28,28,0.3);color:#ef9a9a;border:0.5px solid rgba(229,57,53,0.3)}
 .ind-icon{font-size:16px;flex-shrink:0;width:24px;text-align:center}
 .chips{display:flex;flex-wrap:wrap;gap:5px}
-.chip{font-size:clamp(11px,2.8vw,12px);padding:4px 10px;border-radius:20px;border:0.5px solid var(--border);background:rgba(21,101,168,0.3);color:var(--ts);cursor:pointer}
-.rec-box{background:var(--card2);border:0.5px solid var(--border);border-left:3px solid var(--og);border-radius:0 8px 8px 0;padding:clamp(10px,2.5vw,13px);font-size:clamp(12px,3vw,14px);color:var(--tp);line-height:1.7}
-.src-note{font-size:11px;color:var(--ts);text-align:center;margin-top:10px;opacity:0.6;line-height:1.5}
-.zone-rank{display:flex;align-items:center;gap:8px;padding:clamp(9px,2vw,12px);border-radius:8px;background:rgba(10,37,64,0.4);border:0.5px solid rgba(79,195,247,0.1);margin-bottom:6px;cursor:pointer}
-.zone-rank:active{opacity:0.7}
-.rdot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
-.rdot.green{background:var(--g);box-shadow:0 0 5px rgba(67,160,71,0.5)}
-.rdot.yellow{background:var(--y);box-shadow:0 0 5px rgba(249,168,37,0.5)}
-.rdot.orange{background:var(--or);box-shadow:0 0 5px rgba(239,108,0,0.5)}
-.rdot.red{background:var(--r);box-shadow:0 0 5px rgba(229,57,53,0.5)}
-.rname{font-size:clamp(12px,3vw,14px);font-weight:500;color:var(--tp);flex:1}
-.rsub{font-size:clamp(10px,2.5vw,11px);color:var(--ts);opacity:0.7;margin-top:1px}
+.chip{font-size:clamp(13px,3.2vw,14px);padding:6px 13px;border-radius:20px;border:0.5px solid var(--border);background:rgba(21,101,168,0.3);color:var(--ts);cursor:pointer}
+.rec-box{background:var(--card2);border:0.5px solid var(--border);border-left:3px solid var(--og);border-radius:0 8px 8px 0;padding:clamp(12px,3vw,15px);font-size:clamp(14px,3.5vw,16px);color:var(--tp);line-height:1.7}
+.src-note{font-size:13px;color:var(--ts);text-align:center;margin-top:10px;opacity:0.6;line-height:1.5}
 .sp-hero{border-radius:12px;padding:clamp(12px,3vw,18px);margin-bottom:12px;background:linear-gradient(135deg,#0d3b6e,#1565a8);border:0.5px solid rgba(79,195,247,0.3)}
 .sp-name{font-size:clamp(16px,4.5vw,20px);font-weight:700;color:#fff;margin-top:6px}
 .sp-latin{font-size:clamp(11px,2.8vw,13px);color:var(--ts);font-style:italic;margin-top:2px}
@@ -106,22 +91,6 @@ input::placeholder{color:var(--td)}
 .hg-med{background:linear-gradient(90deg,#f9a825,#ffca28)}
 .hg-high{background:linear-gradient(90deg,#ef6c00,#ffa726)}
 .hg-vhigh{background:linear-gradient(90deg,#e53935,#ef5350)}
-.mtag{font-size:clamp(10px,2.5vw,12px);padding:3px 9px;border-radius:5px;font-weight:500;display:inline-block;margin-bottom:5px}
-.mtag-w{background:rgba(67,160,71,0.2);color:#a5d6a7;border:0.5px solid rgba(67,160,71,0.3)}
-.mtag-f{background:rgba(33,150,243,0.2);color:#90caf9;border:0.5px solid rgba(33,150,243,0.3)}
-.ocean-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:14px;border-radius:12px;overflow:hidden;border:0.5px solid var(--border)}
-.og-cell{padding:clamp(4px,1.5vw,7px) 2px;text-align:center;cursor:pointer;transition:opacity 0.2s}
-.og-cell:active{opacity:0.7}
-.og-cell.green{background:rgba(27,94,32,0.5)}
-.og-cell.yellow{background:rgba(230,81,0,0.35)}
-.og-cell.orange{background:rgba(191,54,12,0.45)}
-.og-cell.red{background:rgba(183,28,28,0.5)}
-.og-cell.empty{background:rgba(10,37,64,0.3);cursor:default}
-.og-ocean{font-size:clamp(8px,2vw,10px);color:var(--ts);opacity:0.6;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.og-code{font-size:clamp(9px,2.2vw,12px);font-weight:700;color:#fff}
-.og-flag{font-size:clamp(10px,2.5vw,14px)}
-.og-dot{width:6px;height:6px;border-radius:50%;margin:2px auto 0}
-.og-dot.green{background:var(--g)}.og-dot.yellow{background:var(--y)}.og-dot.orange{background:var(--or)}.og-dot.red{background:var(--r)}
 .map-legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;padding:8px 12px;background:var(--card2);border-radius:8px;border:0.5px solid var(--border2)}
 .leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ts)}
 .leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -138,8 +107,8 @@ input::placeholder{color:var(--td)}
 .map-flag{font-size:clamp(18px,4.5vw,24px);flex-shrink:0;width:32px;text-align:center}
 .map-info{flex:1;min-width:0}
 .map-code{font-size:11px;font-weight:700;color:var(--og);letter-spacing:0.05em}
-.map-name{font-size:clamp(12px,3vw,14px);font-weight:500;color:var(--tp);margin-top:1px}
-.map-geo{font-size:clamp(10px,2.5vw,11px);color:var(--ts);opacity:0.7;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.map-name{font-size:clamp(14px,3.5vw,16px);font-weight:500;color:var(--tp);margin-top:1px}
+.map-geo{font-size:clamp(12px,3vw,13px);color:var(--ts);opacity:0.7;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .map-pill{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .map-pill.green{background:var(--g);box-shadow:0 0 6px rgba(67,160,71,0.5)}
 .map-pill.yellow{background:var(--y);box-shadow:0 0 6px rgba(249,168,37,0.5)}
@@ -148,21 +117,19 @@ input::placeholder{color:var(--td)}
 .gl-item{margin-bottom:8px;border-radius:12px;overflow:hidden;border:0.5px solid var(--border2)}
 .gl-hdr{display:flex;align-items:center;gap:8px;padding:clamp(10px,2.5vw,13px);background:rgba(13,59,110,0.6);cursor:pointer}
 .gl-icon{font-size:clamp(16px,4vw,20px);flex-shrink:0}
-.gl-term{font-size:clamp(13px,3.2vw,15px);font-weight:600;color:var(--tp);flex:1}
-.gl-arr{color:var(--ts);font-size:16px;transition:transform 0.25s;flex-shrink:0}
+.gl-term{font-size:clamp(15px,3.8vw,17px);font-weight:600;color:var(--tp);flex:1}
+.gl-arr{color:var(--ts);font-size:18px;transition:transform 0.25s;flex-shrink:0}
 .gl-arr.open{transform:rotate(90deg)}
-.gl-body{display:none;padding:clamp(10px,2.5vw,13px);background:rgba(10,37,64,0.5);font-size:clamp(12px,3vw,14px);color:var(--tp);line-height:1.7;border-top:0.5px solid var(--border2)}
+.gl-body{display:none;padding:clamp(12px,3vw,15px);background:rgba(10,37,64,0.5);font-size:clamp(13px,3.3vw,15px);color:var(--tp);line-height:1.7;border-top:0.5px solid var(--border2)}
 .gl-body.open{display:block}
 .gl-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;margin-top:8px;font-weight:500}
 .gl-tag.danger{background:rgba(183,28,28,0.3);color:#ef9a9a}
 .gl-tag.caution{background:rgba(239,108,0,0.3);color:#ffab91}
 .gl-tag.info{background:rgba(33,150,243,0.2);color:#90caf9}
-.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1rem;gap:12px}
-.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--og);border-radius:50%;animation:spin 0.8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
+
 <div class="hdr">
   <div class="bubbles" id="bubbles"></div>
   <span class="hdr-fish">🐟</span>
@@ -172,7 +139,7 @@ input::placeholder{color:var(--td)}
   </svg>
 </div>
 
-
+<div class="nav-wrap">
   <div class="nav" id="mainNav">
     <div class="nav-tab active" onclick="showPage('ricerca')">🔍 Ricerca</div>
     <div class="nav-tab" onclick="showPage('specie')">🐠 Specie</div>
@@ -182,6 +149,7 @@ input::placeholder{color:var(--td)}
 </div>
 
 <div class="content">
+
   <div class="page active" id="pageRicerca">
     <div class="card">
       <select id="faoSel" onchange="onSelChange()"><option value="">— Scegli zona FAO —</option></select>
@@ -233,409 +201,14 @@ input::placeholder{color:var(--td)}
   <div class="page" id="pageGlossario">
     <div class="card" id="glossCard"></div>
   </div>
-</div>
 
-<script>
-// ─── STATO GLOBALE ───────────────────────────────────────────────────────────
-var DATA = {};
-var SPECIES = {};
-var loaded = 0;
+</div><!-- /content -->
 
-var ORDER = ["27","31","34","41","47","67","77","81","87","51","57","61","71","37","37.1","37.2","37.2.1","37.3","37.4","18","48","58","88"];
-var LABELS = {"27":"27 — Atlantico NE","31":"31 — Atlantico C-Ovest","34":"34 — Atlantico C-Est","41":"41 — Atlantico SO","47":"47 — Atlantico SE","61":"61 — Pacifico NO","67":"67 — Pacifico NE","71":"71 — Pacifico C-Ovest","77":"77 — Pacifico C-Est","81":"81 — Pacifico SO","87":"87 — Pacifico SE","51":"51 — Indiano O","57":"57 — Indiano E","37":"37 — Mediterraneo","37.1":"37.1 — Med. Occ.","37.2":"37.2 — Med. Centr.","37.2.1":"37.2.1 — Adriatico","37.3":"37.3 — Med. Or.","37.4":"37.4 — Mar Nero","18":"18 — Artico","48":"48 — Atl. Antartico","58":"58 — Ind. Antartico","88":"88 — Pac. Antartico"};
-var levelMap = {basso:["ind-low","Basso"],medio:["ind-med","Medio"],alto:["ind-high","Alto"],"molto alto":["ind-vhigh","Molto alto"]};
-var riskLabel = {basso:"Rischio basso",medio:"Rischio medio",alto:"Rischio alto","molto alto":"Rischio molto alto"};
-var rankOrder = {green:0,yellow:1,orange:2,red:3};
-var curMethod = 'all';
-var OCEAN_GRID = [
-  {code:"18",ocean:"Artico"},{code:"",ocean:""},{code:"27",ocean:"Atl.NE"},{code:"61",ocean:"Pac.NO"},{code:"",ocean:""},
-  {code:"31",ocean:"Atl.CO"},{code:"",ocean:""},{code:"34",ocean:"Atl.CE"},{code:"67",ocean:"Pac.NE"},{code:"71",ocean:"Pac.CO"},
-  {code:"37",ocean:"Medit."},{code:"51",ocean:"Ind.O"},{code:"",ocean:""},{code:"77",ocean:"Pac.CE"},{code:"",ocean:""},
-  {code:"41",ocean:"Atl.SO"},{code:"47",ocean:"Atl.SE"},{code:"57",ocean:"Ind.E"},{code:"81",ocean:"Pac.SO"},{code:"87",ocean:"Pac.SE"},
-  {code:"48",ocean:"Ant.Atl"},{code:"",ocean:""},{code:"58",ocean:"Ant.Ind"},{code:"88",ocean:"Ant.Pac"},{code:"",ocean:""}
-];
-var GLOSSARY = [
-  {term:"Mercurio (Hg)",icon:"⚗️",tag:{text:"Tossico",cls:"danger"},body:"Metallo pesante che si accumula nei tessuti dei pesci (bioaccumulo), specie nei grandi predatori. In gravidanza e nei bambini può causare danni neurologici. L'EFSA fissa una dose settimanale tollerabile di 1.3 µg/kg di peso corporeo."},
-  {term:"PCB / Policlorobifenili",icon:"☣️",tag:{text:"Persistente",cls:"danger"},body:"Composti industriali oggi vietati ma ancora diffusi. Si accumulano nei grassi animali. Il Baltico e alcune aree industriali italiane sono tra i più contaminati in Europa."},
-  {term:"Diossine",icon:"☣️",tag:{text:"Persistente",cls:"danger"},body:"Sottoprodotti industriali e di combustione. Persistenti nei grassi animali. Il pesce è la principale fonte alimentare umana. L'EFSA ha ridotto i limiti nel 2018."},
-  {term:"Microplastiche",icon:"🔵",tag:{text:"Emergente",cls:"caution"},body:"Frammenti plastici <5mm presenti in tutti gli oceani. Il Mediterraneo è tra i più carichi. Le conseguenze sulla salute umana sono ancora in studio."},
-  {term:"Eutrofizzazione",icon:"🌿",tag:{text:"Ecosistema",cls:"caution"},body:"Eccesso di nutrienti da scarichi agricoli e civili. Causa alghe, ipossia e mucillagini. L'Adriatico Nord è tra i più colpiti in Europa per l'apporto del Po."},
-  {term:"Bioaccumulo",icon:"🔗",tag:{text:"Concetto chiave",cls:"info"},body:"Concentrazione progressiva di tossici salendo la catena alimentare. Un tonno accumula il mercurio di migliaia di piccoli pesci. Per questo i pesci grandi (tonno, spada, anguilla) sono molto più contaminati delle alici."},
-  {term:"Omega-3 (DHA/EPA)",icon:"💊",tag:{text:"Beneficio",cls:"info"},body:"Acidi grassi essenziali abbondanti nel pesce azzurro. Il DHA è fondamentale per lo sviluppo cerebrale fetale. L'OMS raccomanda 2 porzioni di pesce/settimana."},
-  {term:"Zone FAO",icon:"🗺️",tag:{text:"Classificazione",cls:"info"},body:"La FAO divide gli oceani in aree di pesca numerate. In UE è obbligatorio indicare la zona FAO in etichetta. Conoscerla permette di valutare la qualità dell'acqua di provenienza."},
-  {term:"Selvaggio vs Allevato",icon:"🎣",tag:{text:"Etichetta",cls:"info"},body:"Per legge UE il prodotto deve indicare se è pescato o allevato. Il selvaggio non è sempre superiore. L'allevato certificato ASC/Bio ha standard controllati."},
-  {term:"Limiti EFSA",icon:"🏛️",tag:{text:"Normativa",cls:"info"},body:"EFSA fissa le dosi tollerabili: Mercurio 1.3 µg/kg/sett., Diossine+PCB 2 pg TEQ/kg/sett. Per gravidanza e bambini i margini sono molto più ridotti."}
-];
-
-// ─── CARICAMENTO JSON ────────────────────────────────────────────────────────
-function checkLoaded() {
-  loaded++;
-  if (loaded === 2) initApp();
-}
-
-function loadError(file) {
-  document.querySelector('.content').innerHTML =
-    '<div style="padding:2rem;text-align:center;color:#ef9a9a">' +
-    '<div style="font-size:48px;margin-bottom:1rem">⚠️</div>' +
-    '<p style="font-size:15px;line-height:1.6">Errore caricamento <strong>' + file + '</strong>.<br>' +
-    'Assicurati che i tre file siano nella stessa cartella:<br>' +
-    '<code style="font-size:12px;opacity:0.8">index.html · data-zone.json · data-specie.json</code></p></div>';
-}
-
-fetch('./data-zone.json')
-  .then(function(r) { return r.json(); })
-  .then(function(d) { DATA = d; checkLoaded(); })
-  .catch(function() { loadError('data-zone.json'); });
-
-fetch('./data-specie.json')
-  .then(function(r) { return r.json(); })
-  .then(function(d) { SPECIES = d; checkLoaded(); })
-  .catch(function() { loadError('data-specie.json'); });
-
-// ─── INIT (chiamato dopo fetch) ──────────────────────────────────────────────
-function initApp() {
-  // Bolle
-  var b = document.getElementById('bubbles');
-  for (var i = 0; i < 10; i++) {
-    var el = document.createElement('div'), sz = Math.random() * 18 + 6;
-    el.className = 'bubble';
-    el.style.cssText = 'width:' + sz + 'px;height:' + sz + 'px;left:' + Math.random() * 100 + '%;bottom:0;animation-duration:' + (Math.random() * 6 + 4) + 's;animation-delay:' + (Math.random() * 5) + 's';
-    b.appendChild(el);
-  }
-
-  // Popola select zona
-  var faoSel = document.getElementById('faoSel');
-  var seen = {};
-  for (var i = 0; i < ORDER.length; i++) {
-    var k = ORDER[i];
-    if (seen[k] || !DATA[k]) continue;
-    seen[k] = true;
-    var o = document.createElement('option');
-    o.value = k; o.textContent = LABELS[k] || k;
-    faoSel.appendChild(o);
-  }
-
-  // indice specie x zona non più necessario nella tab Ricerca
-
-  // Popola select specie dettaglio
-  var spDetSel = document.getElementById('spDetSel');
-  var sdKeys = Object.keys(SPECIES).sort(function(a, b) { return SPECIES[a].name.localeCompare(SPECIES[b].name, 'it'); });
-  for (var i = 0; i < sdKeys.length; i++) {
-    var o = document.createElement('option');
-    o.value = sdKeys[i]; o.textContent = SPECIES[sdKeys[i]].emoji + ' ' + SPECIES[sdKeys[i]].name;
-    spDetSel.appendChild(o);
-  }
-
-  buildGlossary();
-}
-
-function showCredits(){document.getElementById('creditsModal').style.display='block';document.body.style.overflow='hidden';}
-function hideCredits(){document.getElementById('creditsModal').style.display='none';document.body.style.overflow='';}
-var PAGES = ['ricerca', 'specie', 'mappa', 'glossario'];
-function showPage(p) {
-  for (var i = 0; i < PAGES.length; i++) {
-    var pg = PAGES[i];
-    var id = 'page' + pg.charAt(0).toUpperCase() + pg.slice(1);
-    document.getElementById(id).className = 'page' + (pg === p ? ' active' : '');
-    document.getElementById('mainNav').children[i].className = 'nav-tab' + (pg === p ? ' active' : '');
-  }
-  if (p === 'mappa') { buildWorldMap(); buildMapList('all'); }
-}
-
-function switchStab(w){}
-
-// ─── RICERCA ZONA ─────────────────────────────────────────────────────────────
-function normCode(r) { return r.trim().replace(/[,\s]+/g, '.').replace(/\.+/g, '.').replace(/^\.|\.$/g, ''); }
-
-function onSelChange() {
-  var faoSel = document.getElementById('faoSel');
-  if (faoSel.value) {
-    document.getElementById('faoMan').value = '';
-    document.getElementById('zWarn').style.display = 'none';
-    renderZone(faoSel.value);
-  }
-}
-
-function onManIn() {
-  document.getElementById('faoSel').value = '';
-  var v = document.getElementById('faoMan').value;
-  if (!v.trim()) { document.getElementById('zWarn').style.display = 'none'; document.getElementById('resultCard').style.display = 'none'; return; }
-  var c = normCode(v);
-  if (DATA[c]) { document.getElementById('zWarn').style.display = 'none'; renderZone(c); }
-  else { document.getElementById('zWarn').style.display = 'block'; document.getElementById('resultCard').style.display = 'none'; }
-}
-
-function renderSpZona() {}
-
-function renderZone(code) {
-  var d = DATA[code];
-  var card = document.getElementById('resultCard');
-  if (!d) { card.style.display = 'none'; return; }
-  document.getElementById('rHero').className = 'risk-hero ' + d.riskColor;
-  document.getElementById('rEmoji').textContent = d.emoji || '🐟';
-  document.getElementById('rName').textContent = d.zoneName;
-  document.getElementById('rSub').textContent = d.zoneSub;
-  document.getElementById('rText').textContent = riskLabel[d.riskLevel] || d.riskLevel;
-  var ih = '';
-  for (var i = 0; i < d.indicators.length; i++) {
-    var ind = d.indicators[i]; var lm = levelMap[ind.level] || ['ind-med', 'N/D'];
-    ih += '<div class="ind-row"><span class="ind-icon">' + ind.icon + '</span><div class="ind-wrap"><div class="ind-name">' + ind.name + '</div><div class="ind-note">' + ind.note + '</div></div><span class="ind-badge ' + lm[0] + '">' + lm[1] + '</span></div>';
-  }
-  document.getElementById('indGrid').innerHTML = ih;
-  var ch = '';
-  for (var i = 0; i < d.sensibleSpecies.length; i++) {
-    var k = d.sensibleSpecies[i].toLowerCase().split(' ')[0];
-    ch += '<span class="chip" onclick="openSp(\'' + k + '\')">' + d.sensibleSpecies[i] + '</span>';
-  }
-  document.getElementById('spChips').innerHTML = ch;
-  document.getElementById('recBox').textContent = d.recommendation;
-  document.getElementById('srcNote').textContent = d.sourceNote;
-  card.style.display = 'block';
-  if (document.getElementById('pageRicerca').classList.contains('active'))
-    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-// ─── SPECIE DETTAGLIO ─────────────────────────────────────────────────────────
-function openSp(key) {
-  if (SPECIES[key]) { showPage('specie'); document.getElementById('spDetSel').value = key; renderSpDet(); }
-}
-
-function setMethod(m) {
-  curMethod = m;
-  document.getElementById('fAll').className = 'stab' + (m === 'all' ? ' active' : '');
-  document.getElementById('fWild').className = 'stab' + (m === 'wild' ? ' active' : '');
-  document.getElementById('fFarm').className = 'stab' + (m === 'farm' ? ' active' : '');
-  renderSpDet();
-}
-
-function renderSpDet() {
-  var key = document.getElementById('spDetSel').value;
-  var out = document.getElementById('spDetCard');
-  if (!key) { out.innerHTML = ''; return; }
-  var s = SPECIES[key];
-  if (!s) { out.innerHTML = '<div class="card"><p style="color:var(--ts);font-size:14px">Scheda non disponibile.</p></div>'; return; }
-  var hgCls = s.hgLevel === 'basso' ? 'hg-low' : s.hgLevel === 'medio' ? 'hg-med' : s.hgLevel === 'alto' ? 'hg-high' : 'hg-vhigh';
-  var hgLbl = {basso:'Basso',medio:'Medio',alto:'Alto','molto alto':'Molto alto'}[s.hgLevel] || s.hgLevel;
-  var mHTML = '';
-  if (curMethod === 'all' || curMethod === 'wild') { if (s.wildNote) mHTML += '<div style="margin-bottom:10px"><span class="mtag mtag-w">🎣 Selvaggio</span><div style="font-size:13px;color:var(--tp);line-height:1.6;margin-top:4px">' + s.wildNote + '</div></div>'; }
-  if (curMethod === 'all' || curMethod === 'farm') { if (s.farmNote) mHTML += '<div><span class="mtag mtag-f">🏭 Allevato</span><div style="font-size:13px;color:var(--tp);line-height:1.6;margin-top:4px">' + s.farmNote + '</div></div>'; }
-  if (!mHTML) mHTML = '<p style="font-size:13px;color:var(--ts)">Nessuna info per il filtro selezionato.</p>';
-  var bHTML = '';
-  for (var i = 0; i < (s.bestZones || []).length; i++) { var dz = DATA[s.bestZones[i]]; if (dz) bHTML += '<span class="chip" onclick="renderZone(\'' + s.bestZones[i] + '\');showPage(\'ricerca\')">✅ ' + s.bestZones[i] + '</span>'; }
-  var mHTML = '';
-  for (var i = 0; i < (s.mediumZones || []).length; i++) { var dz = DATA[s.mediumZones[i]]; if (dz) mHTML += '<span class="chip" onclick="renderZone(\'' + s.mediumZones[i] + '\');showPage(\'ricerca\')" style="border-color:rgba(249,168,37,0.4);background:rgba(249,168,37,0.1)">🟡 ' + s.mediumZones[i] + '</span>'; }
-  var html = '<div class="card">';
-  html += '<div class="sp-hero"><span style="font-size:clamp(28px,7vw,36px)">' + s.emoji + '</span><div class="sp-name">' + s.name + '</div><div class="sp-latin">' + s.latin + '</div></div>';
-  html += '<div class="sec-title">Mercurio</div>';
-  html += '<div class="ind-row"><span class="ind-icon">⚗️</span><div class="ind-wrap"><div class="ind-name">Livello: <strong>' + hgLbl + '</strong></div><div class="ind-note">' + s.hgNote + '</div><div class="hg-track"><div class="hg-fill ' + hgCls + '" style="width:' + s.hgVal + '%"></div></div></div></div>';
-  html += '<div class="sec-title">Porzioni consigliate (EFSA)</div>';
-  html += '<div class="port-grid"><div class="port-card"><div class="port-lbl">👨‍👩‍👧 Adulti</div><div class="port-val">' + s.portions.adulti + '</div></div><div class="port-card"><div class="port-lbl">👶 Bambini</div><div class="port-val">' + s.portions.bambini + '</div></div><div class="port-card"><div class="port-lbl">🤰 Gravidanza</div><div class="port-val">' + s.portions.gravidanza + '</div></div><div class="port-card"><div class="port-lbl">👴 Anziani</div><div class="port-val">' + s.portions.anziani + '</div></div></div>';
-  html += '<div class="sec-title">Selvaggio vs Allevato</div>' + mHTML;
-  if (bHTML) html += '<div class="sec-title">Zone migliori</div><div class="chips">' + bHTML + '</div>';
-  if (mHTML) html += '<div class="sec-title">Zone accettabili</div><div class="chips">' + mHTML + '</div>';
-  html += '</div>';
-  out.innerHTML = html;
-}
-
-// ─── MAPPA ────────────────────────────────────────────────────────────────────
-// Proiezione equirettangolare: lon[-180,180]→x[0,1000], lat[85,-85]→y[0,500]
-function lon2x(l){return(l+180)/360*1000;}
-function lat2y(l){return(85-l)/170*500;}
-
-// Zone FAO — rettangoli [lonMin,latMax,lonMax,latMin] basati sui confini ufficiali FAO
-var FAO_RECTS = {
-  "18": [-180,90,180,62],
-  "27": [-42,80, 68,36],
-  "31": [-100,35,-20, 0],
-  "34": [-20,36, 20,-5],
-  "41": [-65, 5,-20,-60],
-  "47": [ 20, 5, 45,-40],
-  "48": [-65,-40, 30,-90],
-  "51": [ 20,30, 80,-35],
-  "57": [ 80,30,150,-35],
-  "58": [ 30,-40,150,-90],
-  "61": [100,65,180, 20],
-  "67": [-180,65,-100,30],
-  "71": [100,20,180,-10],
-  "77": [-180,30,-70, -5],
-  "81": [150,-10,180,-60],
-  "87": [-120,-5,-65,-60],
-  "88": [-180,-55,180,-90],
-  "37": [ -6,48, 42, 25]
-};
-
-var colorFill  = {green:'rgba(67,160,71,0.38)',  yellow:'rgba(249,168,37,0.38)', orange:'rgba(239,108,0,0.45)', red:'rgba(229,57,53,0.50)'};
-var colorStroke= {green:'rgba(100,200,100,0.7)', yellow:'rgba(255,200,50,0.7)',  orange:'rgba(255,140,0,0.8)',  red:'rgba(240,80,80,0.85)'};
-
-// Continenti — path SVG in coordinate proiettate (lon/lat → x/y via lon2x/lat2y)
-// Generati da coordinate geografiche reali semplificate
-function buildContinentPaths() {
-  var shapes = [
-    // Nord America
-    [[  -168,72],[-140,72],[-120,60],[-100,50],[ -83,46],[ -83,30],[ -90,18],[-105,18],[-118,26],[-125,32],[-130,50],[-138,58],[-150,60],[-162,62],[-168,72]],
-    // Groenlandia
-    [[ -45,85],[ -15,83],[  -8,76],[ -18,70],[ -42,64],[ -55,65],[ -60,72],[ -52,80],[ -45,85]],
-    // Sud America
-    [[ -82,12],[ -62, 12],[ -50, 5],[ -35,-8],[ -35,-25],[ -52,-32],[ -68,-54],[ -76,-50],[ -80,-30],[ -82,12]],
-    // Europa (semplificata)
-    [[ -10,60],[  5,60],[ 10,55],[ 20,55],[ 30,62],[ 30,70],[ 25,72],[  0,70],[-10,70],[-10,60]],
-    [[ -5,44],[ 25,44],[ 30,48],[ 25,52],[ 15,52],[  5,52],[ -5,48],[ -5,44]],
-    // Africa
-    [[ -17,15],[  5,36],[ 35,36],[ 43,12],[ 51, 12],[  42,-12],[  34,-35],[  18,-35],[  12,-18],[  -2,-5],[  -17,15]],
-    // Asia (molto semplificata)
-    [[ 26,72],[60,72],[100,72],[140,72],[180,70],[180,50],[160,40],[140,36],[135,34],[130,30],[120,22],[100,20],[80,24],[60,22],[50,28],[40,36],[30,40],[26,48],[26,72]],
-    // Medio Oriente / Penisola arabica
-    [[36,36],[60,22],[58,14],[44,10],[36,14],[36,36]],
-    // India
-    [[68,24],[80,30],[92,24],[80,10],[68,24]],
-    // Penisola indocinese / SE Asia
-    [[100,20],[108,20],[108,10],[100,4],[96,16],[100,20]],
-    // Australia
-    [[114,-22],[130,-14],[138,-12],[148,-18],[152,-25],[148,-38],[138,-38],[130,-32],[116,-34],[114,-22]],
-    // Nuova Zelanda (semplificata)
-    [[166,-45],[174,-41],[178,-38],[174,-36],[168,-44],[166,-45]],
-    // Antartide
-    [[-180,-70],[-120,-68],[-60,-68],[0,-68],[60,-68],[120,-68],[180,-68],[180,-90],[-180,-90],[-180,-70]]
-  ];
-  var out = '';
-  for (var i = 0; i < shapes.length; i++) {
-    var pts = shapes[i];
-    var d = '';
-    for (var j = 0; j < pts.length; j++) {
-      var px = lon2x(pts[j][0]).toFixed(1);
-      var py = lat2y(pts[j][1]).toFixed(1);
-      d += (j===0?'M':'L') + px + ',' + py + ' ';
-    }
-    d += 'Z';
-    out += '<path d="' + d + '" fill="#1e3d5c" stroke="#0d2d4a" stroke-width="0.7"/>';
-  }
-  return out;
-}
-
-var mapBuilt = false;
-
-function buildWorldMap() {
-  if (mapBuilt) return;
-  mapBuilt = true;
-  var svg = document.getElementById('worldMap');
-  var html = '';
-
-  // Sfondo oceano
-  html += '<rect width="1000" height="500" fill="#0d2d4a"/>';
-
-  // Griglia geografica
-  for (var lat=-60;lat<=60;lat+=30){var y=lat2y(lat);html+='<line x1="0" y1="'+y+'" x2="1000" y2="'+y+'" stroke="rgba(79,195,247,0.07)" stroke-width="0.5"/>';}
-  for (var lon=-150;lon<=150;lon+=30){var x=lon2x(lon);html+='<line x1="'+x+'" y1="0" x2="'+x+'" y2="500" stroke="rgba(79,195,247,0.07)" stroke-width="0.5"/>';}
-
-  // Zone FAO sotto i continenti
-  var zkeys = Object.keys(FAO_RECTS);
-  for (var i=0;i<zkeys.length;i++) {
-    var code = zkeys[i];
-    var d = DATA[code];
-    if (!d) continue;
-    var r = FAO_RECTS[code];
-    var x1=lon2x(r[0]), y1=lat2y(r[1]), x2=lon2x(r[2]), y2=lat2y(r[3]);
-    var rx=Math.min(x1,x2), ry=Math.min(y1,y2), rw=Math.abs(x2-x1), rh=Math.abs(y2-y1);
-    var cx=(rx+rw/2).toFixed(1), cy=(ry+rh/2+4).toFixed(1);
-    html += '<rect x="'+rx.toFixed(1)+'" y="'+ry.toFixed(1)+'" width="'+rw.toFixed(1)+'" height="'+rh.toFixed(1)+'" rx="3" fill="'+colorFill[d.riskColor]+'" stroke="'+colorStroke[d.riskColor]+'" stroke-width="1.2" style="cursor:pointer" onclick="mapZoneClick(\''+code+'\')" onmouseenter="mapZoneHover(\''+code+'\',this)" onmouseleave="mapZoneOut(this)"/>';
-    var label = code.length<=2 ? code : code.replace('37.','37.');
-    html += '<text x="'+cx+'" y="'+cy+'" text-anchor="middle" font-size="10" font-weight="700" fill="rgba(255,255,255,0.9)" style="pointer-events:none;text-shadow:0 1px 3px #000">'+label+'</text>';
-  }
-
-  // Continenti sopra le zone
-  html += buildContinentPaths();
-
-  // Equatore tratteggiato
-  html += '<line x1="0" y1="'+lat2y(0)+'" x2="1000" y2="'+lat2y(0)+'" stroke="rgba(79,195,247,0.25)" stroke-width="0.8" stroke-dasharray="5,5"/>';
-  // Tropici
-  html += '<line x1="0" y1="'+lat2y(23.5)+'" x2="1000" y2="'+lat2y(23.5)+'" stroke="rgba(79,195,247,0.08)" stroke-width="0.5" stroke-dasharray="3,6"/>';
-  html += '<line x1="0" y1="'+lat2y(-23.5)+'" x2="1000" y2="'+lat2y(-23.5)+'" stroke="rgba(79,195,247,0.08)" stroke-width="0.5" stroke-dasharray="3,6"/>';
-
-  svg.innerHTML = html;
-}
-
-function mapZoneClick(code){renderZone(code);showPage('ricerca');}
-
-function mapZoneHover(code,el){
-  var d=DATA[code]; if(!d)return;
-  el.setAttribute('opacity','0.6');
-  var tt=document.getElementById('mapTooltip');
-  var rl={basso:'🟢 Rischio basso',medio:'🟡 Rischio medio',alto:'🟠 Rischio alto','molto alto':'🔴 Rischio molto alto'};
-  tt.innerHTML='<strong>'+d.zoneName+'</strong><br><span style="opacity:0.8">'+d.zoneSub+'</span><br><span style="font-size:12px;opacity:0.7">'+(rl[d.riskLevel]||d.riskLevel)+' · Tocca per i dettagli</span>';
-  tt.style.display='block';
-}
-
-function mapZoneOut(el){el.setAttribute('opacity','1');}
-
-function buildMapList(filter) {
-  var out = document.getElementById('mapList'); var html = '';
-  for (var i = 0; i < ORDER.length; i++) {
-    var k = ORDER[i]; if (!DATA[k]) continue;
-    var d = DATA[k];
-    if (filter !== 'all' && d.riskColor !== filter) continue;
-    html += '<div class="map-row" onclick="renderZone(\'' + k + '\');showPage(\'ricerca\')"><div class="map-flag">' + d.flag + '</div><div class="map-info"><div class="map-code">FAO ' + k + '</div><div class="map-name">' + d.zoneName.replace(/^\d[\d.]*\s*-\s*/, '') + '</div><div class="map-geo">' + d.zoneSub + '</div></div><div class="map-pill ' + d.riskColor + '"></div></div>';
-  }
-  out.innerHTML = html || '<p style="color:var(--ts);font-size:14px;text-align:center;padding:1rem">Nessuna zona.</p>';
-}
-
-function filterMap(f, el) {
-  var btns = document.querySelectorAll('.mf-btn');
-  for (var i = 0; i < btns.length; i++) btns[i].classList.remove('factive');
-  el.classList.add('factive');
-  buildMapList(f);
-}
-
-// ─── GLOSSARIO ────────────────────────────────────────────────────────────────
-function buildGlossary() {
-  var out = document.getElementById('glossCard');
-  if (out.innerHTML) return;
-  var html = '';
-  for (var i = 0; i < GLOSSARY.length; i++) {
-    var g = GLOSSARY[i];
-    html += '<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(' + i + ')"><span class="gl-icon">' + g.icon + '</span><span class="gl-term">' + g.term + '</span><span class="gl-arr" id="ga' + i + '">›</span></div><div class="gl-body" id="gb' + i + '">' + g.body + '<br><span class="gl-tag ' + g.tag.cls + '">' + g.tag.text + '</span></div></div>';
-  }
-  out.innerHTML = html;
-}
-
-function toggleGl(i) {
-  var b = document.getElementById('gb' + i), a = document.getElementById('ga' + i);
-  var op = b.classList.contains('open');
-  b.className = 'gl-body' + (op ? '' : ' open');
-  a.className = 'gl-arr' + (op ? '' : ' open');
-}
-
-// ─── PWA ──────────────────────────────────────────────────────────────────────
-(function() {
-  function makeIcon(sz) {
-    var c = document.createElement('canvas'); c.width = sz; c.height = sz;
-    var ctx = c.getContext('2d'), r = sz * 0.22, s = sz / 512;
-    ctx.fillStyle = '#0a2540';
-    ctx.beginPath(); ctx.moveTo(r,0); ctx.lineTo(sz-r,0); ctx.quadraticCurveTo(sz,0,sz,r); ctx.lineTo(sz,sz-r); ctx.quadraticCurveTo(sz,sz,sz-r,sz); ctx.lineTo(r,sz); ctx.quadraticCurveTo(0,sz,0,sz-r); ctx.lineTo(0,r); ctx.quadraticCurveTo(0,0,r,0); ctx.closePath(); ctx.fill();
-    ctx.save(); ctx.translate(60*s*1.6, 130*s*1.6); ctx.scale(1.6*s, 1.6*s);
-    ctx.fillStyle='#0288D1'; ctx.beginPath(); ctx.moveTo(265,60); ctx.lineTo(320,20); ctx.lineTo(310,120); ctx.lineTo(320,220); ctx.lineTo(265,180); ctx.closePath(); ctx.fill();
-    ctx.fillStyle='#4FC3F7'; ctx.beginPath(); ctx.ellipse(155,120,110,72,0,0,Math.PI*2); ctx.fill();
-    ctx.strokeStyle='#0288D1'; ctx.lineWidth=5; ctx.lineCap='round';
-    ctx.beginPath(); ctx.moveTo(155,90); ctx.quadraticCurveTo(180,75,200,85); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(155,135); ctx.quadraticCurveTo(175,148,200,140); ctx.stroke();
-    ctx.fillStyle='white'; ctx.beginPath(); ctx.ellipse(145,108,16,16,0,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle='#333'; ctx.beginPath(); ctx.ellipse(145,108,8,8,0,0,Math.PI*2); ctx.fill();
-    ctx.restore();
-    return c.toDataURL('image/png');
-  }
-  var i192 = makeIcon(192), i512 = makeIcon(512);
-  var su = location.href.split('?')[0].split('#')[0];
-  var mf = {name:"Zone Pesca FAO",short_name:"PesceSicuro",description:"Sicurezza alimentare per zona FAO",start_url:su,scope:su,display:"standalone",background_color:"#0a2540",theme_color:"#0a2540",orientation:"portrait",icons:[{src:i192,sizes:"192x192",type:"image/png",purpose:"any"},{src:i512,sizes:"512x512",type:"image/png",purpose:"maskable"}]};
-  var mb = new Blob([JSON.stringify(mf)], {type:'application/json'});
-  document.getElementById('manifestLink').href = URL.createObjectURL(mb);
-  document.getElementById('appleIcon').href = i192;
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js').catch(function() {});
-})();
-</script>
-<!-- MODAL CREDITI -->
-<div id="creditsModal" style="display:none"></div>
-<footer style="text-align:center;padding:0.5rem 1rem 0;font-size:11px;color:rgba(144,202,249,0.75)">
-  © 2026 Cristiano Cinotti · Sviluppo Claude (Anthropic) · <span onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="cursor:pointer;text-decoration:underline;color:rgba(144,202,249,0.9)">Info &amp; crediti</span>
+<footer style="text-align:center;padding:0.5rem 1rem 0;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
+  © 2026 Cristiano Cinotti · Sviluppo Claude (Anthropic)<br>
+  <span onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="cursor:pointer;text-decoration:underline;color:rgba(144,202,249,0.9)">Info &amp; crediti</span>
 </footer>
+
 <div id="creditsPanel" style="display:none;margin:0.5rem 1rem 1.5rem;border-radius:16px;background:linear-gradient(160deg,#0d3b6e,#0a2540);border:0.5px solid rgba(79,195,247,0.3);padding:1.25rem">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
     <div style="font-size:16px;font-weight:700;color:#fff">ℹ️ Info &amp; Crediti</div>
@@ -660,6 +233,162 @@ function toggleGl(i) {
     ⚠️ Dati indicativi aggiornati al 2026. Per decisioni sanitarie fare riferimento a EFSA e Ministero della Salute.
   </div>
 </div>
+
+<script>
+var DATA = {};
+var SPECIES = {};
+var loaded = 0;
+var ORDER = ["27","31","34","41","47","67","77","81","87","51","57","61","71","37","37.1","37.2","37.2.1","37.3","37.4","18","48","58","88"];
+var LABELS = {"27":"27 — Atlantico NE","31":"31 — Atlantico C-Ovest","34":"34 — Atlantico C-Est","41":"41 — Atlantico SO","47":"47 — Atlantico SE","61":"61 — Pacifico NO","67":"67 — Pacifico NE","71":"71 — Pacifico C-Ovest","77":"77 — Pacifico C-Est","81":"81 — Pacifico SO","87":"87 — Pacifico SE","51":"51 — Indiano O","57":"57 — Indiano E","37":"37 — Mediterraneo","37.1":"37.1 — Med. Occ.","37.2":"37.2 — Med. Centr.","37.2.1":"37.2.1 — Adriatico","37.3":"37.3 — Med. Or.","37.4":"37.4 — Mar Nero","18":"18 — Artico","48":"48 — Atl. Antartico","58":"58 — Ind. Antartico","88":"88 — Pac. Antartico"};
+var levelMap = {basso:["ind-low","Basso"],medio:["ind-med","Medio"],alto:["ind-high","Alto"],"molto alto":["ind-vhigh","Molto alto"]};
+var riskLabel = {basso:"Rischio basso",medio:"Rischio medio",alto:"Rischio alto","molto alto":"Rischio molto alto"};
+var rankOrder = {green:0,yellow:1,orange:2,red:3};
+var GLOSSARY = [
+  {term:"Mercurio (Hg)",icon:"⚗️",tag:{text:"Tossico",cls:"danger"},body:"Metallo pesante che si accumula nei tessuti dei pesci (bioaccumulo), specie nei grandi predatori. In gravidanza e nei bambini può causare danni neurologici. L'EFSA fissa una dose settimanale tollerabile di 1.3 µg/kg di peso corporeo."},
+  {term:"PCB / Policlorobifenili",icon:"☣️",tag:{text:"Persistente",cls:"danger"},body:"Composti industriali oggi vietati ma ancora diffusi. Si accumulano nei grassi animali. Il Baltico e alcune aree industriali italiane sono tra i più contaminati in Europa."},
+  {term:"Diossine",icon:"☣️",tag:{text:"Persistente",cls:"danger"},body:"Sottoprodotti industriali e di combustione. Persistenti nei grassi animali. Il pesce è la principale fonte alimentare umana. L'EFSA ha ridotto i limiti nel 2018."},
+  {term:"Microplastiche",icon:"🔵",tag:{text:"Emergente",cls:"caution"},body:"Frammenti plastici <5mm presenti in tutti gli oceani. Il Mediterraneo è tra i più carichi. Le conseguenze sulla salute umana sono ancora in studio."},
+  {term:"Eutrofizzazione",icon:"🌿",tag:{text:"Ecosistema",cls:"caution"},body:"Eccesso di nutrienti da scarichi agricoli e civili. Causa alghe, ipossia e mucillagini. L'Adriatico Nord è tra i più colpiti in Europa per l'apporto del Po."},
+  {term:"Bioaccumulo",icon:"🔗",tag:{text:"Concetto chiave",cls:"info"},body:"Concentrazione progressiva di tossici salendo la catena alimentare. Un tonno accumula il mercurio di migliaia di piccoli pesci. Per questo i pesci grandi (tonno, spada, anguilla) sono molto più contaminati delle alici."},
+  {term:"Omega-3 (DHA/EPA)",icon:"💊",tag:{text:"Beneficio",cls:"info"},body:"Acidi grassi essenziali abbondanti nel pesce azzurro. Il DHA è fondamentale per lo sviluppo cerebrale fetale. L'OMS raccomanda 2 porzioni di pesce/settimana."},
+  {term:"Zone FAO",icon:"🗺️",tag:{text:"Classificazione",cls:"info"},body:"La FAO divide gli oceani in aree di pesca numerate. In UE è obbligatorio indicare la zona FAO in etichetta. Conoscerla permette di valutare la qualità dell'acqua di provenienza."},
+  {term:"Selvaggio vs Allevato",icon:"🎣",tag:{text:"Etichetta",cls:"info"},body:"Per legge UE il prodotto deve indicare se è pescato o allevato. Il selvaggio non è sempre superiore. L'allevato certificato ASC/Bio ha standard controllati."},
+  {term:"Limiti EFSA",icon:"🏛️",tag:{text:"Normativa",cls:"info"},body:"EFSA fissa le dosi tollerabili: Mercurio 1.3 µg/kg/sett., Diossine+PCB 2 pg TEQ/kg/sett. Per gravidanza e bambini i margini sono molto più ridotti."}
+];
+
+function checkLoaded(){loaded++;if(loaded===2)initApp();}
+function loadError(file){document.querySelector('.content').innerHTML='<div style="padding:2rem;text-align:center;color:#ef9a9a"><div style="font-size:48px;margin-bottom:1rem">⚠️</div><p style="font-size:15px;line-height:1.6">Errore caricamento <strong>'+file+'</strong>.<br>Assicurati che i tre file siano nella stessa cartella:<br><code style="font-size:12px;opacity:0.8">index.html · data-zone.json · data-specie.json</code></p></div>';}
+
+fetch('./data-zone.json').then(function(r){return r.json();}).then(function(d){DATA=d;checkLoaded();}).catch(function(){loadError('data-zone.json');});
+fetch('./data-specie.json').then(function(r){return r.json();}).then(function(d){SPECIES=d;checkLoaded();}).catch(function(){loadError('data-specie.json');});
+
+function initApp(){
+  var b=document.getElementById('bubbles');
+  for(var i=0;i<10;i++){var el=document.createElement('div'),sz=Math.random()*18+6;el.className='bubble';el.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+Math.random()*100+'%;bottom:0;animation-duration:'+(Math.random()*6+4)+'s;animation-delay:'+(Math.random()*5)+'s';b.appendChild(el);}
+  var faoSel=document.getElementById('faoSel');
+  var seen={};
+  for(var i=0;i<ORDER.length;i++){var k=ORDER[i];if(seen[k]||!DATA[k])continue;seen[k]=true;var o=document.createElement('option');o.value=k;o.textContent=LABELS[k]||k;faoSel.appendChild(o);}
+  var spDetSel=document.getElementById('spDetSel');
+  var sdKeys=Object.keys(SPECIES).sort(function(a,b){return SPECIES[a].name.localeCompare(SPECIES[b].name,'it');});
+  for(var i=0;i<sdKeys.length;i++){var o=document.createElement('option');o.value=sdKeys[i];o.textContent=SPECIES[sdKeys[i]].emoji+' '+SPECIES[sdKeys[i]].name;spDetSel.appendChild(o);}
+  buildGlossary();
+}
+
+var PAGES=['ricerca','specie','mappa','glossario'];
+function showPage(p){
+  for(var i=0;i<PAGES.length;i++){
+    var pg=PAGES[i];
+    document.getElementById('page'+pg.charAt(0).toUpperCase()+pg.slice(1)).className='page'+(pg===p?' active':'');
+    document.getElementById('mainNav').children[i].className='nav-tab'+(pg===p?' active':'');
+  }
+  if(p==='mappa'){buildWorldMap();buildMapList('all');}
+}
+
+function normCode(r){return r.trim().replace(/[,\s]+/g,'.').replace(/\.+/g,'.').replace(/^\.|\.$/g,'');}
+function onSelChange(){var s=document.getElementById('faoSel');if(s.value){document.getElementById('faoMan').value='';document.getElementById('zWarn').style.display='none';renderZone(s.value);}}
+function onManIn(){document.getElementById('faoSel').value='';var v=document.getElementById('faoMan').value;if(!v.trim()){document.getElementById('zWarn').style.display='none';document.getElementById('resultCard').style.display='none';return;}var c=normCode(v);if(DATA[c]){document.getElementById('zWarn').style.display='none';renderZone(c);}else{document.getElementById('zWarn').style.display='block';document.getElementById('resultCard').style.display='none';}}
+
+function renderZone(code){
+  var d=DATA[code];var card=document.getElementById('resultCard');
+  if(!d){card.style.display='none';return;}
+  document.getElementById('rHero').className='risk-hero '+d.riskColor;
+  document.getElementById('rEmoji').textContent=d.emoji||'🐟';
+  document.getElementById('rName').textContent=d.zoneName;
+  document.getElementById('rSub').textContent=d.zoneSub;
+  document.getElementById('rText').textContent=riskLabel[d.riskLevel]||d.riskLevel;
+  var ih='';
+  for(var i=0;i<d.indicators.length;i++){var ind=d.indicators[i];var lm=levelMap[ind.level]||['ind-med','N/D'];ih+='<div class="ind-row"><span class="ind-icon">'+ind.icon+'</span><div class="ind-wrap"><div class="ind-name">'+ind.name+'</div><div class="ind-note">'+ind.note+'</div></div><span class="ind-badge '+lm[0]+'">'+lm[1]+'</span></div>';}
+  document.getElementById('indGrid').innerHTML=ih;
+  var ch='';
+  for(var i=0;i<d.sensibleSpecies.length;i++){var k=d.sensibleSpecies[i].toLowerCase().split(' ')[0];ch+='<span class="chip" onclick="openSp(\''+k+'\')">'+d.sensibleSpecies[i]+'</span>';}
+  document.getElementById('spChips').innerHTML=ch;
+  document.getElementById('recBox').textContent=d.recommendation;
+  document.getElementById('srcNote').textContent=d.sourceNote;
+  card.style.display='block';
+  if(document.getElementById('pageRicerca').classList.contains('active'))card.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function openSp(key){if(SPECIES[key]){showPage('specie');document.getElementById('spDetSel').value=key;renderSpDet();}}
+
+function renderSpDet(){
+  var key=document.getElementById('spDetSel').value;
+  var out=document.getElementById('spDetCard');
+  if(!key){out.innerHTML='';return;}
+  var s=SPECIES[key];
+  if(!s){out.innerHTML='<div class="card"><p style="color:var(--ts);font-size:14px">Scheda non disponibile.</p></div>';return;}
+  var hgCls=s.hgLevel==='basso'?'hg-low':s.hgLevel==='medio'?'hg-med':s.hgLevel==='alto'?'hg-high':'hg-vhigh';
+  var hgLbl={basso:'Basso',medio:'Medio',alto:'Alto','molto alto':'Molto alto'}[s.hgLevel]||s.hgLevel;
+  var bHTML='';
+  for(var i=0;i<(s.bestZones||[]).length;i++){var dz=DATA[s.bestZones[i]];if(dz)bHTML+='<span class="chip" onclick="renderZone(\''+s.bestZones[i]+'\');showPage(\'ricerca\')">✅ '+s.bestZones[i]+'</span>';}
+  var mHTML='';
+  for(var i=0;i<(s.mediumZones||[]).length;i++){var dz=DATA[s.mediumZones[i]];if(dz)mHTML+='<span class="chip" onclick="renderZone(\''+s.mediumZones[i]+'\');showPage(\'ricerca\')" style="border-color:rgba(249,168,37,0.4);background:rgba(249,168,37,0.1)">🟡 '+s.mediumZones[i]+'</span>';}
+  var noteHTML=(s.wildNote||'')+(s.farmNote?'<br><br>'+s.farmNote:'');
+  var html='<div class="card">';
+  html+='<div class="sp-hero"><span style="font-size:clamp(28px,7vw,36px)">'+s.emoji+'</span><div class="sp-name">'+s.name+'</div><div class="sp-latin">'+s.latin+'</div></div>';
+  html+='<div class="sec-title">Mercurio</div>';
+  html+='<div class="ind-row"><span class="ind-icon">⚗️</span><div class="ind-wrap"><div class="ind-name">Livello: <strong>'+hgLbl+'</strong></div><div class="ind-note">'+s.hgNote+'</div><div class="hg-track"><div class="hg-fill '+hgCls+'" style="width:'+s.hgVal+'%"></div></div></div></div>';
+  html+='<div class="sec-title">Porzioni consigliate (EFSA)</div>';
+  html+='<div class="port-grid"><div class="port-card"><div class="port-lbl">👨‍👩‍👧 Adulti</div><div class="port-val">'+s.portions.adulti+'</div></div><div class="port-card"><div class="port-lbl">👶 Bambini</div><div class="port-val">'+s.portions.bambini+'</div></div><div class="port-card"><div class="port-lbl">🤰 Gravidanza</div><div class="port-val">'+s.portions.gravidanza+'</div></div><div class="port-card"><div class="port-lbl">👴 Anziani</div><div class="port-val">'+s.portions.anziani+'</div></div></div>';
+  if(noteHTML)html+='<div class="sec-title">Note</div><div class="rec-box">'+noteHTML+'</div>';
+  if(bHTML)html+='<div class="sec-title">Zone migliori</div><div class="chips">'+bHTML+'</div>';
+  if(mHTML)html+='<div class="sec-title">Zone accettabili</div><div class="chips">'+mHTML+'</div>';
+  html+='</div>';
+  out.innerHTML=html;
+}
+
+// MAPPA
+function lon2x(l){return(l+180)/360*1000;}
+function lat2y(l){return(85-l)/170*500;}
+var FAO_RECTS={"18":[-180,90,180,62],"27":[-42,80,68,36],"31":[-100,35,-20,0],"34":[-20,36,20,-5],"41":[-65,5,-20,-60],"47":[20,5,45,-40],"48":[-65,-40,30,-90],"51":[20,30,80,-35],"57":[80,30,150,-35],"58":[30,-40,150,-90],"61":[100,65,180,20],"67":[-180,65,-100,30],"71":[100,20,180,-10],"77":[-180,30,-70,-5],"81":[150,-10,180,-60],"87":[-120,-5,-65,-60],"88":[-180,-55,180,-90],"37":[-6,48,42,25]};
+var colorFill={green:'rgba(67,160,71,0.38)',yellow:'rgba(249,168,37,0.38)',orange:'rgba(239,108,0,0.45)',red:'rgba(229,57,53,0.50)'};
+var colorStroke={green:'rgba(100,200,100,0.7)',yellow:'rgba(255,200,50,0.7)',orange:'rgba(255,140,0,0.8)',red:'rgba(240,80,80,0.85)'};
+function buildContinentPaths(){
+  var shapes=[[[-168,72],[-140,72],[-120,60],[-100,50],[-83,46],[-83,30],[-90,18],[-105,18],[-118,26],[-125,32],[-130,50],[-138,58],[-150,60],[-162,62],[-168,72]],[[-45,85],[-15,83],[-8,76],[-18,70],[-42,64],[-55,65],[-60,72],[-52,80],[-45,85]],[[-82,12],[-62,12],[-50,5],[-35,-8],[-35,-25],[-52,-32],[-68,-54],[-76,-50],[-80,-30],[-82,12]],[[-10,60],[5,60],[10,55],[20,55],[30,62],[30,70],[25,72],[0,70],[-10,70],[-10,60]],[[-5,44],[25,44],[30,48],[25,52],[15,52],[5,52],[-5,48],[-5,44]],[[-17,15],[5,36],[35,36],[43,12],[51,12],[42,-12],[34,-35],[18,-35],[12,-18],[-2,-5],[-17,15]],[[26,72],[60,72],[100,72],[140,72],[180,70],[180,50],[160,40],[140,36],[135,34],[130,30],[120,22],[100,20],[80,24],[60,22],[50,28],[40,36],[30,40],[26,48],[26,72]],[[36,36],[60,22],[58,14],[44,10],[36,14],[36,36]],[[68,24],[80,30],[92,24],[80,10],[68,24]],[[100,20],[108,20],[108,10],[100,4],[96,16],[100,20]],[[114,-22],[130,-14],[138,-12],[148,-18],[152,-25],[148,-38],[138,-38],[130,-32],[116,-34],[114,-22]],[[166,-45],[174,-41],[178,-38],[174,-36],[168,-44],[166,-45]],[[-180,-70],[-120,-68],[-60,-68],[0,-68],[60,-68],[120,-68],[180,-68],[180,-90],[-180,-90],[-180,-70]]];
+  var out='';
+  for(var i=0;i<shapes.length;i++){var pts=shapes[i];var d='';for(var j=0;j<pts.length;j++){var px=lon2x(pts[j][0]).toFixed(1);var py=lat2y(pts[j][1]).toFixed(1);d+=(j===0?'M':'L')+px+','+py+' ';}d+='Z';out+='<path d="'+d+'" fill="#1e3d5c" stroke="#0d2d4a" stroke-width="0.7"/>';}
+  return out;
+}
+var mapBuilt=false;
+function buildWorldMap(){
+  if(mapBuilt)return;mapBuilt=true;
+  var svg=document.getElementById('worldMap');var html='';
+  html+='<rect width="1000" height="500" fill="#0d2d4a"/>';
+  for(var lat=-60;lat<=60;lat+=30){var y=lat2y(lat);html+='<line x1="0" y1="'+y+'" x2="1000" y2="'+y+'" stroke="rgba(79,195,247,0.07)" stroke-width="0.5"/>';}
+  for(var lon=-150;lon<=150;lon+=30){var x=lon2x(lon);html+='<line x1="'+x+'" y1="0" x2="'+x+'" y2="500" stroke="rgba(79,195,247,0.07)" stroke-width="0.5"/>';}
+  var zkeys=Object.keys(FAO_RECTS);
+  for(var i=0;i<zkeys.length;i++){var code=zkeys[i];var d=DATA[code];if(!d)continue;var r=FAO_RECTS[code];var x1=lon2x(r[0]),y1=lat2y(r[1]),x2=lon2x(r[2]),y2=lat2y(r[3]);var rx=Math.min(x1,x2),ry=Math.min(y1,y2),rw=Math.abs(x2-x1),rh=Math.abs(y2-y1);var cx=(rx+rw/2).toFixed(1),cy=(ry+rh/2+4).toFixed(1);html+='<rect x="'+rx.toFixed(1)+'" y="'+ry.toFixed(1)+'" width="'+rw.toFixed(1)+'" height="'+rh.toFixed(1)+'" rx="3" fill="'+colorFill[d.riskColor]+'" stroke="'+colorStroke[d.riskColor]+'" stroke-width="1.2" style="cursor:pointer" onclick="mapZoneClick(\''+code+'\')" onmouseenter="mapZoneHover(\''+code+'\',this)" onmouseleave="mapZoneOut(this)"/>';html+='<text x="'+cx+'" y="'+cy+'" text-anchor="middle" font-size="10" font-weight="700" fill="rgba(255,255,255,0.9)" style="pointer-events:none">'+code+'</text>';}
+  html+=buildContinentPaths();
+  html+='<line x1="0" y1="'+lat2y(0)+'" x2="1000" y2="'+lat2y(0)+'" stroke="rgba(79,195,247,0.25)" stroke-width="0.8" stroke-dasharray="5,5"/>';
+  svg.innerHTML=html;
+}
+function mapZoneClick(code){renderZone(code);showPage('ricerca');}
+function mapZoneHover(code,el){var d=DATA[code];if(!d)return;el.setAttribute('opacity','0.6');var tt=document.getElementById('mapTooltip');var rl={basso:'🟢 Rischio basso',medio:'🟡 Rischio medio',alto:'🟠 Rischio alto','molto alto':'🔴 Rischio molto alto'};tt.innerHTML='<strong>'+d.zoneName+'</strong><br><span style="opacity:0.8">'+d.zoneSub+'</span><br><span style="font-size:12px;opacity:0.7">'+(rl[d.riskLevel]||d.riskLevel)+' · Tocca per i dettagli</span>';tt.style.display='block';}
+function mapZoneOut(el){el.setAttribute('opacity','1');}
+function buildMapList(filter){var out=document.getElementById('mapList');var html='';for(var i=0;i<ORDER.length;i++){var k=ORDER[i];if(!DATA[k])continue;var d=DATA[k];if(filter!=='all'&&d.riskColor!==filter)continue;html+='<div class="map-row" onclick="renderZone(\''+k+'\');showPage(\'ricerca\')"><div class="map-flag">'+d.flag+'</div><div class="map-info"><div class="map-code">FAO '+k+'</div><div class="map-name">'+d.zoneName.replace(/^\d[\d.]*\s*-\s*/,'')+'</div><div class="map-geo">'+d.zoneSub+'</div></div><div class="map-pill '+d.riskColor+'"></div></div>';}out.innerHTML=html||'<p style="color:var(--ts);font-size:14px;text-align:center;padding:1rem">Nessuna zona.</p>';}
+function filterMap(f,el){var btns=document.querySelectorAll('.mf-btn');for(var i=0;i<btns.length;i++)btns[i].classList.remove('factive');el.classList.add('factive');buildMapList(f);}
+
+// GLOSSARIO
+function buildGlossary(){
+  var out=document.getElementById('glossCard');if(out.innerHTML)return;
+  var html='';
+  for(var i=0;i<GLOSSARY.length;i++){var g=GLOSSARY[i];html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl('+i+')"><span class="gl-icon">'+g.icon+'</span><span class="gl-term">'+g.term+'</span><span class="gl-arr" id="ga'+i+'">›</span></div><div class="gl-body" id="gb'+i+'">'+g.body+'<br><span class="gl-tag '+g.tag.cls+'">'+g.tag.text+'</span></div></div>';}
+  // Crediti in fondo al glossario
+  html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(99)"><span class="gl-icon">ℹ️</span><span class="gl-term">Info &amp; Crediti</span><span class="gl-arr" id="ga99">›</span></div><div class="gl-body" id="gb99"><strong>Sviluppato da</strong><br>👤 Cristiano Cinotti — concept &amp; design<br>🤖 Claude (Anthropic) — sviluppo<br><br><strong>Fonti</strong><br>🇪🇺 EFSA · 🌍 FAO · 🌊 MEDPOL/UNEP-MAP · 🏛️ ISPRA/ARPA · ❄️ HELCOM/OSPAR · 🇺🇸 NOAA/FDA<br><br><span style="font-size:11px;color:#ef9a9a">⚠️ Dati indicativi al 2026. Per decisioni sanitarie fare riferimento a EFSA e Ministero della Salute.</span><br><span class="gl-tag info">v3.0 · 2026</span></div></div>';
+  out.innerHTML=html;
+}
+function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElementById('ga'+i);var op=b.classList.contains('open');b.className='gl-body'+(op?'':' open');a.className='gl-arr'+(op?'':' open');}
+
+// PWA
+(function(){
+  function makeIcon(sz){var c=document.createElement('canvas');c.width=sz;c.height=sz;var ctx=c.getContext('2d'),r=sz*0.22,s=sz/512;ctx.fillStyle='#0a2540';ctx.beginPath();ctx.moveTo(r,0);ctx.lineTo(sz-r,0);ctx.quadraticCurveTo(sz,0,sz,r);ctx.lineTo(sz,sz-r);ctx.quadraticCurveTo(sz,sz,sz-r,sz);ctx.lineTo(r,sz);ctx.quadraticCurveTo(0,sz,0,sz-r);ctx.lineTo(0,r);ctx.quadraticCurveTo(0,0,r,0);ctx.closePath();ctx.fill();ctx.save();ctx.translate(60*s*1.6,130*s*1.6);ctx.scale(1.6*s,1.6*s);ctx.fillStyle='#0288D1';ctx.beginPath();ctx.moveTo(265,60);ctx.lineTo(320,20);ctx.lineTo(310,120);ctx.lineTo(320,220);ctx.lineTo(265,180);ctx.closePath();ctx.fill();ctx.fillStyle='#4FC3F7';ctx.beginPath();ctx.ellipse(155,120,110,72,0,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#0288D1';ctx.lineWidth=5;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(155,90);ctx.quadraticCurveTo(180,75,200,85);ctx.stroke();ctx.beginPath();ctx.moveTo(155,135);ctx.quadraticCurveTo(175,148,200,140);ctx.stroke();ctx.fillStyle='white';ctx.beginPath();ctx.ellipse(145,108,16,16,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#333';ctx.beginPath();ctx.ellipse(145,108,8,8,0,0,Math.PI*2);ctx.fill();ctx.restore();return c.toDataURL('image/png');}
+  var i192=makeIcon(192),i512=makeIcon(512);
+  var su=location.href.split('?')[0].split('#')[0];
+  var mf={name:"Zone Pesca FAO",short_name:"PesceSicuro",description:"Sicurezza alimentare per zona FAO",start_url:su,scope:su,display:"standalone",background_color:"#0a2540",theme_color:"#0a2540",orientation:"portrait",icons:[{src:i192,sizes:"192x192",type:"image/png",purpose:"any"},{src:i512,sizes:"512x512",type:"image/png",purpose:"maskable"}]};
+  var mb=new Blob([JSON.stringify(mf)],{type:'application/json'});
+  document.getElementById('manifestLink').href=URL.createObjectURL(mb);
+  document.getElementById('appleIcon').href=i192;
+  if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(function(){});
+})();
+</script>
 </body>
 </html>
-
