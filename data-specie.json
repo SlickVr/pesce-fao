@@ -14,9 +14,18 @@
     },
     "wildNote": "Solo selvaggia. Breve catena trofica: contaminanti bassissimi. Tra le scelte più sicure in assoluto.",
     "farmNote": null,
-    "bestZones": ["34", "87", "47"],
-    "mediumZones": ["27", "77"],
-    "methods": ["wild"],
+    "bestZones": [
+      "34",
+      "87",
+      "47"
+    ],
+    "mediumZones": [
+      "27",
+      "77"
+    ],
+    "methods": [
+      "wild"
+    ],
     "lastUpdated": "2026-06"
   },
   "aguglia": {
@@ -34,9 +43,16 @@
     },
     "wildNote": "Solo selvaggia. Pesce costiero mediterraneo, buona qualità nutrizionale.",
     "farmNote": null,
-    "bestZones": ["37.3", "37.1"],
-    "mediumZones": ["37.2"],
-    "methods": ["wild"],
+    "bestZones": [
+      "37.3",
+      "37.1"
+    ],
+    "mediumZones": [
+      "37.2"
+    ],
+    "methods": [
+      "wild"
+    ],
     "lastUpdated": "2026-06"
   },
   "anguilla": {
@@ -57,9 +73,16 @@
     },
     "wildNote": "Pesce grasso con altissimo bioaccumulo di PCB, diossine e mercurio. Specie in pericolo critico. Consumo fortemente limitato dalle autorità UE.",
     "farmNote": "Allevata: stessa problematica contaminanti, livelli leggermente inferiori ma non sicuri. Spesso importata dall'Asia.",
-    "bestZones": ["67"],
-    "mediumZones": ["27"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "67"
+    ],
+    "mediumZones": [
+      "27"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "aringa": {
@@ -77,9 +100,16 @@
     },
     "wildNote": "Solo selvaggia. Zona 27 Atlantico: eccellente. Zona 27 Baltico: limitare per PCB/diossine.",
     "farmNote": null,
-    "bestZones": ["27", "34"],
-    "mediumZones": ["67"],
-    "methods": ["wild"],
+    "bestZones": [
+      "27",
+      "34"
+    ],
+    "mediumZones": [
+      "67"
+    ],
+    "methods": [
+      "wild"
+    ],
     "lastUpdated": "2026-06"
   },
   "branzino": {
@@ -97,9 +127,19 @@
     },
     "wildNote": "Selvaggio: sapore superiore, stagionalità autunno-inverno. Mediterraneo: attenzione alla zona.",
     "farmNote": "Allevato: più comune in commercio. Qualità buona se certificato ASC. Omega-3 leggermente inferiori.",
-    "bestZones": ["37.3", "37.1", "34"],
-    "mediumZones": ["37.2", "51"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "37.3",
+      "37.1",
+      "34"
+    ],
+    "mediumZones": [
+      "37.2",
+      "51"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "calamaro": {
@@ -117,9 +157,18 @@
     },
     "wildNote": "Solo selvaggio. Buona scelta per basso contenuto di grassi e contaminanti.",
     "farmNote": null,
-    "bestZones": ["41", "87", "34"],
-    "mediumZones": ["77", "27"],
-    "methods": ["wild"],
+    "bestZones": [
+      "41",
+      "87",
+      "34"
+    ],
+    "mediumZones": [
+      "77",
+      "27"
+    ],
+    "methods": [
+      "wild"
+    ],
     "lastUpdated": "2026-06"
   },
   "cefalo": {
@@ -140,9 +189,18 @@
     },
     "wildNote": "Pesce costiero e lagunare: riflette la qualità dell'acqua locale. Da zone non industriali è buona scelta.",
     "farmNote": "Allevato in valli da pesca: qualità molto variabile per zona. Preferire produzione certificata.",
-    "bestZones": ["34", "41"],
-    "mediumZones": ["31", "77"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "34",
+      "41"
+    ],
+    "mediumZones": [
+      "31",
+      "77"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "cernia": {
@@ -169,9 +227,19 @@
     },
     "wildNote": "Pesce longevo e predatore: accumula mercurio. Mediterraneo molto sfruttato. Specie protetta in alcune aree.",
     "farmNote": "Allevamento in sviluppo: mercurio significativamente inferiore al selvaggio. Qualità comparabile.",
-    "bestZones": ["34", "41"],
-    "mediumZones": ["31", "77", "51"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "34",
+      "41"
+    ],
+    "mediumZones": [
+      "31",
+      "77",
+      "51"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "cozza": {
@@ -195,9 +263,18 @@
     },
     "wildNote": "Selvatiche: sapore intenso ma rischio microbiologico maggiore. Consumo più prudente.",
     "farmNote": "Allevate in zone certificate (classe A): sicurezza microbiologica superiore. Preferibile al selvaggio per frequenza di consumo.",
-    "bestZones": ["27", "34"],
-    "mediumZones": ["37.3", "81"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "27",
+      "34"
+    ],
+    "mediumZones": [
+      "37.3",
+      "81"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "gambero": {
@@ -215,9 +292,20 @@
     },
     "wildNote": "Selvaggio (gambero rosso Mazara, gambero artico): sapore superiore, qualità eccellente.",
     "farmNote": "Allevato dall'Asia: qualità molto variabile. Scegliere certificazione ASC/BAP.",
-    "bestZones": ["41", "87", "67"],
-    "mediumZones": ["51", "57", "71"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "41",
+      "87",
+      "67"
+    ],
+    "mediumZones": [
+      "51",
+      "57",
+      "71"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "halibut": {
@@ -235,9 +323,18 @@
     },
     "wildNote": "Selvaggio (Alaska, Norvegia): eccellente qualità. Pesca controllata.",
     "farmNote": "Allevamento in espansione in Norvegia. Qualità alta.",
-    "bestZones": ["67", "27", "18"],
-    "mediumZones": ["81"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "67",
+      "27",
+      "18"
+    ],
+    "mediumZones": [
+      "81"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "merluzzo": {
@@ -255,30 +352,49 @@
     },
     "wildNote": "Selvaggio nordico (FAO 27/67): migliore sapore, stock ben gestiti.",
     "farmNote": "Allevamento in espansione. Qualità comparabile se certificato.",
-    "bestZones": ["67", "27", "18"],
-    "mediumZones": ["51", "57"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "67",
+      "27",
+      "18"
+    ],
+    "mediumZones": [
+      "51",
+      "57"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "nasello": {
     "name": "Nasello",
     "emoji": "🐟",
     "latin": "Merluccius merluccius",
-    "hgLevel": "basso",
-    "hgVal": 22,
-    "hgNote": "0.05–0.20 mg/kg",
+    "hgLevel": "medio",
+    "hgVal": 42,
+    "hgNote": "0.20–0.60 mg/kg (Mediterraneo fino a 1.6 mg/kg)",
     "portions": {
-      "adulti": "Libero",
-      "bambini": "Ottimo",
-      "gravidanza": "Ottimo",
-      "anziani": "Ottimo, digeribile"
+      "adulti": "1-2 volte/sett. (evitare Adriatico)",
+      "bambini": "1 volta/sett.; preferire Atlantico",
+      "gravidanza": "Preferire Atlantico (FAO 27/47); limitare Mediterraneo",
+      "anziani": "1-2 volte/sett.; preferire Atlantico"
     },
-    "wildNote": "Selvaggio: ottima scelta, magro e digeribile. Stock mediterranei sotto pressione.",
+    "wildNote": "Attenzione alla zona: in Atlantico (FAO 27, 47) i livelli di mercurio sono bassi (0.05–0.20 mg/kg). In Mediterraneo, specialmente Adriatico (FAO 37.2.1), studi 2024 rilevano superamenti del limite UE di 1 mg/kg. Preferire nasello atlantico o nordico.",
     "farmNote": "Raramente allevato.",
-    "bestZones": ["41", "47", "67"],
-    "mediumZones": ["27", "77"],
-    "methods": ["wild"],
-    "lastUpdated": "2026-06"
+    "bestZones": [
+      "41",
+      "47",
+      "67"
+    ],
+    "mediumZones": [
+      "27",
+      "77"
+    ],
+    "methods": [
+      "wild"
+    ],
+    "lastUpdated": "2026-06-rev1"
   },
   "orata": {
     "name": "Orata",
@@ -295,9 +411,18 @@
     },
     "wildNote": "Selvaggia: sapore superiore. Primavera-estate.",
     "farmNote": "Allevata: più comune in commercio. Certificazione ASC. Omega-3 leggermente inferiori.",
-    "bestZones": ["37.3", "37.1"],
-    "mediumZones": ["37.2", "51"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "37.3",
+      "37.1"
+    ],
+    "mediumZones": [
+      "37.2",
+      "51"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "pesce spada": {
@@ -315,9 +440,17 @@
     },
     "wildNote": "Solo selvaggio. Grande predatore apicale: bioaccumulo massimo di mercurio.",
     "farmNote": null,
-    "bestZones": ["34", "87"],
-    "mediumZones": ["77", "31"],
-    "methods": ["wild"],
+    "bestZones": [
+      "34",
+      "87"
+    ],
+    "mediumZones": [
+      "77",
+      "31"
+    ],
+    "methods": [
+      "wild"
+    ],
     "lastUpdated": "2026-06"
   },
   "polpo": {
@@ -335,9 +468,19 @@
     },
     "wildNote": "Solo selvaggio. Buona scelta, breve vita e basso bioaccumulo.",
     "farmNote": null,
-    "bestZones": ["34", "37.3", "41"],
-    "mediumZones": ["77", "31", "51"],
-    "methods": ["wild"],
+    "bestZones": [
+      "34",
+      "37.3",
+      "41"
+    ],
+    "mediumZones": [
+      "77",
+      "31",
+      "51"
+    ],
+    "methods": [
+      "wild"
+    ],
     "lastUpdated": "2026-06"
   },
   "rombo": {
@@ -355,9 +498,18 @@
     },
     "wildNote": "Selvaggio: ottima qualità. Mediterraneo e Atlantico.",
     "farmNote": "Allevamento in espansione (turbot). Buona qualità.",
-    "bestZones": ["27", "67"],
-    "mediumZones": ["37.3", "61"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "27",
+      "67"
+    ],
+    "mediumZones": [
+      "37.3",
+      "61"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "salmone": {
@@ -384,11 +536,25 @@
     },
     "wildNote": "Selvaggio (Alaska/Pacifico): più omega-3, meno grassi saturi, mercurio molto basso, sapore intenso. Scelta eccellente.",
     "farmNote": "Allevato (Atlantico/Norvegia): PCB e grassi leggermente più alti. Preferire certificazione ASC/Bio. Ancora una buona scelta se certificato.",
-    "bestZones": ["67", "27"],
-    "bestZonesFarm": ["27", "81"],
-    "mediumZones": ["81", "61"],
-    "mediumZonesFarm": ["61"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "67",
+      "27"
+    ],
+    "bestZonesFarm": [
+      "27",
+      "81"
+    ],
+    "mediumZones": [
+      "81",
+      "61"
+    ],
+    "mediumZonesFarm": [
+      "61"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "sardina": {
@@ -406,9 +572,18 @@
     },
     "wildNote": "Solo selvaggia. Piccola, breve catena trofica: tra le scelte più sicure.",
     "farmNote": null,
-    "bestZones": ["34", "47", "87"],
-    "mediumZones": ["27", "77"],
-    "methods": ["wild"],
+    "bestZones": [
+      "34",
+      "47",
+      "87"
+    ],
+    "mediumZones": [
+      "27",
+      "77"
+    ],
+    "methods": [
+      "wild"
+    ],
     "lastUpdated": "2026-06"
   },
   "scampo": {
@@ -426,9 +601,17 @@
     },
     "wildNote": "Solo selvaggio. Atlantico Nord e Mediterraneo. Qualità eccellente.",
     "farmNote": null,
-    "bestZones": ["27", "34"],
-    "mediumZones": ["37.3", "31"],
-    "methods": ["wild"],
+    "bestZones": [
+      "27",
+      "34"
+    ],
+    "mediumZones": [
+      "37.3",
+      "31"
+    ],
+    "methods": [
+      "wild"
+    ],
     "lastUpdated": "2026-06"
   },
   "seppia": {
@@ -446,9 +629,17 @@
     },
     "wildNote": "Solo selvaggia. Buona scelta, breve vita e basso accumulo.",
     "farmNote": null,
-    "bestZones": ["34", "37.3"],
-    "mediumZones": ["37.2", "51"],
-    "methods": ["wild"],
+    "bestZones": [
+      "34",
+      "37.3"
+    ],
+    "mediumZones": [
+      "37.2",
+      "51"
+    ],
+    "methods": [
+      "wild"
+    ],
     "lastUpdated": "2026-06"
   },
   "sgombro": {
@@ -466,9 +657,18 @@
     },
     "wildNote": "Solo selvaggio. Eccellente per omega-3. Atlantico NE e Mediterraneo.",
     "farmNote": null,
-    "bestZones": ["27", "34", "47"],
-    "mediumZones": ["61", "71"],
-    "methods": ["wild"],
+    "bestZones": [
+      "27",
+      "34",
+      "47"
+    ],
+    "mediumZones": [
+      "61",
+      "71"
+    ],
+    "methods": [
+      "wild"
+    ],
     "lastUpdated": "2026-06"
   },
   "sogliola": {
@@ -486,9 +686,18 @@
     },
     "wildNote": "Selvaggia: sapore delicato, molto digeribile. Preferire Atlantico a Adriatico.",
     "farmNote": "Allevamento in sviluppo. Qualità buona.",
-    "bestZones": ["27", "34"],
-    "mediumZones": ["37.3", "77"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "27",
+      "34"
+    ],
+    "mediumZones": [
+      "37.3",
+      "77"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "storione": {
@@ -515,9 +724,16 @@
     },
     "wildNote": "Quasi estinto in natura. Pesca commerciale vietata in UE.",
     "farmNote": "Allevato: unica fonte legale. Mercurio significativamente inferiore al selvaggio grazie all'alimentazione controllata.",
-    "bestZones": ["41"],
-    "mediumZones": ["27", "67"],
-    "methods": ["farm"],
+    "bestZones": [
+      "41"
+    ],
+    "mediumZones": [
+      "27",
+      "67"
+    ],
+    "methods": [
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   },
   "tonno": {
@@ -535,9 +751,20 @@
     },
     "wildNote": "Selvaggio: omega-3 elevati, più mercurio negli esemplari grandi.",
     "farmNote": "Non si alleva industrialmente.",
-    "bestZones": ["67", "34", "87"],
-    "mediumZones": ["31", "51", "61", "71"],
-    "methods": ["wild"],
+    "bestZones": [
+      "67",
+      "34",
+      "87"
+    ],
+    "mediumZones": [
+      "31",
+      "51",
+      "61",
+      "71"
+    ],
+    "methods": [
+      "wild"
+    ],
     "lastUpdated": "2026-06"
   },
   "tonno in scatola": {
@@ -555,9 +782,18 @@
     },
     "wildNote": "Skipjack (pinna gialla piccolo): mercurio molto più basso del tonno rosso. Preferire da FAO 71 o 34.",
     "farmNote": null,
-    "bestZones": ["71", "34", "77"],
-    "mediumZones": ["31", "57"],
-    "methods": ["wild"],
+    "bestZones": [
+      "71",
+      "34",
+      "77"
+    ],
+    "mediumZones": [
+      "31",
+      "57"
+    ],
+    "methods": [
+      "wild"
+    ],
     "lastUpdated": "2026-06"
   },
   "triglia": {
@@ -566,19 +802,27 @@
     "latin": "Mullus surmuletus / Mullus barbatus",
     "hgLevel": "medio",
     "hgVal": 35,
-    "hgNote": "0.10–0.35 mg/kg",
+    "hgNote": "0.10–0.35 mg/kg (Adriatico può superare 0.40 mg/kg)",
     "portions": {
       "adulti": "1-2 volte/sett.",
       "bambini": "1 volta/sett.",
       "gravidanza": "Moderare",
       "anziani": "1-2 volte/sett."
     },
-    "wildNote": "Solo selvaggia. Pesce di fondo che accumula contaminanti dalla sedimentazione. La zona influenza molto la qualità.",
+    "wildNote": "Solo selvaggia. Pesce di fondo che accumula contaminanti dalla sedimentazione. La zona influenza molto la qualità: preferire Mediterraneo occidentale o Atlantico. In Adriatico (FAO 37.2.1) i valori tendono ad essere più alti per la scarsa circolazione e l'eutrofizzazione da Po.",
     "farmNote": null,
-    "bestZones": ["34", "37.3"],
-    "mediumZones": ["37.2", "51"],
-    "methods": ["wild"],
-    "lastUpdated": "2026-06"
+    "bestZones": [
+      "34",
+      "37.3"
+    ],
+    "mediumZones": [
+      "37.2",
+      "51"
+    ],
+    "methods": [
+      "wild"
+    ],
+    "lastUpdated": "2026-06-rev1"
   },
   "vongola": {
     "name": "Vongola",
@@ -601,9 +845,18 @@
     },
     "wildNote": "Selvatiche: sapore superiore ma rischio microbiologico maggiore.",
     "farmNote": "Allevate in zone certificate: sicurezza superiore. Verificare etichetta e classe A/B.",
-    "bestZones": ["27", "34"],
-    "mediumZones": ["37.3", "81"],
-    "methods": ["wild", "farm"],
+    "bestZones": [
+      "27",
+      "34"
+    ],
+    "mediumZones": [
+      "37.3",
+      "81"
+    ],
+    "methods": [
+      "wild",
+      "farm"
+    ],
     "lastUpdated": "2026-06"
   }
 }
