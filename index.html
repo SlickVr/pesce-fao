@@ -225,10 +225,10 @@ input::placeholder{color:var(--td)}
     <div style="font-size:16px;font-weight:700;color:#fff">ℹ️ Info &amp; Crediti</div>
     <button onclick="document.getElementById('creditsPanel').style.display='none'" style="background:rgba(79,195,247,0.1);border:0.5px solid rgba(79,195,247,0.3);border-radius:50%;width:28px;height:28px;color:#90caf9;font-size:16px;cursor:pointer;line-height:28px;text-align:center">×</button>
   </div>
-  <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">🎬 Special thanks</div>
+  <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Crediti</div>
   <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;margin-bottom:12px;border:0.5px solid rgba(79,195,247,0.12)">
-    <div style="font-size:13px;color:#e8f4fd">👤 <strong>Cristiano Cinotti</strong> — concept &amp; design</div>
-    <div style="font-size:13px;color:#e8f4fd;margin-top:6px">🤖 <strong>Claude</strong> (Anthropic) — produzione &amp; sviluppo</div>
+    <div style="font-size:13px;color:#e8f4fd">Concept &amp; design — 👤 <strong>Cristiano Cinotti</strong></div>
+    <div style="font-size:13px;color:#e8f4fd;margin-top:6px">Coding &amp; sviluppo — 🤖 <strong>Claude</strong> (Anthropic)</div>
     <div style="font-size:11px;color:#90caf9;margin-top:6px;line-height:1.5">📧 cristiano.cinotti@proton.me</div>
   </div>
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Fonti dei dati</div>
@@ -460,7 +460,7 @@ function buildGlossary(){
   var out=document.getElementById('glossCard');if(out.innerHTML)return;
   var html='';
   for(var i=0;i<GLOSSARY.length;i++){var g=GLOSSARY[i];html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl('+i+')"><span class="gl-icon">'+g.icon+'</span><span class="gl-term">'+g.term+'</span><span class="gl-arr" id="ga'+i+'">›</span></div><div class="gl-body" id="gb'+i+'">'+g.body+'<br><span class="gl-tag '+g.tag.cls+'">'+g.tag.text+'</span></div></div>';}
-  html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(99)"><span class="gl-icon">ℹ️</span><span class="gl-term">Info &amp; Crediti</span><span class="gl-arr" id="ga99">›</span></div><div class="gl-body" id="gb99"><strong>Sviluppato da</strong><br>👤 Cristiano Cinotti — concept &amp; design<br>🤖 Claude (Anthropic) — produzione &amp; sviluppo<br><br><strong>Fonti</strong><br>🇪🇺 EFSA · 🌍 FAO · 🌊 MEDPOL/UNEP-MAP · 🏛️ ISPRA/ARPA · ❄️ HELCOM/OSPAR · 🇺🇸 NOAA/FDA<br><br><span style="font-size:11px;color:#ef9a9a">⚠️ Dati indicativi al 2026.</span><br><span class="gl-tag info">v 0.75 · 2026</span></div></div>';
+  html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(99)"><span class="gl-icon">ℹ️</span><span class="gl-term">Info &amp; Crediti</span><span class="gl-arr" id="ga99">›</span></div><div class="gl-body" id="gb99"><strong>Sviluppato da</strong><br>Concept &amp; design — 👤 Cristiano Cinotti<br>Coding &amp; sviluppo — 🤖 Claude (Anthropic)<br><br><strong>Fonti</strong><br>🇪🇺 EFSA · 🌍 FAO · 🌊 MEDPOL/UNEP-MAP · 🏛️ ISPRA/ARPA · ❄️ HELCOM/OSPAR · 🇺🇸 NOAA/FDA<br><br><span style="font-size:11px;color:#ef9a9a">⚠️ Dati indicativi al 2026.</span><br><span class="gl-tag info">v 0.75 · 2026</span></div></div>';
   out.innerHTML=html;
 }
 function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElementById('ga'+i);var op=b.classList.contains('open');b.className='gl-body'+(op?'':' open');a.className='gl-arr'+(op?'':' open');}
