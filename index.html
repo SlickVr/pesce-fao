@@ -303,14 +303,13 @@ function showPage(p,fromPop){
   _currentPage=p;
 }
 window.addEventListener('popstate',function(e){
-  var p=(e.state&&e.state.page)||'ricerca';
-  if(p==='ricerca'&&_currentPage==='ricerca'){
-    // Siamo già sulla prima tab — chiedi conferma uscita
-    history.pushState({page:'ricerca'},'',location.pathname);
-    if(confirm('Vuoi uscire da Pesce Sicuro?')){history.go(-2);}
+  if(!e.state||!e.state.page){
+    // Raggiunto l'inizio della storia dell'app — chiedi conferma uscita
+    history.pushState({page:_currentPage},'',location.pathname);
+    if(confirm('Vuoi uscire da Pesce Sicuro?')){history.go(-1);}
     return;
   }
-  showPage(p,true);
+  showPage(e.state.page,true);
 });
 
 // ─── RICERCA ─────────────────────────────────────────────────────────────────
