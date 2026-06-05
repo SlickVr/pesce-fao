@@ -285,18 +285,26 @@ function initApp(){
   var sdKeys=Object.keys(SPECIES).sort(function(a,b){return SPECIES[a].name.localeCompare(SPECIES[b].name,'it');});
   for(var i=0;i<sdKeys.length;i++){var o=document.createElement('option');o.value=sdKeys[i];o.textContent=SPECIES[sdKeys[i]].emoji+' '+SPECIES[sdKeys[i]].name;spDetSel.appendChild(o);}
   buildGlossary();
+  history.replaceState({page:'ricerca'},'',location.pathname);
 }
 
 // ─── NAV ─────────────────────────────────────────────────────────────────────
 var PAGES=['ricerca','specie','mappa','glossario'];
-function showPage(p){
+var _currentPage='ricerca';
+function showPage(p,fromPop){
   for(var i=0;i<PAGES.length;i++){
     var pg=PAGES[i];
     document.getElementById('page'+pg.charAt(0).toUpperCase()+pg.slice(1)).className='page'+(pg===p?' active':'');
     document.getElementById('mainNav').children[i].className='nav-tab'+(pg===p?' active':'');
   }
   if(p==='mappa')buildMapGroups('all');
+  if(!fromPop){history.pushState({page:p},'',location.pathname);}
+  _currentPage=p;
 }
+window.addEventListener('popstate',function(e){
+  var p=(e.state&&e.state.page)||'ricerca';
+  showPage(p,true);
+});
 
 // ─── RICERCA ─────────────────────────────────────────────────────────────────
 function normCode(r){return r.trim().replace(/[,\s]+/g,'.').replace(/\.+/g,'.').replace(/^\.|\.$/g,'');}
