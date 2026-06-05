@@ -3,6 +3,6 @@
       "target": {
         "namespace": "android_app",
         "package_name": "io.slickvr.pescesicuro",
-        "sha256_cert_fingerprints": ["64:A8:6F:63:E9:36:3E:A0:C6:52:EF:82:9D:3D:92:46:1A:FE:CD:6E:B6:43:98:B5:6E:CF:92:D9:5F:72:94:FD"]
+        "sha256_cert_fingerprints": ["B3:E4:B8:7A:C1:57:9D:66:1C:E7:F8:29:7B:FF:CC:D0:9E:B7:2E:58:D1:85:2F:37:AD:9C:5C:A6:FB:7B:04:44"]
       }
     }]
