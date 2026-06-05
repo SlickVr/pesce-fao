@@ -1,8 +1,11 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "io.slickvr.pescesicuro",
-        "sha256_cert_fingerprints": ["B3:E4:B8:7A:C1:57:9D:66:1C:E7:F8:29:7B:FF:CC:D0:9E:B7:2E:58:D1:85:2F:37:AD:9C:5C:A6:FB:7B:04:44"]
-      }
-    }]
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.slickvr.pescesicuro",
+      "sha256_cert_fingerprints":
+        ["B3:E4:B8:7A:C1:57:9D:66:1C:E7:F8:29:7B:FF:CC:D0:9E:B7:2E:58:D1:85:2F:37:AD:9C:5C:A6:FB:7B:04:44"]
+    }
+  }
+]
