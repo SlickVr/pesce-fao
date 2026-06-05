@@ -118,24 +118,15 @@
     "latin": "Dicentrarchus labrax",
     "hgLevel": "basso",
     "hgVal": 20,
-    "hgNote": "0.05–0.20 mg/kg — selvaggio",
-    "hgLevelFarm": "basso",
-    "hgValFarm": 12,
-    "hgNoteFarm": "0.003–0.04 mg/kg — allevato in gabbie/vasche; valori inferiori al selvaggio grazie all'alimentazione controllata",
+    "hgNote": "0.05–0.20 mg/kg",
     "portions": {
       "adulti": "2-3 volte/sett.",
       "bambini": "Ottimo",
       "gravidanza": "Ottimo",
       "anziani": "Ottimo, magro e digeribile"
     },
-    "portionsFarm": {
-      "adulti": "2-3 volte/sett.",
-      "bambini": "Ottimo",
-      "gravidanza": "Ottimo",
-      "anziani": "Ottimo; attenzione se ipercolesterolemico: preferire selvaggio"
-    },
-    "wildNote": "Selvaggio: sapore superiore, stagionalità autunno-inverno. Profilo lipidico migliore: meno grassi saturi, più omega-3 in percentuale.",
-    "farmNote": "Allevato: mercurio inferiore al selvaggio, ma grassi totali e saturi più elevati, colesterolo maggiore. Proteine leggermente più alte. Chi ha problemi di colesterolo preferisca il selvaggio. Scegliere certificazione ASC.",
+    "wildNote": "Selvaggio: sapore superiore, stagionalità autunno-inverno. Mediterraneo: attenzione alla zona.",
+    "farmNote": "Allevato: più comune in commercio. Qualità buona se certificato ASC. Omega-3 leggermente inferiori.",
     "bestZones": [
       "37.3",
       "37.1",
@@ -411,24 +402,15 @@
     "latin": "Sparus aurata",
     "hgLevel": "basso",
     "hgVal": 18,
-    "hgNote": "0.02–0.10 mg/kg — selvaggia",
-    "hgLevelFarm": "basso",
-    "hgValFarm": 22,
-    "hgNoteFarm": "0.03–0.08 mg/kg — allevata; studi Mediterraneo mostrano valori leggermente superiori al selvaggio ma ampiamente nei limiti UE",
+    "hgNote": "0.02–0.10 mg/kg",
     "portions": {
       "adulti": "2-3 volte/sett.",
       "bambini": "Ottima",
       "gravidanza": "Ottima",
       "anziani": "Ottima"
     },
-    "portionsFarm": {
-      "adulti": "2-3 volte/sett.",
-      "bambini": "Ottima",
-      "gravidanza": "Ottima",
-      "anziani": "Ottima; attenzione se ipercolesterolemico: preferire selvaggia"
-    },
-    "wildNote": "Selvaggia: sapore superiore, stagionalità primavera-estate. Profilo lipidico migliore: meno grassi saturi, omega-3 più elevati in percentuale.",
-    "farmNote": "Allevata: la più comune in commercio. Grassi totali e saturi più elevati rispetto alla selvaggia, colesterolo maggiore, omega-3 percentualmente inferiori. Mercurio simile o leggermente superiore ma sempre basso. Preferire certificazione ASC. Chi ha colesterolo alto preferisca la selvaggia.",
+    "wildNote": "Selvaggia: sapore superiore. Primavera-estate.",
+    "farmNote": "Allevata: più comune in commercio. Certificazione ASC. Omega-3 leggermente inferiori.",
     "bestZones": [
       "37.3",
       "37.1"
