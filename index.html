@@ -286,8 +286,6 @@ function initApp(){
   var sdKeys=Object.keys(SPECIES).sort(function(a,b){return SPECIES[a].name.localeCompare(SPECIES[b].name,'it');});
   for(var i=0;i<sdKeys.length;i++){var o=document.createElement('option');o.value=sdKeys[i];o.textContent=SPECIES[sdKeys[i]].emoji+' '+SPECIES[sdKeys[i]].name;spDetSel.appendChild(o);}
   buildGlossary();
-  history.replaceState({page:'exit_guard'},'',location.pathname);
-  history.pushState({page:'ricerca'},'',location.pathname);
 }
 
 // ─── NAV ─────────────────────────────────────────────────────────────────────
@@ -309,11 +307,23 @@ window.addEventListener('popstate',function(e){
   var page=e.state&&e.state.page;
   if(!page||page==='exit_guard'){
     _showingExitModal=true;
-    showExitModal();
+    document.getElementById('exitModal').style.display='flex';
     return;
   }
   showPage(page,true);
 });
+// Imposta la storia immediatamente — non dentro initApp
+try{history.replaceState({page:'exit_guard'},'',location.pathname);history.pushState({page:'ricerca'},'',location.pathname);}catch(e){}
+function exitCancel(){
+  document.getElementById('exitModal').style.display='none';
+  _showingExitModal=false;
+  history.pushState({page:_currentPage},'',location.pathname);
+}
+function exitConfirm(){
+  document.getElementById('exitModal').style.display='none';
+  _showingExitModal=false;
+  history.go(-1);
+}
 
 // ─── RICERCA ─────────────────────────────────────────────────────────────────
 function normCode(r){return r.trim().replace(/[,\s]+/g,'.').replace(/\.+/g,'.').replace(/^\.|\.$/g,'');}
@@ -495,7 +505,7 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
 </script>
 
 <!-- Modal conferma uscita -->
-<div id="exitModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);align-items:center;justify-content:center">
+<div id="exitModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(0,0,0,0.6);align-items:center;justify-content:center">
   <div style="background:#1a2f4a;border-radius:16px;padding:24px 20px;margin:24px;max-width:320px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,0.4)">
     <p style="color:#e0e8f0;font-size:16px;font-weight:500;margin:0 0 8px;text-align:center">Vuoi uscire?</p>
     <p style="color:#8eacc4;font-size:13px;margin:0 0 20px;text-align:center">Stai per chiudere Pesce Sicuro.</p>
@@ -506,21 +516,5 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
   </div>
 </div>
 
-<script>
-function showExitModal(){
-  var m=document.getElementById('exitModal');
-  m.style.display='flex';
-}
-function exitCancel(){
-  document.getElementById('exitModal').style.display='none';
-  _showingExitModal=false;
-  history.pushState({page:_currentPage},'',location.pathname);
-}
-function exitConfirm(){
-  document.getElementById('exitModal').style.display='none';
-  _showingExitModal=false;
-  history.go(-1);
-}
-</script>
 </body>
 </html>
