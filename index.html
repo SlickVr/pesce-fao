@@ -302,8 +302,10 @@ function showPage(p,fromPop){
   _currentPage=p;
 }
 var _showingExitModal=false;
+var _bypassModal=false;
 window.addEventListener('popstate',function(e){
   if(_showingExitModal)return;
+  if(_bypassModal){_bypassModal=false;return;}
   var page=e.state&&e.state.page;
   if(!page||page==='exit_guard'){
     _showingExitModal=true;
@@ -322,7 +324,9 @@ function exitCancel(){
 function exitConfirm(){
   document.getElementById('exitModal').style.display='none';
   _showingExitModal=false;
-  history.go(-1);
+  _bypassModal=true;
+  try{window.close();}catch(e){}
+  setTimeout(function(){history.go(-history.length);},80);
 }
 
 // ─── RICERCA ─────────────────────────────────────────────────────────────────
