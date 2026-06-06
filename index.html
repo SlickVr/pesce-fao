@@ -303,31 +303,35 @@ function showPage(p,fromPop){
 }
 var _showingExitModal=false;
 var _bypassModal=false;
+var _exitReady=false;
+var _exitTimer=null;
 window.addEventListener('popstate',function(e){
   if(_showingExitModal)return;
   if(_bypassModal){_bypassModal=false;return;}
   var page=e.state&&e.state.page;
   if(!page||page==='exit_guard'){
-    _showingExitModal=true;
-    document.getElementById('exitModal').style.display='flex';
+    if(_exitReady){
+      // Secondo back entro 2.5s — non intercettare, Android chiude la TWA
+      _exitReady=false;
+      clearTimeout(_exitTimer);
+      document.getElementById('exitToast').style.display='none';
+      return;
+    }
+    // Primo back — mostra toast, NON fare pushState (restiamo a pos=0)
+    _exitReady=true;
+    document.getElementById('exitToast').style.display='block';
+    _exitTimer=setTimeout(function(){
+      _exitReady=false;
+      document.getElementById('exitToast').style.display='none';
+      // Ripristina navigazione normale dopo 2.5s
+      history.pushState({page:_currentPage},'',location.pathname);
+    },2500);
     return;
   }
   showPage(page,true);
 });
 // Imposta la storia immediatamente — non dentro initApp
 try{history.replaceState({page:'exit_guard'},'',location.pathname);history.pushState({page:'ricerca'},'',location.pathname);}catch(e){}
-function exitCancel(){
-  document.getElementById('exitModal').style.display='none';
-  _showingExitModal=false;
-  history.pushState({page:_currentPage},'',location.pathname);
-}
-function exitConfirm(){
-  document.getElementById('exitModal').style.display='none';
-  _showingExitModal=false;
-  _bypassModal=true;
-  try{window.close();}catch(e){}
-  setTimeout(function(){history.go(-history.length);},80);
-}
 
 // ─── RICERCA ─────────────────────────────────────────────────────────────────
 function normCode(r){return r.trim().replace(/[,\s]+/g,'.').replace(/\.+/g,'.').replace(/^\.|\.$/g,'');}
@@ -507,16 +511,9 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
 })();
 </script>
 
-<!-- Modal conferma uscita -->
-<div id="exitModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(0,0,0,0.6);align-items:center;justify-content:center">
-  <div style="background:#1a2f4a;border-radius:16px;padding:24px 20px;margin:24px;max-width:320px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,0.4)">
-    <p style="color:#e0e8f0;font-size:16px;font-weight:500;margin:0 0 8px;text-align:center">Vuoi uscire?</p>
-    <p style="color:#8eacc4;font-size:13px;margin:0 0 20px;text-align:center">Stai per chiudere Pesce Sicuro.</p>
-    <div style="display:flex;gap:10px">
-      <button onclick="exitCancel()" style="flex:1;padding:12px;border-radius:10px;border:0.5px solid #2e4a6a;background:transparent;color:#8eacc4;font-size:14px;cursor:pointer">Annulla</button>
-      <button onclick="exitConfirm()" style="flex:1;padding:12px;border-radius:10px;border:none;background:#1565a8;color:#fff;font-size:14px;font-weight:500;cursor:pointer">Esci</button>
-    </div>
-  </div>
+<!-- Toast doppio back per uscita -->
+<div id="exitToast" style="display:none;position:fixed;bottom:88px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.82);color:#fff;padding:11px 22px;border-radius:24px;font-size:13px;z-index:9999;white-space:nowrap;pointer-events:none">
+  Premi ancora per uscire
 </div>
 
 </body>
