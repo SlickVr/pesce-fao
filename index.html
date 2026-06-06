@@ -286,7 +286,8 @@ function initApp(){
   var sdKeys=Object.keys(SPECIES).sort(function(a,b){return SPECIES[a].name.localeCompare(SPECIES[b].name,'it');});
   for(var i=0;i<sdKeys.length;i++){var o=document.createElement('option');o.value=sdKeys[i];o.textContent=SPECIES[sdKeys[i]].emoji+' '+SPECIES[sdKeys[i]].name;spDetSel.appendChild(o);}
   buildGlossary();
-  history.replaceState({page:'ricerca'},'',location.pathname);
+  history.replaceState({page:'exit_guard'},'',location.pathname);
+  history.pushState({page:'ricerca'},'',location.pathname);
 }
 
 // ─── NAV ─────────────────────────────────────────────────────────────────────
@@ -302,13 +303,16 @@ function showPage(p,fromPop){
   if(!fromPop){history.pushState({page:p},'',location.pathname);}
   _currentPage=p;
 }
+var _showingExitModal=false;
 window.addEventListener('popstate',function(e){
-  if(!e.state||!e.state.page){
-    history.pushState({page:_currentPage},'',location.pathname);
+  if(_showingExitModal)return;
+  var page=e.state&&e.state.page;
+  if(!page||page==='exit_guard'){
+    _showingExitModal=true;
     showExitModal();
     return;
   }
-  showPage(e.state.page,true);
+  showPage(page,true);
 });
 
 // ─── RICERCA ─────────────────────────────────────────────────────────────────
@@ -509,9 +513,12 @@ function showExitModal(){
 }
 function exitCancel(){
   document.getElementById('exitModal').style.display='none';
+  _showingExitModal=false;
+  history.pushState({page:_currentPage},'',location.pathname);
 }
 function exitConfirm(){
   document.getElementById('exitModal').style.display='none';
+  _showingExitModal=false;
   history.go(-1);
 }
 </script>
