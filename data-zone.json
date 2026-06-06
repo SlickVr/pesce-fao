@@ -12,7 +12,7 @@
       { "name": "Metalli pesanti", "level": "basso", "note": "Basso al largo, medio nel Baltico", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "medio", "note": "Baltico tra i più contaminati UE", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "medio", "note": "Cronica nel Baltico", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "basso", "note": "Atlantico aperto buono", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "basso", "note": "Atlantico aperto buono", "icon": "📊" }
     ],
     "sensibleSpecies": ["Salmone Baltico", "Aringa", "Sgombro", "Merluzzo"],
     "recommendation": "Atlantico aperto: consumo libero 2-3 volte/sett. Salmone e aringa del Baltico: max 1-2 volte/mese in gravidanza e bambini per PCB/diossine.",
@@ -32,7 +32,7 @@
       { "name": "Metalli pesanti (Hg)", "level": "alto", "note": "Mercurio elevato nei predatori", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Contenuto", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "alto", "note": "Zona morta Golfo del Messico", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "medio", "note": "Variabile per area", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "medio", "note": "Variabile per area", "icon": "📊" }
     ],
     "sensibleSpecies": ["Tonno", "Pesce spada", "Marlin"],
     "recommendation": "Grandi predatori: mercurio elevato. Evitare in gravidanza, max 1 volta/mese bambini.",
@@ -52,7 +52,7 @@
       { "name": "Metalli pesanti", "level": "basso", "note": "Acque pulite", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Basso impatto industriale", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "basso", "note": "Upwelling ricco e ossigenato", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "basso", "note": "Tra le più pescose e pulite", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "basso", "note": "Tra le più pescose e pulite", "icon": "📊" }
     ],
     "sensibleSpecies": ["Sardina", "Sgombro", "Tonno", "Polpo"],
     "recommendation": "Zona molto produttiva e pulita. Sardine e sgombri ottimi 2-3 volte/sett. Moderare solo grandi tonni per mercurio.",
@@ -72,7 +72,7 @@
       { "name": "Metalli pesanti (Hg)", "level": "alto", "note": "Mercurio elevato, bacino chiuso", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "medio", "note": "Hotspot localizzati", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "medio", "note": "Variabile, peggiore in aree chiuse", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "alto", "note": "Ricambio idrico lentissimo", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "alto", "note": "Ricambio idrico lentissimo", "icon": "📊" }
     ],
     "sensibleSpecies": ["Tonno rosso", "Pesce spada", "Triglia", "Cozze"],
     "recommendation": "Mercurio e microplastiche elevati. Limitare tonno e spada (max 1-2/mese, evitare in gravidanza). Alici e sardine restano la scelta migliore.",
@@ -92,7 +92,7 @@
       { "name": "Metalli pesanti", "level": "alto", "note": "Mercurio nei predatori", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "medio", "note": "Poli industriali costieri", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "medio", "note": "Localizzata vicino foci", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "medio", "note": "Migliore al largo della Sardegna", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "medio", "note": "Migliore al largo della Sardegna", "icon": "📊" }
     ],
     "sensibleSpecies": ["Tonno rosso", "Pesce spada", "Triglia", "Nasello"],
     "recommendation": "Privilegiare pesce azzurro piccolo e nasello. Tonno e spada con moderazione. Acque sarde al largo tra le più pulite.",
@@ -112,7 +112,7 @@
       { "name": "Metalli pesanti", "level": "medio", "note": "Alto nei predatori", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "alto", "note": "Hotspot storici (area Taranto)", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "alto", "note": "Adriatico Nord eutrofico (Po)", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "alto", "note": "Fondale basso, ricambio lento", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "alto", "note": "Fondale basso, ricambio lento", "icon": "📊" }
     ],
     "sensibleSpecies": ["Cozze", "Vongole", "Triglia", "Tonno"],
     "recommendation": "Molluschi filtratori solo da zone certificate. Pesce azzurro piccolo è la scelta migliore.",
@@ -132,7 +132,7 @@
       { "name": "Metalli pesanti", "level": "medio", "note": "Alto nei grandi pesci", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "alto", "note": "Hotspot industriali sulla costa", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "molto alto", "note": "Marcata, mucillagini", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "alto", "note": "Poco profondo, ricambio lento", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "alto", "note": "Poco profondo, ricambio lento", "icon": "📊" }
     ],
     "sensibleSpecies": ["Cozze", "Vongole", "Triglia di fango", "Sgombro"],
     "recommendation": "Eutrofizzazione elevata. Molluschi solo da zone certificate. Alici e sardine l'opzione più sicura 2 volte/sett.",
@@ -152,7 +152,7 @@
       { "name": "Metalli pesanti", "level": "medio", "note": "Variabile", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Minore industrializzazione", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "basso", "note": "Acque oligotrofiche", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "medio", "note": "Limpide ma povere", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "medio", "note": "Limpide ma povere", "icon": "📊" }
     ],
     "sensibleSpecies": ["Triglia", "Orata", "Sgombro", "Tonno"],
     "recommendation": "Qualità buona. Attenzione ai grandi predatori per mercurio.",
@@ -172,7 +172,7 @@
       { "name": "Metalli pesanti", "level": "alto", "note": "Scarichi industriali e fluviali", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "alto", "note": "Contaminazione storica diffusa", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "molto alto", "note": "Estrema, ipossia profonda", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "molto alto", "note": "Strato profondo anossico", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "molto alto", "note": "Strato profondo anossico", "icon": "📊" }
     ],
     "sensibleSpecies": ["Acciuga del Mar Nero", "Sgombro", "Storione"],
     "recommendation": "Bacino tra i più compromessi. Consumo con cautela, preferire pesce piccolo da pesca controllata.",
@@ -192,7 +192,7 @@
       { "name": "Metalli pesanti", "level": "basso", "note": "Acque pulite", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Basso impatto", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "basso", "note": "Localizzata vicino foci", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "basso", "note": "Piattaforma patagonica pulita", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "basso", "note": "Piattaforma patagonica pulita", "icon": "📊" }
     ],
     "sensibleSpecies": ["Nasello argentino", "Calamaro", "Gambero rosso"],
     "recommendation": "Acque pulite. Nasello, calamari e gamberi argentini: consumo libero.",
@@ -212,7 +212,7 @@
       { "name": "Metalli pesanti", "level": "basso", "note": "Pulite", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Basso", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "medio", "note": "Upwelling Benguela produttivo", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "basso", "note": "Upwelling pulito e ricco", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "basso", "note": "Upwelling pulito e ricco", "icon": "📊" }
     ],
     "sensibleSpecies": ["Nasello del Capo", "Sardina", "Acciuga"],
     "recommendation": "Upwelling del Benguela molto pulito. Nasello del Capo e pesce azzurro eccellenti.",
@@ -232,7 +232,7 @@
       { "name": "Metalli pesanti", "level": "medio", "note": "Alto in aree industriali", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "medio", "note": "Localizzato", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "medio", "note": "Zone a minimo ossigeno", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "medio", "note": "Molto variabile per area", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "medio", "note": "Molto variabile per area", "icon": "📊" }
     ],
     "sensibleSpecies": ["Tonno pinna gialla", "Sgombro", "Gambero"],
     "recommendation": "Mare aperto buono. Coste di India e Golfo più inquinate. Moderare i grandi tonni.",
@@ -252,7 +252,7 @@
       { "name": "Metalli pesanti", "level": "medio", "note": "Variabile", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Contenuto", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "medio", "note": "Vicino coste dense", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "medio", "note": "Buono al largo", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "medio", "note": "Buono al largo", "icon": "📊" }
     ],
     "sensibleSpecies": ["Tonno", "Gambero", "Pesce gatto"],
     "recommendation": "Attenzione prodotti costieri SE asiatico. Pesce di mare aperto accettabile.",
@@ -272,7 +272,7 @@
       { "name": "Metalli pesanti", "level": "medio", "note": "Medio al largo", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "medio", "note": "Baie industriali contaminate", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "alto", "note": "Mar Giallo e Cinese eutrofici", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "medio", "note": "Variabile, molto industrializzato", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "medio", "note": "Variabile, molto industrializzato", "icon": "📊" }
     ],
     "sensibleSpecies": ["Tonno", "Sgombro", "Vongole"],
     "recommendation": "Area industrializzata. Preferire pesce di mare aperto. Moderare grandi predatori.",
@@ -292,7 +292,7 @@
       { "name": "Metalli pesanti", "level": "basso", "note": "Basso", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Basso", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "basso", "note": "Acque fredde ossigenate", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "basso", "note": "Tra le più pulite del pianeta", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "basso", "note": "Tra le più pulite del pianeta", "icon": "📊" }
     ],
     "sensibleSpecies": ["Salmone selvatico", "Merluzzo", "Halibut"],
     "recommendation": "Tra le zone più pulite. Salmone selvatico dell'Alaska, merluzzo e halibut: consumo libero.",
@@ -312,7 +312,7 @@
       { "name": "Metalli pesanti", "level": "medio", "note": "Medio nei tonni", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Contenuto", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "medio", "note": "Vicino coste dense", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "medio", "note": "Mare aperto buono, coste critiche", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "medio", "note": "Mare aperto buono, coste critiche", "icon": "📊" }
     ],
     "sensibleSpecies": ["Tonno skipjack", "Tonno pinna gialla", "Gambero"],
     "recommendation": "Tonno skipjack (scatola) generalmente sicuro. Attenzione microplastiche prodotti costieri.",
@@ -332,7 +332,7 @@
       { "name": "Metalli pesanti", "level": "medio", "note": "Medio nei predatori", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Basso", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "basso", "note": "Upwelling ossigenato", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "basso", "note": "Buona", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "basso", "note": "Buona", "icon": "📊" }
     ],
     "sensibleSpecies": ["Tonno", "Sardina", "Calamaro gigante"],
     "recommendation": "Buona qualità. Sardine e calamari ottimi; moderare grandi predatori.",
@@ -352,7 +352,7 @@
       { "name": "Metalli pesanti", "level": "basso", "note": "Pulite", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Basso", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "basso", "note": "Ben gestite", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "basso", "note": "Tra le meglio gestite", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "basso", "note": "Tra le meglio gestite", "icon": "📊" }
     ],
     "sensibleSpecies": ["Hoki", "Snapper", "Salmone NZ"],
     "recommendation": "Acque pulite, pesca ben gestita. Hoki e snapper eccellenti.",
@@ -372,7 +372,7 @@
       { "name": "Metalli pesanti", "level": "basso", "note": "Pulite", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Basso", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "medio", "note": "Upwelling Humboldt produttivo", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "basso", "note": "Humboldt pulito e ricchissimo", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "basso", "note": "Humboldt pulito e ricchissimo", "icon": "📊" }
     ],
     "sensibleSpecies": ["Acciuga", "Sardina", "Nasello"],
     "recommendation": "Sistema Humboldt: zona più produttiva del mondo, acque pulite. Acciughe e sardine eccellenti.",
@@ -392,7 +392,7 @@
       { "name": "Metalli pesanti", "level": "medio", "note": "Bioaccumulo predatori", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "medio", "note": "Inquinanti persistenti", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "basso", "note": "Acque fredde pulite", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "basso", "note": "Incontaminate, accumulo POP", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "basso", "note": "Incontaminate, accumulo POP", "icon": "📊" }
     ],
     "sensibleSpecies": ["Merluzzo artico", "Halibut", "Salmerino"],
     "recommendation": "Acque incontaminate ma predatori accumulano mercurio. Preferire taglia piccola/media.",
@@ -412,7 +412,7 @@
       { "name": "Metalli pesanti", "level": "basso", "note": "Incontaminate", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Basso", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "basso", "note": "Pulite e fredde", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "basso", "note": "Tra le più pulite", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "basso", "note": "Tra le più pulite", "icon": "📊" }
     ],
     "sensibleSpecies": ["Krill", "Austromerluzzo"],
     "recommendation": "Acque purissime. Pesca regolamentata CCAMLR.",
@@ -432,7 +432,7 @@
       { "name": "Metalli pesanti", "level": "basso", "note": "Incontaminate", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Basso", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "basso", "note": "Pulite", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "basso", "note": "Incontaminate", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "basso", "note": "Incontaminate", "icon": "📊" }
     ],
     "sensibleSpecies": ["Austromerluzzo", "Krill"],
     "recommendation": "Acque incontaminate, pesca CCAMLR.",
@@ -452,7 +452,7 @@
       { "name": "Metalli pesanti", "level": "basso", "note": "Incontaminate", "icon": "⚗️" },
       { "name": "PCB/Diossine", "level": "basso", "note": "Basso", "icon": "☣️" },
       { "name": "Eutrofizzazione", "level": "basso", "note": "Pulite", "icon": "🌿" },
-      { "name": "Qualità generale", "level": "basso", "note": "Area protetta Mare di Ross", "icon": "📊" }
+      { "name": "Degrado ambientale", "level": "basso", "note": "Area protetta Mare di Ross", "icon": "📊" }
     ],
     "sensibleSpecies": ["Austromerluzzo", "Krill"],
     "recommendation": "Acque incontaminate. Pesca strettamente regolamentata.",
