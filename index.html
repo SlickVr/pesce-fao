@@ -33,7 +33,8 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--od);min-hei
 @keyframes rise{0%{transform:translateY(100%) scale(0);opacity:0}20%{opacity:1}100%{transform:translateY(-200%) scale(1);opacity:0}}
 .wave{position:absolute;bottom:-1px;left:0;right:0;height:clamp(30px,5vw,48px)}
 .nav-wrap{background:var(--od);padding:10px 12px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.3)}
-.nav{display:flex;gap:6px;padding-bottom:10px}
+.nav{display:flex;gap:6px;padding-bottom:10px;max-width:600px;margin-left:auto;margin-right:auto;width:100%}
+.content,.ftr-wrap{max-width:600px;margin-left:auto;margin-right:auto;width:100%}
 .nav-tab{flex:1;padding:8px 4px;font-size:clamp(10px,2.5vw,12px);font-weight:500;border-radius:14px;border:0.5px solid var(--border);background:rgba(13,59,110,0.5);color:var(--ts);cursor:pointer;transition:all 0.2s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1.2}
 .nav-tab .tab-icon{font-size:clamp(18px,5vw,22px)}
 .nav-tab .tab-label{font-size:clamp(10px,2.5vw,11px);white-space:nowrap}
@@ -189,6 +190,7 @@ input::placeholder{color:var(--td)}
 
   <div class="page" id="pageMappa">
     <div class="card">
+      <p style="font-size:11px;color:rgba(144,202,249,0.55);text-align:center;margin:0 0 10px;font-style:italic">🗺️ La grafica è volutamente minimalista. Molto volutamente.</p>
       <div class="map-legend">
         <div class="leg-item"><div class="leg-dot" style="background:var(--g)"></div>Basso</div>
         <div class="leg-item"><div class="leg-dot" style="background:var(--y)"></div>Medio</div>
@@ -212,6 +214,7 @@ input::placeholder{color:var(--td)}
 
 </div>
 
+<div class="ftr-wrap">
 <footer style="text-align:center;padding:0.75rem 1rem 0.25rem;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
   © 2026 Cristiano Cinotti · v 0.80
   <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;margin-bottom:2px">
@@ -248,6 +251,7 @@ input::placeholder{color:var(--td)}
     <div style="font-size:13px;color:#e8f4fd;margin-top:6px">Coding &amp; development — 🤖 <strong>Claude</strong> (Anthropic)</div>
     <div style="font-size:11px;color:#90caf9;margin-top:6px;line-height:1.5">📧 cristiano.cinotti@proton.me</div>
   </div>
+</div>
 </div>
 
 <script>
