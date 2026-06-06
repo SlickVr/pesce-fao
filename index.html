@@ -213,7 +213,7 @@ input::placeholder{color:var(--td)}
 </div>
 
 <footer style="text-align:center;padding:0.75rem 1rem 0.25rem;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · v 0.75
+  © 2026 Cristiano Cinotti · v 0.80
   <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;margin-bottom:2px">
     <button onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.35);background:rgba(13,59,110,0.6);color:#90caf9;font-size:12px;font-weight:500;cursor:pointer;letter-spacing:0.02em">ℹ️ Info &amp; crediti</button>
     <!-- Ko-fi disabilitato durante test interni -->
@@ -225,12 +225,6 @@ input::placeholder{color:var(--td)}
     <div style="font-size:16px;font-weight:700;color:#fff">ℹ️ Info &amp; Crediti</div>
     <button onclick="document.getElementById('creditsPanel').style.display='none'" style="background:rgba(79,195,247,0.1);border:0.5px solid rgba(79,195,247,0.3);border-radius:50%;width:28px;height:28px;color:#90caf9;font-size:16px;cursor:pointer;line-height:28px;text-align:center">×</button>
   </div>
-  <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Crediti</div>
-  <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;margin-bottom:12px;border:0.5px solid rgba(79,195,247,0.12)">
-    <div style="font-size:13px;color:#e8f4fd">Concept &amp; design — 👤 <strong>Cristiano Cinotti</strong></div>
-    <div style="font-size:13px;color:#e8f4fd;margin-top:6px">Coding &amp; sviluppo — 🤖 <strong>Claude</strong> (Anthropic)</div>
-    <div style="font-size:11px;color:#90caf9;margin-top:6px;line-height:1.5">📧 cristiano.cinotti@proton.me</div>
-  </div>
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Fonti dei dati</div>
   <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
     <div style="font-size:12px;color:#e8f4fd">🇪🇺 <strong>EFSA</strong> — limiti mercurio, PCB, diossine</div>
@@ -240,13 +234,19 @@ input::placeholder{color:var(--td)}
     <div style="font-size:12px;color:#e8f4fd">❄️ <strong>HELCOM / OSPAR / AMAP</strong> — acque nordiche e artiche</div>
     <div style="font-size:12px;color:#e8f4fd">🇺🇸 <strong>NOAA / FDA / EPA</strong> — sicurezza alimentare USA</div>
   </div>
-  <div style="padding:10px 12px;background:rgba(229,57,53,0.1);border:0.5px solid rgba(229,57,53,0.2);border-radius:8px;font-size:11px;color:#ef9a9a;line-height:1.7">
+  <div style="padding:10px 12px;background:rgba(229,57,53,0.1);border:0.5px solid rgba(229,57,53,0.2);border-radius:8px;font-size:11px;color:#ef9a9a;line-height:1.7;margin-bottom:8px">
     ⚠️ <strong>Disclaimer</strong><br>
     I dati presentati sono indicativi, aggiornati al 2026 e basati su fonti pubbliche istituzionali. Non costituiscono parere medico o nutrizionale professionale e non sostituiscono le indicazioni del proprio medico o di un dietologo. Per decisioni sanitarie fare riferimento a EFSA, Ministero della Salute e ISS.
   </div>
-  <div style="margin-top:8px;padding:8px 10px;background:rgba(33,150,243,0.08);border:0.5px solid rgba(79,195,247,0.15);border-radius:8px;font-size:11px;color:#90caf9;line-height:1.6">
+  <div style="margin-bottom:12px;padding:8px 10px;background:rgba(33,150,243,0.08);border:0.5px solid rgba(79,195,247,0.15);border-radius:8px;font-size:11px;color:#90caf9;line-height:1.6">
     🔒 <strong>Privacy</strong> — L'app non raccoglie né trasmette dati personali.
     <a href="./privacy-policy.html" style="color:#4fc3f7;text-decoration:underline;display:inline-block;margin-top:3px">Leggi la Privacy Policy</a>
+  </div>
+  <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Crediti</div>
+  <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12)">
+    <div style="font-size:13px;color:#e8f4fd">Concept &amp; design — 👤 <strong>Cristiano Cinotti</strong></div>
+    <div style="font-size:13px;color:#e8f4fd;margin-top:6px">Coding &amp; sviluppo — 🤖 <strong>Claude</strong> (Anthropic)</div>
+    <div style="font-size:11px;color:#90caf9;margin-top:6px;line-height:1.5">📧 cristiano.cinotti@proton.me</div>
   </div>
 </div>
 
@@ -486,7 +486,6 @@ function buildGlossary(){
   var out=document.getElementById('glossCard');if(out.innerHTML)return;
   var html='';
   for(var i=0;i<GLOSSARY.length;i++){var g=GLOSSARY[i];html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl('+i+')"><span class="gl-icon">'+g.icon+'</span><span class="gl-term">'+g.term+'</span><span class="gl-arr" id="ga'+i+'">›</span></div><div class="gl-body" id="gb'+i+'">'+g.body+'<br><span class="gl-tag '+g.tag.cls+'">'+g.tag.text+'</span></div></div>';}
-  html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl(99)"><span class="gl-icon">ℹ️</span><span class="gl-term">Info &amp; Crediti</span><span class="gl-arr" id="ga99">›</span></div><div class="gl-body" id="gb99"><strong>Sviluppato da</strong><br>Concept &amp; design — 👤 Cristiano Cinotti<br>Coding &amp; sviluppo — 🤖 Claude (Anthropic)<br><br><strong>Fonti</strong><br>🇪🇺 EFSA · 🌍 FAO · 🌊 MEDPOL/UNEP-MAP · 🏛️ ISPRA/ARPA · ❄️ HELCOM/OSPAR · 🇺🇸 NOAA/FDA<br><br><span style="font-size:11px;color:#ef9a9a">⚠️ Dati indicativi al 2026.</span><br><span class="gl-tag info">v 0.75 · 2026</span></div></div>';
   out.innerHTML=html;
 }
 function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElementById('ga'+i);var op=b.classList.contains('open');b.className='gl-body'+(op?'':' open');a.className='gl-arr'+(op?'':' open');}
