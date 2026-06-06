@@ -139,7 +139,7 @@ input::placeholder{color:var(--td)}
 <body>
 <div class="hdr" style="padding:0">
   <div class="bubbles" id="bubbles" style="display:none"></div>
-  <img src="banner.jpg" style="width:100%;display:block;" alt="Pesce Sicuro — Zone Pesca FAO">
+  <img src="https://slickvr.github.io/pesce-fao/banner.jpg" style="width:100%;display:block;" alt="Pesce Sicuro — Zone Pesca FAO">
   <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#0a2540"/>
   </svg>
@@ -304,9 +304,8 @@ function showPage(p,fromPop){
 }
 window.addEventListener('popstate',function(e){
   if(!e.state||!e.state.page){
-    // Raggiunto l'inizio della storia dell'app — chiedi conferma uscita
     history.pushState({page:_currentPage},'',location.pathname);
-    if(confirm('Vuoi uscire da Pesce Sicuro?')){history.go(-1);}
+    showExitModal();
     return;
   }
   showPage(e.state.page,true);
@@ -489,6 +488,32 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
     navigator.serviceWorker.register('./service-worker.js').catch(function(){});
   }
 })();
+</script>
+
+<!-- Modal conferma uscita -->
+<div id="exitModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);align-items:center;justify-content:center">
+  <div style="background:#1a2f4a;border-radius:16px;padding:24px 20px;margin:24px;max-width:320px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,0.4)">
+    <p style="color:#e0e8f0;font-size:16px;font-weight:500;margin:0 0 8px;text-align:center">Vuoi uscire?</p>
+    <p style="color:#8eacc4;font-size:13px;margin:0 0 20px;text-align:center">Stai per chiudere Pesce Sicuro.</p>
+    <div style="display:flex;gap:10px">
+      <button onclick="exitCancel()" style="flex:1;padding:12px;border-radius:10px;border:0.5px solid #2e4a6a;background:transparent;color:#8eacc4;font-size:14px;cursor:pointer">Annulla</button>
+      <button onclick="exitConfirm()" style="flex:1;padding:12px;border-radius:10px;border:none;background:#1565a8;color:#fff;font-size:14px;font-weight:500;cursor:pointer">Esci</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function showExitModal(){
+  var m=document.getElementById('exitModal');
+  m.style.display='flex';
+}
+function exitCancel(){
+  document.getElementById('exitModal').style.display='none';
+}
+function exitConfirm(){
+  document.getElementById('exitModal').style.display='none';
+  history.go(-1);
+}
 </script>
 </body>
 </html>
