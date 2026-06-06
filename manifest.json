@@ -57,18 +57,39 @@
   ],
   "screenshots": [
     {
-      "src": "./screenshots/screenshot_1.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
+      "src": "./screenshots/Home.jpeg",
+      "sizes": "912x2048",
+      "type": "image/jpeg",
       "form_factor": "narrow",
-      "label": "Ricerca per zona FAO con indicatori di contaminazione"
+      "label": "Ricerca per zona FAO"
     },
     {
-      "src": "./screenshots/screenshot_2.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
+      "src": "./screenshots/Zone.jpeg",
+      "sizes": "912x2048",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Dettaglio zona con indicatori di contaminazione"
+    },
+    {
+      "src": "./screenshots/Specie.jpeg",
+      "sizes": "912x2048",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "Scheda specie con livelli di mercurio e porzioni consigliate"
+    },
+    {
+      "src": "./screenshots/Mappe.jpeg",
+      "sizes": "912x2048",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Mappa interattiva delle zone FAO"
+    },
+    {
+      "src": "./screenshots/Glossario.jpeg",
+      "sizes": "912x2048",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Glossario dei termini tecnici"
     }
   ]
 }
