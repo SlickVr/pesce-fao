@@ -58,7 +58,7 @@ input::placeholder{color:var(--td)}
 @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .risk-hero{border-radius:12px;padding:clamp(12px,3vw,18px);margin-bottom:12px;position:relative;overflow:hidden}
 .risk-hero.green{background:linear-gradient(135deg,#1b5e20,#2e7d32)}
-.risk-hero.yellow{background:linear-gradient(135deg,#e65100,#f57f17)}
+.risk-hero.yellow{background:linear-gradient(135deg,#b8860b,#fdd835)}
 .risk-hero.orange{background:linear-gradient(135deg,#bf360c,#e64a19)}
 .risk-hero.red{background:linear-gradient(135deg,#b71c1c,#c62828)}
 .risk-hero::before{content:'';position:absolute;top:-20px;right:-20px;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,0.08)}
@@ -449,8 +449,9 @@ function renderSpDet(){
   var bestZ=(curSpMethod==='farm'&&s.bestZonesFarm)?s.bestZonesFarm:(s.bestZones||[]);
   var medZ=(curSpMethod==='farm'&&s.mediumZonesFarm)?s.mediumZonesFarm:(s.mediumZones||[]);
   var bHTML='',mHTML='';
-  for(var i=0;i<bestZ.length;i++){var dz=DATA[bestZ[i]];if(dz)bHTML+='<span class="chip" style="border-color:rgba(79,195,247,0.4);background:rgba(79,195,247,0.1)" onclick="renderZone(\''+bestZ[i]+'\');showPage(\'ricerca\')">⭐ '+bestZ[i]+'</span>';}
-  for(var i=0;i<medZ.length;i++){var dz=DATA[medZ[i]];if(dz)mHTML+='<span class="chip" onclick="renderZone(\''+medZ[i]+'\');showPage(\'ricerca\')" style="border-color:rgba(253,216,53,0.4);background:rgba(253,216,53,0.1)">🟡 '+medZ[i]+'</span>';}
+  var zoneColorMap={green:{b:'rgba(67,160,71,0.5)',bg:'rgba(67,160,71,0.12)',ic:'🟢'},yellow:{b:'rgba(253,216,53,0.5)',bg:'rgba(253,216,53,0.12)',ic:'🟡'},orange:{b:'rgba(239,108,0,0.5)',bg:'rgba(239,108,0,0.12)',ic:'🟠'},red:{b:'rgba(229,57,53,0.5)',bg:'rgba(229,57,53,0.12)',ic:'🔴'}};
+  for(var i=0;i<bestZ.length;i++){var dz=DATA[bestZ[i]];if(dz){var zc=zoneColorMap[dz.riskColor]||zoneColorMap.green;bHTML+='<span class="chip" style="border-color:'+zc.b+';background:'+zc.bg+'" onclick="renderZone(\''+bestZ[i]+'\');showPage(\'ricerca\')">'+zc.ic+' '+bestZ[i]+'</span>';}}
+  for(var i=0;i<medZ.length;i++){var dz=DATA[medZ[i]];if(dz){var zc=zoneColorMap[dz.riskColor]||zoneColorMap.yellow;mHTML+='<span class="chip" style="border-color:'+zc.b+';background:'+zc.bg+'" onclick="renderZone(\''+medZ[i]+'\');showPage(\'ricerca\')">'+zc.ic+' '+medZ[i]+'</span>';}}
   var html='<div class="card">';
   html+='<div class="sp-hero"><span style="font-size:clamp(28px,7vw,36px)">'+s.emoji+'</span><div class="sp-name">'+s.name+'</div><div class="sp-latin">'+s.latin+'</div></div>';
   html+='<div class="sec-title">Mercurio</div>'+hgHTML;
@@ -472,7 +473,7 @@ var OCEAN_GROUPS=[
   {id:"pac_s",name:"Pacifico Sud",emoji:"🌊",highlight:[-180,5,180,-90],zones:["81","87","88"]},
   {id:"artico",name:"Artico",emoji:"❄️",highlight:[-180,90,180,60],zones:["18"]}
 ];
-var riskColors={green:'rgba(67,160,71,0.5)',yellow:'rgba(249,168,37,0.45)',orange:'rgba(239,108,0,0.55)',red:'rgba(229,57,53,0.6)'};
+var riskColors={green:'rgba(67,160,71,0.5)',yellow:'rgba(253,216,53,0.45)',orange:'rgba(239,108,0,0.55)',red:'rgba(229,57,53,0.6)'};
 var rankMap={green:0,yellow:1,orange:2,red:3};
 var MINI_CONT=[[[-168,72],[-140,72],[-120,60],[-100,50],[-83,30],[-90,18],[-105,18],[-125,32],[-130,50],[-150,60],[-168,72]],[[-82,12],[-62,12],[-50,5],[-35,-25],[-52,-32],[-68,-54],[-80,-30],[-82,12]],[[-10,60],[5,60],[25,52],[30,62],[25,72],[-10,70],[-10,60]],[[-5,44],[25,44],[30,48],[15,52],[-5,48],[-5,44]],[[-17,15],[5,36],[35,36],[43,12],[51,12],[42,-12],[34,-35],[18,-35],[-2,-5],[-17,15]],[[26,72],[60,72],[100,72],[140,72],[180,70],[180,50],[160,40],[140,36],[130,30],[120,22],[100,20],[80,24],[60,22],[50,28],[40,36],[26,48],[26,72]],[[36,36],[60,22],[58,14],[44,10],[36,14],[36,36]],[[68,24],[80,30],[92,24],[80,10],[68,24]],[[100,20],[108,20],[108,10],[100,4],[96,16],[100,20]],[[114,-22],[130,-14],[148,-18],[152,-25],[148,-38],[130,-32],[116,-34],[114,-22]],[[-45,85],[-15,83],[-8,76],[-18,70],[-42,64],[-55,65],[-60,72],[-52,80],[-45,85]],[[-180,-70],[-120,-68],[-60,-68],[0,-68],[60,-68],[120,-68],[180,-68],[180,-90],[-180,-90],[-180,-70]]];
 function mLon(l){return(l+180)/360*300;}
