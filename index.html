@@ -72,6 +72,7 @@ input::placeholder{color:var(--td)}
 .sec-title::after{content:'';flex:1;height:0.5px;background:var(--border)}
 .ind-grid{display:flex;flex-direction:column;gap:6px}
 .ind-row{background:var(--card2);border:0.5px solid var(--border2);border-radius:8px;padding:clamp(8px,2vw,11px) clamp(10px,2.5vw,13px);display:flex;align-items:center;gap:8px}
+.ind-clickable{cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}
 .ind-wrap{flex:1;min-width:0}
 .ind-name{font-size:clamp(14px,3.5vw,15px);font-weight:500;color:var(--tp);margin-bottom:3px}
 .ind-note{font-size:clamp(12px,3vw,13px);color:var(--ts);opacity:0.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -270,10 +271,21 @@ var GLOSSARY=[
   {term:"Omega-3 (DHA/EPA)",icon:"💊",tag:{text:"Beneficio",cls:"info"},body:"Acidi grassi essenziali abbondanti nel pesce azzurro. Il DHA è fondamentale per lo sviluppo cerebrale fetale. L'OMS raccomanda 2 porzioni di pesce/settimana."},
   {term:"Zone FAO",icon:"🗺️",tag:{text:"Classificazione",cls:"info"},body:"La FAO divide gli oceani in aree di pesca numerate. In UE è obbligatorio indicare la zona FAO in etichetta. Conoscerla permette di valutare la qualità dell'acqua di provenienza."},
   {term:"Selvaggio vs Allevato",icon:"🎣",tag:{text:"Etichetta",cls:"info"},body:"Per legge UE il prodotto deve indicare se è pescato o allevato. Il selvaggio non è sempre superiore. L'allevato certificato ASC/Bio ha standard controllati."},
-  {term:"Limiti EFSA",icon:"🏛️",tag:{text:"Normativa",cls:"info"},body:"EFSA fissa le dosi tollerabili: Mercurio (metilmercurio) 1.3 µg/kg/sett. (valore 2012, sotto revisione); Diossine+PCB: ridotto a 0.6 pg TEQ/kg/sett. nel 2018 (Reg. UE 2022/2002 aggiornamento 2022). Per gravidanza, bambini e anziani i margini sono molto più ridotti."}
+  {term:"Limiti EFSA",icon:"🏛️",tag:{text:"Normativa",cls:"info"},body:"EFSA fissa le dosi tollerabili: Mercurio (metilmercurio) 1.3 µg/kg/sett. (valore 2012, sotto revisione); Diossine+PCB: ridotto a 0.6 pg TEQ/kg/sett. nel 2018 (Reg. UE 2022/2002 aggiornamento 2022). Per gravidanza, bambini e anziani i margini sono molto più ridotti."},
+  {term:"Metalli pesanti",icon:"⚗️",tag:{text:"Tossico",cls:"danger"},body:"Metalli come mercurio, piombo, cadmio e arsenico che si accumulano nei tessuti dei pesci. Il mercurio (come metilmercurio) è il più pericoloso, presente specialmente nei grandi predatori. Provenienza: scarichi industriali, deposizioni atmosferiche, erosione naturale."},
+  {term:"Degrado ambientale",icon:"📊",tag:{text:"Ecosistema",cls:"caution"},body:"Indicatore composito dello stato di salute generale delle acque. Considera il ricambio idrico, i livelli di ossigenazione del fondale, la pressione antropica cumulativa e fattori non catturati dai singoli indicatori. Aree chiuse con scarso ricambio (come il Mar Nero o l'Adriatico) tendono ad avere degrado elevato."}
 ];
 
-// ─── FETCH ───────────────────────────────────────────────────────────────────
+// ─── GLOSSARY POPUP ──────────────────────────────────────────────────────────
+var IND_TO_GL={'Microplastiche':3,'Metalli pesanti':10,'PCB/Diossine':1,'Eutrofizzazione':4,'Degrado ambientale':11};
+function showGlossPopup(idx){
+  var g=GLOSSARY[idx];
+  document.getElementById('glossPopupTitle').innerHTML=g.icon+' '+g.term;
+  document.getElementById('glossPopupBody').innerHTML=g.body;
+  document.getElementById('glossPopupTag').innerHTML='<span class="gl-tag '+g.tag.cls+'">'+g.tag.text+'</span>';
+  document.getElementById('glossPopup').style.display='flex';
+}
+function closeGlossPopup(){document.getElementById('glossPopup').style.display='none';}
 function checkLoaded(){loaded++;if(loaded===2)initApp();}
 function loadError(f){document.querySelector('.content').innerHTML='<div style="padding:2rem;text-align:center;color:#ef9a9a"><div style="font-size:48px;margin-bottom:1rem">⚠️</div><p style="font-size:15px;line-height:1.6">Errore caricamento <strong>'+f+'</strong>.<br>Assicurati che i tre file siano nella stessa cartella.</p></div>';}
 fetch('./data-zone.json').then(function(r){return r.json();}).then(function(d){DATA=d;checkLoaded();}).catch(function(){loadError('data-zone.json');});
@@ -361,7 +373,7 @@ function renderZone(code){
   document.getElementById('rSub').textContent=d.zoneSub;
   document.getElementById('rText').textContent=riskLabel[d.riskLevel]||d.riskLevel;
   var ih='';
-  for(var i=0;i<d.indicators.length;i++){var ind=d.indicators[i];var lm=levelMap[ind.level]||['ind-med','N/D'];ih+='<div class="ind-row"><span class="ind-icon">'+ind.icon+'</span><div class="ind-wrap"><div class="ind-name">'+ind.name+'</div><div class="ind-note">'+ind.note+'</div></div><span class="ind-badge '+lm[0]+'">'+lm[1]+'</span></div>';}
+  for(var i=0;i<d.indicators.length;i++){var ind=d.indicators[i];var lm=levelMap[ind.level]||['ind-med','N/D'];var glIdx=IND_TO_GL[ind.name];var nameHtml=glIdx!==undefined?'<div class="ind-name ind-clickable" onclick="showGlossPopup('+glIdx+')">'+ind.name+' <span style="font-size:10px;opacity:0.55">ℹ️</span></div>':'<div class="ind-name">'+ind.name+'</div>';ih+='<div class="ind-row"><span class="ind-icon">'+ind.icon+'</span><div class="ind-wrap">'+nameHtml+'<div class="ind-note">'+ind.note+'</div></div><span class="ind-badge '+lm[0]+'">'+lm[1]+'</span></div>';}
   document.getElementById('indGrid').innerHTML=ih;
   var ch='';
   for(var i=0;i<d.sensibleSpecies.length;i++){var k=d.sensibleSpecies[i].toLowerCase().split(' ')[0];ch+='<span class="chip" onclick="openSp(\''+k+'\')">'+d.sensibleSpecies[i]+'</span>';}
@@ -514,6 +526,18 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
   }
 })();
 </script>
+
+<!-- Popup glossario indicatori -->
+<div id="glossPopup" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9998;background:rgba(0,0,0,0.6);align-items:center;justify-content:center" onclick="closeGlossPopup()">
+  <div style="background:#1a2f4a;border-radius:16px;padding:20px;margin:24px;max-width:340px;width:100%;border:0.5px solid rgba(79,195,247,0.3);box-shadow:0 8px 32px rgba(0,0,0,0.4)" onclick="event.stopPropagation()">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+      <div id="glossPopupTitle" style="font-size:15px;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px"></div>
+      <button onclick="closeGlossPopup()" style="background:none;border:none;color:#90caf9;font-size:22px;cursor:pointer;padding:0;line-height:1;flex-shrink:0">×</button>
+    </div>
+    <div id="glossPopupBody" style="font-size:13px;color:#b0c4d8;line-height:1.7;margin-bottom:10px"></div>
+    <div id="glossPopupTag"></div>
+  </div>
+</div>
 
 <!-- Toast doppio back per uscita -->
 <div id="exitToast" style="display:none;position:fixed;bottom:88px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.82);color:#fff;padding:11px 22px;border-radius:24px;font-size:13px;z-index:9999;white-space:nowrap;pointer-events:none">
