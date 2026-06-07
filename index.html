@@ -457,8 +457,8 @@ function renderSpDet(){
   html+='<div class="sec-title">Mercurio</div>'+hgHTML;
   html+='<div class="sec-title">Porzioni consigliate (EFSA)</div>'+portHTML;
   if(noteHTML)html+='<div class="sec-title">Note</div><div class="rec-box" style="font-size:14px;line-height:1.7">'+noteHTML+'</div>';
-  if(bHTML)html+='<div class="sec-title">Zone migliori</div><div class="chips">'+bHTML+'</div>';
-  if(mHTML)html+='<div class="sec-title">Zone accettabili</div><div class="chips">'+mHTML+'</div>';
+  if(bHTML)html+='<div class="sec-title">Zone consigliate per questa specie</div><div class="chips">'+bHTML+'</div>';
+  if(mHTML)html+='<div class="sec-title">Zone alternative</div><div class="chips">'+mHTML+'</div>';
   html+='</div>';
   out.innerHTML=html;
 }
