@@ -96,7 +96,7 @@ input::placeholder{color:var(--td)}
 .hg-track{height:7px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;margin-top:5px}
 .hg-fill{height:100%;border-radius:4px;transition:width 0.6s ease}
 .hg-low{background:linear-gradient(90deg,#43a047,#66bb6a)}
-.hg-med{background:linear-gradient(90deg,#f9a825,#ffca28)}
+.hg-med{background:linear-gradient(90deg,#fdd835,#ffee58)}
 .hg-high{background:linear-gradient(90deg,#ef6c00,#ffa726)}
 .hg-vhigh{background:linear-gradient(90deg,#e53935,#ef5350)}
 .mtag{font-size:clamp(10px,2.5vw,12px);padding:3px 9px;border-radius:5px;font-weight:500;display:inline-block;margin-bottom:5px}
@@ -273,7 +273,11 @@ var GLOSSARY=[
   {term:"Selvaggio vs Allevato",icon:"🎣",tag:{text:"Etichetta",cls:"info"},body:"Per legge UE il prodotto deve indicare se è pescato o allevato. Il selvaggio non è sempre superiore. L'allevato certificato ASC/Bio ha standard controllati."},
   {term:"Limiti EFSA",icon:"🏛️",tag:{text:"Normativa",cls:"info"},body:"EFSA fissa le dosi tollerabili: Mercurio (metilmercurio) 1.3 µg/kg/sett. (valore 2012, sotto revisione); Diossine+PCB: ridotto a 0.6 pg TEQ/kg/sett. nel 2018 (Reg. UE 2022/2002 aggiornamento 2022). Per gravidanza, bambini e anziani i margini sono molto più ridotti."},
   {term:"Metalli pesanti",icon:"⚗️",tag:{text:"Tossico",cls:"danger"},body:"Metalli come mercurio, piombo, cadmio e arsenico che si accumulano nei tessuti dei pesci. Il mercurio (come metilmercurio) è il più pericoloso, presente specialmente nei grandi predatori. Provenienza: scarichi industriali, deposizioni atmosferiche, erosione naturale."},
-  {term:"Degrado ambientale",icon:"📊",tag:{text:"Ecosistema",cls:"caution"},body:"Indicatore composito dello stato di salute generale delle acque. Considera il ricambio idrico, i livelli di ossigenazione del fondale, la pressione antropica cumulativa e fattori non catturati dai singoli indicatori. Aree chiuse con scarso ricambio (come il Mar Nero o l'Adriatico) tendono ad avere degrado elevato."}
+  {term:"Degrado ambientale",icon:"📊",tag:{text:"Ecosistema",cls:"caution"},body:"Indicatore composito dello stato di salute generale delle acque. Considera il ricambio idrico, i livelli di ossigenazione del fondale, la pressione antropica cumulativa e fattori non catturati dai singoli indicatori. Aree chiuse con scarso ricambio (come il Mar Nero o l'Adriatico) tendono ad avere degrado elevato."},
+  {term:"ASC — Aquaculture Stewardship Council",icon:"🏅",tag:{text:"Certificazione",cls:"info"},body:"Il principale standard internazionale per l'acquacoltura responsabile. Certifica gestione ambientale, qualità delle acque, trattamento dei rifiuti e benessere animale. Riconoscibile dal logo ASC in etichetta. Principale riferimento per salmone, orata, branzino e gamberi."},
+  {term:"Bio UE — Biologico Europeo",icon:"🌿",tag:{text:"Certificazione UE",cls:"info"},body:"Reg. UE 710/2009 — garantisce densità di allevamento ridotta, alimentazione senza OGM e senza antibiotici di routine, rispetto dei cicli naturali. Riconoscibile dalla foglia verde europea in etichetta. Spesso abbinato ad ASC per il salmone."},
+  {term:"GlobalG.A.P.",icon:"🏅",tag:{text:"Certificazione",cls:"info"},body:"Standard di buone pratiche agricole e acquicole molto diffuso nella GDO europea. Copre sicurezza alimentare, uso di farmaci veterinari e tracciabilità. Meno restrittivo di ASC ma diffuso per merluzzo, rombo e specie nordiche."},
+  {term:"BAP — Best Aquaculture Practices",icon:"🏅",tag:{text:"Certificazione",cls:"info"},body:"Standard americano (Global Seafood Alliance) diffuso per gamberi asiatici e salmone. Prevede 4 livelli (stelle) in base al numero di segmenti della filiera certificati. Meno restrittivo di ASC ma migliore dell'assenza di certificazione."}
 ];
 
 // ─── GLOSSARY POPUP ──────────────────────────────────────────────────────────
@@ -445,8 +449,8 @@ function renderSpDet(){
   var bestZ=(curSpMethod==='farm'&&s.bestZonesFarm)?s.bestZonesFarm:(s.bestZones||[]);
   var medZ=(curSpMethod==='farm'&&s.mediumZonesFarm)?s.mediumZonesFarm:(s.mediumZones||[]);
   var bHTML='',mHTML='';
-  for(var i=0;i<bestZ.length;i++){var dz=DATA[bestZ[i]];if(dz)bHTML+='<span class="chip" onclick="renderZone(\''+bestZ[i]+'\');showPage(\'ricerca\')">✅ '+bestZ[i]+'</span>';}
-  for(var i=0;i<medZ.length;i++){var dz=DATA[medZ[i]];if(dz)mHTML+='<span class="chip" onclick="renderZone(\''+medZ[i]+'\');showPage(\'ricerca\')" style="border-color:rgba(249,168,37,0.4);background:rgba(249,168,37,0.1)">🟡 '+medZ[i]+'</span>';}
+  for(var i=0;i<bestZ.length;i++){var dz=DATA[bestZ[i]];if(dz)bHTML+='<span class="chip" style="border-color:rgba(79,195,247,0.4);background:rgba(79,195,247,0.1)" onclick="renderZone(\''+bestZ[i]+'\');showPage(\'ricerca\')">⭐ '+bestZ[i]+'</span>';}
+  for(var i=0;i<medZ.length;i++){var dz=DATA[medZ[i]];if(dz)mHTML+='<span class="chip" onclick="renderZone(\''+medZ[i]+'\');showPage(\'ricerca\')" style="border-color:rgba(253,216,53,0.4);background:rgba(253,216,53,0.1)">🟡 '+medZ[i]+'</span>';}
   var html='<div class="card">';
   html+='<div class="sp-hero"><span style="font-size:clamp(28px,7vw,36px)">'+s.emoji+'</span><div class="sp-name">'+s.name+'</div><div class="sp-latin">'+s.latin+'</div></div>';
   html+='<div class="sec-title">Mercurio</div>'+hgHTML;
@@ -509,7 +513,7 @@ function filterMap(f,el){var btns=document.querySelectorAll('.mf-btn');for(var i
 function buildGlossary(){
   var out=document.getElementById('glossCard');if(out.innerHTML)return;
   var html='';
-  for(var i=0;i<GLOSSARY.length;i++){var g=GLOSSARY[i];html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl('+i+')"><span class="gl-icon">'+g.icon+'</span><span class="gl-term">'+g.term+'</span><span class="gl-arr" id="ga'+i+'">›</span></div><div class="gl-body" id="gb'+i+'">'+g.body+'<br><span class="gl-tag '+g.tag.cls+'">'+g.tag.text+'</span></div></div>';}
+  for(var i=0;i<GLOSSARY.length;i++){var g=GLOSSARY[i];if(i===12){html+='<div style="font-size:11px;font-weight:700;color:var(--ic);text-transform:uppercase;letter-spacing:0.07em;padding:14px 2px 6px">Certificazioni acquacoltura</div>';}html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl('+i+')"><span class="gl-icon">'+g.icon+'</span><span class="gl-term">'+g.term+'</span><span class="gl-arr" id="ga'+i+'">›</span></div><div class="gl-body" id="gb'+i+'">'+g.body+'<br><span class="gl-tag '+g.tag.cls+'">'+g.tag.text+'</span></div></div>';}
   out.innerHTML=html;
 }
 function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElementById('ga'+i);var op=b.classList.contains('open');b.className='gl-body'+(op?'':' open');a.className='gl-arr'+(op?'':' open');}

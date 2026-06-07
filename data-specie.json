@@ -197,7 +197,7 @@
       "anziani": "1-2 volte/sett."
     },
     "wildNote": "Pesce costiero e lagunare: riflette la qualità dell'acqua locale. Da zone non industriali è buona scelta.",
-    "farmNote": "Allevato in valli da pesca: qualità molto variabile per zona. Preferire produzione certificata.",
+    "farmNote": "Allevato in valli da pesca: qualità molto variabile per zona. Preferire produzione certificata ASC o GlobalG.A.P.",
     "bestZones": [
       "34",
       "41"
@@ -235,7 +235,7 @@
       "anziani": "1-2 volte/sett."
     },
     "wildNote": "Pesce longevo e predatore: accumula mercurio. Mediterraneo molto sfruttato. Specie protetta in alcune aree.",
-    "farmNote": "Allevamento in sviluppo: mercurio significativamente inferiore al selvaggio. Qualità comparabile.",
+    "farmNote": "Allevamento in sviluppo: mercurio significativamente inferiore al selvaggio. Qualità comparabile. Preferire certificazione ASC.",
     "bestZones": [
       "34",
       "41"
@@ -331,7 +331,7 @@
       "anziani": "Ottimo, magro"
     },
     "wildNote": "Selvaggio (Alaska, Norvegia): eccellente qualità. Pesca controllata.",
-    "farmNote": "Allevamento in espansione in Norvegia. Qualità alta.",
+    "farmNote": "Allevamento in espansione in Norvegia. Qualità alta. Preferire certificazione ASC o GlobalG.A.P.",
     "bestZones": [
       "67",
       "27",
@@ -360,7 +360,7 @@
       "anziani": "Ottimo, magro"
     },
     "wildNote": "Selvaggio nordico (FAO 27/67): migliore sapore, stock ben gestiti.",
-    "farmNote": "Allevamento in espansione. Qualità comparabile se certificato.",
+    "farmNote": "Allevamento in espansione. Qualità comparabile se certificato ASC o GlobalG.A.P.",
     "bestZones": [
       "67",
       "27",
@@ -515,7 +515,7 @@
       "anziani": "Ottimo, magro"
     },
     "wildNote": "Selvaggio: ottima qualità. Mediterraneo e Atlantico.",
-    "farmNote": "Allevamento in espansione (turbot). Buona qualità.",
+    "farmNote": "Allevamento in espansione (turbot). Buona qualità. Preferire certificazione ASC o GlobalG.A.P.",
     "bestZones": [
       "27",
       "67"
