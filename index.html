@@ -326,9 +326,12 @@ var _exitReady=false;
 var _exitTimer=null;
 function requestExit(){
   if(_exitTimer)clearTimeout(_exitTimer);
-  _exitReady=false;
-  document.getElementById('exitToast').style.display='none';
-  history.go(-50); // Salta direttamente a exit_guard
+  _exitReady=true;
+  document.getElementById('exitToast').style.display='block';
+  _exitTimer=setTimeout(function(){
+    _exitReady=false;
+    document.getElementById('exitToast').style.display='none';
+  },3000);
 }
 window.addEventListener('popstate',function(e){
   var page=e.state&&e.state.page;
@@ -349,6 +352,7 @@ window.addEventListener('popstate',function(e){
     return;
   }
   showPage(page,true);
+  if(_exitReady){_exitReady=false;clearTimeout(_exitTimer);document.getElementById('exitToast').style.display='none';}
 });
 // Imposta la storia immediatamente — non dentro initApp
 try{history.replaceState({page:'exit_guard'},'',location.pathname);history.pushState({page:'ricerca'},'',location.pathname);}catch(e){}
@@ -546,7 +550,7 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
 
 <!-- Toast doppio back per uscita -->
 <div id="exitToast" style="display:none;position:fixed;bottom:88px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.82);color:#fff;padding:11px 22px;border-radius:24px;font-size:13px;z-index:9999;white-space:nowrap;pointer-events:none">
-  Premi ancora per uscire
+  Premi ← per uscire
 </div>
 
 </body>
