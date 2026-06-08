@@ -323,25 +323,28 @@ function showPage(p,fromPop){
   _currentPage=p;
 }
 var _exitReady=false;
+var _exitMode=false;
 var _exitTimer=null;
 function requestExit(){
   if(_exitTimer)clearTimeout(_exitTimer);
-  _exitReady=true;
+  _exitMode=true;
   document.getElementById('exitToast').style.display='block';
   _exitTimer=setTimeout(function(){
-    _exitReady=false;
+    _exitMode=false;
     document.getElementById('exitToast').style.display='none';
   },3000);
 }
 window.addEventListener('popstate',function(e){
   var page=e.state&&e.state.page;
   if(!page||page==='exit_guard'){
-    if(_exitReady){
-      _exitReady=false;
+    if(_exitReady||_exitMode){
+      // Pronti ad uscire: non fare pushState, prossimo back chiude l'app
+      _exitReady=false;_exitMode=false;
       clearTimeout(_exitTimer);
       document.getElementById('exitToast').style.display='none';
       return;
     }
+    // Prima volta a exit_guard (doppio back normale)
     _exitReady=true;
     document.getElementById('exitToast').style.display='block';
     _exitTimer=setTimeout(function(){
@@ -351,8 +354,18 @@ window.addEventListener('popstate',function(e){
     },2500);
     return;
   }
+  // Navigazione normale
+  if(_exitMode){
+    // Continua a tornare indietro finché non si raggiunge exit_guard
+    history.go(-1);
+    return;
+  }
+  if(_exitReady){
+    _exitReady=false;
+    clearTimeout(_exitTimer);
+    document.getElementById('exitToast').style.display='none';
+  }
   showPage(page,true);
-  if(_exitReady){_exitReady=false;clearTimeout(_exitTimer);document.getElementById('exitToast').style.display='none';}
 });
 // Imposta la storia immediatamente — non dentro initApp
 try{history.replaceState({page:'exit_guard'},'',location.pathname);history.pushState({page:'ricerca'},'',location.pathname);}catch(e){}
