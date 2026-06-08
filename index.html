@@ -319,33 +319,18 @@ function showPage(p,fromPop){
     document.getElementById('mainNav').children[i].className='nav-tab'+(pg===p?' active':'');
   }
   if(p==='mappa')buildMapGroups('all');
-  if(!fromPop){history.pushState({page:p},'',location.pathname);_pushCount++;}
+  if(!fromPop){history.pushState({page:p},'',location.pathname);}
   _currentPage=p;
 }
-var _showingExitModal=false;
-var _bypassModal=false;
 var _exitReady=false;
 var _exitTimer=null;
-var _pushCount=1;
 function requestExit(){
   if(_exitTimer)clearTimeout(_exitTimer);
-  document.getElementById('exitToast').style.display='none';
   _exitReady=false;
-  if(_pushCount>0){history.go(-_pushCount);}
-  else{
-    _exitReady=true;
-    document.getElementById('exitToast').style.display='block';
-    _exitTimer=setTimeout(function(){
-      _exitReady=false;
-      document.getElementById('exitToast').style.display='none';
-      history.pushState({page:_currentPage},'',location.pathname);
-      _pushCount++;
-    },2500);
-  }
+  document.getElementById('exitToast').style.display='none';
+  history.go(-50); // Salta direttamente a exit_guard
 }
 window.addEventListener('popstate',function(e){
-  if(_showingExitModal)return;
-  if(_bypassModal){_bypassModal=false;return;}
   var page=e.state&&e.state.page;
   if(!page||page==='exit_guard'){
     if(_exitReady){
@@ -360,11 +345,9 @@ window.addEventListener('popstate',function(e){
       _exitReady=false;
       document.getElementById('exitToast').style.display='none';
       history.pushState({page:_currentPage},'',location.pathname);
-      _pushCount++;
     },2500);
     return;
   }
-  _pushCount=Math.max(1,_pushCount-1);
   showPage(page,true);
 });
 // Imposta la storia immediatamente — non dentro initApp
