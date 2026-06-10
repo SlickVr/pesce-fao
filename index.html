@@ -432,6 +432,8 @@ function renderSpDet(){
     tabs.style.display='flex';
     // Solo due tab: selvaggio e allevato, niente "tutti"
     document.getElementById('smAll').style.display='none';
+    document.getElementById('smWild').style.display='';
+    document.getElementById('smFarm').style.display='';
     if(curSpMethod==='all')curSpMethod='wild';
   } else {
     tabs.style.display=s.wildNote||s.farmNote?'flex':'none';
