@@ -809,35 +809,6 @@
     "hgValFarm": 50,
     "hgNoteFarm": "0.20–0.50 mg/kg — allevamento sperimentale (raro); valori inferiori al selvaggio ma ancora elevati per la catena trofica"
   },
-  "tonno in scatola": {
-    "name": "Tonno in scatola",
-    "emoji": "🥫",
-    "latin": "Katsuwonus pelamis (skipjack)",
-    "hgLevel": "basso",
-    "hgVal": 25,
-    "hgNote": "0.05–0.15 mg/kg (skipjack)",
-    "portions": {
-      "adulti": "2-3 volte/sett.",
-      "bambini": "1-2 volte/sett.",
-      "gravidanza": "Max 2 volte/sett. (preferire skipjack)",
-      "anziani": "2-3 volte/sett."
-    },
-    "wildNote": "Skipjack (pinna gialla piccolo): mercurio molto più basso del tonno fresco. A differenza del tonno rosso o pinna gialla, lo skipjack ha una catena trofica più corta e accumula meno mercurio — sicuro anche in gravidanza fino a 2 volte/sett. Preferire da FAO 71 o 34.",
-    "farmNote": null,
-    "bestZones": [
-      "71",
-      "34",
-      "77"
-    ],
-    "mediumZones": [
-      "31",
-      "57"
-    ],
-    "methods": [
-      "wild"
-    ],
-    "lastUpdated": "2026-06"
-  },
   "triglia": {
     "name": "Triglia",
     "emoji": "🐟",
@@ -903,5 +874,63 @@
     "hgLevelFarm": "basso",
     "hgValFarm": 20,
     "hgNoteFarm": "0.02–0.05 mg/kg — allevata in zone certificate; simile al selvaggio, vantaggio principale è la sicurezza microbiologica"
+  },
+  "tonno in scatola (skipjack)": {
+    "name": "Tonno in scatola (skipjack)",
+    "emoji": "🥫",
+    "latin": "Katsuwonus pelamis",
+    "hgLevel": "basso",
+    "hgVal": 25,
+    "hgNote": "0.05–0.15 mg/kg — catena trofica corta, accumulo limitato",
+    "portions": {
+      "adulti": "2-3 volte/sett.",
+      "bambini": "1-2 volte/sett.",
+      "gravidanza": "Max 2 volte/sett.",
+      "anziani": "2-3 volte/sett."
+    },
+    "wildNote": "Il tonno più comune nelle scatolette economiche. Specie piccola con catena trofica corta: accumula molto meno mercurio rispetto al tonno fresco o al pinna gialla. Riconoscibile in etichetta come 'skipjack' o 'tonnetto striato'. Preferire da FAO 71 o 34.",
+    "farmNote": null,
+    "bestZones": [
+      "71",
+      "34",
+      "77"
+    ],
+    "mediumZones": [
+      "31",
+      "57"
+    ],
+    "methods": [
+      "wild"
+    ],
+    "lastUpdated": "2026-06"
+  },
+  "tonno in scatola (pinna gialla)": {
+    "name": "Tonno in scatola (pinna gialla)",
+    "emoji": "🥫",
+    "latin": "Thunnus albacares",
+    "hgLevel": "medio",
+    "hgVal": 45,
+    "hgNote": "0.15–0.35 mg/kg — specie più grande, accumulo maggiore",
+    "portions": {
+      "adulti": "1-2 volte/sett.",
+      "bambini": "Max 1 volta/sett.",
+      "gravidanza": "Limitare — preferire skipjack",
+      "anziani": "1-2 volte/sett."
+    },
+    "wildNote": "Spesso nelle scatolette premium o 'in tranci'. Pesce più grande e longevo del skipjack: accumula più mercurio. Riconoscibile in etichetta come 'yellowfin' o 'pinna gialla'. Stesse precauzioni del tonno fresco.",
+    "farmNote": null,
+    "bestZones": [
+      "71",
+      "77",
+      "51"
+    ],
+    "mediumZones": [
+      "34",
+      "57"
+    ],
+    "methods": [
+      "wild"
+    ],
+    "lastUpdated": "2026-06"
   }
 }
