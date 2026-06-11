@@ -164,7 +164,7 @@ input::placeholder{color:var(--td)}
   <div class="page active" id="pageRicerca">
     <div class="card">
       <div style="display:flex;gap:8px;margin-bottom:10px">
-        <input type="text" id="faoMan" placeholder="Codice FAO es. 37.2.1" oninput="clearWarn()" onkeydown="if(event.key==='Enter')doSearch()" style="margin-bottom:0;flex:1">
+        <input type="text" id="faoMan" placeholder="Es. 37.2.1 — dove è stato pescato?" oninput="clearWarn()" onkeydown="if(event.key==='Enter')doSearch()" style="margin-bottom:0;flex:1">
         <button onclick="doSearch()" style="flex-shrink:0;padding:0 18px;background:linear-gradient(135deg,var(--ob),var(--og));border:none;border-radius:8px;color:#fff;font-size:16px;font-weight:600;cursor:pointer">🔍</button>
       </div>
       <div class="divider">oppure scegli dall'elenco</div>
@@ -220,7 +220,7 @@ input::placeholder{color:var(--td)}
 
 <div class="ftr-wrap">
 <footer style="text-align:center;padding:0.75rem 1rem 0.25rem;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · v 0.90.2
+  © 2026 Cristiano Cinotti · v 0.90.3
   <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;margin-bottom:2px">
     <button onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.35);background:rgba(13,59,110,0.6);color:#90caf9;font-size:12px;font-weight:500;cursor:pointer;letter-spacing:0.02em">ℹ️ Info &amp; crediti</button>
     <!-- Ko-fi disabilitato durante test interni -->
@@ -254,6 +254,9 @@ input::placeholder{color:var(--td)}
   <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12)">
     <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.90.1 — 11 giugno 2026</div>
     <div style="font-size:11px;color:#90caf9;line-height:1.7">🐛 <strong>Fix livelli mercurio allevato</strong> — le schede specie mostravano i valori del selvaggio anche nella tab Allevato per cozza, gambero, halibut, merluzzo, nasello, rombo, sogliola, vongola e tonno. Aggiunti dati specifici per ciascuna specie allevata.</div>
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.3 — 11 giugno 2026</div>
+    <div style="font-size:11px;color:#90caf9;line-height:1.7">✨ <strong>Schermata di benvenuto</strong> — tutorial di 4 schermate al primo avvio per spiegare le zone FAO e come usare l'app. Appare una sola volta.<br>✨ <strong>Placeholder ricerca</strong> — testo più descrittivo nel campo di ricerca.</div>
+
     <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.2 — 11 giugno 2026</div>
     <div style="font-size:11px;color:#90caf9;line-height:1.7">📝 <strong>Tonno in scatola</strong> — aggiunta nota esplicativa sulla differenza con il tonno fresco: lo skipjack ha mercurio molto più basso ed è sicuro anche in gravidanza.</div>
   </div>
@@ -573,6 +576,67 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
     <div id="glossPopupTag"></div>
   </div>
 </div>
+
+<!-- Schermata di benvenuto (primo avvio) -->
+<div id="welcomeOverlay" style="display:none;position:fixed;inset:0;z-index:10000;background:#0a2540;flex-direction:column;align-items:center;justify-content:center;padding:24px">
+  <div style="max-width:360px;width:100%;text-align:center">
+    <div id="wSlide0" class="wslide">
+      <div style="font-size:64px;margin-bottom:16px">🐟</div>
+      <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:12px">Benvenuto in<br>Pesce Sicuro</div>
+      <div style="font-size:14px;color:#90caf9;line-height:1.7">L'app che ti aiuta a scegliere il pesce più sicuro in base a <strong style="color:#e0f0ff">dove è stato pescato</strong>.</div>
+    </div>
+    <div id="wSlide1" class="wslide" style="display:none">
+      <div style="font-size:64px;margin-bottom:16px">🌍</div>
+      <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">Le Zone FAO</div>
+      <div style="font-size:14px;color:#90caf9;line-height:1.7">La FAO (ONU) divide gli oceani in zone numerate. In Italia <strong style="color:#e0f0ff">è obbligatorio indicarle in etichetta</strong> sul pesce che acquisti. Ogni zona ha livelli diversi di mercurio, microplastiche e altri contaminanti.</div>
+    </div>
+    <div id="wSlide2" class="wslide" style="display:none">
+      <div style="font-size:64px;margin-bottom:16px">🏷️</div>
+      <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">Come usare l'app</div>
+      <div style="font-size:14px;color:#90caf9;line-height:1.7">Guarda l'etichetta del pesce → trova il numero di zona FAO → cercalo nell'app. Oppure sfoglia la tab <strong style="color:#e0f0ff">Specie</strong> per conoscere i livelli di mercurio del pesce che consumi.</div>
+    </div>
+    <div id="wSlide3" class="wslide" style="display:none">
+      <div style="font-size:64px;margin-bottom:16px">✅</div>
+      <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">Pronto!</div>
+      <div style="font-size:14px;color:#90caf9;line-height:1.7">Trovi sempre le fonti e il glossario nella tab <strong style="color:#e0f0ff">Glossario</strong>. I dati provengono da EFSA, FAO, FDA e altri enti istituzionali.</div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:6px;margin:24px 0 20px">
+      <span id="wDot0" style="width:8px;height:8px;border-radius:4px;background:#4fc3f7;display:inline-block"></span>
+      <span id="wDot1" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block"></span>
+      <span id="wDot2" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block"></span>
+      <span id="wDot3" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block"></span>
+    </div>
+    <button id="wBtn" onclick="nextWelcome()" style="width:100%;padding:14px;border-radius:12px;border:none;background:#1565a8;color:#fff;font-size:16px;font-weight:600;cursor:pointer">Avanti →</button>
+    <button onclick="closeWelcome()" style="margin-top:12px;background:none;border:none;color:rgba(144,202,249,0.5);font-size:12px;cursor:pointer">Salta</button>
+  </div>
+</div>
+
+<style>
+.wslide{transition:opacity .25s}
+</style>
+
+<script>
+var _wCur=0;
+function nextWelcome(){
+  document.getElementById('wSlide'+_wCur).style.display='none';
+  document.getElementById('wDot'+_wCur).style.background='rgba(79,195,247,0.3)';
+  _wCur++;
+  if(_wCur>3){closeWelcome();return;}
+  document.getElementById('wSlide'+_wCur).style.display='block';
+  document.getElementById('wDot'+_wCur).style.background='#4fc3f7';
+  if(_wCur===3)document.getElementById('wBtn').textContent='Inizia 🐟';
+}
+function closeWelcome(){
+  document.getElementById('welcomeOverlay').style.display='none';
+  try{localStorage.setItem('ps_welcomed','1');}catch(e){}
+}
+// Mostra solo al primo avvio
+try{
+  if(!localStorage.getItem('ps_welcomed')){
+    document.getElementById('welcomeOverlay').style.display='flex';
+  }
+}catch(e){}
+</script>
 
 <!-- Toast doppio back per uscita -->
 <div id="exitToast" style="display:none;position:fixed;bottom:88px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.82);color:#fff;padding:11px 22px;border-radius:24px;font-size:13px;z-index:9999;white-space:nowrap;pointer-events:none">
