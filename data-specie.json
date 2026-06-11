@@ -917,16 +917,16 @@
       "gravidanza": "Limitare — preferire skipjack",
       "anziani": "1-2 volte/sett."
     },
-    "wildNote": "Spesso nelle scatolette premium o 'in tranci'. Pesce più grande e longevo del skipjack: accumula più mercurio. Riconoscibile in etichetta come 'yellowfin' o 'pinna gialla'. Stesse precauzioni del tonno fresco.",
+    "wildNote": "Spesso nelle scatolette premium o \"in tranci\". Pesce più grande e longevo del skipjack: accumula più mercurio. Riconoscibile in etichetta come \"yellowfin\" o \"pinna gialla\". Stesse precauzioni del tonno fresco. Nota: i livelli di mercurio nella zona 77 (Pacifico nord-orientale) sono in aumento stimato del 3.8% annuo dal 1998 (Drevnick et al., 2015 — Environmental Toxicology and Chemistry).",
     "farmNote": null,
     "bestZones": [
       "71",
-      "77",
-      "51"
+      "51",
+      "87"
     ],
     "mediumZones": [
-      "34",
-      "57"
+      "77",
+      "34"
     ],
     "methods": [
       "wild"
