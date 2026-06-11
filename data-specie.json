@@ -284,7 +284,10 @@
       "wild",
       "farm"
     ],
-    "lastUpdated": "2026-06"
+    "lastUpdated": "2026-06",
+    "hgLevelFarm": "basso",
+    "hgValFarm": 18,
+    "hgNoteFarm": "0.01–0.03 mg/kg — simile al selvaggio; il vantaggio principale è la sicurezza microbiologica nelle zone certificate"
   },
   "gambero": {
     "name": "Gambero",
@@ -315,7 +318,10 @@
       "wild",
       "farm"
     ],
-    "lastUpdated": "2026-06"
+    "lastUpdated": "2026-06",
+    "hgLevelFarm": "basso",
+    "hgValFarm": 8,
+    "hgNoteFarm": "0.01–0.03 mg/kg — dieta controllata; valori generalmente inferiori al selvaggio"
   },
   "halibut": {
     "name": "Halibut / Ippoglosso",
@@ -344,7 +350,10 @@
       "wild",
       "farm"
     ],
-    "lastUpdated": "2026-06"
+    "lastUpdated": "2026-06",
+    "hgLevelFarm": "basso",
+    "hgValFarm": 15,
+    "hgNoteFarm": "0.05–0.15 mg/kg — allevato (Norvegia); catena trofica controllata, valori nettamente inferiori al selvaggio"
   },
   "merluzzo": {
     "name": "Merluzzo",
@@ -374,7 +383,10 @@
       "wild",
       "farm"
     ],
-    "lastUpdated": "2026-06"
+    "lastUpdated": "2026-06",
+    "hgLevelFarm": "basso",
+    "hgValFarm": 10,
+    "hgNoteFarm": "0.03–0.08 mg/kg — catena trofica più corta; valori comparabili o inferiori al selvaggio"
   },
   "nasello": {
     "name": "Nasello",
@@ -403,7 +415,10 @@
     "methods": [
       "wild"
     ],
-    "lastUpdated": "2026-06-rev1"
+    "lastUpdated": "2026-06-rev1",
+    "hgLevelFarm": "basso",
+    "hgValFarm": 20,
+    "hgNoteFarm": "0.05–0.15 mg/kg — raro in allevamento; valori generalmente inferiori al selvaggio"
   },
   "orata": {
     "name": "Orata",
@@ -528,7 +543,10 @@
       "wild",
       "farm"
     ],
-    "lastUpdated": "2026-06"
+    "lastUpdated": "2026-06",
+    "hgLevelFarm": "basso",
+    "hgValFarm": 12,
+    "hgNoteFarm": "0.03–0.08 mg/kg — turbot allevato; alimentazione controllata, valori inferiori al selvaggio"
   },
   "salmone": {
     "name": "Salmone",
@@ -716,7 +734,10 @@
       "wild",
       "farm"
     ],
-    "lastUpdated": "2026-06"
+    "lastUpdated": "2026-06",
+    "hgLevelFarm": "basso",
+    "hgValFarm": 8,
+    "hgNoteFarm": "0.02–0.05 mg/kg — allevata; valori comparabili o inferiori al selvaggio"
   },
   "storione": {
     "name": "Storione / Caviale",
@@ -783,7 +804,10 @@
     "methods": [
       "wild"
     ],
-    "lastUpdated": "2026-06"
+    "lastUpdated": "2026-06",
+    "hgLevelFarm": "medio",
+    "hgValFarm": 50,
+    "hgNoteFarm": "0.20–0.50 mg/kg — allevamento sperimentale (raro); valori inferiori al selvaggio ma ancora elevati per la catena trofica"
   },
   "tonno in scatola": {
     "name": "Tonno in scatola",
@@ -875,6 +899,9 @@
       "wild",
       "farm"
     ],
-    "lastUpdated": "2026-06"
+    "lastUpdated": "2026-06",
+    "hgLevelFarm": "basso",
+    "hgValFarm": 20,
+    "hgNoteFarm": "0.02–0.05 mg/kg — allevata in zone certificate; simile al selvaggio, vantaggio principale è la sicurezza microbiologica"
   }
 }
