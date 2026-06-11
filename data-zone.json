@@ -808,7 +808,7 @@
       {
         "name": "Metalli pesanti",
         "level": "medio",
-        "note": "Medio nei predatori",
+        "note": "Mercurio in aumento nei grandi predatori (+3.8%/anno dal 1998)",
         "icon": "⚗️"
       },
       {
@@ -835,8 +835,8 @@
       "Sardina",
       "Calamaro gigante"
     ],
-    "recommendation": "Buona qualità. Sardine e calamari ottimi; moderare grandi predatori.",
-    "sourceNote": "NOAA, FAO.",
+    "recommendation": "Buona qualità per la maggior parte delle specie. Sardine e calamari ottimi. Limitare tonno pinna gialla e pesce spada: mercurio in aumento documentato nei grandi predatori del Pacifico nord-orientale (Drevnick et al., 2015).",
+    "sourceNote": "NOAA, FAO, Drevnick et al. (2015) — Environmental Toxicology and Chemistry.",
     "lastUpdated": "2025-01"
   },
   "81": {
