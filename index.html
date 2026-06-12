@@ -267,17 +267,20 @@ input::placeholder{color:var(--td)}
   <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12)">
     <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.90.5 — 12 giugno 2026</div>
     <div style="font-size:11px;color:#90caf9;line-height:1.7">🗺️ <strong>Mappa interattiva</strong> — il planisfero FAO sostituisce le mini-mappe SVG. Le zone sono ora cliccabili: tap su una zona scorre alla sezione corrispondente nell'elenco e la evidenzia.</div>
-
-    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.1 — 11 giugno 2026</div>
-    <div style="font-size:11px;color:#90caf9;line-height:1.7">🐛 <strong>Fix livelli mercurio allevato</strong> — le schede specie mostravano i valori del selvaggio anche nella tab Allevato per cozza, gambero, halibut, merluzzo, nasello, rombo, sogliola, vongola e tonno. Aggiunti dati specifici per ciascuna specie allevata.</div>
-    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.4 — 11 giugno 2026</div>
-    <div style="font-size:11px;color:#90caf9;line-height:1.7">📝 <strong>Tonno in scatola sdoppiato</strong> — distinte le due specie: skipjack (Katsuwonus pelamis, mercurio basso) e pinna gialla (Thunnus albacares, mercurio medio). Porzioni e avvertenze differenziate.</div>
-
-    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.3 — 11 giugno 2026</div>
-    <div style="font-size:11px;color:#90caf9;line-height:1.7">✨ <strong>Schermata di benvenuto</strong> — tutorial di 4 schermate al primo avvio per spiegare le zone FAO e come usare l'app. Appare una sola volta.<br>✨ <strong>Placeholder ricerca</strong> — testo più descrittivo nel campo di ricerca.</div>
-
-    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.2 — 11 giugno 2026</div>
-    <div style="font-size:11px;color:#90caf9;line-height:1.7">📝 <strong>Tonno in scatola</strong> — aggiunta nota esplicativa sulla differenza con il tonno fresco: lo skipjack ha mercurio molto più basso ed è sicuro anche in gravidanza.</div>
+    <button onclick="var el=document.getElementById('oldVersions');var open=el.style.display==='block';el.style.display=open?'none':'block';this.textContent=open?'Versioni precedenti ▾':'Versioni precedenti ▴';"
+            style="margin-top:10px;background:transparent;border:0.5px solid rgba(79,195,247,0.25);border-radius:20px;padding:4px 12px;font-size:11px;color:rgba(144,202,249,0.7);cursor:pointer;width:100%;text-align:left">
+      Versioni precedenti ▾
+    </button>
+    <div id="oldVersions" style="display:none;margin-top:8px">
+      <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.90.4 — 11 giugno 2026</div>
+      <div style="font-size:11px;color:#90caf9;line-height:1.7">📝 <strong>Tonno in scatola sdoppiato</strong> — distinte le due specie: skipjack (Katsuwonus pelamis, mercurio basso) e pinna gialla (Thunnus albacares, mercurio medio). Porzioni e avvertenze differenziate.</div>
+      <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.3 — 11 giugno 2026</div>
+      <div style="font-size:11px;color:#90caf9;line-height:1.7">✨ <strong>Schermata di benvenuto</strong> — tutorial di 4 schermate al primo avvio per spiegare le zone FAO e come usare l'app. Appare una sola volta.<br>✨ <strong>Placeholder ricerca</strong> — testo più descrittivo nel campo di ricerca.</div>
+      <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.2 — 11 giugno 2026</div>
+      <div style="font-size:11px;color:#90caf9;line-height:1.7">📝 <strong>Tonno in scatola</strong> — aggiunta nota esplicativa sulla differenza con il tonno fresco: lo skipjack ha mercurio molto più basso ed è sicuro anche in gravidanza.</div>
+      <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.1 — 11 giugno 2026</div>
+      <div style="font-size:11px;color:#90caf9;line-height:1.7">🐛 <strong>Fix livelli mercurio allevato</strong> — le schede specie mostravano i valori del selvaggio anche nella tab Allevato per cozza, gambero, halibut, merluzzo, nasello, rombo, sogliola, vongola e tonno. Aggiunti dati specifici per ciascuna specie allevata.</div>
+    </div>
   </div>
 
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;margin-top:12px">Credits</div>
