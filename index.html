@@ -749,8 +749,15 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
 <div id="welcomeOverlay" style="display:none;position:fixed;inset:0;z-index:10000;background:#0a2540;flex-direction:column;align-items:center;justify-content:center;padding:24px">
   <div style="max-width:360px;width:100%;text-align:center">
 
-    <!-- Slide 0: Come leggere l'etichetta -->
+    <!-- Slide 0: Benvenuto -->
     <div id="wSlide0" class="wslide">
+      <div style="font-size:64px;margin-bottom:16px">🐟</div>
+      <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:12px">Benvenuto in<br>Pesce Sicuro</div>
+      <div style="font-size:14px;color:#90caf9;line-height:1.75">L'app che ti aiuta a scegliere il pesce più sicuro, capire le etichette e orientarti tra le zone di pesca mondiali.</div>
+    </div>
+
+    <!-- Slide 1: Come leggere l'etichetta -->
+    <div id="wSlide1" class="wslide" style="display:none">
       <div style="font-size:56px;margin-bottom:14px">🏷️</div>
       <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">L'etichetta del pesce</div>
       <div style="font-size:14px;color:#90caf9;line-height:1.8;text-align:left;background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px">
@@ -762,8 +769,8 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
       </div>
     </div>
 
-    <!-- Slide 1: La regola d'oro -->
-    <div id="wSlide1" class="wslide" style="display:none">
+    <!-- Slide 2: La regola d'oro -->
+    <div id="wSlide2" class="wslide" style="display:none">
       <div style="font-size:56px;margin-bottom:14px">🐟</div>
       <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">La regola d'oro</div>
       <div style="font-size:14px;color:#90caf9;line-height:1.8;text-align:left;background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px">
@@ -775,28 +782,26 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
       </div>
     </div>
 
-    <!-- Slide 2: Come usare la sezione specie -->
-    <div id="wSlide2" class="wslide" style="display:none">
+    <!-- Slide 3: Come usare l'app (tab corrette) -->
+    <div id="wSlide3" class="wslide" style="display:none">
       <div style="font-size:56px;margin-bottom:14px">🔍</div>
       <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">Come usare l'app</div>
-      <div style="font-size:14px;color:#90caf9;line-height:1.9;text-align:left;background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px">
-        <strong style="color:#e0f0ff">Tab Ricerca</strong> → cerca una specie e vedi:<br>
-        &nbsp;&nbsp;• indicatore catena trofica (🐟×1–5)<br>
-        &nbsp;&nbsp;• livello mercurio e porzioni EFSA<br>
-        &nbsp;&nbsp;• zone FAO consigliate per quella specie<br><br>
-        <strong style="color:#e0f0ff">Tab Mappa</strong> → pressione ambientale stimata per area.<br><br>
-        <span style="color:#b0bec5;font-size:12px">Più pesci colorati = più alta nella catena = più bioaccumulo.</span>
+      <div style="font-size:14px;color:#90caf9;line-height:1.85;text-align:left;background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px">
+        <strong style="color:#e0f0ff">🔍 Ricerca</strong> → cerca per zona FAO, specie sensibili e contaminate<br><br>
+        <strong style="color:#e0f0ff">🐠 Specie</strong> → sfoglia ogni specie: mercurio, catena trofica (🐟×1–5), porzioni EFSA, zone consigliate<br><br>
+        <strong style="color:#e0f0ff">🌍 Mappa</strong> → pressione ambientale stimata per area di pesca<br><br>
+        <strong style="color:#e0f0ff">📖 Glossario</strong> → guida pratica e termini tecnici
       </div>
     </div>
 
-    <!-- Slide 3: Limiti e fonti -->
-    <div id="wSlide3" class="wslide" style="display:none">
+    <!-- Slide 4: Limiti e fonti -->
+    <div id="wSlide4" class="wslide" style="display:none">
       <div style="font-size:56px;margin-bottom:14px">🏛️</div>
       <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">Trasparenza e limiti</div>
       <div style="font-size:14px;color:#90caf9;line-height:1.8;text-align:left;background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px">
-        Fonti dei dati: <strong style="color:#e0f0ff">EFSA, FAO, MEDPOL, ISPRA, FDA</strong>.<br><br>
-        Le zone FAO coprono milioni di km² — la qualità varia all'interno di ciascuna. Il pesce venduto in UE ha superato i <strong style="color:#e0f0ff">controlli sanitari di filiera</strong>.<br><br>
-        <span style="color:#a5d6a7;font-size:12px">Questa app è uno strumento di orientamento, non un sostituto dei controlli ufficiali.</span>
+        Fonti: <strong style="color:#e0f0ff">EFSA, FAO, MEDPOL, ISPRA, FDA</strong>.<br><br>
+        Le zone FAO coprono milioni di km² — la qualità varia internamente. Il pesce in vendita in UE ha superato i <strong style="color:#e0f0ff">controlli sanitari di filiera</strong>.<br><br>
+        <span style="color:#a5d6a7;font-size:12px">Strumento di orientamento, non sostituto dei controlli ufficiali.</span>
       </div>
     </div>
 
@@ -805,6 +810,7 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
       <span id="wDot1" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block;transition:background .25s"></span>
       <span id="wDot2" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block;transition:background .25s"></span>
       <span id="wDot3" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block;transition:background .25s"></span>
+      <span id="wDot4" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block;transition:background .25s"></span>
     </div>
     <button id="wBtn" onclick="nextWelcome()" style="width:100%;padding:14px;border-radius:12px;border:none;background:#1565a8;color:#fff;font-size:16px;font-weight:600;cursor:pointer">Avanti →</button>
     <button onclick="closeWelcome()" style="margin-top:12px;background:none;border:none;color:rgba(144,202,249,0.5);font-size:12px;cursor:pointer">Salta il tutorial</button>
@@ -821,10 +827,10 @@ function nextWelcome(){
   document.getElementById('wSlide'+_wCur).style.display='none';
   document.getElementById('wDot'+_wCur).style.background='rgba(79,195,247,0.3)';
   _wCur++;
-  if(_wCur>3){closeWelcome();return;}
+  if(_wCur>4){closeWelcome();return;}
   document.getElementById('wSlide'+_wCur).style.display='block';
   document.getElementById('wDot'+_wCur).style.background='#4fc3f7';
-  if(_wCur===3)document.getElementById('wBtn').textContent='Inizia 🐟';
+  if(_wCur===4)document.getElementById('wBtn').textContent='Inizia 🐟';
 }
 function closeWelcome(){
   document.getElementById('welcomeOverlay').style.display='none';
