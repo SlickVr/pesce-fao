@@ -575,7 +575,7 @@ function renderSpDet(){
   html+='<div class="sp-hero"><span style="font-size:clamp(28px,7vw,36px)">'+s.emoji+'</span><div class="sp-name">'+s.name+'</div><div class="sp-latin">'+s.latin+'</div></div>';
   html+='<div class="sec-title">Mercurio</div>'+hgHTML;
   // ── Catena trofica ──────────────────────────────────────────────────────────
-  var hgV=(curSpMethod==='farm'&&s.hgValFarm)?s.hgValFarm:(s.hgVal||0);
+  var hgV=s.hgVal||0;  // posizione trofica = caratteristica biologica della specie, sempre wild
   var tLvl=hgV<=18?1:hgV<=28?2:hgV<=50?3:hgV<=80?4:5;
   var tCols=['#43a047','#7cb342','#fdd835','#ef6c00','#e53935'];
   var tLbls=['Base della rete · bioaccumulo minimo','Catena corta · accumulo basso','Catena media · accumulo moderato','Catena lunga · accumulo elevato','Apice · bioaccumulo massimo'];
