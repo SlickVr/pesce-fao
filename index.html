@@ -162,12 +162,11 @@ input::placeholder{color:var(--td)}
 <div class="content" style="flex:1">
 
   <div class="page active" id="pageRicerca">
-    <div class="card" style="background:rgba(27,94,32,0.35);border-color:rgba(67,160,71,0.35);padding:10px 14px;margin-bottom:8px">
-      <div style="font-size:12px;color:#a5d6a7;line-height:1.65">
-        🐟 <strong style="color:#c8e6c9">La regola d'oro:</strong>
-        preferisci pesce piccolo a ciclo breve — alici, sardine, sgombri —
-        accumula meno contaminanti <em>a prescindere</em> dalla zona FAO.
-      </div>
+    <div id="goldTip" onclick="nextTip()"
+         class="card"
+         style="background:rgba(27,94,32,0.35);border-color:rgba(67,160,71,0.35);
+                padding:10px 14px;margin-bottom:8px;cursor:pointer;
+                transition:opacity 0.2s">
     </div>
     <div class="card">
       <div style="display:flex;gap:8px;margin-bottom:10px">
@@ -228,20 +227,6 @@ input::placeholder{color:var(--td)}
       </div>
     </div>
 
-    <!-- Filtri -->
-    <div class="card">
-      <div style="font-size:11px;color:var(--ts);margin-bottom:8px;opacity:0.8">
-        Filtra per pressione ambientale stimata:
-      </div>
-      <div class="map-filter">
-        <div class="mf-btn fall factive" onclick="filterMap('all',this)">Tutte</div>
-        <div class="mf-btn fgreen"  onclick="filterMap('green',this)">🟢 Bassa</div>
-        <div class="mf-btn fyellow" onclick="filterMap('yellow',this)">🟡 Media</div>
-        <div class="mf-btn forange" onclick="filterMap('orange',this)">🟠 Alta</div>
-        <div class="mf-btn fred"    onclick="filterMap('red',this)">🔴 Molto alta</div>
-      </div>
-    </div>
-
     <div id="mapGroups"></div>
   </div>
 
@@ -253,7 +238,7 @@ input::placeholder{color:var(--td)}
 
 <div class="ftr-wrap">
 <footer style="text-align:center;padding:0.75rem 1rem 0.25rem;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · v 0.90.7
+  © 2026 Cristiano Cinotti · v 0.90.8
   <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;margin-bottom:2px">
     <button onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.35);background:rgba(13,59,110,0.6);color:#90caf9;font-size:12px;font-weight:500;cursor:pointer;letter-spacing:0.02em">ℹ️ Info &amp; crediti</button>
     <!-- Ko-fi disabilitato durante test interni -->
@@ -285,7 +270,10 @@ input::placeholder{color:var(--td)}
   </div>
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;margin-top:4px">Note di versione</div>
   <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12)">
-    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.90.7 — 12 giugno 2026</div>
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.90.8 — 12 giugno 2026</div>
+    <div style="font-size:11px;color:#90caf9;line-height:1.7">💡 <strong>Pillole informative</strong> — il banner nella tab Ricerca mostra ora un consiglio casuale tra 13 pillole su bioaccumulo, etichette, gravidanza, certificazioni e molto altro. Tocca il banner per scorrere.</div>
+
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.7 — 12 giugno 2026</div>
     <div style="font-size:11px;color:#90caf9;line-height:1.7">🔬 <strong>Contesto scientifico nelle schede specie</strong> — aggiunto banner "Perché" che spiega il livello di mercurio in termini di catena trofica e bioaccumulo. Fonti zona ora visibili come citazione formattata.</div>
 
     <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.6 — 12 giugno 2026</div>
@@ -343,6 +331,45 @@ var GLOSSARY=[
   {term:"BAP — Best Aquaculture Practices",icon:"🏅",tag:{text:"Certificazione",cls:"info"},body:"Standard americano (Global Seafood Alliance) diffuso per gamberi asiatici e salmone. Prevede 4 livelli (stelle) in base al numero di segmenti della filiera certificati. Meno restrittivo di ASC ma migliore dell'assenza di certificazione."}
 ];
 
+// ─── PILLOLE INFORMATIVE (banner random tab Ricerca) ─────────────────────────
+var TIPS=[
+  {i:'🐟',t:'Regola d\'oro',m:'Preferisci pesce piccolo a ciclo breve — alici, sardine, sgombri — accumula meno contaminanti <em>a prescindere</em> dalla zona FAO.'},
+  {i:'🔗',t:'Bioaccumulo',m:'Il mercurio si concentra salendo la catena alimentare: un tonno accumula i contaminanti di migliaia di piccoli pesci nel corso della sua vita.'},
+  {i:'📦',t:'Leggi l\'etichetta',m:'Per legge UE il prodotto ittico deve indicare zona FAO, metodo di pesca e se è selvaggio o allevato. Cerca queste info prima di acquistare.'},
+  {i:'🤰',t:'Gravidanza e bambini',m:'Tonno rosso, pesce spada, squalo e luccio sono sconsigliati in gravidanza. Sicuri: salmone, alici, gamberi ben cotti, merluzzo.'},
+  {i:'🏭',t:'Allevato non è sempre peggio',m:'Orata e branzino in impianti certificati ASC hanno spesso meno contaminanti del selvaggio grazie alla dieta controllata.'},
+  {i:'🌊',t:'Costa vs. mare aperto',m:'Nella stessa zona FAO, il pesce di mare aperto è meno esposto ai contaminanti rispetto a quello lagunare o di estuario.'},
+  {i:'⚗️',t:'Mercurio e omega-3',m:'Il pesce azzurro piccolo offre il miglior rapporto: omega-3 elevati e mercurio bassissimo. Il pesce grande (tonno, spada) ha l\'equilibrio opposto.'},
+  {i:'🏅',t:'Certificazioni',m:'I loghi ASC (acquacoltura) e MSC (pesca selvaggia) garantiscono standard ambientali e di sicurezza verificati da enti terzi indipendenti.'},
+  {i:'👶',t:'Pesce e bambini',m:'L\'OMS raccomanda 2 porzioni di pesce a settimana anche per i bambini, privilegiando specie a basso mercurio: merluzzo, sogliola, salmone, alici.'},
+  {i:'🥫',t:'Tonno in scatola',m:'Lo skipjack (tonnetto striato) del tonno economico in scatola ha molto meno mercurio del tonno pinna gialla usato nei prodotti premium.'},
+  {i:'📊',t:'Frequenza, non solo qualità',m:'Non è solo "quale pesce" ma "quanto spesso": anche una specie a mercurio medio può diventare rischiosa se consumata ogni giorno per anni.'},
+  {i:'❄️',t:'Acque polari',m:'Le zone artiche e antartiche (FAO 18, 48, 58, 88) sono tra le più pure al mondo. Merluzzo artico e austromerluzzo antartico: bassissima contaminazione.'},
+  {i:'🎣',t:'Taglia conta',m:'Preferisci esemplari di taglia piccola o media della stessa specie: il mercurio si accumula con l\'età, quindi un pesce più giovane ne contiene meno.'},
+];
+var _tipIdx=Math.floor(Math.random()*TIPS.length);
+function showTip(){
+  var el=document.getElementById('goldTip');
+  if(!el)return;
+  var tip=TIPS[_tipIdx];
+  el.innerHTML='<div style="font-size:12px;color:#a5d6a7;line-height:1.65">'
+    +tip.i+' <strong style="color:#c8e6c9">'+tip.t+':</strong> '
+    +'<span style="color:#a5d6a7">'+tip.m+'</span>'
+    +'</div>'
+    +'<div style="font-size:10px;color:rgba(165,214,167,0.45);margin-top:5px;text-align:right">'
+    +'tocca per un altro consiglio &rsaquo;'
+    +'</div>';
+}
+function nextTip(){
+  var el=document.getElementById('goldTip');
+  el.style.opacity='0';
+  setTimeout(function(){
+    _tipIdx=(_tipIdx+1)%TIPS.length;
+    showTip();
+    el.style.opacity='1';
+  },180);
+}
+
 // ─── GLOSSARY POPUP ──────────────────────────────────────────────────────────
 var IND_TO_GL={'Microplastiche':3,'Metalli pesanti':10,'PCB/Diossine':1,'Eutrofizzazione':4,'Degrado ambientale':11};
 function showGlossPopup(idx){
@@ -369,6 +396,7 @@ function initApp(){
   var sdKeys=Object.keys(SPECIES).sort(function(a,b){return SPECIES[a].name.localeCompare(SPECIES[b].name,'it');});
   for(var i=0;i<sdKeys.length;i++){var o=document.createElement('option');o.value=sdKeys[i];o.textContent=SPECIES[sdKeys[i]].emoji+' '+SPECIES[sdKeys[i]].name;spDetSel.appendChild(o);}
   buildGlossary();
+  showTip();
 }
 
 // ─── NAV ─────────────────────────────────────────────────────────────────────
@@ -381,6 +409,7 @@ function showPage(p,fromPop){
     document.getElementById('mainNav').children[i].className='nav-tab'+(pg===p?' active':'');
   }
   if(p==='mappa'){buildMapGroups('all');window.scrollTo({top:0,behavior:'smooth'});}
+  if(p==='ricerca'){_tipIdx=(_tipIdx+1)%TIPS.length;showTip();}
   if(!fromPop){history.pushState({page:p},'',location.pathname);}
   _currentPage=p;
 }
