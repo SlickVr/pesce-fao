@@ -682,17 +682,18 @@ function clickZone(code){
   var grpId=ZONE_TO_GROUP[code];
   buildMapGroups('all');
   setTimeout(function(){
-    if(grpId){
-      var el=document.getElementById('grp-'+grpId);
-      if(el){
-        el.scrollIntoView({behavior:'smooth',block:'start'});
-        el.style.transition='border-color 0.3s,box-shadow 0.3s';
-        el.style.borderColor='rgba(79,195,247,0.9)';
-        el.style.boxShadow='0 0 0 2px rgba(79,195,247,0.35)';
-        setTimeout(function(){el.style.borderColor='';el.style.boxShadow='';},2500);
-      }
-    }
-  },80);
+    if(!grpId)return;
+    var el=document.getElementById('grp-'+grpId);
+    if(!el)return;
+    // offsetTop = distanza assoluta dall'inizio del documento, stabile dopo il re-render
+    var navH=(document.getElementById('mainNav')||{offsetHeight:56}).offsetHeight;
+    var margin=12;
+    window.scrollTo({top:el.offsetTop-margin,behavior:'smooth'});
+    el.style.transition='border-color 0.35s,box-shadow 0.35s';
+    el.style.borderColor='rgba(79,195,247,0.9)';
+    el.style.boxShadow='0 0 0 2px rgba(79,195,247,0.35)';
+    setTimeout(function(){el.style.borderColor='';el.style.boxShadow='';},2500);
+  },120);
 }
 
 function buildMapGroups(filter){
