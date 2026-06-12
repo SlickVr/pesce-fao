@@ -351,7 +351,7 @@ function showPage(p,fromPop){
     document.getElementById('page'+pg.charAt(0).toUpperCase()+pg.slice(1)).className='page'+(pg===p?' active':'');
     document.getElementById('mainNav').children[i].className='nav-tab'+(pg===p?' active':'');
   }
-  if(p==='mappa')buildMapGroups('all');
+  if(p==='mappa'){buildMapGroups('all');window.scrollTo({top:0,behavior:'smooth'});}
   if(!fromPop){history.pushState({page:p},'',location.pathname);}
   _currentPage=p;
 }
