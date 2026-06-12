@@ -87,7 +87,7 @@ input::placeholder{color:var(--td)}
 .chips{display:flex;flex-wrap:wrap;gap:5px}
 .chip{font-size:clamp(13px,3.2vw,14px);padding:6px 13px;border-radius:20px;border:0.5px solid var(--border);background:rgba(21,101,168,0.3);color:var(--ts);cursor:pointer}
 .rec-box{background:var(--card2);border:0.5px solid var(--border);border-left:3px solid var(--og);border-radius:0 8px 8px 0;padding:clamp(12px,3vw,15px);font-size:clamp(14px,3.5vw,16px);color:var(--tp);line-height:1.7}
-.src-note{font-size:13px;color:var(--ts);text-align:center;margin-top:10px;opacity:0.6;line-height:1.5}
+.src-note{font-size:12px;color:var(--ts);margin-top:12px;opacity:0.75;line-height:1.6;padding:7px 10px;background:rgba(10,37,64,0.4);border-radius:7px;border:0.5px solid rgba(79,195,247,0.1)}
 .sp-hero{border-radius:12px;padding:clamp(12px,3vw,18px);margin-bottom:12px;background:linear-gradient(135deg,#0d3b6e,#1565a8);border:0.5px solid rgba(79,195,247,0.3)}
 .sp-name{font-size:clamp(16px,4.5vw,20px);font-weight:700;color:#fff;margin-top:6px}
 .sp-latin{font-size:clamp(11px,2.8vw,13px);color:var(--ts);font-style:italic;margin-top:2px}
@@ -253,7 +253,7 @@ input::placeholder{color:var(--td)}
 
 <div class="ftr-wrap">
 <footer style="text-align:center;padding:0.75rem 1rem 0.25rem;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · v 0.90.6
+  © 2026 Cristiano Cinotti · v 0.90.7
   <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;margin-bottom:2px">
     <button onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.35);background:rgba(13,59,110,0.6);color:#90caf9;font-size:12px;font-weight:500;cursor:pointer;letter-spacing:0.02em">ℹ️ Info &amp; crediti</button>
     <!-- Ko-fi disabilitato durante test interni -->
@@ -285,7 +285,10 @@ input::placeholder{color:var(--td)}
   </div>
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;margin-top:4px">Note di versione</div>
   <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12)">
-    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.90.6 — 12 giugno 2026</div>
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.90.7 — 12 giugno 2026</div>
+    <div style="font-size:11px;color:#90caf9;line-height:1.7">🔬 <strong>Contesto scientifico nelle schede specie</strong> — aggiunto banner "Perché" che spiega il livello di mercurio in termini di catena trofica e bioaccumulo. Fonti zona ora visibili come citazione formattata.</div>
+
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.6 — 12 giugno 2026</div>
     <div style="font-size:11px;color:#90caf9;line-height:1.7">⚖️ <strong>Reframe scientifico</strong> — "rischio" rinominato in "pressione ambientale stimata" per maggiore correttezza metodologica. Aggiunto disclaimer sulla scala delle zone FAO e sui controlli di filiera UE. Aggiunto banner "regola d'oro" nella sezione ricerca.</div>
 
     <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.5 — 12 giugno 2026</div>
@@ -459,7 +462,9 @@ function renderZone(code){
   for(var i=0;i<d.sensibleSpecies.length;i++){var k=d.sensibleSpecies[i].toLowerCase().split(' ')[0];ch+='<span class="chip" onclick="openSp(\''+k+'\')">'+d.sensibleSpecies[i]+'</span>';}
   document.getElementById('spChips').innerHTML=ch;
   document.getElementById('recBox').textContent=d.recommendation;
-  document.getElementById('srcNote').textContent=d.sourceNote;
+  document.getElementById('srcNote').innerHTML=d.sourceNote
+    ?'<span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;opacity:0.5;margin-right:4px">Fonti:</span>'+d.sourceNote
+    :'';
   card.style.display='block';
   if(document.getElementById('pageRicerca').classList.contains('active'))card.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
@@ -533,6 +538,15 @@ function renderSpDet(){
   var html='<div class="card">';
   html+='<div class="sp-hero"><span style="font-size:clamp(28px,7vw,36px)">'+s.emoji+'</span><div class="sp-name">'+s.name+'</div><div class="sp-latin">'+s.latin+'</div></div>';
   html+='<div class="sec-title">Mercurio</div>'+hgHTML;
+  // ── Banner perché questo livello ──────────────────────────────────────────
+  var bioMsg={
+    basso:{c:'rgba(27,94,32,0.35)',b:'rgba(67,160,71,0.3)',i:'✅',t:'Ciclo vitale breve e posizione bassa nella catena trofica: il bioaccumulo è limitato. Buona scelta per consumo regolare.'},
+    medio:{c:'rgba(66,48,5,0.4)',b:'rgba(253,216,53,0.3)',i:'⚠️',t:'Predatore di taglia media: il mercurio si accumula progressivamente nei tessuti con l\'età. Rispettare le porzioni, soprattutto in gravidanza e per i bambini.'},
+    alto:{c:'rgba(77,22,5,0.4)',b:'rgba(239,108,0,0.35)',i:'⚠️',t:'Predatore longevo ad alto bioaccumulo: il mercurio aumenta con la taglia e l\'età dell\'esemplare. Consumo moderato consigliato per tutta la popolazione.'},
+    'molto alto':{c:'rgba(74,11,11,0.45)',b:'rgba(229,57,53,0.4)',i:'🚨',t:'Apice della catena trofica: accumula la massima concentrazione di mercurio. Sconsigliato in gravidanza e ai bambini. Per gli adulti: consumo occasionale (max 1×/mese).'}
+  };
+  var bm=bioMsg[s.hgLevel];
+  if(bm){html+='<div style="margin:8px 0 4px;padding:8px 10px;border-radius:8px;font-size:12px;line-height:1.65;background:'+bm.c+';border:0.5px solid '+bm.b+';color:rgba(232,244,253,0.85)">'+bm.i+' <strong style="color:#e8f4fd">Perché:</strong> '+bm.t+'</div>';}
   html+='<div class="sec-title">Porzioni consigliate (EFSA)</div>'+portHTML;
   if(noteHTML)html+='<div class="sec-title">Note</div><div class="rec-box" style="font-size:14px;line-height:1.7">'+noteHTML+'</div>';
   if(bHTML)html+='<div class="sec-title">Zone consigliate per questa specie</div><div class="chips">'+bHTML+'</div>';
