@@ -194,17 +194,20 @@ input::placeholder{color:var(--td)}
 
   <div class="page" id="pageMappa">
 
-    <!-- Planisfero FAO — tap per fullscreen con pinch-zoom -->
+    <!-- Planisfero con zone cliccabili -->
     <div class="card" style="padding:0;overflow:hidden;margin-bottom:12px">
-      <div style="position:relative;cursor:zoom-in" onclick="openMapModal()">
-        <img src="./fao-zones.jpg"
+      <div style="position:relative">
+        <img src="./fao-zones.jpg" id="faoMapImg"
              style="width:100%;display:block;border-radius:16px"
              alt="Zone FAO — classificazione rischio Pesce Sicuro">
-        <div style="position:absolute;bottom:8px;right:10px;background:rgba(0,0,0,0.55);
-                    border-radius:20px;padding:4px 10px;font-size:11px;
-                    color:rgba(255,255,255,0.85);pointer-events:none">
-          🔍 Tocca per ingrandire
-        </div>
+        <svg id="faoMapSvg" viewBox="0 0 1283 668"
+             style="position:absolute;top:0;left:0;width:100%;height:100%;
+                    border-radius:16px;overflow:hidden"
+             xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+      <div style="text-align:center;padding:5px 0 7px;font-size:11px;
+                  color:rgba(144,202,249,0.65)">
+        Tocca una zona per navigare alla sezione corrispondente
       </div>
     </div>
 
@@ -222,28 +225,6 @@ input::placeholder{color:var(--td)}
     <div id="mapGroups"></div>
   </div>
 
-  <!-- Modal fullscreen planisfero -->
-  <div id="mapModal" onclick="closeMapModal()"
-       style="display:none;position:fixed;inset:0;background:#000;z-index:999;
-              flex-direction:column;align-items:stretch">
-    <div style="display:flex;justify-content:flex-end;padding:10px 12px;
-                background:rgba(0,0,0,0.7);flex-shrink:0" onclick="event.stopPropagation()">
-      <button onclick="closeMapModal()"
-              style="background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);
-                     border-radius:20px;padding:7px 18px;color:#fff;font-size:13px;
-                     font-weight:500;cursor:pointer">
-        ✕ Chiudi
-      </button>
-    </div>
-    <div style="flex:1;overflow:auto;-webkit-overflow-scrolling:touch;
-                display:flex;align-items:center;justify-content:center"
-         onclick="event.stopPropagation()">
-      <img src="./fao-zones.jpg"
-           style="width:100%;touch-action:pinch-zoom;display:block;user-select:none"
-           alt="Zone FAO rischio">
-    </div>
-  </div>
-
   <div class="page" id="pageGlossario">
     <div class="card" id="glossCard"></div>
   </div>
@@ -252,7 +233,7 @@ input::placeholder{color:var(--td)}
 
 <div class="ftr-wrap">
 <footer style="text-align:center;padding:0.75rem 1rem 0.25rem;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · v 0.90.4
+  © 2026 Cristiano Cinotti · v 0.90.5
   <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;margin-bottom:2px">
     <button onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.35);background:rgba(13,59,110,0.6);color:#90caf9;font-size:12px;font-weight:500;cursor:pointer;letter-spacing:0.02em">ℹ️ Info &amp; crediti</button>
     <!-- Ko-fi disabilitato durante test interni -->
@@ -284,7 +265,10 @@ input::placeholder{color:var(--td)}
   </div>
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;margin-top:4px">Note di versione</div>
   <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12)">
-    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.90.1 — 11 giugno 2026</div>
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.90.5 — 12 giugno 2026</div>
+    <div style="font-size:11px;color:#90caf9;line-height:1.7">🗺️ <strong>Mappa interattiva</strong> — il planisfero FAO sostituisce le mini-mappe SVG. Le zone sono ora cliccabili: tap su una zona scorre alla sezione corrispondente nell'elenco e la evidenzia.</div>
+
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.1 — 11 giugno 2026</div>
     <div style="font-size:11px;color:#90caf9;line-height:1.7">🐛 <strong>Fix livelli mercurio allevato</strong> — le schede specie mostravano i valori del selvaggio anche nella tab Allevato per cozza, gambero, halibut, merluzzo, nasello, rombo, sogliola, vongola e tonno. Aggiunti dati specifici per ciascuna specie allevata.</div>
     <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.4 — 11 giugno 2026</div>
     <div style="font-size:11px;color:#90caf9;line-height:1.7">📝 <strong>Tonno in scatola sdoppiato</strong> — distinte le due specie: skipjack (Katsuwonus pelamis, mercurio basso) e pinna gialla (Thunnus albacares, mercurio medio). Porzioni e avvertenze differenziate.</div>
@@ -544,18 +528,78 @@ var OCEAN_GROUPS=[
 var riskColors={green:'rgba(67,160,71,0.5)',yellow:'rgba(253,216,53,0.45)',orange:'rgba(239,108,0,0.55)',red:'rgba(229,57,53,0.6)'};
 var rankMap={green:0,yellow:1,orange:2,red:3};
 var MINI_CONT=[[[-168,72],[-140,72],[-120,60],[-100,50],[-83,30],[-90,18],[-105,18],[-125,32],[-130,50],[-150,60],[-168,72]],[[-82,12],[-62,12],[-50,5],[-35,-25],[-52,-32],[-68,-54],[-80,-30],[-82,12]],[[-10,60],[5,60],[25,52],[30,62],[25,72],[-10,70],[-10,60]],[[-5,44],[25,44],[30,48],[15,52],[-5,48],[-5,44]],[[-17,15],[5,36],[35,36],[43,12],[51,12],[42,-12],[34,-35],[18,-35],[-2,-5],[-17,15]],[[26,72],[60,72],[100,72],[140,72],[180,70],[180,50],[160,40],[140,36],[130,30],[120,22],[100,20],[80,24],[60,22],[50,28],[40,36],[26,48],[26,72]],[[36,36],[60,22],[58,14],[44,10],[36,14],[36,36]],[[68,24],[80,30],[92,24],[80,10],[68,24]],[[100,20],[108,20],[108,10],[100,4],[96,16],[100,20]],[[114,-22],[130,-14],[148,-18],[152,-25],[148,-38],[130,-32],[116,-34],[114,-22]],[[-45,85],[-15,83],[-8,76],[-18,70],[-42,64],[-55,65],[-60,72],[-52,80],[-45,85]],[[-180,-70],[-120,-68],[-60,-68],[0,-68],[60,-68],[120,-68],[180,-68],[180,-90],[-180,-90],[-180,-70]]];
-function mLon(l){return(l+180)/360*300;}
-function mLat(l){return(85-l)/170*150;}
-function buildMiniMap(h,col){
-  var sv='<svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:8px">';
-  sv+='<rect width="300" height="150" fill="#0d2d4a"/>';
-  var hx1=mLon(h[0]),hy1=mLat(h[1]),hx2=mLon(h[2]),hy2=mLat(h[3]);
-  sv+='<rect x="'+Math.min(hx1,hx2).toFixed(1)+'" y="'+Math.min(hy1,hy2).toFixed(1)+'" width="'+Math.abs(hx2-hx1).toFixed(1)+'" height="'+Math.abs(hy2-hy1).toFixed(1)+'" fill="'+col+'" rx="2"/>';
-  for(var i=0;i<MINI_CONT.length;i++){var pts=MINI_CONT[i],d='';for(var j=0;j<pts.length;j++){d+=(j===0?'M':'L')+mLon(pts[j][0]).toFixed(1)+','+mLat(pts[j][1]).toFixed(1)+' ';}sv+='<path d="'+d+'Z" fill="#1e3d5c" stroke="#0d2d4a" stroke-width="0.5"/>';}
-  sv+='<line x1="0" y1="'+mLat(0)+'" x2="300" y2="'+mLat(0)+'" stroke="rgba(79,195,247,0.2)" stroke-width="0.5" stroke-dasharray="3,3"/>';
-  sv+='</svg>';
-  return sv;
+// buildMiniMap e mLon/mLat rimossi — sostituiti dall'overlay SVG su immagine reale
+
+// ─── MAPPA INTERATTIVA ────────────────────────────────────────────────────────
+var ZONE_HOTSPOTS=[
+  // zone, x, y, w, h  (pixel su viewBox 1283x668)
+  {z:'18',   x:492,y:  2,w:260,h: 68},
+  {z:'21',   x:400,y:173,w:132,h: 70},
+  {z:'27',   x:488,y:141,w:132,h: 70},
+  {z:'31',   x:315,y:303,w:132,h: 70},
+  {z:'34',   x:417,y:266,w:132,h: 70},
+  {z:'37',   x:568,y:170,w:145,h: 88},   // Mediterraneo — area larga
+  {z:'37.3', x:665,y:222,w: 96,h: 56},   // disegnato DOPO 37 → priorità click
+  {z:'37.4', x:700,y:192,w: 96,h: 60},   // Black Sea — disegnato per ultimo
+  {z:'41',   x:468,y:429,w:132,h: 70},
+  {z:'47',   x:578,y:428,w:132,h: 70},
+  {z:'48',   x:469,y:551,w:132,h: 70},
+  {z:'51',   x:731,y:377,w:132,h: 70},
+  {z:'57',   x:906,y:399,w:132,h: 70},
+  {z:'58',   x:767,y:543,w:132,h: 70},
+  {z:'61',   x:1122,y:187,w:132,h: 70},
+  {z:'67',   x: 27,y:173,w:132,h: 70},
+  {z:'71',   x:1119,y:290,w:132,h: 70},
+  {z:'77',   x: 90,y:280,w:132,h: 70},
+  {z:'81',   x:1121,y:469,w:132,h: 70},
+  {z:'87',   x:174,y:431,w:132,h: 70},
+  {z:'88',   x:1140,y:577,w:132,h: 70},
+];
+
+// Mappa zone → id gruppo
+var ZONE_TO_GROUP={};
+(function(){for(var g=0;g<OCEAN_GROUPS.length;g++){var grp=OCEAN_GROUPS[g];for(var z=0;z<grp.zones.length;z++)ZONE_TO_GROUP[grp.zones[z]]=grp.id;}})();
+
+function buildMapSVG(){
+  var svg=document.getElementById('faoMapSvg');
+  if(!svg)return;
+  var html='';
+  for(var i=0;i<ZONE_HOTSPOTS.length;i++){
+    var h=ZONE_HOTSPOTS[i];
+    html+='<rect x="'+h.x+'" y="'+h.y+'" width="'+h.w+'" height="'+h.h+'"'
+      +' fill="transparent" rx="4"'
+      +' style="cursor:pointer;transition:fill 0.15s"'
+      +' data-zone="'+h.z+'"'
+      +' onmouseenter="this.setAttribute(\'fill\',\'rgba(255,255,255,0.12)\')"'
+      +' onmouseleave="this.setAttribute(\'fill\',\'transparent\')"'
+      +' ontouchstart="this.setAttribute(\'fill\',\'rgba(255,255,255,0.18)\')"'
+      +' ontouchend="this.setAttribute(\'fill\',\'transparent\');clickZone(\''+h.z+'\')"'
+      +' onclick="clickZone(\''+h.z+'\')"'
+      +'/>';
+  }
+  svg.innerHTML=html;
 }
+
+function clickZone(code){
+  var grpId=ZONE_TO_GROUP[code];
+  buildMapGroups('all');
+  var btns=document.querySelectorAll('.mf-btn');
+  for(var i=0;i<btns.length;i++)btns[i].classList.remove('factive');
+  document.querySelector('.mf-btn.fall').classList.add('factive');
+  setTimeout(function(){
+    if(grpId){
+      var el=document.getElementById('grp-'+grpId);
+      if(el){
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+        el.style.transition='border-color 0.3s,box-shadow 0.3s';
+        el.style.borderColor='rgba(79,195,247,0.9)';
+        el.style.boxShadow='0 0 0 2px rgba(79,195,247,0.35)';
+        setTimeout(function(){el.style.borderColor='';el.style.boxShadow='';},2500);
+      }
+    }
+  },80);
+}
+
 function buildMapGroups(filter){
   var out=document.getElementById('mapGroups');var html='';
   for(var g=0;g<OCEAN_GROUPS.length;g++){
@@ -563,22 +607,16 @@ function buildMapGroups(filter){
     var vis=[];
     for(var z=0;z<grp.zones.length;z++){var code=grp.zones[z];if(!DATA[code])continue;if(filter!=='all'&&DATA[code].riskColor!==filter)continue;vis.push(code);}
     if(!vis.length)continue;
-    var worst='green';
-    for(var z=0;z<vis.length;z++){var rc=DATA[vis[z]].riskColor;if((rankMap[rc]||0)>(rankMap[worst]||0))worst=rc;}
-    html+='<div class="card" style="padding:0;overflow:hidden;margin-bottom:12px">';
-    html+='<div style="position:relative">'+buildMiniMap(grp.highlight,riskColors[worst]);
-    html+='<div style="position:absolute;bottom:8px;left:10px;font-size:15px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.8)">'+grp.emoji+' '+grp.name+'</div></div>';
-    html+='<div style="padding:8px 12px 10px">';
+    html+='<div class="card" id="grp-'+grp.id+'" style="margin-bottom:12px">';
+    html+='<div class="sec-title">'+grp.emoji+' '+grp.name+'</div>';
     var pc={green:'var(--g)',yellow:'var(--y)',orange:'var(--or)',red:'var(--r)'};
     for(var z=0;z<vis.length;z++){var code=vis[z];var d=DATA[code];html+='<div class="map-row" onclick="renderZone(\''+code+'\');showPage(\'ricerca\')"><div class="map-flag">'+d.flag+'</div><div class="map-info"><div class="map-code">FAO '+code+'</div><div class="map-name">'+d.zoneName.replace(/^\d[\d.]*\s*-\s*/,'')+'</div><div class="map-geo">'+d.zoneSub+'</div></div><div style="width:10px;height:10px;border-radius:50%;background:'+pc[d.riskColor]+';box-shadow:0 0 6px '+pc[d.riskColor]+';flex-shrink:0"></div></div>';}
-    html+='</div></div>';
+    html+='</div>';
   }
   if(!html)html='<div class="card"><p style="color:var(--ts);font-size:14px;text-align:center;padding:1rem">Nessuna zona per questo filtro.</p></div>';
   out.innerHTML=html;
+  buildMapSVG();
 }
-function filterMap(f,el){var btns=document.querySelectorAll('.mf-btn');for(var i=0;i<btns.length;i++)btns[i].classList.remove('factive');el.classList.add('factive');buildMapGroups(f);}
-function openMapModal(){var m=document.getElementById('mapModal');m.style.display='flex';document.body.style.overflow='hidden';}
-function closeMapModal(){document.getElementById('mapModal').style.display='none';document.body.style.overflow='';}
 
 // ─── GLOSSARIO ────────────────────────────────────────────────────────────────
 function buildGlossary(){
