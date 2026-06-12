@@ -193,23 +193,55 @@ input::placeholder{color:var(--td)}
   </div>
 
   <div class="page" id="pageMappa">
-    <div class="card">
-      <p style="font-size:11px;color:rgba(255,255,255,0.75);text-align:center;margin:0 0 10px;font-style:italic">🗺️ La grafica è volutamente minimalista. Molto volutamente... 😄</p>
-      <div class="map-legend">
-        <div class="leg-item"><div class="leg-dot" style="background:var(--g)"></div>Basso</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--y)"></div>Medio</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--or)"></div>Alto</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--r)"></div>Molto alto</div>
-      </div>
-      <div class="map-filter">
-        <div class="mf-btn fall factive" onclick="filterMap('all',this)">Tutte</div>
-        <div class="mf-btn fgreen" onclick="filterMap('green',this)">🟢 Basso</div>
-        <div class="mf-btn fyellow" onclick="filterMap('yellow',this)">🟡 Medio</div>
-        <div class="mf-btn forange" onclick="filterMap('orange',this)">🟠 Alto</div>
-        <div class="mf-btn fred" onclick="filterMap('red',this)">🔴 Molto alto</div>
+
+    <!-- Planisfero FAO — tap per fullscreen con pinch-zoom -->
+    <div class="card" style="padding:0;overflow:hidden;margin-bottom:12px">
+      <div style="position:relative;cursor:zoom-in" onclick="openMapModal()">
+        <img src="./fao-zones.jpg"
+             style="width:100%;display:block;border-radius:16px"
+             alt="Zone FAO — classificazione rischio Pesce Sicuro">
+        <div style="position:absolute;bottom:8px;right:10px;background:rgba(0,0,0,0.55);
+                    border-radius:20px;padding:4px 10px;font-size:11px;
+                    color:rgba(255,255,255,0.85);pointer-events:none">
+          🔍 Tocca per ingrandire
+        </div>
       </div>
     </div>
+
+    <!-- Filtri -->
+    <div class="card">
+      <div class="map-filter">
+        <div class="mf-btn fall factive" onclick="filterMap('all',this)">Tutte</div>
+        <div class="mf-btn fgreen"  onclick="filterMap('green',this)">🟢 Basso</div>
+        <div class="mf-btn fyellow" onclick="filterMap('yellow',this)">🟡 Medio</div>
+        <div class="mf-btn forange" onclick="filterMap('orange',this)">🟠 Alto</div>
+        <div class="mf-btn fred"    onclick="filterMap('red',this)">🔴 Molto alto</div>
+      </div>
+    </div>
+
     <div id="mapGroups"></div>
+  </div>
+
+  <!-- Modal fullscreen planisfero -->
+  <div id="mapModal" onclick="closeMapModal()"
+       style="display:none;position:fixed;inset:0;background:#000;z-index:999;
+              flex-direction:column;align-items:stretch">
+    <div style="display:flex;justify-content:flex-end;padding:10px 12px;
+                background:rgba(0,0,0,0.7);flex-shrink:0" onclick="event.stopPropagation()">
+      <button onclick="closeMapModal()"
+              style="background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);
+                     border-radius:20px;padding:7px 18px;color:#fff;font-size:13px;
+                     font-weight:500;cursor:pointer">
+        ✕ Chiudi
+      </button>
+    </div>
+    <div style="flex:1;overflow:auto;-webkit-overflow-scrolling:touch;
+                display:flex;align-items:center;justify-content:center"
+         onclick="event.stopPropagation()">
+      <img src="./fao-zones.jpg"
+           style="width:100%;touch-action:pinch-zoom;display:block;user-select:none"
+           alt="Zone FAO rischio">
+    </div>
   </div>
 
   <div class="page" id="pageGlossario">
@@ -545,6 +577,8 @@ function buildMapGroups(filter){
   out.innerHTML=html;
 }
 function filterMap(f,el){var btns=document.querySelectorAll('.mf-btn');for(var i=0;i<btns.length;i++)btns[i].classList.remove('factive');el.classList.add('factive');buildMapGroups(f);}
+function openMapModal(){var m=document.getElementById('mapModal');m.style.display='flex';document.body.style.overflow='hidden';}
+function closeMapModal(){document.getElementById('mapModal').style.display='none';document.body.style.overflow='';}
 
 // ─── GLOSSARIO ────────────────────────────────────────────────────────────────
 function buildGlossary(){
