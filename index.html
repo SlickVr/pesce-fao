@@ -238,7 +238,7 @@ input::placeholder{color:var(--td)}
 
 <div class="ftr-wrap">
 <footer style="text-align:center;padding:0.75rem 1rem 0.25rem;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · v 0.90.9
+  © 2026 Cristiano Cinotti · v 0.91.0
   <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;margin-bottom:2px">
     <button onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.35);background:rgba(13,59,110,0.6);color:#90caf9;font-size:12px;font-weight:500;cursor:pointer;letter-spacing:0.02em">ℹ️ Info &amp; crediti</button>
     <!-- Ko-fi disabilitato durante test interni -->
@@ -270,7 +270,10 @@ input::placeholder{color:var(--td)}
   </div>
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;margin-top:4px">Note di versione</div>
   <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12)">
-    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.90.9 — 12 giugno 2026</div>
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.91.0 — 12 giugno 2026</div>
+    <div style="font-size:11px;color:#90caf9;line-height:1.7">🏷️ <strong>Tutorial aggiornato</strong> — i 4 slide guidano ora su: leggere l'etichetta FAO, regola d'oro della taglia, come usare la sezione specie, limiti e fonti dell'app.<br>🛡️ <strong>Guida pratica nel glossario</strong> — nuova voce "Come difendersi" con 7 regole concrete per il consumatore, in cima alla tab Glossario.</div>
+
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.9 — 12 giugno 2026</div>
     <div style="font-size:11px;color:#90caf9;line-height:1.7">🐟 <strong>Indicatore catena trofica</strong> — ogni scheda specie mostra ora 5 pesci stilizzati che indicano la posizione nella catena trofica (livello 1-5 calcolato dal valore Hg). Il banner "Perché" riporta il livello numerico esatto e collega bioaccumulo, taglia e ciclo vitale.</div>
 
     <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.8 — 12 giugno 2026</div>
@@ -316,6 +319,7 @@ var LABELS={"27":"27 — Atlantico NE","31":"31 — Atlantico C-Ovest","34":"34 
 var levelMap={basso:["ind-low","Basso"],medio:["ind-med","Medio"],alto:["ind-high","Alto"],"molto alto":["ind-vhigh","Molto alto"]};
 var riskLabel={basso:"Pressione ambientale bassa",medio:"Pressione ambientale media",alto:"Pressione ambientale alta","molto alto":"Pressione ambientale molto alta"};
 var GLOSSARY=[
+  {term:"🛡️ Come difendersi: guida pratica",icon:"🛡️",tag:{text:"Guida pratica",cls:"info"},body:"<strong>① Preferisci il piccolo</strong> — alici, sardine, sgombri, gamberi: ciclo breve = meno mercurio, più omega-3.<br><strong>② Leggi l'etichetta</strong> — zona FAO + selvaggio/allevato sono obbligatori per legge UE. Diffida di etichette incomplete.<br><strong>③ Rispetta la frequenza</strong> — anche una specie a rischio medio diventa problematica se consumata ogni giorno per anni.<br><strong>④ Gravidanza e bambini</strong> — evitare tonno rosso fresco, pesce spada, squalo, anguilla. Sicuri: salmone, alici, merluzzo, gamberi ben cotti.<br><strong>⑤ Cerca le certificazioni</strong> — <em>ASC</em> per l'allevato, <em>MSC</em> per il selvaggio garantiscono standard verificati da enti terzi.<br><strong>⑥ Varia le specie</strong> — non mangiare sempre la stessa: diversifica per distribuire l'esposizione ai contaminanti.<br><strong>⑦ La taglia conta</strong> — tra esemplari della stessa specie, il più piccolo e giovane accumula meno mercurio."},
   {term:"Mercurio (Hg)",icon:"⚗️",tag:{text:"Tossico",cls:"danger"},body:"Metallo pesante che si accumula nei tessuti dei pesci (bioaccumulo), specie nei grandi predatori. In gravidanza e nei bambini può causare danni neurologici. L'EFSA fissa una dose settimanale tollerabile di 1.3 µg/kg di peso corporeo."},
   {term:"PCB / Policlorobifenili",icon:"☣️",tag:{text:"Persistente",cls:"danger"},body:"Composti industriali oggi vietati ma ancora diffusi. Si accumulano nei grassi animali. Il Baltico e alcune aree industriali italiane sono tra i più contaminati in Europa."},
   {term:"Diossine",icon:"☣️",tag:{text:"Persistente",cls:"danger"},body:"Sottoprodotti industriali e di combustione. Persistenti nei grassi animali. Il pesce è la principale fonte alimentare umana. L'EFSA ha ridotto i limiti nel 2018 (TWI a 0.6 pg TEQ/kg/sett.); ulteriore aggiornamento con Reg. UE 2022/2002."},
@@ -711,7 +715,7 @@ function buildMapGroups(filter){
 function buildGlossary(){
   var out=document.getElementById('glossCard');if(out.innerHTML)return;
   var html='';
-  for(var i=0;i<GLOSSARY.length;i++){var g=GLOSSARY[i];if(i===12){html+='<div style="font-size:11px;font-weight:700;color:var(--ic);text-transform:uppercase;letter-spacing:0.07em;padding:14px 2px 6px">Certificazioni acquacoltura</div>';}html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl('+i+')"><span class="gl-icon">'+g.icon+'</span><span class="gl-term">'+g.term+'</span><span class="gl-arr" id="ga'+i+'">›</span></div><div class="gl-body" id="gb'+i+'">'+g.body+'<br><span class="gl-tag '+g.tag.cls+'">'+g.tag.text+'</span></div></div>';}
+  for(var i=0;i<GLOSSARY.length;i++){var g=GLOSSARY[i];if(i===0){html+='<div style="font-size:11px;font-weight:700;color:#a5d6a7;text-transform:uppercase;letter-spacing:0.07em;padding:4px 2px 6px">Guida al consumatore</div>';}if(i===1){html+='<div style="font-size:11px;font-weight:700;color:var(--ic);text-transform:uppercase;letter-spacing:0.07em;padding:14px 2px 6px">Contaminanti e concetti</div>';}if(i===13){html+='<div style="font-size:11px;font-weight:700;color:var(--ic);text-transform:uppercase;letter-spacing:0.07em;padding:14px 2px 6px">Certificazioni acquacoltura</div>';}html+='<div class="gl-item"><div class="gl-hdr" onclick="toggleGl('+i+')"><span class="gl-icon">'+g.icon+'</span><span class="gl-term">'+g.term+'</span><span class="gl-arr" id="ga'+i+'">›</span></div><div class="gl-body" id="gb'+i+'">'+g.body+'<br><span class="gl-tag '+g.tag.cls+'">'+g.tag.text+'</span></div></div>';}
   out.innerHTML=html;
 }
 function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElementById('ga'+i);var op=b.classList.contains('open');b.className='gl-body'+(op?'':' open');a.className='gl-arr'+(op?'':' open');}
@@ -744,34 +748,66 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
 <!-- Schermata di benvenuto (primo avvio) -->
 <div id="welcomeOverlay" style="display:none;position:fixed;inset:0;z-index:10000;background:#0a2540;flex-direction:column;align-items:center;justify-content:center;padding:24px">
   <div style="max-width:360px;width:100%;text-align:center">
+
+    <!-- Slide 0: Come leggere l'etichetta -->
     <div id="wSlide0" class="wslide">
-      <div style="font-size:64px;margin-bottom:16px">🐟</div>
-      <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:12px">Benvenuto in<br>Pesce Sicuro</div>
-      <div style="font-size:14px;color:#90caf9;line-height:1.7">L'app che ti aiuta a scegliere il pesce più sicuro in base a <strong style="color:#e0f0ff">dove è stato pescato</strong>.</div>
+      <div style="font-size:56px;margin-bottom:14px">🏷️</div>
+      <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">L'etichetta del pesce</div>
+      <div style="font-size:14px;color:#90caf9;line-height:1.8;text-align:left;background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px">
+        Ogni prodotto ittico in UE deve riportare per legge:<br>
+        <span style="color:#4fc3f7">①</span> <strong style="color:#e0f0ff">Zona FAO</strong> — es. <em>"37 – Mediterraneo"</em><br>
+        <span style="color:#4fc3f7">②</span> <strong style="color:#e0f0ff">Metodo</strong> — pescato o allevato<br>
+        <span style="color:#4fc3f7">③</span> <strong style="color:#e0f0ff">Specie</strong> — nome commerciale e scientifico<br><br>
+        <span style="color:#a5d6a7">→ Il numero di zona è il punto di partenza per usare questa app.</span>
+      </div>
     </div>
+
+    <!-- Slide 1: La regola d'oro -->
     <div id="wSlide1" class="wslide" style="display:none">
-      <div style="font-size:64px;margin-bottom:16px">🌍</div>
-      <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">Le Zone FAO</div>
-      <div style="font-size:14px;color:#90caf9;line-height:1.7">La FAO (ONU) divide gli oceani in zone numerate. In Italia <strong style="color:#e0f0ff">è obbligatorio indicarle in etichetta</strong> sul pesce che acquisti. Ogni zona ha livelli diversi di mercurio, microplastiche e altri contaminanti.</div>
+      <div style="font-size:56px;margin-bottom:14px">🐟</div>
+      <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">La regola d'oro</div>
+      <div style="font-size:14px;color:#90caf9;line-height:1.8;text-align:left;background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px">
+        Il pesce piccolo a ciclo breve accumula meno contaminanti.<br><br>
+        <span style="color:#a5d6a7">🥇 Alici, sardine, sgombri</span> → sicuri, ricchi di omega-3<br>
+        <span style="color:#fdd835">⚠️ Tonno, cernia, halibut</span> → con moderazione<br>
+        <span style="color:#ef6c00">🚨 Pesce spada, anguilla</span> → occasionalmente<br><br>
+        <span style="color:#b0bec5;font-size:12px">Questo vale <em>a prescindere</em> dalla zona FAO.</span>
+      </div>
     </div>
+
+    <!-- Slide 2: Come usare la sezione specie -->
     <div id="wSlide2" class="wslide" style="display:none">
-      <div style="font-size:64px;margin-bottom:16px">🏷️</div>
+      <div style="font-size:56px;margin-bottom:14px">🔍</div>
       <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">Come usare l'app</div>
-      <div style="font-size:14px;color:#90caf9;line-height:1.7">Guarda l'etichetta del pesce → trova il numero di zona FAO → cercalo nell'app. Oppure sfoglia la tab <strong style="color:#e0f0ff">Specie</strong> per conoscere i livelli di mercurio del pesce che consumi.</div>
+      <div style="font-size:14px;color:#90caf9;line-height:1.9;text-align:left;background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px">
+        <strong style="color:#e0f0ff">Tab Ricerca</strong> → cerca una specie e vedi:<br>
+        &nbsp;&nbsp;• indicatore catena trofica (🐟×1–5)<br>
+        &nbsp;&nbsp;• livello mercurio e porzioni EFSA<br>
+        &nbsp;&nbsp;• zone FAO consigliate per quella specie<br><br>
+        <strong style="color:#e0f0ff">Tab Mappa</strong> → pressione ambientale stimata per area.<br><br>
+        <span style="color:#b0bec5;font-size:12px">Più pesci colorati = più alta nella catena = più bioaccumulo.</span>
+      </div>
     </div>
+
+    <!-- Slide 3: Limiti e fonti -->
     <div id="wSlide3" class="wslide" style="display:none">
-      <div style="font-size:64px;margin-bottom:16px">✅</div>
-      <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">Pronto!</div>
-      <div style="font-size:14px;color:#90caf9;line-height:1.7">Trovi sempre le fonti e il glossario nella tab <strong style="color:#e0f0ff">Glossario</strong>. I dati provengono da EFSA, FAO, FDA e altri enti istituzionali.</div>
+      <div style="font-size:56px;margin-bottom:14px">🏛️</div>
+      <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">Trasparenza e limiti</div>
+      <div style="font-size:14px;color:#90caf9;line-height:1.8;text-align:left;background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px">
+        Fonti dei dati: <strong style="color:#e0f0ff">EFSA, FAO, MEDPOL, ISPRA, FDA</strong>.<br><br>
+        Le zone FAO coprono milioni di km² — la qualità varia all'interno di ciascuna. Il pesce venduto in UE ha superato i <strong style="color:#e0f0ff">controlli sanitari di filiera</strong>.<br><br>
+        <span style="color:#a5d6a7;font-size:12px">Questa app è uno strumento di orientamento, non un sostituto dei controlli ufficiali.</span>
+      </div>
     </div>
-    <div style="display:flex;justify-content:center;gap:6px;margin:24px 0 20px">
-      <span id="wDot0" style="width:8px;height:8px;border-radius:4px;background:#4fc3f7;display:inline-block"></span>
-      <span id="wDot1" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block"></span>
-      <span id="wDot2" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block"></span>
-      <span id="wDot3" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block"></span>
+
+    <div style="display:flex;justify-content:center;gap:6px;margin:22px 0 18px">
+      <span id="wDot0" style="width:8px;height:8px;border-radius:4px;background:#4fc3f7;display:inline-block;transition:background .25s"></span>
+      <span id="wDot1" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block;transition:background .25s"></span>
+      <span id="wDot2" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block;transition:background .25s"></span>
+      <span id="wDot3" style="width:8px;height:8px;border-radius:4px;background:rgba(79,195,247,0.3);display:inline-block;transition:background .25s"></span>
     </div>
     <button id="wBtn" onclick="nextWelcome()" style="width:100%;padding:14px;border-radius:12px;border:none;background:#1565a8;color:#fff;font-size:16px;font-weight:600;cursor:pointer">Avanti →</button>
-    <button onclick="closeWelcome()" style="margin-top:12px;background:none;border:none;color:rgba(144,202,249,0.5);font-size:12px;cursor:pointer">Salta</button>
+    <button onclick="closeWelcome()" style="margin-top:12px;background:none;border:none;color:rgba(144,202,249,0.5);font-size:12px;cursor:pointer">Salta il tutorial</button>
   </div>
 </div>
 
