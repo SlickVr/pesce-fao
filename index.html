@@ -88,6 +88,18 @@ input::placeholder{color:var(--td)}
 .chip{font-size:clamp(13px,3.2vw,14px);padding:6px 13px;border-radius:20px;border:0.5px solid var(--border);background:rgba(21,101,168,0.3);color:var(--ts);cursor:pointer}
 .rec-box{background:var(--card2);border:0.5px solid var(--border);border-left:3px solid var(--og);border-radius:0 8px 8px 0;padding:clamp(12px,3vw,15px);font-size:clamp(14px,3.5vw,16px);color:var(--tp);line-height:1.7}
 .src-note{font-size:12px;color:var(--ts);margin-top:12px;opacity:0.75;line-height:1.6;padding:7px 10px;background:rgba(10,37,64,0.4);border-radius:7px;border:0.5px solid rgba(79,195,247,0.1)}
+.subar-row{border:0.5px solid var(--border2);border-radius:10px;margin-bottom:6px;overflow:hidden}
+.subar-head{display:flex;align-items:center;gap:8px;padding:10px 12px;cursor:pointer;user-select:none;-webkit-user-select:none}
+.subar-name{flex:1;font-size:13px;color:var(--ts);line-height:1.3}
+.subar-arr{color:var(--td);font-size:16px;transition:transform 0.2s;flex-shrink:0}
+.subar-row.open .subar-arr{transform:rotate(90deg)}
+.subar-body{display:none;padding:0 12px 10px;font-size:13px;color:rgba(144,202,249,0.75);line-height:1.6}
+.subar-row.open .subar-body{display:block}
+.subar-chip{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;letter-spacing:0.02em;white-space:nowrap;flex-shrink:0}
+.subar-better{background:rgba(67,160,71,0.15);color:#81c784;border:0.5px solid rgba(67,160,71,0.3)}
+.subar-worse{background:rgba(239,108,0,0.15);color:#ffb74d;border:0.5px solid rgba(239,108,0,0.3)}
+.subar-hotspot{background:rgba(229,57,53,0.15);color:#ef9a9a;border:0.5px solid rgba(229,57,53,0.3)}
+.subar-neutral{background:rgba(144,202,249,0.1);color:var(--ts);border:0.5px solid var(--border)}
 .sp-hero{border-radius:12px;padding:clamp(12px,3vw,18px);margin-bottom:12px;background:linear-gradient(135deg,#0d3b6e,#1565a8);border:0.5px solid rgba(79,195,247,0.3)}
 .sp-name{font-size:clamp(16px,4.5vw,20px);font-weight:700;color:#fff;margin-top:6px}
 .sp-latin{font-size:clamp(11px,2.8vw,13px);color:var(--ts);font-style:italic;margin-top:2px}
@@ -183,6 +195,10 @@ input::placeholder{color:var(--td)}
       <div class="sec-title">Specie sensibili</div><div class="chips" id="spChips"></div>
       <div class="sec-title">Raccomandazioni</div><div class="rec-box" id="recBox">—</div>
       <p class="src-note" id="srcNote"></p>
+      <div id="subAreaBlock" style="display:none">
+        <div class="sec-title" style="margin-top:14px">📍 Variazioni nell'area</div>
+        <div id="subAreaList"></div>
+      </div>
     </div>
   </div>
 
@@ -237,7 +253,7 @@ input::placeholder{color:var(--td)}
 
 <div class="ftr-wrap">
 <footer style="text-align:center;padding:0.75rem 1rem 0.25rem;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · v 0.91.0
+  © 2026 Cristiano Cinotti · v 0.92.0
   <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;margin-bottom:2px">
     <button onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.35);background:rgba(13,59,110,0.6);color:#90caf9;font-size:12px;font-weight:500;cursor:pointer;letter-spacing:0.02em">ℹ️ Info &amp; crediti</button>
     <!-- Ko-fi disabilitato durante test interni -->
@@ -269,7 +285,10 @@ input::placeholder{color:var(--td)}
   </div>
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;margin-top:4px">Note di versione</div>
   <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12)">
-    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.91.0 — 12 giugno 2026</div>
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.92.0 — 13 giugno 2026</div>
+    <div style="font-size:11px;color:#90caf9;line-height:1.7">📍 <strong>Variazioni nell'area</strong> — ogni scheda zona mostra ora una sezione accordéon con le sottoaree che differiscono significativamente dalla valutazione media (es. Mar Baltico vs Atlantico aperto, Mar di Sardegna vs Tirreno, Mar Ionio vs Adriatico nord). 8 zone aggiornate, 21 sottoaree con qualificatori ▲ migliore / ▼ peggio / ⚠ hotspot. Fonti: EFSA, ISPRA, MEDPOL, ARPAS, One Ocean Foundation.</div>
+
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.91.0 — 12 giugno 2026</div>
     <div style="font-size:11px;color:#90caf9;line-height:1.7">🏷️ <strong>Tutorial aggiornato</strong> — i 4 slide guidano ora su: leggere l'etichetta FAO, regola d'oro della taglia, come usare la sezione specie, limiti e fonti dell'app.<br>🛡️ <strong>Guida pratica nel glossario</strong> — nuova voce "Come difendersi" con 7 regole concrete per il consumatore, in cima alla tab Glossario.</div>
 
     <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.90.9 — 12 giugno 2026</div>
@@ -500,6 +519,31 @@ function renderZone(code){
   document.getElementById('srcNote').innerHTML=d.sourceNote
     ?'<span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;opacity:0.5;margin-right:4px">Fonti:</span>'+d.sourceNote
     :'';
+  var subBlock=document.getElementById('subAreaBlock');
+  var subList=document.getElementById('subAreaList');
+  if(d.subAreaNotes&&d.subAreaNotes.length>0){
+    var qMap={
+      better:{cls:'subar-better',lbl:'▲ migliore'},
+      worse:{cls:'subar-worse',lbl:'▼ peggio'},
+      hotspot:{cls:'subar-hotspot',lbl:'⚠ hotspot'},
+      neutral:{cls:'subar-neutral',lbl:'◆ nella media'}
+    };
+    var sh='';
+    for(var i=0;i<d.subAreaNotes.length;i++){
+      var sa=d.subAreaNotes[i];
+      var qm=qMap[sa.qualifier]||qMap.neutral;
+      sh+='<div class="subar-row"><div class="subar-head" onclick="this.parentNode.classList.toggle(\'open\')">'
+        +'<span class="subar-chip '+qm.cls+'">'+qm.lbl+'</span>'
+        +'<span class="subar-name">'+sa.area+'</span>'
+        +'<span class="subar-arr">›</span></div>'
+        +'<div class="subar-body"><p style="margin:0">'+sa.note+'</p></div></div>';
+    }
+    subList.innerHTML=sh;
+    subBlock.style.display='block';
+  }else{
+    subList.innerHTML='';
+    subBlock.style.display='none';
+  }
   card.style.display='block';
   if(document.getElementById('pageRicerca').classList.contains('active'))card.scrollIntoView({behavior:'smooth',block:'nearest'});
 }

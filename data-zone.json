@@ -47,7 +47,24 @@
     ],
     "recommendation": "Atlantico aperto: consumo libero 2-3 volte/sett. Salmone e aringa del Baltico: max 1-2 volte/mese in gravidanza e bambini per PCB/diossine.",
     "sourceNote": "OSPAR 2023, HELCOM, EFSA.",
-    "lastUpdated": "2025-01"
+    "lastUpdated": "2025-01",
+    "subAreaNotes": [
+      {
+        "area": "Atlantico aperto (Norvegia, Islanda, Barents)",
+        "qualifier": "better",
+        "note": "Acque fredde e profonde, scarsa industrializzazione. PCB/diossine e mercurio molto bassi. Riferimento europeo per qualità ittica."
+      },
+      {
+        "area": "Mare del Nord / Canale della Manica",
+        "qualifier": "neutral",
+        "note": "Nella media della zona. Microplastiche elevate per traffico navale e prossimità industriale. Gestione ittica rigorosa (ICES)."
+      },
+      {
+        "area": "Mar Baltico",
+        "qualifier": "worse",
+        "note": "PCB/diossine nell'aringa baltica mediamente 3,5× superiori; nel salmone selvatico 5× superiori rispetto ad altre aree FAO 27 (EFSA). Ricambio idrico ~30 anni. Svezia e Finlandia hanno deroghe UE per la vendita interna. Preferire aringa e salmone non-baltici."
+      }
+    ]
   },
   "31": {
     "zoneName": "31 - Atlantico Centro-Ovest",
@@ -96,7 +113,19 @@
     ],
     "recommendation": "Grandi predatori: mercurio elevato. Evitare in gravidanza, max 1 volta/mese bambini.",
     "sourceNote": "FDA/EPA USA, NOAA.",
-    "lastUpdated": "2025-01"
+    "lastUpdated": "2025-01",
+    "subAreaNotes": [
+      {
+        "area": "Golfo del Messico (coste Louisiana/Texas)",
+        "qualifier": "worse",
+        "note": "Dead zone ipossica strutturale (fino a 23.000 km²) alimentata da apporti agricoli del Mississippi. Eredità idrocarburi Deepwater Horizon (2010) nei sedimenti. Mercurio elevato nei predatori costieri. Evitare specie bentoniche e molluschi dell'area."
+      },
+      {
+        "area": "Caraibi orientali (mare aperto)",
+        "qualifier": "better",
+        "note": "Acque più aperte, minor influenza continentale. Microplastiche inferiori al Golfo. Mercurio nei grandi predatori rimane un problema comune a tutta la zona 31."
+      }
+    ]
   },
   "34": {
     "zoneName": "34 - Atlantico Centro-Est",
@@ -246,7 +275,24 @@
     ],
     "recommendation": "Privilegiare pesce azzurro piccolo e nasello. Tonno e spada con moderazione. Acque sarde al largo tra le più pulite.",
     "sourceNote": "MEDPOL, ISPRA, ARPA.",
-    "lastUpdated": "2025-01"
+    "lastUpdated": "2025-01",
+    "subAreaNotes": [
+      {
+        "area": "Mar di Sardegna (al largo) e Baleari",
+        "qualifier": "better",
+        "note": "Acque oligotrofiche con scarsa industrializzazione costiera e nessun grande apporto fluviale. ARPAS 2023: 96,8% delle coste sarde classificate eccellenti. Microplastiche più basse del Tirreno. Tra le migliori del bacino occidentale."
+      },
+      {
+        "area": "Tirreno costiero / Canale di Corsica",
+        "qualifier": "worse",
+        "note": "Microplastiche molto elevate: il Capraia Gyre (circolazione anticiclonica) accumula >1,5 milioni di particelle/km². Vicino foci (Tevere, Arno): mercurio da miniere di cinabro del Monte Amiata (~11 kg/anno via fiume Paglia). Porti di Olbia e Roma: >250.000 particelle/km²."
+      },
+      {
+        "area": "Mar Ligure (coste industriali)",
+        "qualifier": "worse",
+        "note": "Poli industriali costieri (La Spezia, Genova, Livorno) contribuiscono a PCB e metalli pesanti nelle acque costiere. Qualità migliore al largo."
+      }
+    ]
   },
   "37.2": {
     "zoneName": "37.2 - Mediterraneo Centrale",
@@ -296,7 +342,24 @@
     ],
     "recommendation": "Molluschi filtratori solo da zone certificate. Pesce azzurro piccolo è la scelta migliore.",
     "sourceNote": "MEDPOL, ISPRA, ARPA Veneto/Puglia.",
-    "lastUpdated": "2025-01"
+    "lastUpdated": "2025-01",
+    "subAreaNotes": [
+      {
+        "area": "Adriatico settentrionale (delta Po, Golfo di Venezia)",
+        "qualifier": "worse",
+        "note": "Tra le aree più contaminate d'Italia: PCB, DDT (vietati anni '70, ancora presenti) e metalli pesanti (Pb, Co, Ni, Cr) ai livelli più alti documentati nel Golfo di Venezia (studio One Ocean Foundation/Chemosphere 2024). Eutrofizzazione cronica, mucillagini ricorrenti. Microplastiche in aumento nel 2024 (ISPRA)."
+      },
+      {
+        "area": "Hotspot Taranto (ex area ILVA)",
+        "qualifier": "hotspot",
+        "note": "Hotspot storico da industria siderurgica: PCB, IPA e diossine nei sedimenti del Golfo di Taranto. Monitoraggio ISPRA evidenzia contaminazione persistente del biota."
+      },
+      {
+        "area": "Mar Ionio (acque profonde e al largo)",
+        "qualifier": "better",
+        "note": "Acque profonde e oligotrofiche. ISPRA 2023–24: la MRU Mar Ionio mostra la percentuale più alta di stazioni in 'buono stato ambientale' per contaminanti. Microplastiche in diminuzione nel 2024, contrariamente all'Adriatico."
+      }
+    ]
   },
   "37.2.1": {
     "zoneName": "37.2.1 - Mar Adriatico",
@@ -346,7 +409,19 @@
     ],
     "recommendation": "Eutrofizzazione elevata. Molluschi solo da zone certificate. Alici e sardine l'opzione più sicura 2 volte/sett.",
     "sourceNote": "ISPRA, ARPA Veneto/Emilia-R., MEDPOL.",
-    "lastUpdated": "2025-01"
+    "lastUpdated": "2025-01",
+    "subAreaNotes": [
+      {
+        "area": "Adriatico nord (Golfo di Venezia, coste venete ed emiliane)",
+        "qualifier": "worse",
+        "note": "Massima concentrazione di inquinanti: apporti del Po con PCB e DDT ancora rilevabili nello zooplancton, eutrofizzazione cronica, fondale basso con scarso ricambio. Cozze e vongole solo da zone certificate classe A/B. Mercurio basso nelle acque ma bioaccumulo nei grandi predatori."
+      },
+      {
+        "area": "Adriatico centrale e meridionale",
+        "qualifier": "neutral",
+        "note": "Qualità progressivamente migliore scendendo verso sud: acque più profonde, minori apporti fluviali. Rimangono preoccupazioni per PCB storici nelle aree industriali costiere. Pesce azzurro piccolo (alici, sardine) sicuro per consumo frequente."
+      }
+    ]
   },
   "37.3": {
     "zoneName": "37.3 - Mediterraneo Orientale",
@@ -592,7 +667,24 @@
     ],
     "recommendation": "Mare aperto buono. Coste di India e Golfo più inquinate. Moderare i grandi tonni.",
     "sourceNote": "FAO, IOTC.",
-    "lastUpdated": "2025-01"
+    "lastUpdated": "2025-01",
+    "subAreaNotes": [
+      {
+        "area": "Coste India, Bangladesh, Pakistan",
+        "qualifier": "worse",
+        "note": "Tra i principali emettitori mondiali di microplastiche a mare per densità demografica e gestione rifiuti carente. Metalli pesanti nelle zone portuali e industriali. Preferire pesce di mare aperto a quello costiero."
+      },
+      {
+        "area": "Golfo Arabico / Mar Rosso",
+        "qualifier": "worse",
+        "note": "Bacini semi-chiusi con ricambio idrico lento. Elevato rischio idrocarburi per traffico petrolifero intenso. Eutrofizzazione nelle coste più popolate."
+      },
+      {
+        "area": "Oceano Indiano aperto (al largo Africa orientale)",
+        "qualifier": "better",
+        "note": "Acque aperte lontane da fonti di inquinamento costiero. Microplastiche e metalli pesanti bassi. Tonno skipjack e pinna gialla pescati in mare aperto sono le scelte migliori della zona."
+      }
+    ]
   },
   "57": {
     "zoneName": "57 - Oceano Indiano Or.",
@@ -690,7 +782,24 @@
     ],
     "recommendation": "Area industrializzata. Preferire pesce di mare aperto. Moderare grandi predatori.",
     "sourceNote": "FAO, NOWPAP.",
-    "lastUpdated": "2025-01"
+    "lastUpdated": "2025-01",
+    "subAreaNotes": [
+      {
+        "area": "Mar Giallo / Mar Cinese Orientale (coste cinesi)",
+        "qualifier": "worse",
+        "note": "Eutrofizzazione tra le più gravi al mondo (blooms algali stagionali massivi). Microplastiche record. Metalli pesanti da industria. Evitare molluschi e pesce costiero di questa area."
+      },
+      {
+        "area": "Acque costiere giapponesi (Mar Seto, baie industriali)",
+        "qualifier": "worse",
+        "note": "Nel Mar Interno di Seto, spigole e scorfani superano i limiti di mercurio raccomandati. Baie di Osaka e Tokuyama: PCB e solfuri documentati. Preoccupazioni per scarichi delle acque di raffreddamento di Fukushima nell'area nord-orientale della zona."
+      },
+      {
+        "area": "Mare di Okhotsk / acque russe del Pacifico",
+        "qualifier": "better",
+        "note": "Scarsa industrializzazione costiera, acque fredde e profonde. Tra le migliori della zona 61 per qualità ambientale. Pressione antropica molto inferiore rispetto alle coste cinesi e giapponesi."
+      }
+    ]
   },
   "67": {
     "zoneName": "67 - Pacifico Nord-Est",
@@ -788,7 +897,19 @@
     ],
     "recommendation": "Tonno skipjack (scatola) generalmente sicuro. Attenzione microplastiche prodotti costieri.",
     "sourceNote": "FAO, WCPFC.",
-    "lastUpdated": "2025-01"
+    "lastUpdated": "2025-01",
+    "subAreaNotes": [
+      {
+        "area": "Acque costiere Filippine / Indonesia / Vietnam",
+        "qualifier": "worse",
+        "note": "Filippine e Indonesia tra i 5 maggiori emettitori mondiali di plastica a mare. Microplastiche tra le concentrazioni più alte documentate al mondo. Evitare specie bentoniche e molluschi costieri. Pesce coltivato in acquacoltura locale: verificare certificazione."
+      },
+      {
+        "area": "Pacifico centrale aperto (lontano dalle coste)",
+        "qualifier": "better",
+        "note": "Le specie pelagiche migratorie (skipjack, pinna gialla) che si nutrono in mare aperto accumulano meno contaminanti. Il tonno skipjack pescato con canna o lenza in mare aperto è la scelta migliore di questa zona."
+      }
+    ]
   },
   "77": {
     "zoneName": "77 - Pacifico Centro-Est",
