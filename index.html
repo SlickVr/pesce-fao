@@ -683,16 +683,26 @@ function clickZone(code){
   buildMapGroups('all');
   setTimeout(function(){
     if(!grpId)return;
-    var el=document.getElementById('grp-'+grpId);
-    if(!el)return;
-    // offsetTop = distanza assoluta dall'inizio del documento, stabile dopo il re-render
-    var navH=(document.getElementById('mainNav')||{offsetHeight:56}).offsetHeight;
-    var margin=12;
-    window.scrollTo({top:el.offsetTop-margin,behavior:'smooth'});
-    el.style.transition='border-color 0.35s,box-shadow 0.35s';
-    el.style.borderColor='rgba(79,195,247,0.9)';
-    el.style.boxShadow='0 0 0 2px rgba(79,195,247,0.35)';
-    setTimeout(function(){el.style.borderColor='';el.style.boxShadow='';},2500);
+    // Scrolla alla riga specifica della zona (non al gruppo intero)
+    var row=document.getElementById('zrow-'+code);
+    var grp=document.getElementById('grp-'+grpId);
+    var target=row||grp;
+    if(!target)return;
+    var margin=72; // spazio sufficiente per vedere l'header del gruppo sopra
+    window.scrollTo({top:target.offsetTop-margin,behavior:'smooth'});
+    // Highlight sulla riga zona specifica
+    if(row){
+      row.style.transition='background 0.3s';
+      row.style.background='rgba(79,195,247,0.12)';
+      setTimeout(function(){row.style.background='';},2200);
+    }
+    // Highlight bordo sul gruppo
+    if(grp){
+      grp.style.transition='border-color 0.35s,box-shadow 0.35s';
+      grp.style.borderColor='rgba(79,195,247,0.9)';
+      grp.style.boxShadow='0 0 0 2px rgba(79,195,247,0.35)';
+      setTimeout(function(){grp.style.borderColor='';grp.style.boxShadow='';},2500);
+    }
   },120);
 }
 
@@ -706,7 +716,7 @@ function buildMapGroups(filter){
     html+='<div class="card" id="grp-'+grp.id+'" style="margin-bottom:12px">';
     html+='<div class="sec-title">'+grp.emoji+' '+grp.name+'</div>';
     var pc={green:'var(--g)',yellow:'var(--y)',orange:'var(--or)',red:'var(--r)'};
-    for(var z=0;z<vis.length;z++){var code=vis[z];var d=DATA[code];html+='<div class="map-row" onclick="renderZone(\''+code+'\');showPage(\'ricerca\')"><div class="map-flag">'+d.flag+'</div><div class="map-info"><div class="map-code">FAO '+code+'</div><div class="map-name">'+d.zoneName.replace(/^\d[\d.]*\s*-\s*/,'')+'</div><div class="map-geo">'+d.zoneSub+'</div></div><div style="width:10px;height:10px;border-radius:50%;background:'+pc[d.riskColor]+';box-shadow:0 0 6px '+pc[d.riskColor]+';flex-shrink:0"></div></div>';}
+    for(var z=0;z<vis.length;z++){var code=vis[z];var d=DATA[code];html+='<div id="zrow-'+code+'" class="map-row" onclick="renderZone(\''+code+'\');showPage(\'ricerca\')"><div class="map-flag">'+d.flag+'</div><div class="map-info"><div class="map-code">FAO '+code+'</div><div class="map-name">'+d.zoneName.replace(/^\d[\d.]*\s*-\s*/,'')+'</div><div class="map-geo">'+d.zoneSub+'</div></div><div style="width:10px;height:10px;border-radius:50%;background:'+pc[d.riskColor]+';box-shadow:0 0 6px '+pc[d.riskColor]+';flex-shrink:0"></div></div>';}
     html+='</div>';
   }
   if(!html)html='<div class="card"><p style="color:var(--ts);font-size:14px;text-align:center;padding:1rem">Nessuna zona per questo filtro.</p></div>';
