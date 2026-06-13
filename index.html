@@ -414,7 +414,7 @@ function showPage(p,fromPop){
     document.getElementById('page'+pg.charAt(0).toUpperCase()+pg.slice(1)).className='page'+(pg===p?' active':'');
     document.getElementById('mainNav').children[i].className='nav-tab'+(pg===p?' active':'');
   }
-  if(p==='mappa'){buildMapGroups('all');window.scrollTo({top:0,behavior:'smooth'});}
+  if(p==='mappa'){buildMapGroups('all');buildMapSVG();window.scrollTo({top:0,behavior:'smooth'});}
   if(p==='ricerca'){_tipIdx=(_tipIdx+1)%TIPS.length;showTip();}
   if(!fromPop){history.pushState({page:p},'',location.pathname);}
   _currentPage=p;
@@ -680,30 +680,23 @@ function buildMapSVG(){
 
 function clickZone(code){
   var grpId=ZONE_TO_GROUP[code];
-  buildMapGroups('all');
-  setTimeout(function(){
-    if(!grpId)return;
-    // Scrolla alla riga specifica della zona (non al gruppo intero)
-    var row=document.getElementById('zrow-'+code);
-    var grp=document.getElementById('grp-'+grpId);
-    var target=row||grp;
-    if(!target)return;
-    var margin=72; // spazio sufficiente per vedere l'header del gruppo sopra
-    window.scrollTo({top:target.offsetTop-margin,behavior:'smooth'});
-    // Highlight sulla riga zona specifica
-    if(row){
-      row.style.transition='background 0.3s';
-      row.style.background='rgba(79,195,247,0.12)';
-      setTimeout(function(){row.style.background='';},2200);
-    }
-    // Highlight bordo sul gruppo
-    if(grp){
-      grp.style.transition='border-color 0.35s,box-shadow 0.35s';
-      grp.style.borderColor='rgba(79,195,247,0.9)';
-      grp.style.boxShadow='0 0 0 2px rgba(79,195,247,0.35)';
-      setTimeout(function(){grp.style.borderColor='';grp.style.boxShadow='';},2500);
-    }
-  },120);
+  if(!grpId)return;
+  var row=document.getElementById('zrow-'+code);
+  var grp=document.getElementById('grp-'+grpId);
+  var target=row||grp;
+  if(!target)return;
+  window.scrollTo({top:target.offsetTop-72,behavior:'smooth'});
+  if(row){
+    row.style.transition='background 0.3s';
+    row.style.background='rgba(79,195,247,0.12)';
+    setTimeout(function(){row.style.background='';},2200);
+  }
+  if(grp){
+    grp.style.transition='border-color 0.35s,box-shadow 0.35s';
+    grp.style.borderColor='rgba(79,195,247,0.9)';
+    grp.style.boxShadow='0 0 0 2px rgba(79,195,247,0.35)';
+    setTimeout(function(){grp.style.borderColor='';grp.style.boxShadow='';},2500);
+  }
 }
 
 function buildMapGroups(filter){
@@ -721,7 +714,6 @@ function buildMapGroups(filter){
   }
   if(!html)html='<div class="card"><p style="color:var(--ts);font-size:14px;text-align:center;padding:1rem">Nessuna zona per questo filtro.</p></div>';
   out.innerHTML=html;
-  buildMapSVG();
 }
 
 // ─── GLOSSARIO ────────────────────────────────────────────────────────────────
