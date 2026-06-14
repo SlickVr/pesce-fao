@@ -163,7 +163,7 @@ input::placeholder{color:var(--td)}
 
 <div class="nav-wrap">
   <div class="nav" id="mainNav">
-    <div class="nav-tab active" onclick="resetRicerca();showPage('ricerca')"><span class="tab-icon">🔍</span><span class="tab-label">Ricerca</span></div>
+    <div class="nav-tab active" onclick="resetRicerca();showPage('ricerca')"><span class="tab-icon">🔍</span><span class="tab-label">Zone</span></div>
     <div class="nav-tab" onclick="resetSpecie();showPage('specie')"><span class="tab-icon">🐠</span><span class="tab-label">Specie</span></div>
     <div class="nav-tab" onclick="showPage('mappa')"><span class="tab-icon">🌍</span><span class="tab-label">Mappa</span></div>
     <div class="nav-tab" onclick="showPage('glossario')"><span class="tab-icon">📖</span><span class="tab-label">Glossario</span></div>
@@ -253,7 +253,7 @@ input::placeholder{color:var(--td)}
 
 <div class="ftr-wrap">
 <footer style="text-align:center;padding:0.75rem 1rem 0.25rem;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · v 0.92.1
+  © 2026 Cristiano Cinotti · v 0.92.2
   <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;margin-bottom:2px">
     <button onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.35);background:rgba(13,59,110,0.6);color:#90caf9;font-size:12px;font-weight:500;cursor:pointer;letter-spacing:0.02em">ℹ️ Info &amp; crediti</button>
     <!-- Ko-fi disabilitato durante test interni -->
@@ -285,7 +285,10 @@ input::placeholder{color:var(--td)}
   </div>
   <div style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;margin-top:4px">Note di versione</div>
   <div style="background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12)">
-    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.92.1 — 13 giugno 2026</div>
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.92.2 — 13 giugno 2026</div>
+    <div style="font-size:11px;color:#90caf9;line-height:1.7">🔍 <strong>Tab rinominato</strong> — "Ricerca" diventa <strong>Zone</strong>, più coerente con il contenuto. Tutorial aggiornato di conseguenza.</div>
+
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.92.1 — 13 giugno 2026</div>
     <div style="font-size:11px;color:#90caf9;line-height:1.7">🔄 <strong>Reset automatico tab</strong> — premendo Ricerca o Specie nella barra di navigazione, la scheda viene resettata allo stato iniziale (campi vuoti, risultati nascosti). Le navigazioni programmatiche (da mappa, chip zona, scheda specie) restano invariate.</div>
 
     <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.92.0 — 13 giugno 2026</div>
@@ -847,7 +850,7 @@ function toggleGl(i){var b=document.getElementById('gb'+i),a=document.getElement
       <div style="font-size:56px;margin-bottom:14px">🔍</div>
       <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px">Come usare l'app</div>
       <div style="font-size:14px;color:#90caf9;line-height:1.85;text-align:left;background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px">
-        <strong style="color:#e0f0ff">🔍 Ricerca</strong> → cerca per zona FAO, specie sensibili e contaminate<br><br>
+        <strong style="color:#e0f0ff">🔍 Zone</strong> → cerca per zona FAO, specie sensibili e contaminate<br><br>
         <strong style="color:#e0f0ff">🐠 Specie</strong> → sfoglia ogni specie: mercurio, catena trofica (🐟×1–5), porzioni EFSA, zone consigliate<br><br>
         <strong style="color:#e0f0ff">🌍 Mappa</strong> → pressione ambientale stimata per area di pesca<br><br>
         <strong style="color:#e0f0ff">📖 Glossario</strong> → guida pratica e termini tecnici
