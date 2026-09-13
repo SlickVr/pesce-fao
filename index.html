@@ -253,7 +253,7 @@ input::placeholder{color:var(--td)}
 
 <div class="ftr-wrap">
 <footer style="text-align:center;padding:0.75rem 1rem 0.25rem;font-size:11px;color:rgba(144,202,249,0.75);line-height:1.8">
-  © 2026 Cristiano Cinotti · v 0.92.4
+  © 2026 Cristiano Cinotti · v 0.92.5
   <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;margin-bottom:2px">
     <button onclick="var p=document.getElementById('creditsPanel');p.style.display=p.style.display==='none'?'block':'none';p.scrollIntoView({behavior:'smooth',block:'nearest'})" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:0.5px solid rgba(79,195,247,0.35);background:rgba(13,59,110,0.6);color:#90caf9;font-size:12px;font-weight:500;cursor:pointer;letter-spacing:0.02em">ℹ️ Info &amp; crediti</button>
     <a href="https://ko-fi.com/cinovr" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:0.5px solid rgba(255,94,91,0.5);background:rgba(255,94,91,0.15);color:#ffb3b1;font-size:12px;font-weight:500;text-decoration:none;letter-spacing:0.02em">☕ Offrimi un caffè</a>
@@ -284,7 +284,10 @@ input::placeholder{color:var(--td)}
   </div>
   <div onclick="var el=document.getElementById('versionNotes');var open=el.style.display==='block';el.style.display=open?'none':'block';this.querySelector('span').textContent=open?'▾':'▴';" style="font-size:11px;font-weight:700;color:#4fc3f7;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;margin-top:4px;cursor:pointer;display:flex;align-items:center;justify-content:space-between">Note di versione <span style="font-size:13px">▾</span></div>
   <div id="versionNotes" style="display:none;background:rgba(10,37,64,0.6);border-radius:10px;padding:10px 12px;border:0.5px solid rgba(79,195,247,0.12)">
-    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.92.4 — 13 settembre 2026</div>
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px">v 0.92.5 — 13 settembre 2026</div>
+    <div style="font-size:11px;color:#90caf9;line-height:1.7">✨ <strong>Chiusura automatica pannello crediti</strong> — passando a un'altra sezione dal menu, il pannello Info & Crediti si chiude da solo se era aperto.</div>
+
+    <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.92.4 — 13 settembre 2026</div>
     <div style="font-size:11px;color:#90caf9;line-height:1.7">📋 <strong>Note di versione collassate</strong> — lo storico versioni nel pannello Info & Crediti è ora chiuso di default, per non appesantire la schermata.</div>
 
     <div style="font-size:12px;font-weight:500;color:#e8f4fd;margin-bottom:6px;margin-top:10px">v 0.92.3 — 11 settembre 2026</div>
@@ -439,6 +442,7 @@ function initApp(){
 var PAGES=['ricerca','specie','mappa','glossario'];
 var _currentPage='ricerca';
 function showPage(p,fromPop){
+  var cp=document.getElementById('creditsPanel');if(cp)cp.style.display='none';
   for(var i=0;i<PAGES.length;i++){
     var pg=PAGES[i];
     document.getElementById('page'+pg.charAt(0).toUpperCase()+pg.slice(1)).className='page'+(pg===p?' active':'');
